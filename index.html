@@ -585,13 +585,16 @@ function renderGa4Cards(rowsInRange, funnelsInRange){
   const lpCount = new Set(rowsInRange.map(r=>r.landing_page)).size;
 
   const cards=[
-    {e:'🌐',label:'세션',value:fmtNum(sessions),note:`랜딩페이지 ${lpCount}개`,color:'#0ea5a4'},
-    {e:'👤',label:'사용자',value:fmtNum(users),note:'중복 제외 순방문자',color:'#3b6ef5'},
+    {e:'🌐',label:'전체 세션',value:fmtNum(sessions),note:`랜딩페이지 ${lpCount}개`,color:'#0ea5a4'},
+    {e:'👤',label:'전체 사용자',value:fmtNum(users),note:'중복 제외 순방문자',color:'#3b6ef5'},
   ];
   funnelsInRange.forEach(f=>{
-    const last = f.steps[f.steps.length-1];
-    const lastVal = f.byEvent[last?.name] || 0;
-    cards.push({e:'🪜', label:f.label, value:fmtNum(lastVal)+'건', note:last?last.label:'', color:'#8b5cf6'});
+    // 전환 이벤트(form_submit 등)는 GA4 쪽이 누락이 많아서, 여기선 GA4가 잘 측정하는
+    // 세션·사용자 수로 보여줌. 전환 숫자는 🎯 랜딩 퍼널 탭(메타·구글시트 기준) 참고.
+    const lpRows = rowsInRange.filter(r=>r.host===f.hostname);
+    const lpSessions = lpRows.reduce((a,r)=>a+Number(r.sessions||0),0);
+    const lpUsers = lpRows.reduce((a,r)=>a+Number(r.users||0),0);
+    cards.push({e:'🌐', label:f.label, value:fmtNum(lpSessions)+'세션', note:`사용자 ${fmtNum(lpUsers)}명`, color:'#8b5cf6'});
   });
   document.getElementById('ga4Cards').innerHTML = cards.map(c=>`
     <div class="metric">
