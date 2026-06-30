@@ -697,22 +697,18 @@ function renderLandingFunnels(){
 
     // find-me/change-me: 중간=메타 맞춤전환(예약페이지 도달), 최종=메타 결제시작.
     // impact-me: "상담하기" 버튼클릭은 GA4에 직접 연결해둔 cta_click 이벤트로 측정,
-    //            최종은 메타 맞춤전환(TypeformSubmit, 분류 전이면 추정치) — 고정.
+    //            최종(타입폼 제출완료)은 구글시트(Meta 결과수) 기준 수동값만 사용 — 추정치 폐기.
     // 그 외: 중간=GA4, 최종=메타 리드.
-    let stage2, finalConv, stage2Label, finalLabel, finalEstimated=false, finalVerified=false;
+    let stage2, finalConv, stage2Label, finalLabel;
     if (fromMeta) {
       stage2 = m.booking; finalConv = m.checkout;
       stage2Label = lf.stage2_label; finalLabel = lf.stage3_label;
     } else if (lf.id === 'impact-me') {
       stage2 = sumInRange(lf.stage2_rows, state.since, state.until);
       const manualRows = state.typeformSubmits.filter(r=>r.date>=state.since && r.date<=state.until);
-      const hasManual = manualRows.length > 0;
-      finalConv = hasManual ? manualRows.reduce((a,r)=>a+r.count,0)
-        : (bucket.final_custom_conversion_id ? m.final_custom : m.leads);
+      finalConv = manualRows.reduce((a,r)=>a+r.count,0);
       stage2Label = lf.stage2_label;
-      finalLabel = bucket.final_custom_conversion_id ? '타입폼 제출완료' : '전환(리드)';
-      finalEstimated = hasManual ? false : (bucket.final_custom_conversion_id ? m.final_custom_estimated : false);
-      finalVerified = hasManual;
+      finalLabel = '타입폼 제출완료';
     } else {
       stage2 = sumInRange(lf.stage2_rows, state.since, state.until); finalConv = m.leads;
       stage2Label = lf.stage2_label; finalLabel = '전환(리드)';
