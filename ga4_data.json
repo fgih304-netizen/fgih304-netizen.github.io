@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-29",
+  "generated_at": "2026-06-30",
   "source": "ga4-api",
   "range": {
-    "since": "2026-04-01",
-    "until": "2026-06-29"
+    "since": "2026-04-02",
+    "until": "2026-06-30"
   },
   "rows": [
     {
@@ -29,6 +29,14 @@
       "landing_page": "https://impact-me.real-me.co.kr/",
       "sessions": 16,
       "users": 10
+    },
+    {
+      "date": "2026-06-29",
+      "host": "find-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://find-me.real-me.co.kr/",
+      "sessions": 16,
+      "users": 16
     },
     {
       "date": "2026-06-17",
@@ -215,6 +223,14 @@
       "users": 5
     },
     {
+      "date": "2026-06-28",
+      "host": "impact-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://impact-me.real-me.co.kr/",
+      "sessions": 5,
+      "users": 5
+    },
+    {
       "date": "2026-06-11",
       "host": "change-me.real-me.co.kr",
       "path": "/",
@@ -261,14 +277,6 @@
       "landing_page": "https://find-me.real-me.co.kr/",
       "sessions": 4,
       "users": 2
-    },
-    {
-      "date": "2026-06-28",
-      "host": "impact-me.real-me.co.kr",
-      "path": "/",
-      "landing_page": "https://impact-me.real-me.co.kr/",
-      "sessions": 4,
-      "users": 4
     },
     {
       "date": "2026-06-11",
@@ -471,7 +479,15 @@
       "users": 1
     },
     {
-      "date": "2026-06-28",
+      "date": "2026-06-29",
+      "host": "impact-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://impact-me.real-me.co.kr/",
+      "sessions": 1,
+      "users": 1
+    },
+    {
+      "date": "2026-06-30",
       "host": "find-me.real-me.co.kr",
       "path": "/realme-booking-A.html",
       "landing_page": "https://find-me.real-me.co.kr/realme-booking-A.html",
@@ -479,18 +495,10 @@
       "users": 1
     },
     {
-      "date": "2026-06-28",
-      "host": "realmeschedule.lovable.app",
-      "path": "/booking/step-2-photos",
-      "landing_page": "https://realmeschedule.lovable.app/booking/step-2-photos",
-      "sessions": 1,
-      "users": 1
-    },
-    {
-      "date": "2026-06-29",
-      "host": "find-me.real-me.co.kr",
+      "date": "2026-06-30",
+      "host": "impact-me.real-me.co.kr",
       "path": "/",
-      "landing_page": "https://find-me.real-me.co.kr/",
+      "landing_page": "https://impact-me.real-me.co.kr/",
       "sessions": 1,
       "users": 1
     }
@@ -565,6 +573,11 @@
           "event_count": 130
         },
         {
+          "date": "2026-06-29",
+          "event_name": "page_view",
+          "event_count": 119
+        },
+        {
           "date": "2026-06-27",
           "event_name": "page_view",
           "event_count": 104
@@ -572,7 +585,7 @@
         {
           "date": "2026-06-28",
           "event_name": "page_view",
-          "event_count": 83
+          "event_count": 90
         },
         {
           "date": "2026-06-26",
@@ -605,6 +618,11 @@
           "event_count": 33
         },
         {
+          "date": "2026-06-30",
+          "event_name": "page_view",
+          "event_count": 33
+        },
+        {
           "date": "2026-06-19",
           "event_name": "booking_click",
           "event_count": 32
@@ -613,6 +631,16 @@
           "date": "2026-06-22",
           "event_name": "booking_click",
           "event_count": 31
+        },
+        {
+          "date": "2026-06-29",
+          "event_name": "booking_click",
+          "event_count": 29
+        },
+        {
+          "date": "2026-06-28",
+          "event_name": "booking_click",
+          "event_count": 27
         },
         {
           "date": "2026-06-25",
@@ -625,11 +653,6 @@
           "event_count": 23
         },
         {
-          "date": "2026-06-28",
-          "event_name": "booking_click",
-          "event_count": 22
-        },
-        {
           "date": "2026-06-26",
           "event_name": "booking_click",
           "event_count": 20
@@ -640,14 +663,24 @@
           "event_count": 14
         },
         {
+          "date": "2026-06-30",
+          "event_name": "booking_click",
+          "event_count": 14
+        },
+        {
           "date": "2026-06-23",
           "event_name": "page_view",
           "event_count": 13
         },
         {
           "date": "2026-06-29",
-          "event_name": "page_view",
-          "event_count": 10
+          "event_name": "begin_checkout",
+          "event_count": 7
+        },
+        {
+          "date": "2026-06-29",
+          "event_name": "form_submit",
+          "event_count": 7
         },
         {
           "date": "2026-06-24",
@@ -745,17 +778,22 @@
           "event_count": 2
         },
         {
-          "date": "2026-06-29",
-          "event_name": "booking_click",
-          "event_count": 2
-        },
-        {
           "date": "2026-06-27",
           "event_name": "begin_checkout",
           "event_count": 1
         },
         {
           "date": "2026-06-27",
+          "event_name": "form_submit",
+          "event_count": 1
+        },
+        {
+          "date": "2026-06-30",
+          "event_name": "begin_checkout",
+          "event_count": 1
+        },
+        {
+          "date": "2026-06-30",
           "event_name": "form_submit",
           "event_count": 1
         }
@@ -916,14 +954,19 @@
           "event_count": 154
         },
         {
+          "date": "2026-06-28",
+          "event_name": "page_view",
+          "event_count": 150
+        },
+        {
           "date": "2026-06-26",
           "event_name": "page_view",
           "event_count": 135
         },
         {
-          "date": "2026-06-28",
+          "date": "2026-06-29",
           "event_name": "page_view",
-          "event_count": 130
+          "event_count": 78
         },
         {
           "date": "2026-06-19",
@@ -939,6 +982,11 @@
           "date": "2026-06-27",
           "event_name": "cta_click",
           "event_count": 31
+        },
+        {
+          "date": "2026-06-30",
+          "event_name": "page_view",
+          "event_count": 29
         },
         {
           "date": "2026-06-26",
@@ -967,7 +1015,7 @@
         },
         {
           "date": "2026-06-29",
-          "event_name": "page_view",
+          "event_name": "cta_click",
           "event_count": 14
         },
         {
@@ -987,6 +1035,11 @@
         },
         {
           "date": "2026-06-22",
+          "event_name": "cta_click",
+          "event_count": 5
+        },
+        {
+          "date": "2026-06-30",
           "event_name": "cta_click",
           "event_count": 5
         },
@@ -1011,11 +1064,6 @@
           "event_count": 2
         },
         {
-          "date": "2026-06-29",
-          "event_name": "cta_click",
-          "event_count": 2
-        },
-        {
           "date": "2026-06-21",
           "event_name": "cta_click",
           "event_count": 1
@@ -1034,6 +1082,10 @@
         {
           "date": "2026-06-12",
           "value": 20
+        },
+        {
+          "date": "2026-06-29",
+          "value": 16
         },
         {
           "date": "2026-06-17",
@@ -1105,10 +1157,10 @@
         },
         {
           "date": "2026-06-28",
-          "value": 2
+          "value": 1
         },
         {
-          "date": "2026-06-29",
+          "date": "2026-06-30",
           "value": 1
         }
       ],
@@ -1134,6 +1186,10 @@
           "value": 26
         },
         {
+          "date": "2026-06-29",
+          "value": 24
+        },
+        {
           "date": "2026-06-15",
           "value": 23
         },
@@ -1150,15 +1206,15 @@
           "value": 18
         },
         {
+          "date": "2026-06-28",
+          "value": 18
+        },
+        {
           "date": "2026-06-27",
           "value": 17
         },
         {
           "date": "2026-06-26",
-          "value": 16
-        },
-        {
-          "date": "2026-06-28",
           "value": 16
         },
         {
@@ -1170,11 +1226,15 @@
           "value": 4
         },
         {
-          "date": "2026-06-29",
-          "value": 3
+          "date": "2026-06-30",
+          "value": 4
         }
       ],
       "stage3_rows": [
+        {
+          "date": "2026-06-29",
+          "value": 7
+        },
         {
           "date": "2026-06-15",
           "value": 3
@@ -1201,6 +1261,10 @@
         },
         {
           "date": "2026-06-27",
+          "value": 1
+        },
+        {
+          "date": "2026-06-30",
           "value": 1
         }
       ]
@@ -1323,7 +1387,7 @@
         },
         {
           "date": "2026-06-28",
-          "value": 4
+          "value": 5
         },
         {
           "date": "2026-06-21",
@@ -1332,6 +1396,14 @@
         {
           "date": "2026-06-27",
           "value": 3
+        },
+        {
+          "date": "2026-06-29",
+          "value": 1
+        },
+        {
+          "date": "2026-06-30",
+          "value": 1
         }
       ],
       "stage2_rows": [
@@ -1356,6 +1428,10 @@
           "value": 15
         },
         {
+          "date": "2026-06-29",
+          "value": 14
+        },
+        {
           "date": "2026-06-19",
           "value": 9
         },
@@ -1364,12 +1440,12 @@
           "value": 5
         },
         {
-          "date": "2026-06-24",
-          "value": 3
+          "date": "2026-06-30",
+          "value": 5
         },
         {
-          "date": "2026-06-29",
-          "value": 2
+          "date": "2026-06-24",
+          "value": 3
         },
         {
           "date": "2026-06-21",
