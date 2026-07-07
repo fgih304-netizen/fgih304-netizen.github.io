@@ -320,12 +320,32 @@ const addDays = (d,n) => { const r=new Date(d); r.setDate(r.getDate()+n); return
 // 정적 파일을 불러올 때마다 매번 새 쿼리스트링을 붙여 캐시를 우회한다.
 const bust = url => url + (url.includes('?') ? '&' : '?') + 'v=' + Date.now();
 
+function splitCSVLine(line){
+  const cells = [];
+  let cur = '', inQuotes = false;
+  for (let i = 0; i < line.length; i++){
+    const ch = line[i];
+    if (inQuotes){
+      if (ch === '"'){
+        if (line[i+1] === '"'){ cur += '"'; i++; }
+        else inQuotes = false;
+      } else cur += ch;
+    } else {
+      if (ch === '"') inQuotes = true;
+      else if (ch === ',') { cells.push(cur); cur = ''; }
+      else cur += ch;
+    }
+  }
+  cells.push(cur);
+  return cells;
+}
+
 function parseCSV(text){
   const lines = text.trim().split(/\r?\n/).filter(l=>l.length);
   if (lines.length < 2) return [];
-  const headers = lines[0].split(',');
+  const headers = splitCSVLine(lines[0]);
   return lines.slice(1).map(line=>{
-    const cells = line.split(',');
+    const cells = splitCSVLine(line);
     const o = {}; headers.forEach((h,i)=> o[h.trim()]=(cells[i]??'').trim());
     return o;
   });
