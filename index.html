@@ -101,6 +101,8 @@
   .landing-card .lf-head{display:flex;align-items:baseline;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
   .landing-card .lf-title{font-size:16px;font-weight:800;}
   .landing-card .lf-sub{font-size:11.5px;color:var(--sub);}
+  .landing-card .lf-link{font-size:11.5px;color:var(--amber);font-weight:700;text-decoration:none;}
+  .landing-card .lf-link:hover{text-decoration:underline;}
   .lf-stages{display:flex;align-items:stretch;gap:6px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px;}
   .lf-stage-box{flex:1 1 0;min-width:118px;background:#f8f9fb;border-radius:14px;padding:12px 10px;border-top:3px solid var(--line);}
   .lf-stage-box.lf-spend{border-top-color:#9aa1ad;}
@@ -130,6 +132,7 @@
   .hist-item:last-child{border-bottom:none;}
   .hist-date{width:78px;flex:none;font-size:12px;color:var(--sub);font-weight:700;padding-top:2px;}
   .hist-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;}
+  .nav-new-badge{display:inline-block;margin-left:5px;font-size:9px;font-weight:800;color:#fff;background:var(--amber);border-radius:999px;padding:1px 6px;vertical-align:2px;}
   .hist-body{flex:1;}
   .hist-target{font-size:13px;font-weight:700;margin-top:2px;}
   .hist-memo{font-size:12.5px;color:#5a6068;margin-top:3px;line-height:1.5;}
@@ -172,7 +175,7 @@
     <button data-view="summary">📊 성과 요약</button>
     <button data-view="ads">🏆 베스트 광고</button>
     <button data-view="ga4">🌐 GA4</button>
-    <button data-view="history">🗓 히스토리</button>
+    <button data-view="history">🗓 히스토리<span class="nav-new-badge" id="histNewBadge" style="display:none;">NEW</span></button>
   </div>
 
   <section class="view active" id="viewLanding">
@@ -766,7 +769,8 @@ function renderLandingFunnels(){
     return `<div class="panel landing-card">
       <div class="lf-head">
         <div class="lf-title">${lf.label}</div>
-        <div class="lf-sub">${lf.hostname}${spend===0?' · 이 기간 매칭된 캠페인 지출 없음':''}</div>
+        <a class="lf-link" href="https://${lf.hostname}" target="_blank" rel="noopener">🔗 ${lf.hostname}</a>
+        ${spend===0?'<span class="lf-sub">이 기간 매칭된 캠페인 지출 없음</span>':''}
       </div>
       <div class="lf-stages">
         <div class="lf-stage-box lf-spend">
@@ -834,6 +838,17 @@ async function loadHistory(){
     } else state.historyRows = [];
   }catch(e){ state.historyRows = []; }
   state.historyWritable = false;
+}
+
+const HIST_SEEN_KEY = 'realmeHistSeenIds';
+function updateHistoryBadge(){
+  const seen = new Set(JSON.parse(localStorage.getItem(HIST_SEEN_KEY) || '[]'));
+  const hasNew = state.historyRows.some(r => r.id && !seen.has(r.id));
+  document.getElementById('histNewBadge').style.display = hasNew ? 'inline-block' : 'none';
+}
+function markHistorySeen(){
+  localStorage.setItem(HIST_SEEN_KEY, JSON.stringify(state.historyRows.map(r=>r.id).filter(Boolean)));
+  document.getElementById('histNewBadge').style.display = 'none';
 }
 
 function renderHistory(){
@@ -933,13 +948,15 @@ document.getElementById('quick').addEventListener('click',e=>{
 document.getElementById('srcToggle').addEventListener('click',e=>{const s=e.target.dataset.src; if(s) setSource(s);});
 
 document.getElementById('viewtabs').addEventListener('click',e=>{
-  const v=e.target.dataset.view; if(!v) return;
+  const btn = e.target.closest('button[data-view]'); if(!btn) return;
+  const v = btn.dataset.view;
   document.querySelectorAll('#viewtabs button').forEach(b=>b.classList.toggle('active', b.dataset.view===v));
   document.getElementById('viewSummary').classList.toggle('active', v==='summary');
   document.getElementById('viewLanding').classList.toggle('active', v==='landing');
   document.getElementById('viewAds').classList.toggle('active', v==='ads');
   document.getElementById('viewGa4').classList.toggle('active', v==='ga4');
   document.getElementById('viewHistory').classList.toggle('active', v==='history');
+  if(v==='history') markHistorySeen();
 });
 document.getElementById('adSort').addEventListener('change',()=>{
   const rows=state.adRows.filter(r=>r.date>=state.since && r.date<=state.until);
@@ -962,6 +979,7 @@ document.getElementById('histForm').addEventListener('submit', async (e)=>{
     document.getElementById('histTarget').value='';
     document.getElementById('histMemo').value='';
     renderHistory();
+    markHistorySeen();
   }catch(err){
     alert('추가 실패: run.bat 으로 로컬에서 열었는지 확인해주세요.');
   }finally{
@@ -981,6 +999,7 @@ document.getElementById('histList').addEventListener('click', async (e)=>{
   document.getElementById('histDate').value = toISO(today);
   setSource('real').then(async ()=>{
     await loadHistory();
+    updateHistoryBadge();
     document.querySelector('#quick button[data-q="yesterday"]').classList.add('active');
     const y=addDays(today,-1);
     setRange(toISO(y),toISO(y));
