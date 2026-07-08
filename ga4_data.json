@@ -11,8 +11,8 @@
       "host": "impact-me.real-me.co.kr",
       "path": "/",
       "landing_page": "https://impact-me.real-me.co.kr/",
-      "sessions": 52,
-      "users": 51
+      "sessions": 65,
+      "users": 64
     },
     {
       "date": "2026-06-19",
@@ -840,7 +840,7 @@
         {
           "date": "2026-07-08",
           "event_name": "page_view",
-          "event_count": 65
+          "event_count": 68
         },
         {
           "date": "2026-07-06",
@@ -1284,6 +1284,11 @@
           "event_count": 150
         },
         {
+          "date": "2026-07-08",
+          "event_name": "page_view",
+          "event_count": 142
+        },
+        {
           "date": "2026-06-26",
           "event_name": "page_view",
           "event_count": 135
@@ -1302,11 +1307,6 @@
           "date": "2026-07-04",
           "event_name": "page_view",
           "event_count": 127
-        },
-        {
-          "date": "2026-07-08",
-          "event_name": "page_view",
-          "event_count": 115
         },
         {
           "date": "2026-07-02",
@@ -1334,14 +1334,14 @@
           "event_count": 47
         },
         {
+          "date": "2026-07-08",
+          "event_name": "cta_click",
+          "event_count": 42
+        },
+        {
           "date": "2026-07-01",
           "event_name": "cta_click",
           "event_count": 36
-        },
-        {
-          "date": "2026-07-08",
-          "event_name": "cta_click",
-          "event_count": 34
         },
         {
           "date": "2026-06-30",
@@ -1829,7 +1829,7 @@
       "sessions_rows": [
         {
           "date": "2026-07-08",
-          "value": 52
+          "value": 65
         },
         {
           "date": "2026-06-19",
@@ -1914,12 +1914,12 @@
           "value": 48
         },
         {
-          "date": "2026-07-01",
-          "value": 36
+          "date": "2026-07-08",
+          "value": 42
         },
         {
-          "date": "2026-07-08",
-          "value": 34
+          "date": "2026-07-01",
+          "value": 36
         },
         {
           "date": "2026-06-30",
