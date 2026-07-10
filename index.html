@@ -137,6 +137,8 @@
   .hist-target{font-size:13px;font-weight:700;margin-top:2px;}
   .hist-memo{font-size:12.5px;color:#5a6068;margin-top:3px;line-height:1.5;}
   .hist-del{border:none;background:transparent;color:#c6cad2;font-size:16px;cursor:pointer;line-height:1;padding:2px 6px;}
+  .hist-gh-btn{border:1px solid var(--line);background:#fff;color:var(--sub);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer;white-space:nowrap;}
+  .hist-gh-btn:hover{border-color:var(--ink);color:var(--ink);}
   .hist-del:hover{color:var(--red);}
 </style>
 </head>
@@ -265,7 +267,10 @@
   <section class="view" id="viewHistory">
     <div class="section-head">
       <h2>🗓 광고 변경 히스토리</h2>
-      <span class="cap" id="histRangeLabel"></span>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="cap" id="histRangeLabel"></span>
+        <button type="button" id="histGhSetup" class="hist-gh-btn">🔑 연동 설정</button>
+      </div>
     </div>
     <div class="panel">
       <form class="hist-form" id="histForm">
@@ -311,7 +316,61 @@ const SOURCES = {
 const GA4_SOURCES = { real: 'ga4_data.json', demo: 'demo_ga4_data.json' };
 const state = { source:'real', since:null, until:null, adRows:[], revRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[],
   ga4Rows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Source:null,
-  historyRows:[], historyWritable:false };
+  historyRows:[], historyWritable:false, historySha:null };
+
+// 히스토리를 배포된 URL에서 직접 추가/삭제할 수 있게, GitHub Contents API로 history.csv를 직접 읽고 씀.
+// 토큰은 이 브라우저의 localStorage에만 저장되고 코드에는 없음 — "🔑 연동 설정" 버튼으로 붙여넣기.
+const GH_OWNER = 'fgih304-netizen';
+const GH_REPO = 'fgih304-netizen.github.io';
+const GH_HISTORY_PATH = 'history.csv';
+const GH_TOKEN_KEY = 'realmeGhToken';
+
+function ghToken(){ return localStorage.getItem(GH_TOKEN_KEY) || ''; }
+
+function utf8ToBase64(str){
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  bytes.forEach(b => binary += String.fromCharCode(b));
+  return btoa(binary);
+}
+function base64ToUtf8(b64){
+  const binary = atob(b64.replace(/\n/g, ''));
+  const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+  return new TextDecoder('utf-8').decode(bytes);
+}
+function csvField(v){
+  v = String(v ?? '');
+  return /[",\r\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
+}
+function historyRowsToCSV(rows){
+  const cols = ['id', 'date', 'type', 'target', 'memo'];
+  const lines = [cols.join(',')];
+  rows.forEach(r => lines.push(cols.map(c => csvField(r[c])).join(',')));
+  return lines.join('\n') + '\n';
+}
+
+async function ghReadHistory(token){
+  const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_HISTORY_PATH}`, {
+    headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' },
+  });
+  if (!res.ok) throw new Error(`GitHub 읽기 실패 (${res.status})`);
+  const json = await res.json();
+  return { rows: parseCSV(base64ToUtf8(json.content)), sha: json.sha };
+}
+
+async function ghWriteHistory(token, rows, sha, message){
+  const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_HISTORY_PATH}`, {
+    method: 'PUT',
+    headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message, content: utf8ToBase64(historyRowsToCSV(rows)), sha }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || `GitHub 저장 실패 (${res.status})`);
+  }
+  const json = await res.json();
+  return json.content.sha;
+}
 
 const fmtNum = n => Math.round(n).toLocaleString('ko-KR');
 const fmtWon = n => '₩' + fmtNum(n);
@@ -825,11 +884,23 @@ const HIST_TYPE_META = {
 };
 
 async function loadHistory(){
+  const token = ghToken();
+  if (token) {
+    try{
+      const { rows, sha } = await ghReadHistory(token);
+      state.historyRows = rows;
+      state.historySha = sha;
+      state.historyWritable = true;
+      state.historyMode = 'github';
+      return;
+    }catch(e){ console.warn('GitHub 히스토리 읽기 실패, 다른 방식으로 폴백', e); }
+  }
   try{
     const res = await fetch('/api/history');
     if(res.ok){
       state.historyRows = await res.json();
       state.historyWritable = true;
+      state.historyMode = 'local';
       return;
     }
   }catch(e){ /* API 없음 → 정적 파일로 폴백 */ }
@@ -841,6 +912,7 @@ async function loadHistory(){
     } else state.historyRows = [];
   }catch(e){ state.historyRows = []; }
   state.historyWritable = false;
+  state.historyMode = 'readonly';
 }
 
 const HIST_SEEN_KEY = 'realmeHistSeenIds';
@@ -858,10 +930,10 @@ function renderHistory(){
   const note = document.getElementById('histNote');
   const submitBtn = document.getElementById('histSubmit');
   if(state.historyWritable){
-    note.textContent = '';
+    note.textContent = state.historyMode === 'github' ? '✅ GitHub에 직접 저장돼요 (이 화면에서 바로 추가/삭제 가능)' : '';
     submitBtn.disabled = false;
   } else {
-    note.textContent = '⚠️ 지금 보는 화면은 정적 배포본(또는 API 미연결)이라 새 항목 추가가 안 돼요. run.bat 으로 로컬에서 열면 추가할 수 있어요. (기존 기록은 그대로 보여요)';
+    note.textContent = '⚠️ 새 항목을 추가하려면 우측 상단 "🔑 연동 설정"에서 GitHub 토큰을 등록하세요. (기존 기록은 그대로 보여요)';
     submitBtn.disabled = true;
   }
 
@@ -888,7 +960,20 @@ function renderHistory(){
   }).join('');
 }
 
+function newHistoryId(){
+  if (crypto.randomUUID) return crypto.randomUUID().replace(/-/g, '').slice(0, 10);
+  return Math.random().toString(16).slice(2, 12);
+}
+
 async function addHistoryEntry(entry){
+  if (state.historyMode === 'github') {
+    const row = { id: newHistoryId(), ...entry };
+    const rows = [...state.historyRows, row];
+    const sha = await ghWriteHistory(ghToken(), rows, state.historySha, `history: ${entry.date} ${entry.type} 추가`);
+    state.historySha = sha;
+    state.historyRows = rows;
+    return;
+  }
   const res = await fetch('/api/history', {
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -900,6 +985,13 @@ async function addHistoryEntry(entry){
 }
 
 async function deleteHistoryEntry(id){
+  if (state.historyMode === 'github') {
+    const rows = state.historyRows.filter(r=>r.id!==id);
+    const sha = await ghWriteHistory(ghToken(), rows, state.historySha, `history: ${id} 삭제`);
+    state.historySha = sha;
+    state.historyRows = rows;
+    return;
+  }
   const res = await fetch(`/api/history?id=${encodeURIComponent(id)}`, { method:'DELETE' });
   if(!res.ok) throw new Error('delete failed');
   state.historyRows = state.historyRows.filter(r=>r.id!==id);
@@ -984,7 +1076,7 @@ document.getElementById('histForm').addEventListener('submit', async (e)=>{
     renderHistory();
     markHistorySeen();
   }catch(err){
-    alert('추가 실패: run.bat 으로 로컬에서 열었는지 확인해주세요.');
+    alert('추가 실패: ' + (err.message || err));
   }finally{
     btn.disabled = !state.historyWritable; btn.textContent='+ 추가';
   }
@@ -994,7 +1086,21 @@ document.getElementById('histList').addEventListener('click', async (e)=>{
   const id = btn.dataset.id; if(!id) return;
   if(!confirm('이 히스토리 기록을 삭제할까요?')) return;
   try{ await deleteHistoryEntry(id); renderHistory(); }
-  catch(err){ alert('삭제 실패'); }
+  catch(err){ alert('삭제 실패: ' + (err.message || err)); }
+});
+document.getElementById('histGhSetup').addEventListener('click', async ()=>{
+  const current = ghToken();
+  const msg = current
+    ? 'GitHub 토큰이 등록돼 있어요. 새 토큰을 붙여넣으면 교체, 빈 값으로 확인하면 연동을 해제합니다.'
+    : 'GitHub Fine-grained Personal Access Token을 붙여넣으세요.\n\n1) github.com → Settings → Developer settings → Fine-grained tokens → Generate new token\n2) Repository access: fgih304-netizen.github.io 만 선택\n3) Permissions → Contents: Read and write\n\n토큰은 이 브라우저에만 저장되고 서버로 전송되지 않습니다.';
+  const input = prompt(msg, current ? '' : '');
+  if (input === null) return;
+  const trimmed = input.trim();
+  if (trimmed) localStorage.setItem(GH_TOKEN_KEY, trimmed);
+  else localStorage.removeItem(GH_TOKEN_KEY);
+  await loadHistory();
+  renderHistory();
+  alert(trimmed ? 'GitHub 연동 완료! 이제 이 화면에서 바로 추가/삭제할 수 있어요.' : '연동을 해제했어요.');
 });
 
 (function init(){
