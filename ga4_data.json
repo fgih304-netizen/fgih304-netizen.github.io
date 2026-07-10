@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-09",
+  "generated_at": "2026-07-10",
   "source": "ga4-api",
   "range": {
-    "since": "2026-04-11",
-    "until": "2026-07-09"
+    "since": "2026-04-12",
+    "until": "2026-07-10"
   },
   "rows": [
     {
@@ -11,16 +11,16 @@
       "host": "impact-me.real-me.co.kr",
       "path": "/",
       "landing_page": "https://impact-me.real-me.co.kr/",
-      "sessions": 179,
-      "users": 177
+      "sessions": 212,
+      "users": 211
     },
     {
       "date": "2026-07-09",
       "host": "impact-me.real-me.co.kr",
       "path": "/",
       "landing_page": "https://impact-me.real-me.co.kr/",
-      "sessions": 76,
-      "users": 76
+      "sessions": 163,
+      "users": 161
     },
     {
       "date": "2026-06-19",
@@ -191,14 +191,6 @@
       "users": 6
     },
     {
-      "date": "2026-07-08",
-      "host": "find-me.real-me.co.kr",
-      "path": "/realme-booking-A.html",
-      "landing_page": "https://find-me.real-me.co.kr/realme-booking-A.html",
-      "sessions": 6,
-      "users": 6
-    },
-    {
       "date": "2026-06-15",
       "host": "find-me.real-me.co.kr",
       "path": "/realme-booking-A.html",
@@ -363,6 +355,14 @@
       "host": "find-me.real-me.co.kr",
       "path": "/",
       "landing_page": "https://find-me.real-me.co.kr/",
+      "sessions": 4,
+      "users": 4
+    },
+    {
+      "date": "2026-07-08",
+      "host": "find-me.real-me.co.kr",
+      "path": "/realme-booking-A.html",
+      "landing_page": "https://find-me.real-me.co.kr/realme-booking-A.html",
       "sessions": 4,
       "users": 4
     },
@@ -703,10 +703,26 @@
       "users": 1
     },
     {
-      "date": "2026-07-08",
+      "date": "2026-07-09",
       "host": "find-me.real-me.co.kr",
       "path": "/",
       "landing_page": "https://find-me.real-me.co.kr/",
+      "sessions": 1,
+      "users": 1
+    },
+    {
+      "date": "2026-07-09",
+      "host": "find-me.real-me.co.kr",
+      "path": "/realme-booking-A.html",
+      "landing_page": "https://find-me.real-me.co.kr/realme-booking-A.html",
+      "sessions": 1,
+      "users": 1
+    },
+    {
+      "date": "2026-07-10",
+      "host": "find-me.real-me.co.kr",
+      "path": "/realme-booking-A.html",
+      "landing_page": "https://find-me.real-me.co.kr/realme-booking-A.html",
       "sessions": 1,
       "users": 1
     }
@@ -796,14 +812,14 @@
           "event_count": 130
         },
         {
+          "date": "2026-07-08",
+          "event_name": "page_view",
+          "event_count": 125
+        },
+        {
           "date": "2026-06-30",
           "event_name": "page_view",
           "event_count": 118
-        },
-        {
-          "date": "2026-07-08",
-          "event_name": "page_view",
-          "event_count": 111
         },
         {
           "date": "2026-06-27",
@@ -849,6 +865,11 @@
           "date": "2026-07-03",
           "event_name": "page_view",
           "event_count": 75
+        },
+        {
+          "date": "2026-07-09",
+          "event_name": "page_view",
+          "event_count": 51
         },
         {
           "date": "2026-07-06",
@@ -941,6 +962,11 @@
           "event_count": 14
         },
         {
+          "date": "2026-07-10",
+          "event_name": "page_view",
+          "event_count": 14
+        },
+        {
           "date": "2026-06-23",
           "event_name": "page_view",
           "event_count": 13
@@ -948,16 +974,11 @@
         {
           "date": "2026-07-08",
           "event_name": "booking_click",
-          "event_count": 11
+          "event_count": 12
         },
         {
           "date": "2026-07-03",
           "event_name": "booking_click",
-          "event_count": 10
-        },
-        {
-          "date": "2026-07-09",
-          "event_name": "page_view",
           "event_count": 10
         },
         {
@@ -1119,6 +1140,11 @@
           "date": "2026-07-09",
           "event_name": "booking_click",
           "event_count": 1
+        },
+        {
+          "date": "2026-07-10",
+          "event_name": "booking_click",
+          "event_count": 1
         }
       ]
     },
@@ -1274,7 +1300,12 @@
         {
           "date": "2026-07-08",
           "event_name": "page_view",
-          "event_count": 310
+          "event_count": 359
+        },
+        {
+          "date": "2026-07-09",
+          "event_name": "page_view",
+          "event_count": 267
         },
         {
           "date": "2026-07-01",
@@ -1332,14 +1363,14 @@
           "event_count": 111
         },
         {
-          "date": "2026-07-09",
-          "event_name": "page_view",
-          "event_count": 102
-        },
-        {
           "date": "2026-07-03",
           "event_name": "page_view",
           "event_count": 101
+        },
+        {
+          "date": "2026-07-08",
+          "event_name": "cta_click",
+          "event_count": 88
         },
         {
           "date": "2026-06-29",
@@ -1347,9 +1378,9 @@
           "event_count": 85
         },
         {
-          "date": "2026-07-08",
+          "date": "2026-07-09",
           "event_name": "cta_click",
-          "event_count": 84
+          "event_count": 62
         },
         {
           "date": "2026-07-07",
@@ -1385,11 +1416,6 @@
           "date": "2026-07-05",
           "event_name": "cta_click",
           "event_count": 29
-        },
-        {
-          "date": "2026-07-09",
-          "event_name": "cta_click",
-          "event_count": 28
         },
         {
           "date": "2026-07-06",
@@ -1534,10 +1560,6 @@
           "value": 10
         },
         {
-          "date": "2026-07-08",
-          "value": 7
-        },
-        {
           "date": "2026-06-21",
           "value": 6
         },
@@ -1568,6 +1590,10 @@
         {
           "date": "2026-07-07",
           "value": 5
+        },
+        {
+          "date": "2026-07-08",
+          "value": 4
         },
         {
           "date": "2026-06-11",
@@ -1611,6 +1637,14 @@
         },
         {
           "date": "2026-07-05",
+          "value": 1
+        },
+        {
+          "date": "2026-07-09",
+          "value": 2
+        },
+        {
+          "date": "2026-07-10",
           "value": 1
         }
       ],
@@ -1684,12 +1718,12 @@
           "value": 16
         },
         {
-          "date": "2026-07-04",
-          "value": 15
+          "date": "2026-07-08",
+          "value": 16
         },
         {
-          "date": "2026-07-08",
-          "value": 14
+          "date": "2026-07-04",
+          "value": 15
         },
         {
           "date": "2026-06-30",
@@ -1713,6 +1747,10 @@
         },
         {
           "date": "2026-07-09",
+          "value": 2
+        },
+        {
+          "date": "2026-07-10",
           "value": 1
         }
       ],
@@ -1861,11 +1899,11 @@
       "sessions_rows": [
         {
           "date": "2026-07-08",
-          "value": 179
+          "value": 212
         },
         {
           "date": "2026-07-09",
-          "value": 76
+          "value": 163
         },
         {
           "date": "2026-06-19",
@@ -1947,7 +1985,11 @@
       "stage2_rows": [
         {
           "date": "2026-07-08",
-          "value": 84
+          "value": 88
+        },
+        {
+          "date": "2026-07-09",
+          "value": 62
         },
         {
           "date": "2026-07-07",
@@ -1972,10 +2014,6 @@
         {
           "date": "2026-07-05",
           "value": 29
-        },
-        {
-          "date": "2026-07-09",
-          "value": 28
         },
         {
           "date": "2026-07-06",
