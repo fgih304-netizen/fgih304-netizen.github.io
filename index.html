@@ -722,7 +722,10 @@ function renderLandingFunnels(){
   if(state.ga4LandingFunnels.length===0){ grid.innerHTML='<div class="empty">설정된 랜딩 퍼널이 없어요 (ga4_config.json 의 landing_funnels 확인)</div>'; return; }
 
   // change-me(예약B)는 2026-06-22까지만 사용한 랜딩이라, 조회기간이 그 이전 날짜를 포함할 때만 카드를 보여줌.
-  const visibleFunnels = state.ga4LandingFunnels.filter(lf => lf.id !== 'change-me' || state.since <= '2026-06-22');
+  // impact-me(진단퍼널)는 2026-07-09까지만 운영하고 off, 조회기간이 그 이전 날짜를 포함할 때만 카드를 보여줌.
+  const visibleFunnels = state.ga4LandingFunnels.filter(lf =>
+    (lf.id !== 'change-me' || state.since <= '2026-06-22') &&
+    (lf.id !== 'impact-me' || state.since <= '2026-07-09'));
 
   grid.innerHTML = visibleFunnels.map(lf=>{
     const m = metricsByLanding[lf.id] || {spend:0,visits:0,booking:0,checkout:0,leads:0,final_custom:0};
