@@ -247,6 +247,17 @@
     <div class="cards" id="ga4Cards"></div>
 
     <div class="section-head">
+      <h2>🧭 유입 채널</h2>
+      <span class="cap">광고·직접·검색·외부링크 구분 (GA4 채널그룹 기준)</span>
+    </div>
+    <div class="panel">
+      <table>
+        <thead><tr><th>채널</th><th>세션</th><th>사용자</th><th></th></tr></thead>
+        <tbody id="ga4ChannelBody"></tbody>
+      </table>
+    </div>
+
+    <div class="section-head">
       <h2>📍 페이지별 세션</h2>
       <span class="cap">주요 페이지만 선별해서 보여드려요</span>
     </div>
@@ -315,7 +326,7 @@ const SOURCES = {
 };
 const GA4_SOURCES = { real: 'ga4_data.json', demo: 'demo_ga4_data.json' };
 const state = { source:'real', since:null, until:null, adRows:[], revRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[],
-  ga4Rows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Source:null,
+  ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Source:null,
   historyRows:[], historyWritable:false, historySha:null };
 
 // 히스토리를 배포된 URL에서 직접 추가/삭제할 수 있게, GitHub Contents API로 history.csv를 직접 읽고 씀.
@@ -455,8 +466,8 @@ async function loadGa4(name){
     json = await tryFile(GA4_SOURCES.demo);
     usedSource = 'demo';
   }
-  if (!json) return { ga4Rows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Source:null };
-  return { ga4Rows: json.rows||[], ga4Funnels: json.funnels||[], ga4LandingFunnels: json.landing_funnels||[], ga4Source: usedSource };
+  if (!json) return { ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Source:null };
+  return { ga4Rows: json.rows||[], ga4ChannelRows: json.channel_rows||[], ga4Funnels: json.funnels||[], ga4LandingFunnels: json.landing_funnels||[], ga4Source: usedSource };
 }
 
 async function setSource(name, opts={}){
@@ -752,6 +763,52 @@ function renderGa4LandingPages(rowsInRange){
   }).join('');
 }
 
+const CHANNEL_LABELS = {
+  'Paid Social': '유료 소셜 (메타 광고)',
+  'Direct': '직접 유입',
+  'Organic Search': '검색 (오가닉)',
+  'Organic Social': 'SNS (오가닉)',
+  'Organic Video': '영상 (오가닉)',
+  'Referral': '외부 링크',
+  'Email': '이메일',
+  'Paid Search': '유료 검색',
+  'Cross-network': '크로스 네트워크',
+  'Unassigned': '미분류',
+};
+
+function renderGa4Channels(channelRowsInRange){
+  const body = document.getElementById('ga4ChannelBody');
+  if(!body) return;
+  if(channelRowsInRange.length===0){ body.innerHTML='<tr><td class="empty" colspan="4">데이터 없음 (fetch_ga4.py 재실행 필요)</td></tr>'; return; }
+
+  // 호스트별 → 채널별 합산 (페이지별 세션 표와 같은 묶음 구조)
+  const groups = {};
+  channelRowsInRange.forEach(r=>{
+    const g = groups[r.host] ?? (groups[r.host]={host:r.host, sessions:0, users:0, channels:{}});
+    g.sessions += r.sessions; g.users += r.users;
+    const c = g.channels[r.channel] ?? (g.channels[r.channel]={sessions:0,users:0});
+    c.sessions += r.sessions; c.users += r.users;
+  });
+  const groupList = Object.values(groups).sort((a,b)=>b.sessions-a.sessions);
+  const max = Math.max(...groupList.map(g=>g.sessions),1);
+
+  body.innerHTML = groupList.map(g=>{
+    const head = `<tr>
+      <td><span class="lp-link" style="color:var(--ink);cursor:default;font-weight:700;">${g.host}</span></td>
+      <td><b>${fmtNum(g.sessions)}</b></td><td><b>${fmtNum(g.users)}</b></td>
+      <td><div class="lp-bar-bg"><div class="lp-bar-fg" style="width:${(g.sessions/max*100).toFixed(0)}%"></div></div></td>
+    </tr>`;
+    const children = Object.entries(g.channels)
+      .sort((a,b)=>b[1].sessions-a[1].sessions)
+      .map(([ch,v])=>`<tr style="opacity:.85;">
+        <td style="padding-left:18px;">└ ${CHANNEL_LABELS[ch]||ch}</td>
+        <td>${fmtNum(v.sessions)}</td><td>${fmtNum(v.users)}</td>
+        <td><div class="lp-bar-bg"><div class="lp-bar-fg" style="width:${(v.sessions/max*100).toFixed(0)}%;opacity:.55;"></div></div></td>
+      </tr>`).join('');
+    return head + children;
+  }).join('');
+}
+
 function renderGa4Funnels(funnelsInRange){
   const container = document.getElementById('ga4FunnelsContainer');
   if(funnelsInRange.length===0){ container.innerHTML='<div class="empty">설정된 퍼널이 없어요 (ga4_config.json 의 funnels 항목 확인)</div>'; return; }
@@ -787,6 +844,7 @@ function renderGa4(){
   document.getElementById('ga4RangeLabel').textContent =
     `${state.since} ~ ${state.until}` + (state.ga4Source==='demo' ? ' · 데모 데이터' : '');
   renderGa4Cards(rowsInRange, funnelsInRange);
+  renderGa4Channels(state.ga4ChannelRows.filter(r=>r.date>=state.since && r.date<=state.until));
   renderGa4LandingPages(rowsInRange);
   renderGa4Funnels(funnelsInRange);
 }
