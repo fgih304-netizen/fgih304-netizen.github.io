@@ -781,6 +781,14 @@
       "landing_page": "https://realmeschedule.lovable.app/realme-ops",
       "sessions": 1,
       "users": 1
+    },
+    {
+      "date": "2026-07-13",
+      "host": "realmeschedule.lovable.app",
+      "path": "/realme-ops",
+      "landing_page": "https://realmeschedule.lovable.app/realme-ops",
+      "sessions": 1,
+      "users": 1
     }
   ],
   "funnels": [
@@ -1038,6 +1046,11 @@
           "event_count": 10
         },
         {
+          "date": "2026-07-13",
+          "event_name": "page_view",
+          "event_count": 9
+        },
+        {
           "date": "2026-06-29",
           "event_name": "begin_checkout",
           "event_count": 8
@@ -1219,6 +1232,11 @@
         },
         {
           "date": "2026-07-11",
+          "event_name": "booking_click",
+          "event_count": 1
+        },
+        {
+          "date": "2026-07-13",
           "event_name": "booking_click",
           "event_count": 1
         }
@@ -1873,6 +1891,10 @@
         },
         {
           "date": "2026-07-12",
+          "value": 1
+        },
+        {
+          "date": "2026-07-13",
           "value": 1
         }
       ],
