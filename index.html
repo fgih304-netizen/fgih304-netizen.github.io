@@ -186,6 +186,17 @@
       <span class="cap" id="landingRangeLabel"></span>
     </div>
     <div class="landing-grid" id="landingGrid"></div>
+
+    <div class="section-head">
+      <h2>🌱 퍼널별 오가닉·직접 유입</h2>
+      <span class="cap">광고 외 경로(직접·검색·SNS 오가닉 등) — 세션은 GA4, 결제는 확인된 건만 수동 기록</span>
+    </div>
+    <div class="panel">
+      <table>
+        <thead><tr><th>퍼널</th><th>광고 외 세션</th><th>오가닉 결제</th><th>오가닉 매출</th><th></th></tr></thead>
+        <tbody id="organicBody"></tbody>
+      </table>
+    </div>
   </section>
 
   <section class="view" id="viewSummary">
@@ -321,11 +332,11 @@
 
 <script>
 const SOURCES = {
-  real: { data: 'data.json', revenue: 'revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv' },
-  demo: { data: 'demo_data.json', revenue: 'demo_revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv' },
+  real: { data: 'data.json', revenue: 'revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv' },
+  demo: { data: 'demo_data.json', revenue: 'demo_revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv' },
 };
 const GA4_SOURCES = { real: 'ga4_data.json', demo: 'demo_ga4_data.json' };
-const state = { source:'real', since:null, until:null, adRows:[], revRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[],
+const state = { source:'real', since:null, until:null, adRows:[], revRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[], organicRevRows:[],
   ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Source:null,
   historyRows:[], historyWritable:false, historySha:null };
 
@@ -426,11 +437,12 @@ function parseCSV(text){
 
 async function loadSource(name){
   const src = SOURCES[name];
-  const [dataRes, revRes, tfRes, bcRes] = await Promise.all([
+  const [dataRes, revRes, tfRes, bcRes, orRes] = await Promise.all([
     fetch(bust(src.data)).catch(()=>null),
     fetch(bust(src.revenue)).catch(()=>null),
     fetch(bust(src.typeformSubmits)).catch(()=>null),
     fetch(bust(src.bookingCompleted)).catch(()=>null),
+    fetch(bust(src.organicRevenue)).catch(()=>null),
   ]);
   if (!dataRes || !dataRes.ok) throw new Error('data missing');
   const dataJson = await dataRes.json();
@@ -446,7 +458,12 @@ async function loadSource(name){
   const bookingCompleted = parseCSV(bcText).map(r=>({
     date:r.date, landing_id:(r.landing_id||'').trim(), count:Number(r.count||0),
   })).filter(r=>r.date);
-  return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted };
+  // 오가닉 매출: revenue.csv(전체 매출)에 포함된 금액 중 광고 외 경로로 확인된 건의 채널 구분 파일 (수동 관리)
+  const orText = (orRes && orRes.ok) ? await orRes.text() : '';
+  const organicRevRows = parseCSV(orText).map(r=>({
+    date:r.date, landing_id:(r.landing_id||'').trim(), contracts:Number(r.contracts||0), revenue:Number(r.revenue||0),
+  })).filter(r=>r.date);
+  return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows };
 }
 
 function showBanner(msg){
@@ -472,8 +489,8 @@ async function loadGa4(name){
 
 async function setSource(name, opts={}){
   try{
-    const { adRows, revRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted } = await loadSource(name);
-    state.source=name; state.adRows=adRows; state.revRows=revRows; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted;
+    const { adRows, revRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted, organicRevRows } = await loadSource(name);
+    state.source=name; state.adRows=adRows; state.revRows=revRows; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted; state.organicRevRows=organicRevRows;
     if (name==='real' && adRows.length===0 && !opts.silentEmpty)
       showBanner('아직 실데이터가 없어요. fetch_data.py 를 실행하면 메타 데이터가 채워집니다.');
     else if (name==='demo')
@@ -921,6 +938,16 @@ function renderLandingFunnels(){
     const revenue = revRowsForLanding.reduce((a,r)=>a+r.revenue,0);
     const roas = spend ? revenue/spend : null;
 
+    // 오가닉 매출(organic_revenue.csv): revenue 총액 중 광고 외 경로로 확인된 부분
+    const orRowsForLanding = state.organicRevRows.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
+    const orContracts = orRowsForLanding.reduce((a,r)=>a+r.contracts,0);
+    const orRevenue = orRowsForLanding.reduce((a,r)=>a+r.revenue,0);
+    const adRevenue = Math.max(0, revenue - orRevenue);
+    const adRoas = spend ? adRevenue/spend : null;
+    const revenueSub = orRevenue > 0
+      ? `계약 <b>${fmtNum(contracts)}건</b> · ROAS(전체) <b>${roas!=null?fmtPct(roas):'—'}</b><br>광고 <b>${fmtWon(adRevenue)}</b> · 오가닉 <b>${fmtWon(orRevenue)}</b>(${fmtNum(orContracts)}건) · ROAS(광고) <b>${adRoas!=null?fmtPct(adRoas):'—'}</b>`
+      : `계약 <b>${fmtNum(contracts)}건</b> · ROAS <b>${roas!=null?fmtPct(roas):'—'}</b>`;
+
     return `<div class="panel landing-card">
       <div class="lf-head">
         <div class="lf-title">${lf.label}</div>
@@ -960,11 +987,42 @@ function renderLandingFunnels(){
         <div class="lf-stage-box lf-s5">
           <div class="lf-stage-label">🤝 결제금액 <span style="font-weight:400;opacity:.55;font-size:.85em;">· 시트 기준(광고 외 포함)</span></div>
           <div class="lf-stage-value">${fmtWon(revenue)}</div>
-          <div class="lf-stage-sub">계약 <b>${fmtNum(contracts)}건</b> · ROAS <b>${roas!=null?fmtPct(roas):'—'}</b></div>
+          <div class="lf-stage-sub">${revenueSub}</div>
         </div>
       </div>
     </div>`;
   }).join('');
+
+  renderOrganic(visibleFunnels);
+}
+
+// 퍼널별 오가닉·직접 유입: 세션은 GA4 채널 데이터(광고 외), 결제는 organic_revenue.csv(수동 확인 건)
+const PAID_CHANNELS = ['Paid Social', 'Paid Search', 'Cross-network', 'Display', 'Paid Video', 'Paid Shopping', 'Paid Other'];
+function renderOrganic(visibleFunnels){
+  const body = document.getElementById('organicBody');
+  if(!body) return;
+  const chRows = (state.ga4ChannelRows||[]).filter(r=>r.date>=state.since && r.date<=state.until);
+  const rows = visibleFunnels.map(lf=>{
+    const nonPaid = chRows.filter(r=>r.host===lf.hostname && !PAID_CHANNELS.includes(r.channel));
+    const sessions = nonPaid.reduce((a,r)=>a+r.sessions,0);
+    const byCh = {};
+    nonPaid.forEach(r=>{ byCh[r.channel]=(byCh[r.channel]||0)+r.sessions; });
+    const chDetail = Object.entries(byCh).sort((a,b)=>b[1]-a[1])
+      .map(([ch,v])=>`${CHANNEL_LABELS[ch]||ch} ${fmtNum(v)}`).join(' · ');
+    const orRows = (state.organicRevRows||[]).filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
+    const orContracts = orRows.reduce((a,r)=>a+r.contracts,0);
+    const orRevenue = orRows.reduce((a,r)=>a+r.revenue,0);
+    return { label: lf.label, sessions, chDetail, orContracts, orRevenue };
+  });
+  if(rows.length===0){ body.innerHTML='<tr><td class="empty" colspan="5">데이터 없음</td></tr>'; return; }
+  const max = Math.max(...rows.map(r=>r.sessions),1);
+  body.innerHTML = rows.map(r=>`<tr>
+    <td><b>${r.label}</b>${r.chDetail?`<br><span style="opacity:.6;font-size:.85em;">${r.chDetail}</span>`:''}</td>
+    <td>${fmtNum(r.sessions)}</td>
+    <td>${r.orContracts?fmtNum(r.orContracts)+'건':'—'}</td>
+    <td>${r.orRevenue?fmtWon(r.orRevenue):'—'}</td>
+    <td><div class="lp-bar-bg"><div class="lp-bar-fg" style="width:${(r.sessions/max*100).toFixed(0)}%"></div></div></td>
+  </tr>`).join('');
 }
 
 const HIST_TYPE_META = {
