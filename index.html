@@ -1166,13 +1166,26 @@ function newHistoryId(){
   return Math.random().toString(16).slice(2, 12);
 }
 
+// GitHub에 history.csv 저장 — sha 충돌("does not match": 배포 등으로 파일이 그새 바뀐 경우)이면
+// 최신본을 다시 읽어 그 위에 같은 변경을 적용해 한 번 재시도한다 (2026-07-13).
+async function ghSaveHistory(mutate, message){
+  try{
+    const rows = mutate(state.historyRows);
+    const sha = await ghWriteHistory(ghToken(), rows, state.historySha, message);
+    state.historySha = sha; state.historyRows = rows;
+  }catch(e){
+    if(!/does not match/i.test(e.message||'')) throw e;
+    const fresh = await ghReadHistory(ghToken());
+    const rows = mutate(fresh.rows);
+    const sha = await ghWriteHistory(ghToken(), rows, fresh.sha, message);
+    state.historySha = sha; state.historyRows = rows;
+  }
+}
+
 async function addHistoryEntry(entry){
   if (state.historyMode === 'github') {
     const row = { id: newHistoryId(), ...entry };
-    const rows = [...state.historyRows, row];
-    const sha = await ghWriteHistory(ghToken(), rows, state.historySha, `history: ${entry.date} ${entry.type} 추가`);
-    state.historySha = sha;
-    state.historyRows = rows;
+    await ghSaveHistory(rows=>[...rows, row], `history: ${entry.date} ${entry.type} 추가`);
     return;
   }
   const res = await fetch('/api/history', {
@@ -1187,10 +1200,7 @@ async function addHistoryEntry(entry){
 
 async function deleteHistoryEntry(id){
   if (state.historyMode === 'github') {
-    const rows = state.historyRows.filter(r=>r.id!==id);
-    const sha = await ghWriteHistory(ghToken(), rows, state.historySha, `history: ${id} 삭제`);
-    state.historySha = sha;
-    state.historyRows = rows;
+    await ghSaveHistory(rows=>rows.filter(r=>r.id!==id), `history: ${id} 삭제`);
     return;
   }
   const res = await fetch(`/api/history?id=${encodeURIComponent(id)}`, { method:'DELETE' });
