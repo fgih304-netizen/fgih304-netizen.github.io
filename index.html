@@ -817,6 +817,9 @@ function renderLandingFunnels(){
     const cpa2 = stage2 ? spend/stage2 : null;
     const rateFinal = stage2 ? finalConv/stage2 : null;
     const cpaFinal = finalConv ? spend/finalConv : null;
+    // find-me: 결제페이지 도달→'예약 신청', 예약완료→'예약금 결제완료' 워딩 (2026-07-13)
+    const rateFinalLabel = lf.id==='find-me' ? '결제 전환율' : '전환율';
+    const bookingLabel = lf.id==='find-me' ? '예약금 결제완료' : '예약완료';
 
     const bookingRows = state.bookingCompleted.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
     const booking = bookingRows.reduce((a,r)=>a+r.count,0);
@@ -855,11 +858,11 @@ function renderLandingFunnels(){
         <div class="lf-stage-box lf-s3">
           <div class="lf-stage-label">🎯 ${finalLabel}</div>
           <div class="lf-stage-value">${fmtNum(finalConv)}</div>
-          <div class="lf-stage-sub">전환율 <b>${rateFinal!=null?fmtPct(rateFinal):'—'}</b> · 전환당비용 <b>${cpaFinal!=null?fmtWon(cpaFinal):'—'}</b></div>
+          <div class="lf-stage-sub">${rateFinalLabel} <b>${rateFinal!=null?fmtPct(rateFinal):'—'}</b> · 전환당비용 <b>${cpaFinal!=null?fmtWon(cpaFinal):'—'}</b></div>
         </div>
         <div class="lf-arrow">→</div>
         <div class="lf-stage-box lf-s4">
-          <div class="lf-stage-label">📅 예약완료</div>
+          <div class="lf-stage-label">📅 ${bookingLabel}</div>
           <div class="lf-stage-value">${fmtNum(booking)}</div>
           <div class="lf-stage-sub">예약전환율 <b>${rateBooking!=null?fmtPct(rateBooking):'—'}</b> · 예약당비용 <b>${cpaBooking!=null?fmtWon(cpaBooking):'—'}</b></div>
         </div>
