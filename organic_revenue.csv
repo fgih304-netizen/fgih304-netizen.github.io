@@ -1,2 +1,2 @@
-date,landing_id,contracts,revenue,memo
-2026-07-10,find-me,1,20000,"직접(direct) 유입 결제 — 광고 중단 기간(7/10~13), GA4 direct 세션으로 확인. revenue.csv 총액에 포함된 금액의 채널 구분용"
+date,landing_id,bookings,contracts,revenue,memo
+2026-07-10,find-me,1,1,20000,"직접(direct) 유입 결제 — 광고 중단 기간(7/10~13), GA4 direct 세션으로 확인. revenue.csv·booking_completed.csv 총액에 포함된 수치의 채널 구분용"

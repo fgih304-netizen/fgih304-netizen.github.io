@@ -291,8 +291,8 @@
       "host": "find-me.real-me.co.kr",
       "path": "/",
       "landing_page": "https://find-me.real-me.co.kr/",
-      "sessions": 58,
-      "users": 57
+      "sessions": 60,
+      "users": 59
     },
     {
       "date": "2026-06-26",
@@ -1289,6 +1289,13 @@
       "users": 55
     },
     {
+      "date": "2026-07-13",
+      "host": "find-me.real-me.co.kr",
+      "channel": "Paid Social",
+      "sessions": 56,
+      "users": 55
+    },
+    {
       "date": "2026-06-16",
       "host": "change-me.real-me.co.kr",
       "channel": "Paid Social",
@@ -1301,13 +1308,6 @@
       "channel": "Paid Social",
       "sessions": 55,
       "users": 50
-    },
-    {
-      "date": "2026-07-13",
-      "host": "find-me.real-me.co.kr",
-      "channel": "Paid Social",
-      "sessions": 54,
-      "users": 53
     },
     {
       "date": "2026-07-02",
@@ -1411,8 +1411,8 @@
       "date": "2026-07-13",
       "host": "find-me.real-me.co.kr",
       "channel": "Unassigned",
-      "sessions": 31,
-      "users": 30
+      "sessions": 32,
+      "users": 31
     },
     {
       "date": "2026-07-07",
@@ -3150,6 +3150,11 @@
           "event_count": 90
         },
         {
+          "date": "2026-07-13",
+          "event_name": "page_view",
+          "event_count": 84
+        },
+        {
           "date": "2026-07-04",
           "event_name": "page_view",
           "event_count": 83
@@ -3158,11 +3163,6 @@
           "date": "2026-06-26",
           "event_name": "page_view",
           "event_count": 82
-        },
-        {
-          "date": "2026-07-13",
-          "event_name": "page_view",
-          "event_count": 80
         },
         {
           "date": "2026-06-17",
@@ -3295,17 +3295,17 @@
           "event_count": 10
         },
         {
+          "date": "2026-07-13",
+          "event_name": "booking_click",
+          "event_count": 10
+        },
+        {
           "date": "2026-06-29",
           "event_name": "begin_checkout",
           "event_count": 8
         },
         {
           "date": "2026-07-05",
-          "event_name": "booking_click",
-          "event_count": 8
-        },
-        {
-          "date": "2026-07-13",
           "event_name": "booking_click",
           "event_count": 8
         },
@@ -3917,7 +3917,7 @@
         },
         {
           "date": "2026-07-13",
-          "value": 61
+          "value": 63
         },
         {
           "date": "2026-06-26",
@@ -4066,11 +4066,11 @@
           "value": 13
         },
         {
-          "date": "2026-07-03",
-          "value": 10
+          "date": "2026-07-13",
+          "value": 11
         },
         {
-          "date": "2026-07-13",
+          "date": "2026-07-03",
           "value": 10
         },
         {
@@ -4150,6 +4150,260 @@
         {
           "date": "2026-06-30",
           "value": 1
+        },
+        {
+          "date": "2026-07-08",
+          "value": 1
+        },
+        {
+          "date": "2026-07-10",
+          "value": 1
+        }
+      ],
+      "sessions_organic_rows": [
+        {
+          "date": "2026-06-10",
+          "value": 4
+        },
+        {
+          "date": "2026-06-11",
+          "value": 3
+        },
+        {
+          "date": "2026-06-12",
+          "value": 24
+        },
+        {
+          "date": "2026-06-13",
+          "value": 4
+        },
+        {
+          "date": "2026-06-14",
+          "value": 2
+        },
+        {
+          "date": "2026-06-15",
+          "value": 218
+        },
+        {
+          "date": "2026-06-16",
+          "value": 13
+        },
+        {
+          "date": "2026-06-17",
+          "value": 14
+        },
+        {
+          "date": "2026-06-18",
+          "value": 14
+        },
+        {
+          "date": "2026-06-19",
+          "value": 25
+        },
+        {
+          "date": "2026-06-20",
+          "value": 4
+        },
+        {
+          "date": "2026-06-21",
+          "value": 5
+        },
+        {
+          "date": "2026-06-22",
+          "value": 12
+        },
+        {
+          "date": "2026-06-23",
+          "value": 5
+        },
+        {
+          "date": "2026-06-24",
+          "value": 3
+        },
+        {
+          "date": "2026-06-25",
+          "value": 2
+        },
+        {
+          "date": "2026-06-26",
+          "value": 3
+        },
+        {
+          "date": "2026-06-28",
+          "value": 1
+        },
+        {
+          "date": "2026-06-29",
+          "value": 2
+        },
+        {
+          "date": "2026-06-30",
+          "value": 8
+        },
+        {
+          "date": "2026-07-01",
+          "value": 2
+        },
+        {
+          "date": "2026-07-02",
+          "value": 5
+        },
+        {
+          "date": "2026-07-03",
+          "value": 4
+        },
+        {
+          "date": "2026-07-05",
+          "value": 1
+        },
+        {
+          "date": "2026-07-06",
+          "value": 1
+        },
+        {
+          "date": "2026-07-07",
+          "value": 2
+        },
+        {
+          "date": "2026-07-08",
+          "value": 4
+        },
+        {
+          "date": "2026-07-09",
+          "value": 1
+        },
+        {
+          "date": "2026-07-10",
+          "value": 4
+        },
+        {
+          "date": "2026-07-11",
+          "value": 1
+        },
+        {
+          "date": "2026-07-12",
+          "value": 1
+        },
+        {
+          "date": "2026-07-13",
+          "value": 34
+        }
+      ],
+      "stage2_organic_rows": [
+        {
+          "date": "2026-06-15",
+          "value": 12
+        },
+        {
+          "date": "2026-06-16",
+          "value": 15
+        },
+        {
+          "date": "2026-06-17",
+          "value": 20
+        },
+        {
+          "date": "2026-06-18",
+          "value": 12
+        },
+        {
+          "date": "2026-06-19",
+          "value": 4
+        },
+        {
+          "date": "2026-06-20",
+          "value": 5
+        },
+        {
+          "date": "2026-06-21",
+          "value": 5
+        },
+        {
+          "date": "2026-06-22",
+          "value": 11
+        },
+        {
+          "date": "2026-06-24",
+          "value": 6
+        },
+        {
+          "date": "2026-06-28",
+          "value": 2
+        },
+        {
+          "date": "2026-06-29",
+          "value": 4
+        },
+        {
+          "date": "2026-06-30",
+          "value": 5
+        },
+        {
+          "date": "2026-07-01",
+          "value": 3
+        },
+        {
+          "date": "2026-07-02",
+          "value": 4
+        },
+        {
+          "date": "2026-07-03",
+          "value": 3
+        },
+        {
+          "date": "2026-07-05",
+          "value": 3
+        },
+        {
+          "date": "2026-07-06",
+          "value": 1
+        },
+        {
+          "date": "2026-07-07",
+          "value": 2
+        },
+        {
+          "date": "2026-07-08",
+          "value": 6
+        },
+        {
+          "date": "2026-07-10",
+          "value": 3
+        },
+        {
+          "date": "2026-07-11",
+          "value": 1
+        },
+        {
+          "date": "2026-07-12",
+          "value": 1
+        },
+        {
+          "date": "2026-07-13",
+          "value": 4
+        }
+      ],
+      "stage3_organic_rows": [
+        {
+          "date": "2026-06-15",
+          "value": 3
+        },
+        {
+          "date": "2026-06-16",
+          "value": 3
+        },
+        {
+          "date": "2026-06-18",
+          "value": 1
+        },
+        {
+          "date": "2026-06-22",
+          "value": 1
+        },
+        {
+          "date": "2026-07-05",
+          "value": 2
         },
         {
           "date": "2026-07-08",
@@ -4260,7 +4514,96 @@
           "date": "2026-06-16",
           "value": 1
         }
-      ]
+      ],
+      "sessions_organic_rows": [
+        {
+          "date": "2026-06-11",
+          "value": 6
+        },
+        {
+          "date": "2026-06-12",
+          "value": 9
+        },
+        {
+          "date": "2026-06-13",
+          "value": 3
+        },
+        {
+          "date": "2026-06-14",
+          "value": 1
+        },
+        {
+          "date": "2026-06-15",
+          "value": 133
+        },
+        {
+          "date": "2026-06-16",
+          "value": 9
+        },
+        {
+          "date": "2026-06-17",
+          "value": 24
+        },
+        {
+          "date": "2026-06-18",
+          "value": 5
+        },
+        {
+          "date": "2026-06-19",
+          "value": 4
+        },
+        {
+          "date": "2026-06-21",
+          "value": 2
+        },
+        {
+          "date": "2026-06-22",
+          "value": 1
+        },
+        {
+          "date": "2026-06-24",
+          "value": 3
+        },
+        {
+          "date": "2026-06-25",
+          "value": 1
+        },
+        {
+          "date": "2026-06-26",
+          "value": 1
+        },
+        {
+          "date": "2026-07-02",
+          "value": 1
+        },
+        {
+          "date": "2026-07-10",
+          "value": 1
+        },
+        {
+          "date": "2026-07-13",
+          "value": 1
+        }
+      ],
+      "stage2_organic_rows": [
+        {
+          "date": "2026-06-15",
+          "value": 8
+        },
+        {
+          "date": "2026-06-16",
+          "value": 7
+        },
+        {
+          "date": "2026-06-17",
+          "value": 20
+        },
+        {
+          "date": "2026-06-24",
+          "value": 1
+        }
+      ],
+      "stage3_organic_rows": []
     },
     {
       "id": "impact-me",
@@ -4465,6 +4808,172 @@
         }
       ],
       "stage3_rows": [
+        {
+          "date": "2026-06-19",
+          "value": 3
+        },
+        {
+          "date": "2026-06-22",
+          "value": 2
+        }
+      ],
+      "sessions_organic_rows": [
+        {
+          "date": "2026-06-19",
+          "value": 29
+        },
+        {
+          "date": "2026-06-20",
+          "value": 7
+        },
+        {
+          "date": "2026-06-21",
+          "value": 3
+        },
+        {
+          "date": "2026-06-22",
+          "value": 20
+        },
+        {
+          "date": "2026-06-23",
+          "value": 11
+        },
+        {
+          "date": "2026-06-24",
+          "value": 7
+        },
+        {
+          "date": "2026-06-25",
+          "value": 25
+        },
+        {
+          "date": "2026-06-26",
+          "value": 5
+        },
+        {
+          "date": "2026-06-27",
+          "value": 1
+        },
+        {
+          "date": "2026-06-28",
+          "value": 3
+        },
+        {
+          "date": "2026-06-29",
+          "value": 1
+        },
+        {
+          "date": "2026-06-30",
+          "value": 2
+        },
+        {
+          "date": "2026-07-01",
+          "value": 4
+        },
+        {
+          "date": "2026-07-02",
+          "value": 1
+        },
+        {
+          "date": "2026-07-03",
+          "value": 2
+        },
+        {
+          "date": "2026-07-04",
+          "value": 1
+        },
+        {
+          "date": "2026-07-05",
+          "value": 1
+        },
+        {
+          "date": "2026-07-06",
+          "value": 2
+        },
+        {
+          "date": "2026-07-07",
+          "value": 2
+        },
+        {
+          "date": "2026-07-08",
+          "value": 213
+        },
+        {
+          "date": "2026-07-09",
+          "value": 189
+        },
+        {
+          "date": "2026-07-10",
+          "value": 15
+        },
+        {
+          "date": "2026-07-11",
+          "value": 6
+        },
+        {
+          "date": "2026-07-12",
+          "value": 3
+        },
+        {
+          "date": "2026-07-13",
+          "value": 1
+        }
+      ],
+      "stage2_organic_rows": [
+        {
+          "date": "2026-06-19",
+          "value": 9
+        },
+        {
+          "date": "2026-06-21",
+          "value": 1
+        },
+        {
+          "date": "2026-06-22",
+          "value": 5
+        },
+        {
+          "date": "2026-06-23",
+          "value": 15
+        },
+        {
+          "date": "2026-06-24",
+          "value": 3
+        },
+        {
+          "date": "2026-06-25",
+          "value": 4
+        },
+        {
+          "date": "2026-07-03",
+          "value": 1
+        },
+        {
+          "date": "2026-07-07",
+          "value": 1
+        },
+        {
+          "date": "2026-07-08",
+          "value": 73
+        },
+        {
+          "date": "2026-07-09",
+          "value": 61
+        },
+        {
+          "date": "2026-07-10",
+          "value": 2
+        },
+        {
+          "date": "2026-07-11",
+          "value": 2
+        },
+        {
+          "date": "2026-07-13",
+          "value": 3
+        }
+      ],
+      "stage3_organic_rows": [
         {
           "date": "2026-06-19",
           "value": 3
