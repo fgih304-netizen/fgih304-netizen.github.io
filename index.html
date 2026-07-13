@@ -118,11 +118,6 @@
   .lf-estimate-badge{display:inline-block;font-size:9.5px;font-weight:700;color:#b3681f;background:#fff1e6;border-radius:999px;padding:1px 7px;vertical-align:middle;cursor:help;white-space:nowrap;}
   .lf-verified-badge{display:inline-block;font-size:9.5px;font-weight:700;color:#1e8449;background:#e9f7ef;border-radius:999px;padding:1px 7px;vertical-align:middle;cursor:help;white-space:nowrap;}
   .lf-arrow{display:flex;align-items:center;font-size:15px;color:#c7cad1;font-weight:700;padding:0;flex:0 0 auto;}
-  .lf-row-tag{font-size:12px;font-weight:800;margin:14px 0 8px;display:flex;align-items:baseline;gap:8px;}
-  .lf-row-tag:first-of-type{margin-top:0;}
-  .lf-row-tag span{font-size:11px;font-weight:400;color:var(--sub);}
-  .lf-row-tag-ad{color:#2456c9;}
-  .lf-row-tag-org{color:#1e8449;}
   @media (max-width:900px){.lf-arrow{display:none;} .lf-stages{flex-direction:column;flex-wrap:wrap;overflow-x:visible;} .lf-stage-box{min-width:0;}}
 
   .hist-form{display:grid;grid-template-columns:130px 140px 1fr 1.4fr auto;gap:8px;align-items:end;}
@@ -187,10 +182,16 @@
 
   <section class="view active" id="viewLanding">
     <div class="section-head">
-      <h2>🎯 랜딩별 퍼널 현황</h2>
+      <h2>🎯 랜딩별 퍼널 현황 (광고)</h2>
       <span class="cap" id="landingRangeLabel"></span>
     </div>
     <div class="landing-grid" id="landingGrid"></div>
+
+    <div class="section-head" style="margin-top:26px;">
+      <h2>🌱 오가닉·직접 퍼널</h2>
+      <span class="cap">광고 외 채널(직접·검색·SNS 오가닉 등) — 유입~신청은 GA4, 결제 단계는 수기 확인 건 · 데이터 있는 랜딩만 표시</span>
+    </div>
+    <div class="landing-grid" id="organicGrid"></div>
   </section>
 
   <section class="view" id="viewSummary">
@@ -867,7 +868,7 @@ function sumInRange(rows, since, until){
 
 function renderLandingFunnels(){
   const grid = document.getElementById('landingGrid');
-  document.getElementById('landingRangeLabel').textContent = `${state.since} ~ ${state.until} · 광고 행=메타 귀속 기준, 오가닉 행=GA4 광고 외 채널(결제단계는 수기 확인 건)`;
+  document.getElementById('landingRangeLabel').textContent = `${state.since} ~ ${state.until} · 광고(메타 귀속) 기준 — 오가닉 확인 건 제외, 오가닉은 아래 별도 섹션`;
 
   const metricsByLanding = {};
   state.landingMetrics.filter(r=>r.date>=state.since && r.date<=state.until).forEach(r=>{
@@ -943,67 +944,12 @@ function renderLandingFunnels(){
     const cpaBooking = adBooking ? spend/adBooking : null;
     const adRoas = spend ? adRevenue/spend : null;
 
-    // 오가닉·직접 퍼널 행 (fromMeta 랜딩만): 1~3단계는 GA4 채널 기준, 4~5단계는 수기 확인 건
-    const orgSessions = sumInRange(lf.sessions_organic_rows||[], state.since, state.until);
-    const orgStage2 = sumInRange(lf.stage2_organic_rows||[], state.since, state.until);
-    const orgStage3 = sumInRange(lf.stage3_organic_rows||[], state.since, state.until);
-    const orgRate2 = orgSessions ? orgStage2/orgSessions : null;
-    const orgRateFinal = orgStage2 ? orgStage3/orgStage2 : null;
-    const orgRateBooking = orgStage3 ? orBookings/orgStage3 : null;
-    const chBy = {};
-    (state.ga4ChannelRows||[]).forEach(r=>{
-      if(r.host===lf.hostname && !PAID_CHANNELS.includes(r.channel) && r.date>=state.since && r.date<=state.until)
-        chBy[r.channel]=(chBy[r.channel]||0)+r.sessions;
-    });
-    const chSorted = Object.entries(chBy).sort((a,b)=>b[1]-a[1]);
-    const chDetail = chSorted.map(([ch,v])=>`${CHANNEL_LABELS[ch]||ch} <b>${fmtNum(v)}</b>`).join(' · ');
-    const organicRow = fromMeta ? `
-      <div class="lf-row-tag lf-row-tag-org">🌱 오가닉·직접 <span>광고 외 채널 — 유입~${finalLabel}은 GA4, ${bookingLabel}·결제는 수기 확인 건</span></div>
-      <div class="lf-stages">
-        <div class="lf-stage-box lf-spend">
-          <div class="lf-stage-label">🧭 유입 경로</div>
-          <div class="lf-stage-value" style="font-size:14px;padding-top:3px;">${chSorted.length?(CHANNEL_LABELS[chSorted[0][0]]||chSorted[0][0]):'—'}</div>
-          <div class="lf-stage-sub">${chDetail||'이 기간 광고 외 유입 없음'}</div>
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s1">
-          <div class="lf-stage-label">🌐 랜딩 유입</div>
-          <div class="lf-stage-value">${fmtNum(orgSessions)}</div>
-          <div class="lf-stage-sub">GA4 세션 기준</div>
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s2">
-          <div class="lf-stage-label">🪜 ${stage2Label}</div>
-          <div class="lf-stage-value">${fmtNum(orgStage2)}</div>
-          <div class="lf-stage-sub">전환율 <b>${orgRate2!=null?fmtPct(orgRate2):'—'}</b></div>
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s3">
-          <div class="lf-stage-label">🎯 ${finalLabel}</div>
-          <div class="lf-stage-value">${fmtNum(orgStage3)}</div>
-          <div class="lf-stage-sub">${rateFinalLabel} <b>${orgRateFinal!=null?fmtPct(orgRateFinal):'—'}</b></div>
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s4">
-          <div class="lf-stage-label">📅 ${bookingLabel}</div>
-          <div class="lf-stage-value">${fmtNum(orBookings)}</div>
-          <div class="lf-stage-sub">예약전환율 <b>${orgRateBooking!=null?fmtPct(orgRateBooking):'—'}</b></div>
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s5">
-          <div class="lf-stage-label">🤝 결제금액</div>
-          <div class="lf-stage-value">${fmtWon(orRevenue)}</div>
-          <div class="lf-stage-sub">계약 <b>${fmtNum(orContracts)}건</b></div>
-        </div>
-      </div>` : '';
-
     return `<div class="panel landing-card">
       <div class="lf-head">
         <div class="lf-title">${lf.label}</div>
         <a class="lf-link" href="https://${lf.hostname}" target="_blank" rel="noopener">🔗 ${lf.hostname}</a>
         ${spend===0?'<span class="lf-sub">이 기간 매칭된 캠페인 지출 없음</span>':''}
       </div>
-      ${fromMeta?`<div class="lf-row-tag lf-row-tag-ad">📣 광고 <span>메타 광고 귀속 수치만 (오가닉 확인 건 제외)</span></div>`:''}
       <div class="lf-stages">
         <div class="lf-stage-box lf-spend">
           <div class="lf-stage-label">💰 광고비</div>
@@ -1040,9 +986,90 @@ function renderLandingFunnels(){
           <div class="lf-stage-sub">계약 <b>${fmtNum(adContracts)}건</b> · ROAS <b>${adRoas!=null?fmtPct(adRoas):'—'}</b></div>
         </div>
       </div>
-      ${organicRow}
     </div>`;
   }).join('');
+
+  renderOrganicFunnels();
+}
+
+// 🌱 오가닉·직접 퍼널 — 광고 퍼널과 별도 섹션. 유입~신청 단계는 GA4 광고 외 채널,
+// 예약금 결제완료·결제금액은 organic_revenue.csv(수기 확인 건). 조회기간에 데이터가 있는 랜딩만 카드 표시.
+function renderOrganicFunnels(){
+  const grid = document.getElementById('organicGrid');
+  if(!grid) return;
+
+  const cards = state.ga4LandingFunnels.map(lf=>{
+    const orgSessions = sumInRange(lf.sessions_organic_rows||[], state.since, state.until);
+    const orgStage2 = sumInRange(lf.stage2_organic_rows||[], state.since, state.until);
+    const orgStage3 = sumInRange(lf.stage3_organic_rows||[], state.since, state.until);
+    const orRows = state.organicRevRows.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
+    const orBookings = orRows.reduce((a,r)=>a+r.bookings,0);
+    const orContracts = orRows.reduce((a,r)=>a+r.contracts,0);
+    const orRevenue = orRows.reduce((a,r)=>a+r.revenue,0);
+
+    // 데이터가 하나도 없는 랜딩은 카드 자체를 숨김 (change-me 노출 규칙과 같은 방식)
+    if(!(orgSessions || orgStage2 || orgStage3 || orBookings || orContracts || orRevenue)) return '';
+
+    const rate2 = orgSessions ? orgStage2/orgSessions : null;
+    const rateFinal = orgStage2 ? orgStage3/orgStage2 : null;
+    const rateBooking = orgStage3 ? orBookings/orgStage3 : null;
+    const rateFinalLabel = lf.id==='find-me' ? '결제 전환율' : '전환율';
+    const bookingLabel = lf.id==='find-me' ? '예약금 결제완료' : '예약완료';
+
+    const chBy = {};
+    (state.ga4ChannelRows||[]).forEach(r=>{
+      if(r.host===lf.hostname && !PAID_CHANNELS.includes(r.channel) && r.date>=state.since && r.date<=state.until)
+        chBy[r.channel]=(chBy[r.channel]||0)+r.sessions;
+    });
+    const chSorted = Object.entries(chBy).sort((a,b)=>b[1]-a[1]);
+    const chDetail = chSorted.map(([ch,v])=>`${CHANNEL_LABELS[ch]||ch} <b>${fmtNum(v)}</b>`).join(' · ');
+
+    return `<div class="panel landing-card">
+      <div class="lf-head">
+        <div class="lf-title">🌱 ${lf.label}</div>
+        <a class="lf-link" href="https://${lf.hostname}" target="_blank" rel="noopener">🔗 ${lf.hostname}</a>
+      </div>
+      <div class="lf-stages">
+        <div class="lf-stage-box lf-spend">
+          <div class="lf-stage-label">🧭 유입 경로</div>
+          <div class="lf-stage-value" style="font-size:14px;padding-top:3px;">${chSorted.length?(CHANNEL_LABELS[chSorted[0][0]]||chSorted[0][0]):'—'}</div>
+          <div class="lf-stage-sub">${chDetail||'이 기간 광고 외 유입 없음'}</div>
+        </div>
+        <div class="lf-arrow">→</div>
+        <div class="lf-stage-box lf-s1">
+          <div class="lf-stage-label">🌐 랜딩 유입</div>
+          <div class="lf-stage-value">${fmtNum(orgSessions)}</div>
+          <div class="lf-stage-sub">GA4 세션 기준</div>
+        </div>
+        <div class="lf-arrow">→</div>
+        <div class="lf-stage-box lf-s2">
+          <div class="lf-stage-label">🪜 ${lf.stage2_label}</div>
+          <div class="lf-stage-value">${fmtNum(orgStage2)}</div>
+          <div class="lf-stage-sub">전환율 <b>${rate2!=null?fmtPct(rate2):'—'}</b></div>
+        </div>
+        <div class="lf-arrow">→</div>
+        <div class="lf-stage-box lf-s3">
+          <div class="lf-stage-label">🎯 ${lf.stage3_label}</div>
+          <div class="lf-stage-value">${fmtNum(orgStage3)}</div>
+          <div class="lf-stage-sub">${rateFinalLabel} <b>${rateFinal!=null?fmtPct(rateFinal):'—'}</b></div>
+        </div>
+        <div class="lf-arrow">→</div>
+        <div class="lf-stage-box lf-s4">
+          <div class="lf-stage-label">📅 ${bookingLabel}</div>
+          <div class="lf-stage-value">${fmtNum(orBookings)}</div>
+          <div class="lf-stage-sub">예약전환율 <b>${rateBooking!=null?fmtPct(rateBooking):'—'}</b></div>
+        </div>
+        <div class="lf-arrow">→</div>
+        <div class="lf-stage-box lf-s5">
+          <div class="lf-stage-label">🤝 결제금액</div>
+          <div class="lf-stage-value">${fmtWon(orRevenue)}</div>
+          <div class="lf-stage-sub">계약 <b>${fmtNum(orContracts)}건</b></div>
+        </div>
+      </div>
+    </div>`;
+  }).filter(Boolean);
+
+  grid.innerHTML = cards.length ? cards.join('') : '<div class="empty">이 기간 오가닉·직접 유입 데이터가 없어요</div>';
 }
 
 // 광고(유료) 채널 그룹 — 이 외 채널은 전부 오가닉·직접으로 취급. fetch_ga4.py 의 PAID_CHANNELS 와 항상 같게 유지할 것.
