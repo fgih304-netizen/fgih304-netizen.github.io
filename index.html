@@ -707,16 +707,48 @@ function renderGa4LandingPages(rowsInRange){
     .sort((a,b)=>b.sessions-a.sessions).slice(0,15);
   const body = document.getElementById('ga4LpBody');
   if(rows.length===0){ body.innerHTML='<tr><td class="empty" colspan="4">데이터 없음</td></tr>'; return; }
-  const max = Math.max(...rows.map(r=>r.sessions),1);
-  body.innerHTML = rows.map(r=>{
-    const safeHref = /^https?:\/\//.test(r.lp) ? r.lp : null;
-    const link = safeHref
-      ? `<a class="lp-link" href="${safeHref}" target="_blank" rel="noopener">${r.lp} ↗</a>`
-      : `<span class="lp-link" style="color:var(--ink);cursor:default;">${r.lp}</span>`;
-    return `<tr>
-      <td>${link}</td><td>${fmtNum(r.sessions)}</td><td>${fmtNum(r.users)}</td>
-      <td><div class="lp-bar-bg"><div class="lp-bar-fg" style="width:${(r.sessions/max*100).toFixed(0)}%"></div></div></td>
+
+  // 도메인(호스트)별로 묶어서 합계 행 + 하위 페이지 행으로 표시 (상단 카드의 도메인 세션과 일치하도록)
+  const hostOf = lp => { try { return new URL(lp).hostname; } catch(e){ return lp; } };
+  const pathOf = lp => { try { const u=new URL(lp); return u.pathname + u.search; } catch(e){ return ''; } };
+  const groups = {};
+  rows.forEach(r=>{
+    const h = hostOf(r.lp);
+    const g = groups[h] ?? (groups[h]={host:h, sessions:0, users:0, pages:[]});
+    g.sessions += r.sessions; g.users += r.users; g.pages.push(r);
+  });
+  const groupList = Object.values(groups).sort((a,b)=>b.sessions-a.sessions);
+  const max = Math.max(...groupList.map(g=>g.sessions),1);
+
+  body.innerHTML = groupList.map(g=>{
+    const single = g.pages.length===1;
+    const headBar = `<div class="lp-bar-bg"><div class="lp-bar-fg" style="width:${(g.sessions/max*100).toFixed(0)}%"></div></div>`;
+    if(single){
+      const r = g.pages[0];
+      const safeHref = /^https?:\/\//.test(r.lp) ? r.lp : null;
+      const link = safeHref
+        ? `<a class="lp-link" href="${safeHref}" target="_blank" rel="noopener">${g.host} ↗</a>`
+        : `<span class="lp-link" style="color:var(--ink);cursor:default;">${r.lp}</span>`;
+      return `<tr>
+        <td>${link}</td><td><b>${fmtNum(g.sessions)}</b></td><td>${fmtNum(g.users)}</td><td>${headBar}</td>
+      </tr>`;
+    }
+    const head = `<tr>
+      <td><span class="lp-link" style="color:var(--ink);cursor:default;font-weight:700;">${g.host} <span style="font-weight:400;opacity:.6;">(합계, 페이지 ${g.pages.length}개)</span></span></td>
+      <td><b>${fmtNum(g.sessions)}</b></td><td><b>${fmtNum(g.users)}</b></td><td>${headBar}</td>
     </tr>`;
+    const children = g.pages.map(r=>{
+      const safeHref = /^https?:\/\//.test(r.lp) ? r.lp : null;
+      const label = pathOf(r.lp) || r.lp;
+      const link = safeHref
+        ? `<a class="lp-link" href="${safeHref}" target="_blank" rel="noopener">└ ${label} ↗</a>`
+        : `<span class="lp-link" style="color:var(--ink);cursor:default;">└ ${label}</span>`;
+      return `<tr style="opacity:.85;">
+        <td style="padding-left:18px;">${link}</td><td>${fmtNum(r.sessions)}</td><td>${fmtNum(r.users)}</td>
+        <td><div class="lp-bar-bg"><div class="lp-bar-fg" style="width:${(r.sessions/max*100).toFixed(0)}%;opacity:.55;"></div></div></td>
+      </tr>`;
+    }).join('');
+    return head + children;
   }).join('');
 }
 
@@ -862,13 +894,13 @@ function renderLandingFunnels(){
         </div>
         <div class="lf-arrow">→</div>
         <div class="lf-stage-box lf-s4">
-          <div class="lf-stage-label">📅 ${bookingLabel}</div>
+          <div class="lf-stage-label">📅 ${bookingLabel} <span style="font-weight:400;opacity:.55;font-size:.85em;">· 시트 기준(광고 외 포함)</span></div>
           <div class="lf-stage-value">${fmtNum(booking)}</div>
           <div class="lf-stage-sub">예약전환율 <b>${rateBooking!=null?fmtPct(rateBooking):'—'}</b> · 예약당비용 <b>${cpaBooking!=null?fmtWon(cpaBooking):'—'}</b></div>
         </div>
         <div class="lf-arrow">→</div>
         <div class="lf-stage-box lf-s5">
-          <div class="lf-stage-label">🤝 결제금액</div>
+          <div class="lf-stage-label">🤝 결제금액 <span style="font-weight:400;opacity:.55;font-size:.85em;">· 시트 기준(광고 외 포함)</span></div>
           <div class="lf-stage-value">${fmtWon(revenue)}</div>
           <div class="lf-stage-sub">계약 <b>${fmtNum(contracts)}건</b> · ROAS <b>${roas!=null?fmtPct(roas):'—'}</b></div>
         </div>
