@@ -4559,7 +4559,10 @@
           "date": "2026-07-10",
           "value": 1
         }
-      ]
+      ],
+      "outbound_label": "네이버 플레이스 이동",
+      "outbound_rows": [],
+      "outbound_organic_rows": []
     },
     {
       "id": "change-me",
@@ -4749,7 +4752,10 @@
           "value": 1
         }
       ],
-      "stage3_organic_rows": []
+      "stage3_organic_rows": [],
+      "outbound_label": "",
+      "outbound_rows": [],
+      "outbound_organic_rows": []
     },
     {
       "id": "impact-me",
@@ -5136,7 +5142,10 @@
           "date": "2026-06-22",
           "value": 2
         }
-      ]
+      ],
+      "outbound_label": "",
+      "outbound_rows": [],
+      "outbound_organic_rows": []
     }
   ]
 }
