@@ -457,7 +457,7 @@ async function loadSource(name){
   // 광고 외 경로로 확인된 부분의 채널 구분 파일 (수동 관리). bookings=예약금 결제완료 수.
   const orText = (orRes && orRes.ok) ? await orRes.text() : '';
   const organicRevRows = parseCSV(orText).map(r=>({
-    date:r.date, landing_id:(r.landing_id||'').trim(), bookings:Number(r.bookings||0), contracts:Number(r.contracts||0), revenue:Number(r.revenue||0),
+    date:r.date, landing_id:(r.landing_id||'').trim(), channel:(r.channel||'').trim(), bookings:Number(r.bookings||0), contracts:Number(r.contracts||0), revenue:Number(r.revenue||0),
   })).filter(r=>r.date);
   return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows };
 }
