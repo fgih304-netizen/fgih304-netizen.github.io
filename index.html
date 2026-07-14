@@ -323,13 +323,14 @@
 
 <script>
 const SOURCES = {
-  real: { data: 'data.json', revenue: 'revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv' },
-  demo: { data: 'demo_data.json', revenue: 'demo_revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv' },
+  real: { data: 'data.json', revenue: 'revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv' },
+  demo: { data: 'demo_data.json', revenue: 'demo_revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv' },
 };
 const GA4_SOURCES = { real: 'ga4_data.json', demo: 'demo_ga4_data.json' };
 const state = { source:'real', since:null, until:null, adRows:[], revRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[], organicRevRows:[],
   ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Source:null,
   landingView:'all',   // 랜딩 퍼널 섹션의 유입경로 드롭다운 선택값 ('all'|'meta'|'organic'|'ch:채널그룹') — 모든 카드에 일괄 적용
+  threadsDaily:[],     // 쓰레드(콘텐츠 채널, impact-me 랜딩) DB·예약 — 구글시트 Daily탭 D/G열 파생 threads_daily.csv
   historyRows:[], historyWritable:false, historySha:null };
 
 // 히스토리를 배포된 URL에서 직접 추가/삭제할 수 있게, GitHub Contents API로 history.csv를 직접 읽고 씀.
@@ -429,12 +430,13 @@ function parseCSV(text){
 
 async function loadSource(name){
   const src = SOURCES[name];
-  const [dataRes, revRes, tfRes, bcRes, orRes] = await Promise.all([
+  const [dataRes, revRes, tfRes, bcRes, orRes, thRes] = await Promise.all([
     fetch(bust(src.data)).catch(()=>null),
     fetch(bust(src.revenue)).catch(()=>null),
     fetch(bust(src.typeformSubmits)).catch(()=>null),
     fetch(bust(src.bookingCompleted)).catch(()=>null),
     fetch(bust(src.organicRevenue)).catch(()=>null),
+    fetch(bust(src.threads)).catch(()=>null),
   ]);
   if (!dataRes || !dataRes.ok) throw new Error('data missing');
   const dataJson = await dataRes.json();
@@ -457,7 +459,12 @@ async function loadSource(name){
   const organicRevRows = parseCSV(orText).map(r=>({
     date:r.date, landing_id:(r.landing_id||'').trim(), channel:(r.channel||'').trim(), attribution:((r.attribution||'').trim()||'organic'), bookings:Number(r.bookings||0), contracts:Number(r.contracts||0), revenue:Number(r.revenue||0),
   })).filter(r=>r.date);
-  return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows };
+  // 쓰레드(콘텐츠 채널): impact-me 랜딩을 쓰는 쓰레드 유입의 DB(타입폼)·예약 — 구글시트 D/G열 파생
+  const thText = (thRes && thRes.ok) ? await thRes.text() : '';
+  const threadsDaily = parseCSV(thText).map(r=>({
+    date:r.date, db:Number(r.db||0), bookings:Number(r.bookings||0),
+  })).filter(r=>r.date);
+  return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows, threadsDaily };
 }
 
 function showBanner(msg){
@@ -483,8 +490,8 @@ async function loadGa4(name){
 
 async function setSource(name, opts={}){
   try{
-    const { adRows, revRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted, organicRevRows } = await loadSource(name);
-    state.source=name; state.adRows=adRows; state.revRows=revRows; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted; state.organicRevRows=organicRevRows;
+    const { adRows, revRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted, organicRevRows, threadsDaily } = await loadSource(name);
+    state.source=name; state.adRows=adRows; state.revRows=revRows; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted; state.organicRevRows=organicRevRows; state.threadsDaily=threadsDaily;
     if (name==='real' && adRows.length===0 && !opts.silentEmpty)
       showBanner('아직 실데이터가 없어요. fetch_data.py 를 실행하면 메타 데이터가 채워집니다.');
     else if (name==='demo')
@@ -937,6 +944,12 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
   const orBookings = orgAttrRows.reduce((a,r)=>a+r.bookings,0);
   const orContracts = orgAttrRows.reduce((a,r)=>a+r.contracts,0);
   const orRevenue = orgAttrRows.reduce((a,r)=>a+r.revenue,0);
+  // 쓰레드(콘텐츠 채널): impact-me 랜딩 사용·UTM 부착. DB·예약은 구글시트 D/G열(threads_daily.csv)이 기준.
+  // 시트 E열(진단퍼널 DB→typeform_submits)·H열(진단 예약→booking_completed)에는 쓰레드가 빠져 있어 합산해도 이중집계 없음.
+  const thRows = lf.id==='impact-me' ? state.threadsDaily.filter(r=>r.date>=state.since && r.date<=state.until) : [];
+  const thDb = thRows.reduce((a,r)=>a+r.db,0);
+  const thBookings = thRows.reduce((a,r)=>a+r.bookings,0);
+  const thBookingBadge = thBookings ? `콘텐츠(쓰레드) <b>${fmtNum(thBookings)}</b>` : '';
   const chDetailOf = rows => {
     const by = {};
     rows.forEach(r=>{ const ch=r.channel||'unknown'; if(!by[ch]) by[ch]={bookings:0,revenue:0}; by[ch].bookings+=r.bookings; by[ch].revenue+=r.revenue; });
@@ -960,7 +973,8 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     if (fromMeta) {
       stage2 = m.booking; finalConv = m.checkout;
     } else if (lf.id === 'impact-me') {
-      stage2 = sumInRange(lf.stage2_rows, state.since, state.until);
+      // 상담하기 클릭은 유료 채널만 (쓰레드 등 오가닉 클릭 제외 — 2026-07-14 채널 분리)
+      stage2 = (lf.stage2_by_channel_rows||[]).filter(r=>PAID_CHANNELS.includes(r.channel) && r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+Number(r.value||0),0);
       finalConv = state.typeformSubmits.filter(r=>r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+r.count,0);
       finalLabel = '타입폼 제출완료';
     } else {
@@ -981,6 +995,12 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     bookingV = orBookings; contractsV = orContracts; revenueV = orRevenue;
     const d = chDetailOf(orgAttrRows); bookingDetail=d.bookings; revenueDetail=d.revenue;
     naverClicks = sumInRange(lf.outbound_organic_rows||[], state.since, state.until);
+    // impact-me 오가닉 = 쓰레드(콘텐츠)가 주력 — 최종 DB·예약은 시트 D/G열 기준으로 표시 (GA4 form_submit 대체)
+    if(lf.id==='impact-me' && (thDb||thBookings)){
+      finalConv = thDb; finalLabel = '타입폼 제출완료 (시트 쓰레드)';
+      bookingV = orBookings + thBookings;
+      bookingDetail = [bookingDetail, thBookingBadge].filter(Boolean).join(' · ');
+    }
     const chBy = {};
     Object.keys(hostCh).forEach(ch=>{ if(!PAID_CHANNELS.includes(ch)) chBy[ch]=hostCh[ch]; });
     const chSorted = Object.entries(chBy).sort((a,b)=>b[1]-a[1]);
@@ -993,6 +1013,13 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     bookingV = booking; contractsV = contracts; revenueV = revenue;
     const d = chDetailOf(orAllRows); bookingDetail=d.bookings; revenueDetail=d.revenue;
     naverClicks = sumInRange(lf.outbound_rows||[], state.since, state.until);
+    // impact-me 전체 = 광고(시트 E열)+쓰레드(시트 D열) — 최종단계를 메타 뷰와 같은 시트 기준으로 통일
+    if(lf.id==='impact-me'){
+      finalConv = state.typeformSubmits.filter(r=>r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+r.count,0) + thDb;
+      finalLabel = '타입폼 제출완료';
+      bookingV = booking + thBookings;
+      bookingDetail = [bookingDetail, thBookingBadge].filter(Boolean).join(' · ');
+    }
     roas = spend ? revenueV/spend : null;
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">💰 광고비</div><div class="lf-stage-value">${fmtWon(spend)}</div><div class="lf-stage-sub">참고 (전체 유입 기준)</div></div>`;
   } else {  // 'ch:GA4채널그룹'
@@ -1002,6 +1029,12 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     finalConv = sumByChannel(lf.stage3_by_channel_rows, ch);
     naverClicks = sumByChannel(lf.outbound_by_channel_rows, ch);
     payNote = '채널그룹 단위 수기 구분 없음';
+    // 콘텐츠(Organic Social) 뷰의 impact-me = 쓰레드 — DB·예약을 시트 D/G열 기준으로 표시
+    if(lf.id==='impact-me' && ch==='Organic Social' && (thDb||thBookings)){
+      finalConv = thDb; finalLabel = '타입폼 제출완료 (시트 쓰레드)';
+      bookingV = thBookings; bookingDetail = thBookingBadge;
+      payNote = '쓰레드 결제(매출)는 아직 시트에 없음';
+    }
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">🧭 유입 경로</div><div class="lf-stage-value" style="font-size:14px;padding-top:3px;">${CHANNEL_LABELS[ch]||ch}</div><div class="lf-stage-sub">GA4 채널그룹 기준</div></div>`;
   }
 
@@ -1062,7 +1095,7 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
 const PAID_CHANNELS = ['Paid Social', 'Paid Search', 'Cross-network', 'Display', 'Paid Video', 'Paid Shopping', 'Paid Other'];
 
 // organic_revenue.csv 의 channel 열 값 → 표시 라벨. 채널 값은 소문자 영문으로 기록 (naver=네이버 플레이스 예약·결제).
-const OR_CHANNEL_LABELS = { naver:'네이버 예약', direct:'직접', instagram:'인스타그램', search:'검색', kakao:'카카오', unknown:'미지정' };
+const OR_CHANNEL_LABELS = { naver:'네이버 예약', direct:'직접', instagram:'인스타그램', threads:'콘텐츠(쓰레드)', search:'검색', kakao:'카카오', unknown:'미지정' };
 
 const HIST_TYPE_META = {
   '수정': {emoji:'✏️', bg:'#fff1e6', fg:'#b3681f'},
