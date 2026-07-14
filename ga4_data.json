@@ -343,20 +343,20 @@
       "users": 47
     },
     {
+      "date": "2026-07-14",
+      "host": "find-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://find-me.real-me.co.kr/",
+      "sessions": 31,
+      "users": 31
+    },
+    {
       "date": "2026-06-19",
       "host": "impact-me.real-me.co.kr",
       "path": "/",
       "landing_page": "https://impact-me.real-me.co.kr/",
       "sessions": 28,
       "users": 23
-    },
-    {
-      "date": "2026-07-14",
-      "host": "find-me.real-me.co.kr",
-      "path": "/",
-      "landing_page": "https://find-me.real-me.co.kr/",
-      "sessions": 25,
-      "users": 25
     },
     {
       "date": "2026-06-12",
@@ -1516,6 +1516,13 @@
       "users": 21
     },
     {
+      "date": "2026-07-14",
+      "host": "find-me.real-me.co.kr",
+      "channel": "Paid Social",
+      "sessions": 23,
+      "users": 23
+    },
+    {
       "date": "2026-06-19",
       "host": "realmeschedule.lovable.app",
       "channel": "Direct",
@@ -1663,13 +1670,6 @@
       "users": 16
     },
     {
-      "date": "2026-07-14",
-      "host": "find-me.real-me.co.kr",
-      "channel": "Paid Social",
-      "sessions": 17,
-      "users": 17
-    },
-    {
       "date": "2026-06-28",
       "host": "artin1ife.pro.typeform.com",
       "channel": "Paid Social",
@@ -1782,6 +1782,13 @@
       "users": 12
     },
     {
+      "date": "2026-07-14",
+      "host": "find-me.real-me.co.kr",
+      "channel": "Unassigned",
+      "sessions": 12,
+      "users": 12
+    },
+    {
       "date": "2026-06-27",
       "host": "find-me.real-me.co.kr",
       "channel": "Paid Other",
@@ -1792,13 +1799,6 @@
       "date": "2026-07-09",
       "host": "artin1ife.pro.typeform.com",
       "channel": "Paid Social",
-      "sessions": 11,
-      "users": 11
-    },
-    {
-      "date": "2026-07-14",
-      "host": "find-me.real-me.co.kr",
-      "channel": "Unassigned",
       "sessions": 11,
       "users": 11
     },
@@ -3152,6 +3152,13 @@
       "channel": "Direct",
       "sessions": 1,
       "users": 1
+    },
+    {
+      "date": "2026-07-14",
+      "host": "realmeschedule.lovable.app",
+      "channel": "Unassigned",
+      "sessions": 1,
+      "users": 1
     }
   ],
   "funnels": [
@@ -3305,14 +3312,14 @@
           "event_count": 48
         },
         {
+          "date": "2026-07-14",
+          "event_name": "page_view",
+          "event_count": 44
+        },
+        {
           "date": "2026-06-21",
           "event_name": "booking_click",
           "event_count": 40
-        },
-        {
-          "date": "2026-07-14",
-          "event_name": "page_view",
-          "event_count": 37
         },
         {
           "date": "2026-06-12",
@@ -3445,6 +3452,11 @@
           "event_count": 5
         },
         {
+          "date": "2026-07-14",
+          "event_name": "booking_click",
+          "event_count": 5
+        },
+        {
           "date": "2026-06-11",
           "event_name": "page_view",
           "event_count": 4
@@ -3452,11 +3464,6 @@
         {
           "date": "2026-06-13",
           "event_name": "page_view",
-          "event_count": 4
-        },
-        {
-          "date": "2026-07-14",
-          "event_name": "booking_click",
           "event_count": 4
         },
         {
@@ -4075,7 +4082,7 @@
         },
         {
           "date": "2026-07-14",
-          "value": 28
+          "value": 34
         },
         {
           "date": "2026-06-12",
@@ -4429,7 +4436,7 @@
         },
         {
           "date": "2026-07-14",
-          "value": 12
+          "value": 13
         }
       ],
       "stage2_organic_rows": [
@@ -4560,9 +4567,469 @@
           "value": 1
         }
       ],
+      "stage2_by_channel_rows": [
+        {
+          "date": "2026-06-17",
+          "channel": "Paid Social",
+          "value": 38
+        },
+        {
+          "date": "2026-06-21",
+          "channel": "Paid Social",
+          "value": 23
+        },
+        {
+          "date": "2026-07-06",
+          "channel": "Paid Social",
+          "value": 23
+        },
+        {
+          "date": "2026-06-19",
+          "channel": "Paid Social",
+          "value": 22
+        },
+        {
+          "date": "2026-06-22",
+          "channel": "Paid Social",
+          "value": 22
+        },
+        {
+          "date": "2026-06-29",
+          "channel": "Paid Social",
+          "value": 19
+        },
+        {
+          "date": "2026-06-20",
+          "channel": "Paid Social",
+          "value": 18
+        },
+        {
+          "date": "2026-06-25",
+          "channel": "Paid Social",
+          "value": 18
+        },
+        {
+          "date": "2026-06-17",
+          "channel": "Direct",
+          "value": 17
+        },
+        {
+          "date": "2026-06-27",
+          "channel": "Paid Social",
+          "value": 17
+        },
+        {
+          "date": "2026-06-26",
+          "channel": "Paid Social",
+          "value": 16
+        },
+        {
+          "date": "2026-06-28",
+          "channel": "Paid Social",
+          "value": 16
+        },
+        {
+          "date": "2026-07-02",
+          "channel": "Paid Social",
+          "value": 15
+        },
+        {
+          "date": "2026-06-18",
+          "channel": "Paid Social",
+          "value": 14
+        },
+        {
+          "date": "2026-07-04",
+          "channel": "Paid Social",
+          "value": 14
+        },
+        {
+          "date": "2026-07-07",
+          "channel": "Paid Social",
+          "value": 14
+        },
+        {
+          "date": "2026-07-01",
+          "channel": "Paid Social",
+          "value": 12
+        },
+        {
+          "date": "2026-06-15",
+          "channel": "Paid Social",
+          "value": 11
+        },
+        {
+          "date": "2026-06-18",
+          "channel": "Direct",
+          "value": 10
+        },
+        {
+          "date": "2026-07-08",
+          "channel": "Paid Social",
+          "value": 10
+        },
+        {
+          "date": "2026-06-22",
+          "channel": "Direct",
+          "value": 9
+        },
+        {
+          "date": "2026-07-13",
+          "channel": "Paid Social",
+          "value": 8
+        },
+        {
+          "date": "2026-06-16",
+          "channel": "Direct",
+          "value": 7
+        },
+        {
+          "date": "2026-06-16",
+          "channel": "Paid Social",
+          "value": 7
+        },
+        {
+          "date": "2026-06-30",
+          "channel": "Paid Social",
+          "value": 7
+        },
+        {
+          "date": "2026-07-03",
+          "channel": "Paid Social",
+          "value": 7
+        },
+        {
+          "date": "2026-07-08",
+          "channel": "Direct",
+          "value": 6
+        },
+        {
+          "date": "2026-07-13",
+          "channel": "Unassigned",
+          "value": 6
+        },
+        {
+          "date": "2026-06-16",
+          "channel": "Organic Social",
+          "value": 5
+        },
+        {
+          "date": "2026-06-21",
+          "channel": "Direct",
+          "value": 5
+        },
+        {
+          "date": "2026-06-30",
+          "channel": "Direct",
+          "value": 5
+        },
+        {
+          "date": "2026-06-15",
+          "channel": "Direct",
+          "value": 4
+        },
+        {
+          "date": "2026-06-15",
+          "channel": "Organic Social",
+          "value": 4
+        },
+        {
+          "date": "2026-06-15",
+          "channel": "Referral",
+          "value": 4
+        },
+        {
+          "date": "2026-06-20",
+          "channel": "Direct",
+          "value": 4
+        },
+        {
+          "date": "2026-06-24",
+          "channel": "Direct",
+          "value": 4
+        },
+        {
+          "date": "2026-06-29",
+          "channel": "Paid Other",
+          "value": 4
+        },
+        {
+          "date": "2026-07-05",
+          "channel": "Paid Social",
+          "value": 4
+        },
+        {
+          "date": "2026-06-16",
+          "channel": "Referral",
+          "value": 3
+        },
+        {
+          "date": "2026-06-17",
+          "channel": "Referral",
+          "value": 3
+        },
+        {
+          "date": "2026-06-19",
+          "channel": "Organic Social",
+          "value": 3
+        },
+        {
+          "date": "2026-07-01",
+          "channel": "Direct",
+          "value": 3
+        },
+        {
+          "date": "2026-07-01",
+          "channel": "Paid Other",
+          "value": 3
+        },
+        {
+          "date": "2026-07-02",
+          "channel": "Direct",
+          "value": 3
+        },
+        {
+          "date": "2026-07-03",
+          "channel": "Direct",
+          "value": 3
+        },
+        {
+          "date": "2026-07-05",
+          "channel": "Direct",
+          "value": 3
+        },
+        {
+          "date": "2026-07-06",
+          "channel": "Paid Other",
+          "value": 3
+        },
+        {
+          "date": "2026-07-10",
+          "channel": "Direct",
+          "value": 3
+        },
+        {
+          "date": "2026-07-13",
+          "channel": "Direct",
+          "value": 3
+        },
+        {
+          "date": "2026-07-14",
+          "channel": "Unassigned",
+          "value": 3
+        },
+        {
+          "date": "2026-06-17",
+          "channel": "Paid Other",
+          "value": 2
+        },
+        {
+          "date": "2026-06-18",
+          "channel": "Organic Social",
+          "value": 2
+        },
+        {
+          "date": "2026-06-19",
+          "channel": "Paid Other",
+          "value": 2
+        },
+        {
+          "date": "2026-06-22",
+          "channel": "Organic Social",
+          "value": 2
+        },
+        {
+          "date": "2026-06-23",
+          "channel": "Paid Other",
+          "value": 2
+        },
+        {
+          "date": "2026-06-23",
+          "channel": "Paid Social",
+          "value": 2
+        },
+        {
+          "date": "2026-06-24",
+          "channel": "Organic Social",
+          "value": 2
+        },
+        {
+          "date": "2026-06-28",
+          "channel": "Organic Social",
+          "value": 2
+        },
+        {
+          "date": "2026-06-29",
+          "channel": "Direct",
+          "value": 2
+        },
+        {
+          "date": "2026-06-29",
+          "channel": "Referral",
+          "value": 2
+        },
+        {
+          "date": "2026-07-07",
+          "channel": "Direct",
+          "value": 2
+        },
+        {
+          "date": "2026-07-09",
+          "channel": "Paid Social",
+          "value": 2
+        },
+        {
+          "date": "2026-07-14",
+          "channel": "Direct",
+          "value": 2
+        },
+        {
+          "date": "2026-07-14",
+          "channel": "Paid Social",
+          "value": 2
+        },
+        {
+          "date": "2026-06-19",
+          "channel": "Direct",
+          "value": 1
+        },
+        {
+          "date": "2026-06-20",
+          "channel": "Organic Social",
+          "value": 1
+        },
+        {
+          "date": "2026-06-30",
+          "channel": "Paid Other",
+          "value": 1
+        },
+        {
+          "date": "2026-07-02",
+          "channel": "Unassigned",
+          "value": 1
+        },
+        {
+          "date": "2026-07-04",
+          "channel": "Paid Other",
+          "value": 1
+        },
+        {
+          "date": "2026-07-06",
+          "channel": "Direct",
+          "value": 1
+        },
+        {
+          "date": "2026-07-10",
+          "channel": "Paid Social",
+          "value": 1
+        },
+        {
+          "date": "2026-07-11",
+          "channel": "Direct",
+          "value": 1
+        },
+        {
+          "date": "2026-07-12",
+          "channel": "Direct",
+          "value": 1
+        }
+      ],
+      "stage3_by_channel_rows": [
+        {
+          "date": "2026-06-29",
+          "channel": "Paid Social",
+          "value": 8
+        },
+        {
+          "date": "2026-06-16",
+          "channel": "Referral",
+          "value": 3
+        },
+        {
+          "date": "2026-06-15",
+          "channel": "Direct",
+          "value": 2
+        },
+        {
+          "date": "2026-06-21",
+          "channel": "Paid Social",
+          "value": 2
+        },
+        {
+          "date": "2026-06-22",
+          "channel": "Paid Social",
+          "value": 2
+        },
+        {
+          "date": "2026-06-25",
+          "channel": "Paid Social",
+          "value": 2
+        },
+        {
+          "date": "2026-07-01",
+          "channel": "Paid Other",
+          "value": 2
+        },
+        {
+          "date": "2026-07-05",
+          "channel": "Direct",
+          "value": 2
+        },
+        {
+          "date": "2026-07-06",
+          "channel": "Paid Social",
+          "value": 2
+        },
+        {
+          "date": "2026-06-15",
+          "channel": "Organic Social",
+          "value": 1
+        },
+        {
+          "date": "2026-06-18",
+          "channel": "Organic Social",
+          "value": 1
+        },
+        {
+          "date": "2026-06-18",
+          "channel": "Paid Social",
+          "value": 1
+        },
+        {
+          "date": "2026-06-22",
+          "channel": "Direct",
+          "value": 1
+        },
+        {
+          "date": "2026-06-27",
+          "channel": "Paid Social",
+          "value": 1
+        },
+        {
+          "date": "2026-06-30",
+          "channel": "Paid Social",
+          "value": 1
+        },
+        {
+          "date": "2026-07-01",
+          "channel": "Paid Social",
+          "value": 1
+        },
+        {
+          "date": "2026-07-08",
+          "channel": "Direct",
+          "value": 1
+        },
+        {
+          "date": "2026-07-10",
+          "channel": "Direct",
+          "value": 1
+        }
+      ],
       "outbound_label": "네이버 플레이스 이동",
       "outbound_rows": [],
-      "outbound_organic_rows": []
+      "outbound_organic_rows": [],
+      "outbound_by_channel_rows": []
     },
     {
       "id": "change-me",
@@ -4753,9 +5220,89 @@
         }
       ],
       "stage3_organic_rows": [],
+      "stage2_by_channel_rows": [
+        {
+          "date": "2026-06-17",
+          "channel": "Paid Social",
+          "value": 19
+        },
+        {
+          "date": "2026-06-17",
+          "channel": "Direct",
+          "value": 15
+        },
+        {
+          "date": "2026-06-15",
+          "channel": "Paid Social",
+          "value": 10
+        },
+        {
+          "date": "2026-06-15",
+          "channel": "Direct",
+          "value": 4
+        },
+        {
+          "date": "2026-06-16",
+          "channel": "Organic Social",
+          "value": 4
+        },
+        {
+          "date": "2026-06-16",
+          "channel": "Paid Social",
+          "value": 4
+        },
+        {
+          "date": "2026-06-15",
+          "channel": "Organic Social",
+          "value": 3
+        },
+        {
+          "date": "2026-06-17",
+          "channel": "Organic Social",
+          "value": 3
+        },
+        {
+          "date": "2026-06-16",
+          "channel": "Direct",
+          "value": 2
+        },
+        {
+          "date": "2026-06-17",
+          "channel": "Referral",
+          "value": 2
+        },
+        {
+          "date": "2026-06-15",
+          "channel": "Paid Other",
+          "value": 1
+        },
+        {
+          "date": "2026-06-15",
+          "channel": "Referral",
+          "value": 1
+        },
+        {
+          "date": "2026-06-16",
+          "channel": "Referral",
+          "value": 1
+        },
+        {
+          "date": "2026-06-24",
+          "channel": "Organic Social",
+          "value": 1
+        }
+      ],
+      "stage3_by_channel_rows": [
+        {
+          "date": "2026-06-16",
+          "channel": "Paid Social",
+          "value": 1
+        }
+      ],
       "outbound_label": "",
       "outbound_rows": [],
-      "outbound_organic_rows": []
+      "outbound_organic_rows": [],
+      "outbound_by_channel_rows": []
     },
     {
       "id": "impact-me",
@@ -5143,9 +5690,269 @@
           "value": 2
         }
       ],
+      "stage2_by_channel_rows": [
+        {
+          "date": "2026-07-08",
+          "channel": "Organic Social",
+          "value": 73
+        },
+        {
+          "date": "2026-07-09",
+          "channel": "Organic Social",
+          "value": 61
+        },
+        {
+          "date": "2026-07-07",
+          "channel": "Paid Social",
+          "value": 46
+        },
+        {
+          "date": "2026-06-30",
+          "channel": "Paid Social",
+          "value": 30
+        },
+        {
+          "date": "2026-06-25",
+          "channel": "Paid Social",
+          "value": 26
+        },
+        {
+          "date": "2026-06-27",
+          "channel": "Paid Social",
+          "value": 25
+        },
+        {
+          "date": "2026-07-01",
+          "channel": "Paid Social",
+          "value": 25
+        },
+        {
+          "date": "2026-07-06",
+          "channel": "Paid Social",
+          "value": 24
+        },
+        {
+          "date": "2026-07-05",
+          "channel": "Paid Social",
+          "value": 22
+        },
+        {
+          "date": "2026-06-26",
+          "channel": "Paid Social",
+          "value": 21
+        },
+        {
+          "date": "2026-07-04",
+          "channel": "Paid Social",
+          "value": 19
+        },
+        {
+          "date": "2026-06-28",
+          "channel": "Paid Social",
+          "value": 18
+        },
+        {
+          "date": "2026-07-02",
+          "channel": "Paid Social",
+          "value": 18
+        },
+        {
+          "date": "2026-07-09",
+          "channel": "Paid Social",
+          "value": 18
+        },
+        {
+          "date": "2026-07-03",
+          "channel": "Paid Social",
+          "value": 16
+        },
+        {
+          "date": "2026-06-29",
+          "channel": "Paid Social",
+          "value": 14
+        },
+        {
+          "date": "2026-06-23",
+          "channel": "Organic Social",
+          "value": 13
+        },
+        {
+          "date": "2026-07-08",
+          "channel": "Paid Social",
+          "value": 13
+        },
+        {
+          "date": "2026-07-01",
+          "channel": "Paid Other",
+          "value": 11
+        },
+        {
+          "date": "2026-07-05",
+          "channel": "Paid Other",
+          "value": 7
+        },
+        {
+          "date": "2026-06-27",
+          "channel": "Paid Other",
+          "value": 6
+        },
+        {
+          "date": "2026-07-02",
+          "channel": "Paid Other",
+          "value": 6
+        },
+        {
+          "date": "2026-06-19",
+          "channel": "Organic Social",
+          "value": 5
+        },
+        {
+          "date": "2026-06-28",
+          "channel": "Paid Other",
+          "value": 5
+        },
+        {
+          "date": "2026-06-19",
+          "channel": "Direct",
+          "value": 4
+        },
+        {
+          "date": "2026-06-22",
+          "channel": "Referral",
+          "value": 4
+        },
+        {
+          "date": "2026-06-25",
+          "channel": "Organic Social",
+          "value": 4
+        },
+        {
+          "date": "2026-07-13",
+          "channel": "Unassigned",
+          "value": 4
+        },
+        {
+          "date": "2026-06-26",
+          "channel": "Paid Other",
+          "value": 3
+        },
+        {
+          "date": "2026-06-29",
+          "channel": "Paid Other",
+          "value": 3
+        },
+        {
+          "date": "2026-07-06",
+          "channel": "Paid Other",
+          "value": 3
+        },
+        {
+          "date": "2026-06-24",
+          "channel": "Direct",
+          "value": 2
+        },
+        {
+          "date": "2026-06-30",
+          "channel": "Paid Other",
+          "value": 2
+        },
+        {
+          "date": "2026-07-08",
+          "channel": "Paid Other",
+          "value": 2
+        },
+        {
+          "date": "2026-07-10",
+          "channel": "Organic Social",
+          "value": 2
+        },
+        {
+          "date": "2026-07-11",
+          "channel": "Organic Social",
+          "value": 2
+        },
+        {
+          "date": "2026-06-21",
+          "channel": "Direct",
+          "value": 1
+        },
+        {
+          "date": "2026-06-22",
+          "channel": "Direct",
+          "value": 1
+        },
+        {
+          "date": "2026-06-23",
+          "channel": "Direct",
+          "value": 1
+        },
+        {
+          "date": "2026-06-23",
+          "channel": "Referral",
+          "value": 1
+        },
+        {
+          "date": "2026-06-24",
+          "channel": "Organic Social",
+          "value": 1
+        },
+        {
+          "date": "2026-06-25",
+          "channel": "Paid Other",
+          "value": 1
+        },
+        {
+          "date": "2026-07-03",
+          "channel": "Direct",
+          "value": 1
+        },
+        {
+          "date": "2026-07-03",
+          "channel": "Paid Other",
+          "value": 1
+        },
+        {
+          "date": "2026-07-04",
+          "channel": "Paid Other",
+          "value": 1
+        },
+        {
+          "date": "2026-07-07",
+          "channel": "Direct",
+          "value": 1
+        },
+        {
+          "date": "2026-07-07",
+          "channel": "Paid Other",
+          "value": 1
+        }
+      ],
+      "stage3_by_channel_rows": [
+        {
+          "date": "2026-06-19",
+          "channel": "Organic Social",
+          "value": 2
+        },
+        {
+          "date": "2026-06-19",
+          "channel": "Referral",
+          "value": 1
+        },
+        {
+          "date": "2026-06-22",
+          "channel": "Direct",
+          "value": 1
+        },
+        {
+          "date": "2026-06-22",
+          "channel": "Referral",
+          "value": 1
+        }
+      ],
       "outbound_label": "",
       "outbound_rows": [],
-      "outbound_organic_rows": []
+      "outbound_organic_rows": [],
+      "outbound_by_channel_rows": []
     }
   ]
 }

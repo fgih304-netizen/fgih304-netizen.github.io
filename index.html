@@ -103,6 +103,7 @@
   .landing-card .lf-sub{font-size:11.5px;color:var(--sub);}
   .landing-card .lf-link{font-size:11.5px;color:var(--amber);font-weight:700;text-decoration:none;}
   .landing-card .lf-link:hover{text-decoration:underline;}
+  .lf-view-select{font-size:12px;font-weight:700;padding:4px 8px;border:1px solid var(--line,#dcdfe4);border-radius:8px;background:#fff;color:inherit;cursor:pointer;}
   .lf-stages{display:flex;align-items:stretch;gap:6px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px;}
   .lf-stage-box{flex:1 1 0;min-width:118px;background:#f8f9fb;border-radius:14px;padding:12px 10px;border-top:3px solid var(--line);}
   .lf-stage-box.lf-spend{border-top-color:#9aa1ad;}
@@ -182,16 +183,10 @@
 
   <section class="view active" id="viewLanding">
     <div class="section-head">
-      <h2>🎯 랜딩별 퍼널 현황 (광고)</h2>
+      <h2>🎯 랜딩별 퍼널 현황</h2>
       <span class="cap" id="landingRangeLabel"></span>
     </div>
     <div class="landing-grid" id="landingGrid"></div>
-
-    <div class="section-head" style="margin-top:26px;">
-      <h2>🌱 오가닉·직접 퍼널</h2>
-      <span class="cap">광고 외 채널(직접·검색·SNS 오가닉 등) — 유입~신청은 GA4, 결제 단계는 수기 확인 건 · 데이터 있는 랜딩만 표시</span>
-    </div>
-    <div class="landing-grid" id="organicGrid"></div>
   </section>
 
   <section class="view" id="viewSummary">
@@ -333,6 +328,7 @@ const SOURCES = {
 const GA4_SOURCES = { real: 'ga4_data.json', demo: 'demo_ga4_data.json' };
 const state = { source:'real', since:null, until:null, adRows:[], revRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[], organicRevRows:[],
   ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Source:null,
+  landingView:{},   // 랜딩 퍼널 카드의 유입경로 드롭다운 선택값 (landing_id → 'all'|'meta'|'organic'|'ch:채널그룹')
   historyRows:[], historyWritable:false, historySha:null };
 
 // 히스토리를 배포된 URL에서 직접 추가/삭제할 수 있게, GitHub Contents API로 history.csv를 직접 읽고 씀.
@@ -786,6 +782,7 @@ const CHANNEL_LABELS = {
   'Referral': '외부 링크',
   'Email': '이메일',
   'Paid Search': '유료 검색',
+  'Paid Other': '유료 기타',
   'Cross-network': '크로스 네트워크',
   'Unassigned': '미분류',
 };
@@ -869,7 +866,7 @@ function sumInRange(rows, since, until){
 
 function renderLandingFunnels(){
   const grid = document.getElementById('landingGrid');
-  document.getElementById('landingRangeLabel').textContent = `${state.since} ~ ${state.until} · 광고(메타 귀속) 기준 — 오가닉 확인 건 제외, 오가닉은 아래 별도 섹션`;
+  document.getElementById('landingRangeLabel').textContent = `${state.since} ~ ${state.until} · 카드 오른쪽 드롭다운으로 유입경로(전체/메타 광고/오가닉·채널별)를 골라 보세요`;
 
   const metricsByLanding = {};
   state.landingMetrics.filter(r=>r.date>=state.since && r.date<=state.until).forEach(r=>{
@@ -890,221 +887,168 @@ function renderLandingFunnels(){
     (lf.id !== 'change-me' || state.since <= '2026-06-22') &&
     (lf.id !== 'impact-me' || state.since <= '2026-07-09'));
 
-  grid.innerHTML = visibleFunnels.map(lf=>{
-    const m = metricsByLanding[lf.id] || {spend:0,visits:0,booking:0,checkout:0,leads:0,final_custom:0};
-    const bucket = bucketsById[lf.id] || {};
-    const fromMeta = !!bucket.stages_from_meta;
-    const spend = m.spend;
-    const visits = m.visits;
+  grid.innerHTML = visibleFunnels.map(lf=> renderLandingCard(lf, metricsByLanding, bucketsById)).join('');
+}
 
-    // find-me/change-me: 중간=메타 맞춤전환(예약페이지 도달), 최종=메타 결제시작.
-    // impact-me: "상담하기" 버튼클릭은 GA4에 직접 연결해둔 cta_click 이벤트로 측정,
-    //            최종(타입폼 제출완료)은 구글시트(Meta 결과수) 기준 수동값만 사용 — 추정치 폐기.
-    // 그 외: 중간=GA4, 최종=메타 리드.
-    let stage2, finalConv, stage2Label, finalLabel;
+function setLandingView(id, v){ state.landingView[id]=v; renderLandingFunnels(); }
+
+// ── 랜딩 퍼널 카드: 유입경로 드롭다운 통합 (2026-07-14) ──
+// 별도 섹션이던 광고/오가닉 퍼널을 카드 하나로 합치고 드롭다운으로 전환해 본다.
+//  전체        = GA4 전체 세션·단계 + 시트 합계 결제 (광고비는 참고 표시, 블렌디드 ROAS)
+//  메타 광고   = 기존 광고 퍼널 로직 (메타 지표·비용지표, 결제 = 시트 합계 - 오가닉 확인 건)
+//  오가닉·직접 = GA4 광고 외 채널 + 수기 확인 결제(attribution=organic)
+//  GA4 채널별  = 유입~신청·네이버 이동만 채널 필터. 결제는 채널그룹 단위 수기 구분이 없어 — 표시
+function renderLandingCard(lf, metricsByLanding, bucketsById){
+  const view = state.landingView[lf.id] || 'all';
+  const m = metricsByLanding[lf.id] || {spend:0,visits:0,booking:0,checkout:0,leads:0,final_custom:0};
+  const bucket = bucketsById[lf.id] || {};
+  const fromMeta = !!bucket.stages_from_meta;
+  const spend = m.spend;
+
+  // 드롭다운 옵션: 전체/메타/오가닉 + 이 랜딩에 조회기간 유입이 있는 GA4 채널그룹
+  const hostCh = {};
+  (state.ga4ChannelRows||[]).forEach(r=>{ if(r.host===lf.hostname && r.date>=state.since && r.date<=state.until) hostCh[r.channel]=(hostCh[r.channel]||0)+r.sessions; });
+  const opts = [['all','전체'],['meta','메타 광고'],['organic','오가닉·직접(광고 외)']];
+  Object.keys(hostCh).sort((a,b)=>hostCh[b]-hostCh[a]).forEach(ch=> opts.push(['ch:'+ch, CHANNEL_LABELS[ch]||ch]));
+  const select = `<select class="lf-view-select" onchange="setLandingView('${lf.id}', this.value)">${opts.map(([v,l])=>`<option value="${v}"${v===view?' selected':''}>${l}</option>`).join('')}</select>`;
+
+  // find-me: 결제페이지 도달→'예약 신청', 예약완료→'예약금 결제완료' 워딩 (2026-07-13)
+  const rateFinalLabel = lf.id==='find-me' ? '결제 전환율' : '전환율';
+  const bookingLabel = lf.id==='find-me' ? '예약금 결제완료' : '예약완료';
+
+  // ── 결제(시트 합계 + 수기 채널·귀속 구분) ──
+  const booking = state.bookingCompleted.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+r.count,0);
+  const revRowsForLanding = state.revRows.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
+  const contracts = revRowsForLanding.reduce((a,r)=>a+r.contracts,0);
+  const revenue = revRowsForLanding.reduce((a,r)=>a+r.revenue,0);
+  // organic_revenue.csv: attribution=organic 행은 광고에서 차감, ads 행(예: 인스타 광고→네이버 결제)은
+  // 광고 귀속 유지 + 채널 구분 표시만 (2026-07-14)
+  const orAllRows = state.organicRevRows.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
+  const orgAttrRows = orAllRows.filter(r=>r.attribution!=='ads');
+  const adsAttrRows = orAllRows.filter(r=>r.attribution==='ads');
+  const orBookings = orgAttrRows.reduce((a,r)=>a+r.bookings,0);
+  const orContracts = orgAttrRows.reduce((a,r)=>a+r.contracts,0);
+  const orRevenue = orgAttrRows.reduce((a,r)=>a+r.revenue,0);
+  const chDetailOf = rows => {
+    const by = {};
+    rows.forEach(r=>{ const ch=r.channel||'unknown'; if(!by[ch]) by[ch]={bookings:0,revenue:0}; by[ch].bookings+=r.bookings; by[ch].revenue+=r.revenue; });
+    const keys = Object.keys(by).sort((a,b)=>by[b].revenue-by[a].revenue);
+    return {
+      bookings: keys.map(ch=>`${OR_CHANNEL_LABELS[ch]||ch} <b>${fmtNum(by[ch].bookings)}</b>`).join(' · '),
+      revenue: keys.map(ch=>`${OR_CHANNEL_LABELS[ch]||ch} <b>${fmtWon(by[ch].revenue)}</b>`).join(' · '),
+    };
+  };
+  const sumByChannel = (rows, ch) => (rows||[]).filter(r=>r.channel===ch && r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+Number(r.value||0),0);
+
+  // ── view별 수치 ──
+  let firstBox='', visits=0, stage2=0, finalConv=0, stage2Label=lf.stage2_label, finalLabel=lf.stage3_label;
+  let bookingV=null, contractsV=null, revenueV=null;   // null = 결제 데이터 없음(—)
+  let bookingDetail='', revenueDetail='', naverClicks=0, costSubs=false, roas=null, payNote='';
+
+  if(view==='meta'){
+    visits = m.visits; costSubs = true;
+    // find-me/change-me: 중간=메타 맞춤전환, 최종=메타 결제시작. impact-me: 중간=GA4 cta_click,
+    // 최종=구글시트(Meta 결과수) 수동값. 그 외: 중간=GA4, 최종=메타 리드.
     if (fromMeta) {
       stage2 = m.booking; finalConv = m.checkout;
-      stage2Label = lf.stage2_label; finalLabel = lf.stage3_label;
     } else if (lf.id === 'impact-me') {
       stage2 = sumInRange(lf.stage2_rows, state.since, state.until);
-      const manualRows = state.typeformSubmits.filter(r=>r.date>=state.since && r.date<=state.until);
-      finalConv = manualRows.reduce((a,r)=>a+r.count,0);
-      stage2Label = lf.stage2_label;
+      finalConv = state.typeformSubmits.filter(r=>r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+r.count,0);
       finalLabel = '타입폼 제출완료';
     } else {
       stage2 = sumInRange(lf.stage2_rows, state.since, state.until); finalConv = m.leads;
-      stage2Label = lf.stage2_label; finalLabel = '전환(리드)';
+      finalLabel = '전환(리드)';
     }
-
-    const cpv = visits ? spend/visits : null;
-    const rate2 = visits ? stage2/visits : null;
-    const cpa2 = stage2 ? spend/stage2 : null;
-    const rateFinal = stage2 ? finalConv/stage2 : null;
-    const cpaFinal = finalConv ? spend/finalConv : null;
-    // find-me: 결제페이지 도달→'예약 신청', 예약완료→'예약금 결제완료' 워딩 (2026-07-13)
-    const rateFinalLabel = lf.id==='find-me' ? '결제 전환율' : '전환율';
-    const bookingLabel = lf.id==='find-me' ? '예약금 결제완료' : '예약완료';
-
-    const bookingRows = state.bookingCompleted.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
-    const booking = bookingRows.reduce((a,r)=>a+r.count,0);
-
-    const revRowsForLanding = state.revRows.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
-    const contracts = revRowsForLanding.reduce((a,r)=>a+r.contracts,0);
-    const revenue = revRowsForLanding.reduce((a,r)=>a+r.revenue,0);
-
-    // 수기 확인 건(organic_revenue.csv): 시트 합계(booking/revenue) 중 경로가 확인된 부분.
-    // attribution=organic 행만 광고 퍼널에서 뺀다 (2026-07-13). attribution=ads 행(예: 인스타 광고→네이버
-    // 플레이스 결제)은 광고 귀속이 맞으므로 빼지 않고 채널 구분 표시에만 쓴다 (2026-07-14).
-    const orAllRows = state.organicRevRows.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
-    const orRowsForLanding = orAllRows.filter(r=>r.attribution!=='ads');
-    const orBookings = orRowsForLanding.reduce((a,r)=>a+r.bookings,0);
-    const orContracts = orRowsForLanding.reduce((a,r)=>a+r.contracts,0);
-    const orRevenue = orRowsForLanding.reduce((a,r)=>a+r.revenue,0);
-    const adBooking = Math.max(0, booking - orBookings);
-    const adContracts = Math.max(0, contracts - orContracts);
-    const adRevenue = Math.max(0, revenue - orRevenue);
-
-    // 광고 귀속 결제 중 채널이 확인된 건(네이버 등) — 예약금 결제완료·결제금액 박스에 분해 표시
-    const adsPayCh = {};
-    orAllRows.filter(r=>r.attribution==='ads').forEach(r=>{
-      const ch = r.channel || 'unknown';
-      if(!adsPayCh[ch]) adsPayCh[ch] = {bookings:0, revenue:0};
-      adsPayCh[ch].bookings += r.bookings; adsPayCh[ch].revenue += r.revenue;
-    });
-    const adsChKeys = Object.keys(adsPayCh).sort((a,b)=>adsPayCh[b].revenue-adsPayCh[a].revenue);
-    const adBookingChDetail = adsChKeys.map(ch=>`${OR_CHANNEL_LABELS[ch]||ch} <b>${fmtNum(adsPayCh[ch].bookings)}</b>`).join(' · ');
-    const adRevenueChDetail = adsChKeys.map(ch=>`${OR_CHANNEL_LABELS[ch]||ch} <b>${fmtWon(adsPayCh[ch].revenue)}</b>`).join(' · ');
-    const rateBooking = finalConv ? adBooking/finalConv : null;
-    const cpaBooking = adBooking ? spend/adBooking : null;
-    const adRoas = spend ? adRevenue/spend : null;
-
-    return `<div class="panel landing-card">
-      <div class="lf-head">
-        <div class="lf-title">${lf.label}</div>
-        <a class="lf-link" href="https://${lf.hostname}" target="_blank" rel="noopener">🔗 ${lf.hostname}</a>
-        ${spend===0?'<span class="lf-sub">이 기간 매칭된 캠페인 지출 없음</span>':''}
-      </div>
-      <div class="lf-stages">
-        <div class="lf-stage-box lf-spend">
-          <div class="lf-stage-label">💰 광고비</div>
-          <div class="lf-stage-value">${fmtWon(spend)}</div>
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s1">
-          <div class="lf-stage-label">🌐 랜딩 유입</div>
-          <div class="lf-stage-value">${fmtNum(visits)}</div>
-          <div class="lf-stage-sub">유입당비용 <b>${cpv!=null?fmtWon(cpv):'—'}</b></div>
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s2">
-          <div class="lf-stage-label">🪜 ${stage2Label}</div>
-          <div class="lf-stage-value">${fmtNum(stage2)}</div>
-          <div class="lf-stage-sub">전환율 <b>${rate2!=null?fmtPct(rate2):'—'}</b> · 전환당비용 <b>${cpa2!=null?fmtWon(cpa2):'—'}</b></div>
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s3">
-          <div class="lf-stage-label">🎯 ${finalLabel}</div>
-          <div class="lf-stage-value">${fmtNum(finalConv)}</div>
-          <div class="lf-stage-sub">${rateFinalLabel} <b>${rateFinal!=null?fmtPct(rateFinal):'—'}</b> · 전환당비용 <b>${cpaFinal!=null?fmtWon(cpaFinal):'—'}</b></div>
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s4">
-          <div class="lf-stage-label">📅 ${bookingLabel}</div>
-          <div class="lf-stage-value">${fmtNum(adBooking)}</div>
-          <div class="lf-stage-sub">예약전환율 <b>${rateBooking!=null?fmtPct(rateBooking):'—'}</b> · 예약당비용 <b>${cpaBooking!=null?fmtWon(cpaBooking):'—'}</b></div>
-          ${adBookingChDetail?`<div class="lf-stage-sub">${adBookingChDetail}</div>`:''}
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s5">
-          <div class="lf-stage-label">🤝 결제금액</div>
-          <div class="lf-stage-value">${fmtWon(adRevenue)}</div>
-          <div class="lf-stage-sub">계약 <b>${fmtNum(adContracts)}건</b> · ROAS <b>${adRoas!=null?fmtPct(adRoas):'—'}</b></div>
-          ${adRevenueChDetail?`<div class="lf-stage-sub">${adRevenueChDetail}</div>`:''}
-        </div>
-      </div>
-    </div>`;
-  }).join('');
-
-  renderOrganicFunnels();
-}
-
-// 🌱 오가닉·직접 퍼널 — 광고 퍼널과 별도 섹션. 유입~신청 단계는 GA4 광고 외 채널,
-// 예약금 결제완료·결제금액은 organic_revenue.csv(수기 확인 건). 조회기간에 데이터가 있는 랜딩만 카드 표시.
-function renderOrganicFunnels(){
-  const grid = document.getElementById('organicGrid');
-  if(!grid) return;
-
-  const cards = state.ga4LandingFunnels.map(lf=>{
-    const orgSessions = sumInRange(lf.sessions_organic_rows||[], state.since, state.until);
-    const orgStage2 = sumInRange(lf.stage2_organic_rows||[], state.since, state.until);
-    const orgStage3 = sumInRange(lf.stage3_organic_rows||[], state.since, state.until);
-    // attribution=ads 행(광고 귀속 결제)은 광고 퍼널 쪽에 표시되므로 오가닉 카드에서 제외
-    const orRows = state.organicRevRows.filter(r=>r.landing_id===lf.id && r.attribution!=='ads' && r.date>=state.since && r.date<=state.until);
-    const orBookings = orRows.reduce((a,r)=>a+r.bookings,0);
-    const orContracts = orRows.reduce((a,r)=>a+r.contracts,0);
-    const orRevenue = orRows.reduce((a,r)=>a+r.revenue,0);
-
-    // 네이버 플레이스 이동 클릭(naver_place_click) — 네이버 안 예약·결제는 GA4 측정 불가라
-    // 이탈 시점까지만 추적하는 참고 지표. 퍼널 단계가 아니므로 헤더에 배지로만 표시.
-    const orgNaverClicks = sumInRange(lf.outbound_organic_rows||[], state.since, state.until);
-
-    // 결제(수기 확인 건)의 유입채널별 분해 — organic_revenue.csv channel 열 기준 (네이버 결제 구분용)
-    const payCh = {};
-    orRows.forEach(r=>{
-      const ch = r.channel || 'unknown';
-      if(!payCh[ch]) payCh[ch] = {bookings:0, revenue:0};
-      payCh[ch].bookings += r.bookings; payCh[ch].revenue += r.revenue;
-    });
-    const payChKeys = Object.keys(payCh).sort((a,b)=>payCh[b].revenue-payCh[a].revenue);
-    const bookingChDetail = payChKeys.map(ch=>`${OR_CHANNEL_LABELS[ch]||ch} <b>${fmtNum(payCh[ch].bookings)}</b>`).join(' · ');
-    const revenueChDetail = payChKeys.map(ch=>`${OR_CHANNEL_LABELS[ch]||ch} <b>${fmtWon(payCh[ch].revenue)}</b>`).join(' · ');
-
-    // 데이터가 하나도 없는 랜딩은 카드 자체를 숨김 (change-me 노출 규칙과 같은 방식)
-    if(!(orgSessions || orgStage2 || orgStage3 || orBookings || orContracts || orRevenue || orgNaverClicks)) return '';
-
-    const rate2 = orgSessions ? orgStage2/orgSessions : null;
-    const rateFinal = orgStage2 ? orgStage3/orgStage2 : null;
-    const rateBooking = orgStage3 ? orBookings/orgStage3 : null;
-    const rateFinalLabel = lf.id==='find-me' ? '결제 전환율' : '전환율';
-    const bookingLabel = lf.id==='find-me' ? '예약금 결제완료' : '예약완료';
-
+    bookingV = Math.max(0, booking - orBookings);
+    contractsV = Math.max(0, contracts - orContracts);
+    revenueV = Math.max(0, revenue - orRevenue);
+    const d = chDetailOf(adsAttrRows); bookingDetail=d.bookings; revenueDetail=d.revenue;
+    naverClicks = Math.max(0, sumInRange(lf.outbound_rows||[], state.since, state.until) - sumInRange(lf.outbound_organic_rows||[], state.since, state.until));
+    roas = spend ? revenueV/spend : null;
+    firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">💰 광고비</div><div class="lf-stage-value">${fmtWon(spend)}</div></div>`;
+  } else if(view==='organic'){
+    visits = sumInRange(lf.sessions_organic_rows||[], state.since, state.until);
+    stage2 = sumInRange(lf.stage2_organic_rows||[], state.since, state.until);
+    finalConv = sumInRange(lf.stage3_organic_rows||[], state.since, state.until);
+    bookingV = orBookings; contractsV = orContracts; revenueV = orRevenue;
+    const d = chDetailOf(orgAttrRows); bookingDetail=d.bookings; revenueDetail=d.revenue;
+    naverClicks = sumInRange(lf.outbound_organic_rows||[], state.since, state.until);
     const chBy = {};
-    (state.ga4ChannelRows||[]).forEach(r=>{
-      if(r.host===lf.hostname && !PAID_CHANNELS.includes(r.channel) && r.date>=state.since && r.date<=state.until)
-        chBy[r.channel]=(chBy[r.channel]||0)+r.sessions;
-    });
+    Object.keys(hostCh).forEach(ch=>{ if(!PAID_CHANNELS.includes(ch)) chBy[ch]=hostCh[ch]; });
     const chSorted = Object.entries(chBy).sort((a,b)=>b[1]-a[1]);
     const chDetail = chSorted.map(([ch,v])=>`${CHANNEL_LABELS[ch]||ch} <b>${fmtNum(v)}</b>`).join(' · ');
+    firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">🧭 유입 경로</div><div class="lf-stage-value" style="font-size:14px;padding-top:3px;">${chSorted.length?(CHANNEL_LABELS[chSorted[0][0]]||chSorted[0][0]):'—'}</div><div class="lf-stage-sub">${chDetail||'이 기간 광고 외 유입 없음'}</div></div>`;
+  } else if(view==='all'){
+    visits = sumInRange(lf.sessions_rows||[], state.since, state.until);
+    stage2 = sumInRange(lf.stage2_rows||[], state.since, state.until);
+    finalConv = sumInRange(lf.stage3_rows||[], state.since, state.until);
+    bookingV = booking; contractsV = contracts; revenueV = revenue;
+    const d = chDetailOf(orAllRows); bookingDetail=d.bookings; revenueDetail=d.revenue;
+    naverClicks = sumInRange(lf.outbound_rows||[], state.since, state.until);
+    roas = spend ? revenueV/spend : null;
+    firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">💰 광고비</div><div class="lf-stage-value">${fmtWon(spend)}</div><div class="lf-stage-sub">참고 (전체 유입 기준)</div></div>`;
+  } else {  // 'ch:GA4채널그룹'
+    const ch = view.slice(3);
+    visits = hostCh[ch]||0;
+    stage2 = sumByChannel(lf.stage2_by_channel_rows, ch);
+    finalConv = sumByChannel(lf.stage3_by_channel_rows, ch);
+    naverClicks = sumByChannel(lf.outbound_by_channel_rows, ch);
+    payNote = '채널그룹 단위 수기 구분 없음';
+    firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">🧭 유입 경로</div><div class="lf-stage-value" style="font-size:14px;padding-top:3px;">${CHANNEL_LABELS[ch]||ch}</div><div class="lf-stage-sub">GA4 채널그룹 기준</div></div>`;
+  }
 
-    return `<div class="panel landing-card">
-      <div class="lf-head">
-        <div class="lf-title">🌱 ${lf.label}</div>
-        <a class="lf-link" href="https://${lf.hostname}" target="_blank" rel="noopener">🔗 ${lf.hostname}</a>
-        ${orgNaverClicks?`<span class="lf-sub" style="color:#03C75A;font-weight:700;">🟢 ${lf.outbound_label||'네이버 플레이스 이동'} ${fmtNum(orgNaverClicks)}회 <span style="font-weight:400;color:#8a919c;">— 이후 네이버 예약·결제는 수기 확인 건으로 집계</span></span>`:''}
-      </div>
-      <div class="lf-stages">
-        <div class="lf-stage-box lf-spend">
-          <div class="lf-stage-label">🧭 유입 경로</div>
-          <div class="lf-stage-value" style="font-size:14px;padding-top:3px;">${chSorted.length?(CHANNEL_LABELS[chSorted[0][0]]||chSorted[0][0]):'—'}</div>
-          <div class="lf-stage-sub">${chDetail||'이 기간 광고 외 유입 없음'}</div>
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s1">
-          <div class="lf-stage-label">🌐 랜딩 유입</div>
-          <div class="lf-stage-value">${fmtNum(orgSessions)}</div>
-          <div class="lf-stage-sub">GA4 세션 기준</div>
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s2">
-          <div class="lf-stage-label">🪜 ${lf.stage2_label}</div>
-          <div class="lf-stage-value">${fmtNum(orgStage2)}</div>
-          <div class="lf-stage-sub">전환율 <b>${rate2!=null?fmtPct(rate2):'—'}</b></div>
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s3">
-          <div class="lf-stage-label">🎯 ${lf.stage3_label}</div>
-          <div class="lf-stage-value">${fmtNum(orgStage3)}</div>
-          <div class="lf-stage-sub">${rateFinalLabel} <b>${rateFinal!=null?fmtPct(rateFinal):'—'}</b></div>
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s4">
-          <div class="lf-stage-label">📅 ${bookingLabel}</div>
-          <div class="lf-stage-value">${fmtNum(orBookings)}</div>
-          <div class="lf-stage-sub">예약전환율 <b>${rateBooking!=null?fmtPct(rateBooking):'—'}</b></div>
-          ${bookingChDetail?`<div class="lf-stage-sub">${bookingChDetail}</div>`:''}
-        </div>
-        <div class="lf-arrow">→</div>
-        <div class="lf-stage-box lf-s5">
-          <div class="lf-stage-label">🤝 결제금액</div>
-          <div class="lf-stage-value">${fmtWon(orRevenue)}</div>
-          <div class="lf-stage-sub">계약 <b>${fmtNum(orContracts)}건</b></div>
-          ${revenueChDetail?`<div class="lf-stage-sub">${revenueChDetail}</div>`:''}
-        </div>
-      </div>
-    </div>`;
-  }).filter(Boolean);
+  const cpv = (costSubs && visits) ? spend/visits : null;
+  const rate2 = visits ? stage2/visits : null;
+  const cpa2 = (costSubs && stage2) ? spend/stage2 : null;
+  const rateFinal = stage2 ? finalConv/stage2 : null;
+  const cpaFinal = (costSubs && finalConv) ? spend/finalConv : null;
+  const rateBooking = (bookingV!=null && finalConv) ? bookingV/finalConv : null;
+  const cpaBooking = (costSubs && bookingV) ? spend/bookingV : null;
 
-  grid.innerHTML = cards.length ? cards.join('') : '<div class="empty">이 기간 오가닉·직접 유입 데이터가 없어요</div>';
+  return `<div class="panel landing-card">
+    <div class="lf-head">
+      <div class="lf-title">${lf.label}</div>
+      <a class="lf-link" href="https://${lf.hostname}" target="_blank" rel="noopener">🔗 ${lf.hostname}</a>
+      ${select}
+      ${view==='meta'&&spend===0?'<span class="lf-sub">이 기간 매칭된 캠페인 지출 없음</span>':''}
+      ${naverClicks?`<span class="lf-sub" style="color:#03C75A;font-weight:700;">🟢 ${lf.outbound_label||'네이버 플레이스 이동'} ${fmtNum(naverClicks)}회 <span style="font-weight:400;color:#8a919c;">— 이후 네이버 예약·결제는 수기 확인 건으로 집계</span></span>`:''}
+    </div>
+    <div class="lf-stages">
+      ${firstBox}
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s1">
+        <div class="lf-stage-label">🌐 랜딩 유입</div>
+        <div class="lf-stage-value">${fmtNum(visits)}</div>
+        <div class="lf-stage-sub">${costSubs?`유입당비용 <b>${cpv!=null?fmtWon(cpv):'—'}</b>`:'GA4 세션 기준'}</div>
+      </div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s2">
+        <div class="lf-stage-label">🪜 ${stage2Label}</div>
+        <div class="lf-stage-value">${fmtNum(stage2)}</div>
+        <div class="lf-stage-sub">전환율 <b>${rate2!=null?fmtPct(rate2):'—'}</b>${cpa2!=null?` · 전환당비용 <b>${fmtWon(cpa2)}</b>`:''}</div>
+      </div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s3">
+        <div class="lf-stage-label">🎯 ${finalLabel}</div>
+        <div class="lf-stage-value">${fmtNum(finalConv)}</div>
+        <div class="lf-stage-sub">${rateFinalLabel} <b>${rateFinal!=null?fmtPct(rateFinal):'—'}</b>${cpaFinal!=null?` · 전환당비용 <b>${fmtWon(cpaFinal)}</b>`:''}</div>
+      </div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s4">
+        <div class="lf-stage-label">📅 ${bookingLabel}</div>
+        <div class="lf-stage-value">${bookingV!=null?fmtNum(bookingV):'—'}</div>
+        <div class="lf-stage-sub">${bookingV!=null?`예약전환율 <b>${rateBooking!=null?fmtPct(rateBooking):'—'}</b>${cpaBooking!=null?` · 예약당비용 <b>${fmtWon(cpaBooking)}</b>`:''}`:payNote}</div>
+        ${bookingDetail?`<div class="lf-stage-sub">${bookingDetail}</div>`:''}
+      </div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s5">
+        <div class="lf-stage-label">🤝 결제금액</div>
+        <div class="lf-stage-value">${revenueV!=null?fmtWon(revenueV):'—'}</div>
+        <div class="lf-stage-sub">${revenueV!=null?`계약 <b>${fmtNum(contractsV)}건</b>${roas!=null?` · ${view==='all'?'블렌디드 ROAS':'ROAS'} <b>${fmtPct(roas)}</b>`:''}`:payNote}</div>
+        ${revenueDetail?`<div class="lf-stage-sub">${revenueDetail}</div>`:''}
+      </div>
+    </div>
+  </div>`;
 }
 
 // 광고(유료) 채널 그룹 — 이 외 채널은 전부 오가닉·직접으로 취급. fetch_ga4.py 의 PAID_CHANNELS 와 항상 같게 유지할 것.
