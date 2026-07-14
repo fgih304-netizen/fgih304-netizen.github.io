@@ -189,12 +189,7 @@
       <select id="landingViewSelect" class="lf-view-select" onchange="setLandingView(this.value)"></select>
       <span class="cap" id="landingRangeLabel"></span>
     </div>
-    <div class="lf-legend">
-      <div><b>전체</b> — 광고+콘텐츠+오가닉 합산. 사업 전체 CAC·ROI(블렌디드)는 여기서 봐요.</div>
-      <div><b>메타 광고</b> — 인스타·페북 유료 광고 유입. 광고비 대비 효율(예산 판단)은 여기서.</div>
-      <div><b>콘텐츠</b> — 쓰레드·블로그 등 우리가 직접 발행하는 콘텐츠 경유 유입 (UTM 기준).</div>
-      <div><b>오가닉</b> — 직접 유입·미분류·외부 링크·검색 등 자연 유입. 실제 바이럴 여부는 여기서.</div>
-    </div>
+    <div class="lf-legend" id="landingLegend"></div>
     <div class="landing-grid" id="landingGrid"></div>
   </section>
 
@@ -894,6 +889,17 @@ function renderLandingFunnels(){
   const viewSel = document.getElementById('landingViewSelect');
   if(!opts.some(([v])=>v===state.landingView)) state.landingView='all';   // 기간 변경으로 선택 채널이 사라지면 전체로
   viewSel.innerHTML = opts.map(([v,l])=>`<option value="${v}"${v===state.landingView?' selected':''}>${l}</option>`).join('');
+
+  // 선택된 뷰의 분류 설명 한 줄만 표시 (2026-07-14)
+  const LEGEND_BY_VIEW = {
+    'all': '<b>전체</b> — 광고+콘텐츠+오가닉 합산. 사업 전체 CAC·ROI(블렌디드)는 여기서 봐요.',
+    'meta': '<b>메타 광고</b> — 인스타·페북 유료 광고 유입. 광고비 대비 효율(예산 판단)은 여기서.',
+    'ch:Organic Social': '<b>콘텐츠</b> — 쓰레드·블로그 등 우리가 직접 발행하는 콘텐츠 경유 유입 (UTM 기준).',
+    'organic': '<b>오가닉</b> — 직접 유입·미분류·외부 링크·검색 등 자연 유입. 실제 바이럴 여부는 여기서.',
+  };
+  const legendEl = document.getElementById('landingLegend');
+  if(legendEl) legendEl.innerHTML = LEGEND_BY_VIEW[state.landingView]
+    || `<b>${CHANNEL_LABELS[state.landingView.slice(3)]||state.landingView.slice(3)}</b> — GA4 채널그룹 기준 개별 채널 유입. 결제 단계는 채널 단위 수기 구분이 없어 표시되지 않아요.`;
 
   const metricsByLanding = {};
   state.landingMetrics.filter(r=>r.date>=state.since && r.date<=state.until).forEach(r=>{
