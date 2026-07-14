@@ -453,11 +453,12 @@ async function loadSource(name){
   const bookingCompleted = parseCSV(bcText).map(r=>({
     date:r.date, landing_id:(r.landing_id||'').trim(), count:Number(r.count||0),
   })).filter(r=>r.date);
-  // 오가닉 수기 확인 건: revenue.csv·booking_completed.csv(전체 합계)에 포함된 수치 중
-  // 광고 외 경로로 확인된 부분의 채널 구분 파일 (수동 관리). bookings=예약금 결제완료 수.
+  // 결제 채널·귀속 구분 파일(수동 관리): revenue.csv·booking_completed.csv(전체 합계)에 포함된 수치 중
+  // 경로가 확인된 건의 channel(naver/direct/…)과 attribution(organic=광고 외 → 광고 퍼널에서 차감,
+  // ads=광고 귀속 → 차감 없이 채널 표시만. 예: 인스타 광고→네이버 플레이스 결제)을 기록. bookings=예약금 결제완료 수.
   const orText = (orRes && orRes.ok) ? await orRes.text() : '';
   const organicRevRows = parseCSV(orText).map(r=>({
-    date:r.date, landing_id:(r.landing_id||'').trim(), channel:(r.channel||'').trim(), bookings:Number(r.bookings||0), contracts:Number(r.contracts||0), revenue:Number(r.revenue||0),
+    date:r.date, landing_id:(r.landing_id||'').trim(), channel:(r.channel||'').trim(), attribution:((r.attribution||'').trim()||'organic'), bookings:Number(r.bookings||0), contracts:Number(r.contracts||0), revenue:Number(r.revenue||0),
   })).filter(r=>r.date);
   return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows };
 }
@@ -931,15 +932,28 @@ function renderLandingFunnels(){
     const contracts = revRowsForLanding.reduce((a,r)=>a+r.contracts,0);
     const revenue = revRowsForLanding.reduce((a,r)=>a+r.revenue,0);
 
-    // 오가닉 수기 확인 건(organic_revenue.csv): 시트 합계(booking/revenue) 중 광고 외 경로로 확인된 부분.
-    // 광고 퍼널 행에는 이 부분을 뺀 "광고 귀속" 수치만 보여준다 (2026-07-13).
-    const orRowsForLanding = state.organicRevRows.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
+    // 수기 확인 건(organic_revenue.csv): 시트 합계(booking/revenue) 중 경로가 확인된 부분.
+    // attribution=organic 행만 광고 퍼널에서 뺀다 (2026-07-13). attribution=ads 행(예: 인스타 광고→네이버
+    // 플레이스 결제)은 광고 귀속이 맞으므로 빼지 않고 채널 구분 표시에만 쓴다 (2026-07-14).
+    const orAllRows = state.organicRevRows.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
+    const orRowsForLanding = orAllRows.filter(r=>r.attribution!=='ads');
     const orBookings = orRowsForLanding.reduce((a,r)=>a+r.bookings,0);
     const orContracts = orRowsForLanding.reduce((a,r)=>a+r.contracts,0);
     const orRevenue = orRowsForLanding.reduce((a,r)=>a+r.revenue,0);
     const adBooking = Math.max(0, booking - orBookings);
     const adContracts = Math.max(0, contracts - orContracts);
     const adRevenue = Math.max(0, revenue - orRevenue);
+
+    // 광고 귀속 결제 중 채널이 확인된 건(네이버 등) — 예약금 결제완료·결제금액 박스에 분해 표시
+    const adsPayCh = {};
+    orAllRows.filter(r=>r.attribution==='ads').forEach(r=>{
+      const ch = r.channel || 'unknown';
+      if(!adsPayCh[ch]) adsPayCh[ch] = {bookings:0, revenue:0};
+      adsPayCh[ch].bookings += r.bookings; adsPayCh[ch].revenue += r.revenue;
+    });
+    const adsChKeys = Object.keys(adsPayCh).sort((a,b)=>adsPayCh[b].revenue-adsPayCh[a].revenue);
+    const adBookingChDetail = adsChKeys.map(ch=>`${OR_CHANNEL_LABELS[ch]||ch} <b>${fmtNum(adsPayCh[ch].bookings)}</b>`).join(' · ');
+    const adRevenueChDetail = adsChKeys.map(ch=>`${OR_CHANNEL_LABELS[ch]||ch} <b>${fmtWon(adsPayCh[ch].revenue)}</b>`).join(' · ');
     const rateBooking = finalConv ? adBooking/finalConv : null;
     const cpaBooking = adBooking ? spend/adBooking : null;
     const adRoas = spend ? adRevenue/spend : null;
@@ -978,12 +992,14 @@ function renderLandingFunnels(){
           <div class="lf-stage-label">📅 ${bookingLabel}</div>
           <div class="lf-stage-value">${fmtNum(adBooking)}</div>
           <div class="lf-stage-sub">예약전환율 <b>${rateBooking!=null?fmtPct(rateBooking):'—'}</b> · 예약당비용 <b>${cpaBooking!=null?fmtWon(cpaBooking):'—'}</b></div>
+          ${adBookingChDetail?`<div class="lf-stage-sub">이 중 ${adBookingChDetail}</div>`:''}
         </div>
         <div class="lf-arrow">→</div>
         <div class="lf-stage-box lf-s5">
           <div class="lf-stage-label">🤝 결제금액</div>
           <div class="lf-stage-value">${fmtWon(adRevenue)}</div>
           <div class="lf-stage-sub">계약 <b>${fmtNum(adContracts)}건</b> · ROAS <b>${adRoas!=null?fmtPct(adRoas):'—'}</b></div>
+          ${adRevenueChDetail?`<div class="lf-stage-sub">이 중 ${adRevenueChDetail}</div>`:''}
         </div>
       </div>
     </div>`;
@@ -1002,7 +1018,8 @@ function renderOrganicFunnels(){
     const orgSessions = sumInRange(lf.sessions_organic_rows||[], state.since, state.until);
     const orgStage2 = sumInRange(lf.stage2_organic_rows||[], state.since, state.until);
     const orgStage3 = sumInRange(lf.stage3_organic_rows||[], state.since, state.until);
-    const orRows = state.organicRevRows.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
+    // attribution=ads 행(광고 귀속 결제)은 광고 퍼널 쪽에 표시되므로 오가닉 카드에서 제외
+    const orRows = state.organicRevRows.filter(r=>r.landing_id===lf.id && r.attribution!=='ads' && r.date>=state.since && r.date<=state.until);
     const orBookings = orRows.reduce((a,r)=>a+r.bookings,0);
     const orContracts = orRows.reduce((a,r)=>a+r.contracts,0);
     const orRevenue = orRows.reduce((a,r)=>a+r.revenue,0);
