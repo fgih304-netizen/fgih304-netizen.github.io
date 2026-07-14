@@ -1007,6 +1007,7 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     const chDetail = chSorted.map(([ch,v])=>`${CHANNEL_LABELS[ch]||ch} <b>${fmtNum(v)}</b>`).join(' · ');
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">🧭 유입 경로</div><div class="lf-stage-value" style="font-size:14px;padding-top:3px;">${chSorted.length?(CHANNEL_LABELS[chSorted[0][0]]||chSorted[0][0]):'—'}</div><div class="lf-stage-sub">${chDetail||'이 기간 광고 외 유입 없음'}</div></div>`;
   } else if(view==='all'){
+    costSubs = true;   // 전체 뷰도 전환당 비용 표시 — 광고비/전체 전환이라 블렌디드 기준 (2026-07-14 요청)
     visits = sumInRange(lf.sessions_rows||[], state.since, state.until);
     stage2 = sumInRange(lf.stage2_rows||[], state.since, state.until);
     finalConv = sumInRange(lf.stage3_rows||[], state.since, state.until);
