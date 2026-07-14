@@ -184,6 +184,7 @@
   <section class="view active" id="viewLanding">
     <div class="section-head">
       <h2>🎯 랜딩별 퍼널 현황</h2>
+      <select id="landingViewSelect" class="lf-view-select" onchange="setLandingView(this.value)"></select>
       <span class="cap" id="landingRangeLabel"></span>
     </div>
     <div class="landing-grid" id="landingGrid"></div>
@@ -328,7 +329,7 @@ const SOURCES = {
 const GA4_SOURCES = { real: 'ga4_data.json', demo: 'demo_ga4_data.json' };
 const state = { source:'real', since:null, until:null, adRows:[], revRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[], organicRevRows:[],
   ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Source:null,
-  landingView:{},   // 랜딩 퍼널 카드의 유입경로 드롭다운 선택값 (landing_id → 'all'|'meta'|'organic'|'ch:채널그룹')
+  landingView:'all',   // 랜딩 퍼널 섹션의 유입경로 드롭다운 선택값 ('all'|'meta'|'organic'|'ch:채널그룹') — 모든 카드에 일괄 적용
   historyRows:[], historyWritable:false, historySha:null };
 
 // 히스토리를 배포된 URL에서 직접 추가/삭제할 수 있게, GitHub Contents API로 history.csv를 직접 읽고 씀.
@@ -866,7 +867,18 @@ function sumInRange(rows, since, until){
 
 function renderLandingFunnels(){
   const grid = document.getElementById('landingGrid');
-  document.getElementById('landingRangeLabel').textContent = `${state.since} ~ ${state.until} · 카드 오른쪽 드롭다운으로 유입경로(전체/메타 광고/오가닉·채널별)를 골라 보세요`;
+  document.getElementById('landingRangeLabel').textContent = `${state.since} ~ ${state.until} · 드롭다운으로 유입경로를 고르면 모든 랜딩 퍼널이 그 기준으로 바뀝니다`;
+
+  // 섹션 상단 유입경로 드롭다운: 전체/메타/오가닉 + 조회기간에 유입이 있는 GA4 채널그룹.
+  // 직접 유입(Direct)·미분류(Unassigned)는 오가닉으로 취급해 개별 옵션에서 제외 (2026-07-14 피드백).
+  const chSet = {};
+  (state.ga4ChannelRows||[]).forEach(r=>{ if(r.date>=state.since && r.date<=state.until) chSet[r.channel]=(chSet[r.channel]||0)+r.sessions; });
+  const subCh = Object.keys(chSet).filter(ch=>!PAID_CHANNELS.includes(ch) && ch!=='Direct' && ch!=='Unassigned').sort((a,b)=>chSet[b]-chSet[a]);
+  const opts = [['all','전체 (광고+오가닉)'],['meta','메타 광고'],['organic','오가닉 (직접·미분류 포함)']];
+  subCh.forEach(ch=> opts.push(['ch:'+ch, CHANNEL_LABELS[ch]||ch]));
+  const viewSel = document.getElementById('landingViewSelect');
+  if(!opts.some(([v])=>v===state.landingView)) state.landingView='all';   // 기간 변경으로 선택 채널이 사라지면 전체로
+  viewSel.innerHTML = opts.map(([v,l])=>`<option value="${v}"${v===state.landingView?' selected':''}>${l}</option>`).join('');
 
   const metricsByLanding = {};
   state.landingMetrics.filter(r=>r.date>=state.since && r.date<=state.until).forEach(r=>{
@@ -890,27 +902,23 @@ function renderLandingFunnels(){
   grid.innerHTML = visibleFunnels.map(lf=> renderLandingCard(lf, metricsByLanding, bucketsById)).join('');
 }
 
-function setLandingView(id, v){ state.landingView[id]=v; renderLandingFunnels(); }
+function setLandingView(v){ state.landingView=v; renderLandingFunnels(); }
 
-// ── 랜딩 퍼널 카드: 유입경로 드롭다운 통합 (2026-07-14) ──
-// 별도 섹션이던 광고/오가닉 퍼널을 카드 하나로 합치고 드롭다운으로 전환해 본다.
-//  전체        = GA4 전체 세션·단계 + 시트 합계 결제 (광고비는 참고 표시, 블렌디드 ROAS)
-//  메타 광고   = 기존 광고 퍼널 로직 (메타 지표·비용지표, 결제 = 시트 합계 - 오가닉 확인 건)
-//  오가닉·직접 = GA4 광고 외 채널 + 수기 확인 결제(attribution=organic)
-//  GA4 채널별  = 유입~신청·네이버 이동만 채널 필터. 결제는 채널그룹 단위 수기 구분이 없어 — 표시
+// ── 랜딩 퍼널 카드: 섹션 드롭다운으로 유입경로 일괄 전환 (2026-07-14) ──
+//  전체              = GA4 전체 세션·단계 + 시트 합계 결제 (광고비는 참고 표시, 블렌디드 ROAS)
+//  메타 광고         = 기존 광고 퍼널 로직 (메타 지표·비용지표, 결제 = 시트 합계 - 오가닉 확인 건)
+//  오가닉(직접·미분류 포함) = GA4 광고 외 채널 전부 + 수기 확인 결제(attribution=organic)
+//  GA4 채널별        = 유입~신청·네이버 이동만 채널 필터. 결제는 채널그룹 단위 수기 구분이 없어 — 표시
 function renderLandingCard(lf, metricsByLanding, bucketsById){
-  const view = state.landingView[lf.id] || 'all';
+  const view = state.landingView || 'all';
   const m = metricsByLanding[lf.id] || {spend:0,visits:0,booking:0,checkout:0,leads:0,final_custom:0};
   const bucket = bucketsById[lf.id] || {};
   const fromMeta = !!bucket.stages_from_meta;
   const spend = m.spend;
 
-  // 드롭다운 옵션: 전체/메타/오가닉 + 이 랜딩에 조회기간 유입이 있는 GA4 채널그룹
+  // 이 랜딩(호스트)의 조회기간 채널별 세션 — ch뷰 유입·오가닉뷰 유입경로 분해에 사용
   const hostCh = {};
   (state.ga4ChannelRows||[]).forEach(r=>{ if(r.host===lf.hostname && r.date>=state.since && r.date<=state.until) hostCh[r.channel]=(hostCh[r.channel]||0)+r.sessions; });
-  const opts = [['all','전체'],['meta','메타 광고'],['organic','오가닉·직접(광고 외)']];
-  Object.keys(hostCh).sort((a,b)=>hostCh[b]-hostCh[a]).forEach(ch=> opts.push(['ch:'+ch, CHANNEL_LABELS[ch]||ch]));
-  const select = `<select class="lf-view-select" onchange="setLandingView('${lf.id}', this.value)">${opts.map(([v,l])=>`<option value="${v}"${v===view?' selected':''}>${l}</option>`).join('')}</select>`;
 
   // find-me: 결제페이지 도달→'예약 신청', 예약완료→'예약금 결제완료' 워딩 (2026-07-13)
   const rateFinalLabel = lf.id==='find-me' ? '결제 전환율' : '전환율';
@@ -1009,7 +1017,6 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     <div class="lf-head">
       <div class="lf-title">${lf.label}</div>
       <a class="lf-link" href="https://${lf.hostname}" target="_blank" rel="noopener">🔗 ${lf.hostname}</a>
-      ${select}
       ${view==='meta'&&spend===0?'<span class="lf-sub">이 기간 매칭된 캠페인 지출 없음</span>':''}
       ${naverClicks?`<span class="lf-sub" style="color:#03C75A;font-weight:700;">🟢 ${lf.outbound_label||'네이버 플레이스 이동'} ${fmtNum(naverClicks)}회 <span style="font-weight:400;color:#8a919c;">— 이후 네이버 예약·결제는 수기 확인 건으로 집계</span></span>`:''}
     </div>
