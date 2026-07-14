@@ -964,7 +964,7 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
   // ── view별 수치 ──
   let firstBox='', visits=0, stage2=0, finalConv=0, stage2Label=lf.stage2_label, finalLabel=lf.stage3_label;
   let bookingV=null, contractsV=null, revenueV=null;   // null = 결제 데이터 없음(—)
-  let bookingDetail='', revenueDetail='', naverClicks=0, costSubs=false, roas=null, payNote='';
+  let bookingDetail='', revenueDetail='', naverClicks=0, costSubs=false, roas=null, payNote='', splitBadge='';
 
   if(view==='meta'){
     visits = m.visits; costSubs = true;
@@ -1022,6 +1022,12 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
       bookingDetail = [bookingDetail, thBookingBadge].filter(Boolean).join(' · ');
     }
     roas = spend ? revenueV/spend : null;
+    // 광고:오가닉 비율 한 줄 — 유입은 GA4 세션(전체-오가닉=광고), 예약은 시트 광고분 vs 오가닉 확인건(+쓰레드)
+    const orgSess = sumInRange(lf.sessions_organic_rows||[], state.since, state.until);
+    const paidSess = Math.max(0, visits - orgSess);
+    const orgBookAll = orBookings + thBookings;
+    const adsBookAll = Math.max(0, (bookingV||0) - orgBookAll);
+    if(visits) splitBadge = `⚖️ 광고 ${fmtPct(paidSess/visits)} · 오가닉 ${fmtPct(orgSess/visits)} <span style="font-weight:400;color:#8a919c;">(유입 기준)</span>${bookingV?` · ${bookingLabel} 광고 <b>${fmtNum(adsBookAll)}</b>·오가닉 <b>${fmtNum(orgBookAll)}</b>`:''}`;
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">💰 광고비</div><div class="lf-stage-value">${fmtWon(spend)}</div><div class="lf-stage-sub">참고 (전체 유입 기준)</div></div>`;
   } else {  // 'ch:GA4채널그룹'
     const ch = view.slice(3);
@@ -1052,6 +1058,7 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
       <div class="lf-title">${lf.label}</div>
       <a class="lf-link" href="https://${lf.hostname}" target="_blank" rel="noopener">🔗 ${lf.hostname}</a>
       ${view==='meta'&&spend===0?'<span class="lf-sub">이 기간 매칭된 캠페인 지출 없음</span>':''}
+      ${splitBadge?`<span class="lf-sub" style="font-weight:700;">${splitBadge}</span>`:''}
       ${naverClicks?`<span class="lf-sub" style="color:#03C75A;font-weight:700;">🟢 ${lf.outbound_label||'네이버 플레이스 이동'} ${fmtNum(naverClicks)}회 <span style="font-weight:400;color:#8a919c;">— 이후 네이버 예약·결제는 수기 확인 건으로 집계</span></span>`:''}
     </div>
     <div class="lf-stages">
