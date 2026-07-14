@@ -992,14 +992,14 @@ function renderLandingFunnels(){
           <div class="lf-stage-label">📅 ${bookingLabel}</div>
           <div class="lf-stage-value">${fmtNum(adBooking)}</div>
           <div class="lf-stage-sub">예약전환율 <b>${rateBooking!=null?fmtPct(rateBooking):'—'}</b> · 예약당비용 <b>${cpaBooking!=null?fmtWon(cpaBooking):'—'}</b></div>
-          ${adBookingChDetail?`<div class="lf-stage-sub">이 중 ${adBookingChDetail}</div>`:''}
+          ${adBookingChDetail?`<div class="lf-stage-sub">${adBookingChDetail}</div>`:''}
         </div>
         <div class="lf-arrow">→</div>
         <div class="lf-stage-box lf-s5">
           <div class="lf-stage-label">🤝 결제금액</div>
           <div class="lf-stage-value">${fmtWon(adRevenue)}</div>
           <div class="lf-stage-sub">계약 <b>${fmtNum(adContracts)}건</b> · ROAS <b>${adRoas!=null?fmtPct(adRoas):'—'}</b></div>
-          ${adRevenueChDetail?`<div class="lf-stage-sub">이 중 ${adRevenueChDetail}</div>`:''}
+          ${adRevenueChDetail?`<div class="lf-stage-sub">${adRevenueChDetail}</div>`:''}
         </div>
       </div>
     </div>`;
@@ -1111,7 +1111,7 @@ function renderOrganicFunnels(){
 const PAID_CHANNELS = ['Paid Social', 'Paid Search', 'Cross-network', 'Display', 'Paid Video', 'Paid Shopping', 'Paid Other'];
 
 // organic_revenue.csv 의 channel 열 값 → 표시 라벨. 채널 값은 소문자 영문으로 기록 (naver=네이버 플레이스 예약·결제).
-const OR_CHANNEL_LABELS = { naver:'네이버', direct:'직접', instagram:'인스타그램', search:'검색', kakao:'카카오', unknown:'미지정' };
+const OR_CHANNEL_LABELS = { naver:'네이버 예약', direct:'직접', instagram:'인스타그램', search:'검색', kakao:'카카오', unknown:'미지정' };
 
 const HIST_TYPE_META = {
   '수정': {emoji:'✏️', bg:'#fff1e6', fg:'#b3681f'},
