@@ -104,6 +104,8 @@
   .landing-card .lf-link{font-size:11.5px;color:var(--amber);font-weight:700;text-decoration:none;}
   .landing-card .lf-link:hover{text-decoration:underline;}
   .lf-view-select{font-size:12px;font-weight:700;padding:4px 8px;border:1px solid var(--line,#dcdfe4);border-radius:8px;background:#fff;color:inherit;cursor:pointer;}
+  .lf-legend{font-size:11.5px;color:var(--sub);line-height:1.8;margin:2px 0 14px;}
+  .lf-legend b{color:inherit;}
   .lf-stages{display:flex;align-items:stretch;gap:6px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px;}
   .lf-stage-box{flex:1 1 0;min-width:118px;background:#f8f9fb;border-radius:14px;padding:12px 10px;border-top:3px solid var(--line);}
   .lf-stage-box.lf-spend{border-top-color:#9aa1ad;}
@@ -186,6 +188,12 @@
       <h2>🎯 랜딩별 퍼널 현황</h2>
       <select id="landingViewSelect" class="lf-view-select" onchange="setLandingView(this.value)"></select>
       <span class="cap" id="landingRangeLabel"></span>
+    </div>
+    <div class="lf-legend">
+      <div><b>전체</b> — 광고+콘텐츠+오가닉 합산. 사업 전체 CAC·ROI(블렌디드)는 여기서 봐요.</div>
+      <div><b>메타 광고</b> — 인스타·페북 유료 광고 유입. 광고비 대비 효율(예산 판단)은 여기서.</div>
+      <div><b>콘텐츠</b> — 쓰레드·블로그 등 우리가 직접 발행하는 콘텐츠 경유 유입 (UTM 기준).</div>
+      <div><b>오가닉</b> — 직접 유입·미분류·외부 링크·검색 등 자연 유입. 실제 바이럴 여부는 여기서.</div>
     </div>
     <div class="landing-grid" id="landingGrid"></div>
   </section>
@@ -876,12 +884,12 @@ function renderLandingFunnels(){
   const grid = document.getElementById('landingGrid');
   document.getElementById('landingRangeLabel').textContent = `${state.since} ~ ${state.until} · 드롭다운으로 유입경로를 고르면 모든 랜딩 퍼널이 그 기준으로 바뀝니다`;
 
-  // 섹션 상단 유입경로 드롭다운: 전체/메타/오가닉 + 조회기간에 유입이 있는 GA4 채널그룹.
-  // 직접 유입(Direct)·미분류(Unassigned)는 오가닉으로 취급해 개별 옵션에서 제외 (2026-07-14 피드백).
+  // 섹션 상단 유입경로 드롭다운: 전체/메타/콘텐츠/오가닉 고정 + 조회기간에 유입이 있는 나머지 GA4 채널그룹.
+  // 직접(Direct)·미분류(Unassigned)는 오가닉으로 취급, 콘텐츠(Organic Social)는 별도 카테고리 (2026-07-14 분류).
   const chSet = {};
   (state.ga4ChannelRows||[]).forEach(r=>{ if(r.date>=state.since && r.date<=state.until) chSet[r.channel]=(chSet[r.channel]||0)+r.sessions; });
-  const subCh = Object.keys(chSet).filter(ch=>!PAID_CHANNELS.includes(ch) && ch!=='Direct' && ch!=='Unassigned').sort((a,b)=>chSet[b]-chSet[a]);
-  const opts = [['all','전체 (광고+오가닉)'],['meta','메타 광고'],['organic','오가닉 (직접·미분류 포함)']];
+  const subCh = Object.keys(chSet).filter(ch=>!PAID_CHANNELS.includes(ch) && !CONTENT_CHANNELS.includes(ch) && ch!=='Direct' && ch!=='Unassigned').sort((a,b)=>chSet[b]-chSet[a]);
+  const opts = [['all','전체 (광고+콘텐츠+오가닉)'],['meta','메타 광고'],['ch:Organic Social','콘텐츠 (쓰레드·블로그 등)'],['organic','오가닉 (직접·미분류·외부링크)']];
   subCh.forEach(ch=> opts.push(['ch:'+ch, CHANNEL_LABELS[ch]||ch]));
   const viewSel = document.getElementById('landingViewSelect');
   if(!opts.some(([v])=>v===state.landingView)) state.landingView='all';   // 기간 변경으로 선택 채널이 사라지면 전체로
@@ -985,7 +993,7 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     contractsV = Math.max(0, contracts - orContracts);
     revenueV = Math.max(0, revenue - orRevenue);
     const d = chDetailOf(adsAttrRows); bookingDetail=d.bookings; revenueDetail=d.revenue;
-    naverClicks = Math.max(0, sumInRange(lf.outbound_rows||[], state.since, state.until) - sumInRange(lf.outbound_organic_rows||[], state.since, state.until));
+    naverClicks = (lf.outbound_by_channel_rows||[]).filter(r=>PAID_CHANNELS.includes(r.channel) && r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+Number(r.value||0),0);
     roas = spend ? revenueV/spend : null;
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">💰 광고비</div><div class="lf-stage-value">${fmtWon(spend)}</div></div>`;
   } else if(view==='organic'){
@@ -995,14 +1003,9 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     bookingV = orBookings; contractsV = orContracts; revenueV = orRevenue;
     const d = chDetailOf(orgAttrRows); bookingDetail=d.bookings; revenueDetail=d.revenue;
     naverClicks = sumInRange(lf.outbound_organic_rows||[], state.since, state.until);
-    // impact-me 오가닉 = 쓰레드(콘텐츠)가 주력 — 최종 DB·예약은 시트 D/G열 기준으로 표시 (GA4 form_submit 대체)
-    if(lf.id==='impact-me' && (thDb||thBookings)){
-      finalConv = thDb; finalLabel = '타입폼 제출완료 (시트 쓰레드)';
-      bookingV = orBookings + thBookings;
-      bookingDetail = [bookingDetail, thBookingBadge].filter(Boolean).join(' · ');
-    }
+    // 쓰레드(콘텐츠)는 2026-07-14부터 별도 카테고리 — 오가닉 뷰에는 포함하지 않음 (콘텐츠 뷰에서 확인)
     const chBy = {};
-    Object.keys(hostCh).forEach(ch=>{ if(!PAID_CHANNELS.includes(ch)) chBy[ch]=hostCh[ch]; });
+    Object.keys(hostCh).forEach(ch=>{ if(!PAID_CHANNELS.includes(ch) && !CONTENT_CHANNELS.includes(ch)) chBy[ch]=hostCh[ch]; });
     const chSorted = Object.entries(chBy).sort((a,b)=>b[1]-a[1]);
     const chDetail = chSorted.map(([ch,v])=>`${CHANNEL_LABELS[ch]||ch} <b>${fmtNum(v)}</b>`).join(' · ');
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">🧭 유입 경로</div><div class="lf-stage-value" style="font-size:14px;padding-top:3px;">${chSorted.length?(CHANNEL_LABELS[chSorted[0][0]]||chSorted[0][0]):'—'}</div><div class="lf-stage-sub">${chDetail||'이 기간 광고 외 유입 없음'}</div></div>`;
@@ -1022,12 +1025,14 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
       bookingDetail = [bookingDetail, thBookingBadge].filter(Boolean).join(' · ');
     }
     roas = spend ? revenueV/spend : null;
-    // 광고:오가닉 비율 한 줄 — 유입은 GA4 세션(전체-오가닉=광고), 예약은 시트 광고분 vs 오가닉 확인건(+쓰레드)
+    // 광고:콘텐츠:오가닉 비율 한 줄 — 유입은 GA4 세션, 예약은 시트 광고분/쓰레드(콘텐츠)/오가닉 확인건 (2026-07-14 3분류)
     const orgSess = sumInRange(lf.sessions_organic_rows||[], state.since, state.until);
-    const paidSess = Math.max(0, visits - orgSess);
-    const orgBookAll = orBookings + thBookings;
-    const adsBookAll = Math.max(0, (bookingV||0) - orgBookAll);
-    if(visits) splitBadge = `⚖️ 광고 ${fmtPct(paidSess/visits)} · 오가닉 ${fmtPct(orgSess/visits)} <span style="font-weight:400;color:#8a919c;">(유입 기준)</span>${bookingV?` · ${bookingLabel} 광고 <b>${fmtNum(adsBookAll)}</b>·오가닉 <b>${fmtNum(orgBookAll)}</b>`:''}`;
+    const contentSess = CONTENT_CHANNELS.reduce((a,ch)=>a+(hostCh[ch]||0),0);
+    const paidSess = Math.max(0, visits - orgSess - contentSess);
+    const contentBookAll = thBookings;
+    const orgBookAll = orBookings;
+    const adsBookAll = Math.max(0, (bookingV||0) - orgBookAll - contentBookAll);
+    if(visits) splitBadge = `⚖️ 광고 ${fmtPct(paidSess/visits)} · 콘텐츠 ${fmtPct(contentSess/visits)} · 오가닉 ${fmtPct(orgSess/visits)} <span style="font-weight:400;color:#8a919c;">(유입 기준)</span>${bookingV?` · ${bookingLabel} 광고 <b>${fmtNum(adsBookAll)}</b>·콘텐츠 <b>${fmtNum(contentBookAll)}</b>·오가닉 <b>${fmtNum(orgBookAll)}</b>`:''}`;
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">💰 광고비</div><div class="lf-stage-value">${fmtWon(spend)}</div><div class="lf-stage-sub">참고 (전체 유입 기준)</div></div>`;
   } else {  // 'ch:GA4채널그룹'
     const ch = view.slice(3);
@@ -1099,8 +1104,12 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
   </div>`;
 }
 
-// 광고(유료) 채널 그룹 — 이 외 채널은 전부 오가닉·직접으로 취급. fetch_ga4.py 의 PAID_CHANNELS 와 항상 같게 유지할 것.
+// 광고(유료) 채널 그룹. fetch_ga4.py 의 PAID_CHANNELS 와 항상 같게 유지할 것.
 const PAID_CHANNELS = ['Paid Social', 'Paid Search', 'Cross-network', 'Display', 'Paid Video', 'Paid Shopping', 'Paid Other'];
+// 콘텐츠 채널 — 우리가 발행하는 콘텐츠(쓰레드·블로그 등, UTM 부착 → Organic Social) 경유.
+// 오가닉 = 광고·콘텐츠를 뺀 자연 유입(직접·미분류·외부링크·검색) — 바이럴 판단용 (2026-07-14 분류 변경).
+// fetch_ga4.py 의 CONTENT_CHANNELS 와 항상 같게 유지할 것.
+const CONTENT_CHANNELS = ['Organic Social'];
 
 // organic_revenue.csv 의 channel 열 값 → 표시 라벨. 채널 값은 소문자 영문으로 기록 (naver=네이버 플레이스 예약·결제).
 const OR_CHANNEL_LABELS = { naver:'네이버 예약', direct:'직접', instagram:'인스타그램', threads:'콘텐츠(쓰레드)', search:'검색', kakao:'카카오', unknown:'미지정' };
