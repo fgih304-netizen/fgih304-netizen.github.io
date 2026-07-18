@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-16",
+  "generated_at": "2026-07-17",
   "currency": "KRW",
   "source": "meta-api",
   "range": {
     "since": "2026-04-18",
-    "until": "2026-07-16"
+    "until": "2026-07-17"
   },
   "rows": [
     {
@@ -3569,36 +3569,6 @@
     },
     {
       "date": "2026-07-16",
-      "campaign_name": "Conv_260715_disc50_AB",
-      "ad_name": "20260707_고객후기_캐러셀_2_사본 - 사본",
-      "ad_id": "120253594326870496",
-      "spend": 3128,
-      "clicks": 5,
-      "impressions": 133,
-      "leads": 0
-    },
-    {
-      "date": "2026-07-16",
-      "campaign_name": "Conv_260715_disc50_AB",
-      "ad_name": "260707_영상_소개팅0표남 - 사본 - 사본",
-      "ad_id": "120253594326880496",
-      "spend": 6880,
-      "clicks": 4,
-      "impressions": 234,
-      "leads": 0
-    },
-    {
-      "date": "2026-07-16",
-      "campaign_name": "Conv_260715_disc50_AB",
-      "ad_name": "260707_고객후기_캐러셀_1 - 사본 - 사본",
-      "ad_id": "120253594326920496",
-      "spend": 2690,
-      "clicks": 4,
-      "impressions": 120,
-      "leads": 0
-    },
-    {
-      "date": "2026-07-16",
       "campaign_name": "Conv_260623_findme",
       "ad_name": "260615_리얼미_검은티 - 사본 - 사본 - 사본",
       "ad_id": "120253594355220496",
@@ -3620,32 +3590,22 @@
     {
       "date": "2026-07-16",
       "campaign_name": "Conv_260715_disc50_AB",
-      "ad_name": "260707_영상_소개팅0표남 - 사본 - 사본 - 사본",
-      "ad_id": "120253594534840496",
-      "spend": 6256,
-      "clicks": 13,
-      "impressions": 250,
-      "leads": 0
+      "ad_name": "할인 캠페인 합계(시트 기준)",
+      "ad_id": "disc_agg_20260716",
+      "spend": 119849,
+      "clicks": 157,
+      "impressions": 4900,
+      "leads": 2
     },
     {
-      "date": "2026-07-16",
+      "date": "2026-07-17",
       "campaign_name": "Conv_260715_disc50_AB",
-      "ad_name": "260707_고객후기_캐러셀_1 - 사본 - 사본 - 사본",
-      "ad_id": "120253594534850496",
-      "spend": 4013,
-      "clicks": 6,
-      "impressions": 201,
-      "leads": 0
-    },
-    {
-      "date": "2026-07-16",
-      "campaign_name": "Conv_260715_disc50_AB",
-      "ad_name": "20260707_고객후기_캐러셀_2_사본 - 사본 - 사본",
-      "ad_id": "120253594534860496",
-      "spend": 3445,
-      "clicks": 4,
-      "impressions": 91,
-      "leads": 0
+      "ad_name": "할인 캠페인 합계(시트 기준)",
+      "ad_id": "disc_agg_20260717",
+      "spend": 125076,
+      "clicks": 173,
+      "impressions": 4836,
+      "leads": 8
     }
   ],
   "creatives": {
@@ -4662,11 +4622,22 @@
     {
       "date": "2026-07-16",
       "landing_id": "discount-me",
-      "spend": 26412,
-      "visits": 25,
+      "spend": 119849,
+      "visits": 113,
       "booking": 0,
       "checkout": 0,
-      "leads": 0,
+      "leads": 2,
+      "final_custom": 0,
+      "final_custom_estimated": false
+    },
+    {
+      "date": "2026-07-17",
+      "landing_id": "discount-me",
+      "spend": 125076,
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "leads": 8,
       "final_custom": 0,
       "final_custom_estimated": false
     }
