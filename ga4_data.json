@@ -4282,6 +4282,82 @@
   ],
   "landing_funnels": [
     {
+      "id": "discount-me",
+      "label": "할인퍼널 (impact-me 랜딩 · 7/15~)",
+      "hostname": "impact-me.real-me.co.kr",
+      "stage2_label": "신청 버튼 클릭",
+      "stage3_label": "신청 정보 제출",
+      "sessions_rows": [
+        {
+          "date": "2026-07-15",
+          "value": 73
+        },
+        {
+          "date": "2026-07-16",
+          "value": 19
+        }
+      ],
+      "stage2_rows": [
+        {
+          "date": "2026-07-15",
+          "value": 144
+        },
+        {
+          "date": "2026-07-16",
+          "value": 1
+        }
+      ],
+      "stage3_rows": [],
+      "sessions_organic_rows": [
+        {
+          "date": "2026-07-15",
+          "value": 74
+        },
+        {
+          "date": "2026-07-16",
+          "value": 5
+        }
+      ],
+      "stage2_organic_rows": [
+        {
+          "date": "2026-07-15",
+          "value": 88
+        },
+        {
+          "date": "2026-07-16",
+          "value": 1
+        }
+      ],
+      "stage3_organic_rows": [],
+      "stage2_by_channel_rows": [
+        {
+          "date": "2026-07-15",
+          "channel": "Unassigned",
+          "value": 88
+        },
+        {
+          "date": "2026-07-15",
+          "channel": "Paid Social",
+          "value": 54
+        },
+        {
+          "date": "2026-07-15",
+          "channel": "Organic Social",
+          "value": 2
+        },
+        {
+          "date": "2026-07-16",
+          "channel": "Unassigned",
+          "value": 1
+        }
+      ],
+      "stage3_by_channel_rows": [],
+      "outbound_label": "",
+      "outbound_rows": [],
+      "outbound_organic_rows": [],
+      "outbound_by_channel_rows": []
+    },
+    {
       "id": "find-me",
       "label": "find-me (예약A)",
       "hostname": "find-me.real-me.co.kr",
@@ -5774,16 +5850,8 @@
           "value": 77
         },
         {
-          "date": "2026-07-15",
-          "value": 73
-        },
-        {
           "date": "2026-06-19",
           "value": 28
-        },
-        {
-          "date": "2026-07-16",
-          "value": 19
         },
         {
           "date": "2026-07-14",
@@ -5827,10 +5895,6 @@
         }
       ],
       "stage2_rows": [
-        {
-          "date": "2026-07-15",
-          "value": 144
-        },
         {
           "date": "2026-07-08",
           "value": 88
@@ -5925,10 +5989,6 @@
         },
         {
           "date": "2026-06-21",
-          "value": 1
-        },
-        {
-          "date": "2026-07-16",
           "value": 1
         }
       ],
@@ -6046,14 +6106,6 @@
         {
           "date": "2026-07-14",
           "value": 4
-        },
-        {
-          "date": "2026-07-15",
-          "value": 74
-        },
-        {
-          "date": "2026-07-16",
-          "value": 5
         }
       ],
       "stage2_organic_rows": [
@@ -6092,14 +6144,6 @@
         {
           "date": "2026-07-14",
           "value": 5
-        },
-        {
-          "date": "2026-07-15",
-          "value": 88
-        },
-        {
-          "date": "2026-07-16",
-          "value": 1
         }
       ],
       "stage3_organic_rows": [
@@ -6114,11 +6158,6 @@
       ],
       "stage2_by_channel_rows": [
         {
-          "date": "2026-07-15",
-          "channel": "Unassigned",
-          "value": 88
-        },
-        {
           "date": "2026-07-08",
           "channel": "Organic Social",
           "value": 73
@@ -6127,11 +6166,6 @@
           "date": "2026-07-09",
           "channel": "Organic Social",
           "value": 61
-        },
-        {
-          "date": "2026-07-15",
-          "channel": "Paid Social",
-          "value": 54
         },
         {
           "date": "2026-07-07",
@@ -6309,11 +6343,6 @@
           "value": 2
         },
         {
-          "date": "2026-07-15",
-          "channel": "Organic Social",
-          "value": 2
-        },
-        {
           "date": "2026-06-21",
           "channel": "Direct",
           "value": 1
@@ -6371,11 +6400,6 @@
         {
           "date": "2026-07-13",
           "channel": "Organic Social",
-          "value": 1
-        },
-        {
-          "date": "2026-07-16",
-          "channel": "Unassigned",
           "value": 1
         }
       ],

@@ -4088,6 +4088,13 @@
         "Lead_260623_typeform"
       ],
       "final_custom_conversion_id": "685691040867302"
+    },
+    {
+      "id": "discount-me",
+      "label": "할인퍼널 (disc50)",
+      "campaign_names": [
+        "Conv_260715_disc50_AB"
+      ]
     }
   ],
   "landing_metrics": [
@@ -4632,7 +4639,7 @@
     },
     {
       "date": "2026-07-15",
-      "landing_id": "_unmatched",
+      "landing_id": "discount-me",
       "spend": 37783,
       "visits": 46,
       "booking": 0,
@@ -4654,7 +4661,7 @@
     },
     {
       "date": "2026-07-16",
-      "landing_id": "_unmatched",
+      "landing_id": "discount-me",
       "spend": 26412,
       "visits": 25,
       "booking": 0,
