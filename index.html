@@ -946,7 +946,7 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
 
   // find-me: 결제페이지 도달→'예약 신청', 예약완료→'예약금 결제완료' 워딩 (2026-07-13)
   const rateFinalLabel = lf.id==='find-me' ? '결제 전환율' : '전환율';
-  const bookingLabel = lf.id==='find-me' ? '예약금 결제완료' : '예약완료';
+  const bookingLabel = lf.id==='find-me' ? '예약금 결제완료' : (lf.id==='discount-me' ? '예약금 결제' : '예약완료');
 
   // ── 결제(시트 합계 + 수기 채널·귀속 구분) ──
   const booking = state.bookingCompleted.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+r.count,0);
