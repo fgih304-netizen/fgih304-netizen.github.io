@@ -914,14 +914,15 @@ function renderLandingFunnels(){
 
   if(state.ga4LandingFunnels.length===0){ grid.innerHTML='<div class="empty">설정된 랜딩 퍼널이 없어요 (ga4_config.json 의 landing_funnels 확인)</div>'; return; }
 
-  // change-me(예약B)는 2026-06-22까지만 사용한 랜딩이라, 조회기간이 그 이전 날짜를 포함할 때만 카드를 보여줌.
-  // impact-me(진단퍼널)는 2026-07-09까지만 운영하고 off, 조회기간이 그 이전 날짜를 포함할 때만 카드를 보여줌.
-  // discount-me(할인퍼널)는 impact-me 랜딩을 2026-07-15부터 할인 내용으로 전면 교체해 재사용 — 조회기간이 7/15 이후를 포함할 때만 카드를 보여줌.
+  // 각 랜딩 퍼널은 조회기간 안에 '광고비가 실제로 나간 날'이 있을 때만 카드를 보여준다(데이터 기준).
+  //  - 예약퍼널(find-me): 2026-07-16 광고 off → 7/17부터 자동 숨김
+  //  - 진단퍼널(impact-me): 광고 집행일(~7/09)에만 노출
+  //  - 할인퍼널(discount-me): 2026-07-15 시작 → 그 이전엔 숨김
+  //  - 구예약퍼널(change-me): 초기 운영일에만 노출
   const visibleFunnels = state.ga4LandingFunnels.filter(lf =>
-    (lf.id !== 'change-me' || state.since <= '2026-06-22') &&
-    (lf.id !== 'impact-me' || state.since <= '2026-07-09') &&
-    (lf.id !== 'discount-me' || state.until >= '2026-07-15'));
+    (metricsByLanding[lf.id]?.spend || 0) > 0);
 
+  if(visibleFunnels.length===0){ grid.innerHTML='<div class="empty">이 기간에 광고가 집행된 랜딩 퍼널이 없어요 (조회기간을 바꿔보세요)</div>'; return; }
   grid.innerHTML = visibleFunnels.map(lf=> renderLandingCard(lf, metricsByLanding, bucketsById)).join('');
 }
 
