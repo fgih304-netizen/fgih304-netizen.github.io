@@ -106,6 +106,11 @@
   .lf-view-select{font-size:12px;font-weight:700;padding:4px 8px;border:1px solid var(--line,#dcdfe4);border-radius:8px;background:#fff;color:inherit;cursor:pointer;}
   .lf-legend{font-size:11.5px;color:var(--sub);line-height:1.8;margin:2px 0 14px;}
   .lf-legend b{color:inherit;}
+  .ab-table{width:100%;border-collapse:collapse;font-size:13px;}
+  .ab-table th{font-size:11.5px;color:var(--sub);font-weight:700;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line,#e5e8ee);white-space:nowrap;}
+  .ab-table td{padding:10px;border-bottom:1px solid var(--line,#f0f2f6);white-space:nowrap;}
+  .ab-table tr.ab-best td{background:#f2fbf5;}
+  .ab-table tr.ab-best td:first-child{border-left:3px solid #1e8449;}
   .lf-stages{display:flex;align-items:stretch;gap:6px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px;}
   .lf-stage-box{flex:1 1 0;min-width:118px;background:#f8f9fb;border-radius:14px;padding:12px 10px;border-top:3px solid var(--line);}
   .lf-stage-box.lf-spend{border-top-color:#9aa1ad;}
@@ -191,6 +196,12 @@
     </div>
     <div class="lf-legend" id="landingLegend"></div>
     <div class="landing-grid" id="landingGrid"></div>
+
+    <div class="section-head" id="abSectionHead" style="margin-top:26px;display:none;">
+      <h2>🧪 A/B 테스트</h2>
+      <span class="cap" id="abCap"></span>
+    </div>
+    <div id="abGrid"></div>
   </section>
 
   <section class="view" id="viewSummary">
@@ -335,6 +346,7 @@ const state = { source:'real', since:null, until:null, adRows:[], revRows:[], cr
   landingView:'all',   // 랜딩 퍼널 섹션의 유입경로 드롭다운 선택값 ('all'|'meta'|'organic'|'ch:채널그룹') — 모든 카드에 일괄 적용
   threadsDaily:[],     // 쓰레드(콘텐츠 채널, impact-me 랜딩) DB·예약 — 구글시트 Daily탭 D/H열 파생 threads_daily.csv
   discountTypeform:[], // 할인퍼널 타입폼 완료 확정치 — 구글시트 Daily탭 G열 파생 discount_typeform.csv
+  abTest:{}, abRows:[], ga4AbRows:[],   // A/B 테스트(광고세트·경로 분해) — config.json/ga4_config.json "ab_test"
   historyRows:[], historyWritable:false, historySha:null };
 
 // 히스토리를 배포된 URL에서 직접 추가/삭제할 수 있게, GitHub Contents API로 history.csv를 직접 읽고 씀.
@@ -475,7 +487,7 @@ async function loadSource(name){
   const discountTypeform = parseCSV(d50Text).map(r=>({
     date:r.date, count:Number(r.count||0),
   })).filter(r=>r.date);
-  return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform };
+  return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abTest: dataJson.ab_test||{}, abRows: dataJson.ab_rows||[] };
 }
 
 function showBanner(msg){
@@ -495,14 +507,14 @@ async function loadGa4(name){
     json = await tryFile(GA4_SOURCES.demo);
     usedSource = 'demo';
   }
-  if (!json) return { ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Source:null };
-  return { ga4Rows: json.rows||[], ga4ChannelRows: json.channel_rows||[], ga4Funnels: json.funnels||[], ga4LandingFunnels: json.landing_funnels||[], ga4Source: usedSource };
+  if (!json) return { ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4AbRows:[], ga4Source:null };
+  return { ga4Rows: json.rows||[], ga4ChannelRows: json.channel_rows||[], ga4Funnels: json.funnels||[], ga4LandingFunnels: json.landing_funnels||[], ga4AbRows: json.ab_event_rows||[], ga4Source: usedSource };
 }
 
 async function setSource(name, opts={}){
   try{
-    const { adRows, revRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform } = await loadSource(name);
-    state.source=name; state.adRows=adRows; state.revRows=revRows; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted; state.organicRevRows=organicRevRows; state.threadsDaily=threadsDaily; state.discountTypeform=discountTypeform;
+    const { adRows, revRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abTest, abRows } = await loadSource(name);
+    state.source=name; state.adRows=adRows; state.revRows=revRows; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted; state.organicRevRows=organicRevRows; state.threadsDaily=threadsDaily; state.discountTypeform=discountTypeform; state.abTest=abTest; state.abRows=abRows;
     if (name==='real' && adRows.length===0 && !opts.silentEmpty)
       showBanner('아직 실데이터가 없어요. fetch_data.py 를 실행하면 메타 데이터가 채워집니다.');
     else if (name==='demo')
@@ -932,9 +944,63 @@ function renderLandingFunnels(){
 
   if(visibleFunnels.length===0){ grid.innerHTML='<div class="empty">이 기간에 광고가 집행된 랜딩 퍼널이 없어요 (조회기간을 바꿔보세요)</div>'; return; }
   grid.innerHTML = visibleFunnels.map(lf=> renderLandingCard(lf, metricsByLanding, bucketsById)).join('');
+
+  renderAbTest();
 }
 
 function setLandingView(v){ state.landingView=v; renderLandingFunnels(); }
+
+// 🧪 A/B 테스트 패널 — 같은 캠페인 안에서 광고세트별로 다른 랜딩(히어로 문구)을 태우는 실험 (2026-07-19).
+// 광고비·유입·타입폼완료 = Meta 광고세트 단위(ab_rows), 랜딩 세션·신청 클릭 = GA4 경로 단위(ga4Rows·ga4AbRows).
+// 주의: GA4 경로 수치엔 오가닉·재방문도 섞임(경로=변형 기준), Meta 수치는 광고 귀속만. 결제·매출은 변형 구분 불가.
+function renderAbTest(){
+  const head = document.getElementById('abSectionHead');
+  const grid = document.getElementById('abGrid');
+  if(!head || !grid) return;
+  const cfg = state.abTest || {};
+  const variants = cfg.variants || [];
+  const from = cfg.date_from || '';
+  const since = (from && from > state.since) ? from : state.since;
+  const abRows = (state.abRows||[]).filter(r=>r.date>=since && r.date<=state.until);
+  if(!variants.length || !abRows.length){ head.style.display='none'; grid.innerHTML=''; return; }
+  head.style.display='';
+  document.getElementById('abCap').textContent = `${cfg.label||''} · ${since} ~ ${state.until} · 캠페인 ${(cfg.campaign_names||[]).join(', ')}`;
+
+  const byV = variants.map(v=>{
+    const mine = abRows.filter(r=>(r.adset_name||'').includes(v.adset_contains));
+    const spend = mine.reduce((a,r)=>a+(r.spend||0),0);
+    const visits = mine.reduce((a,r)=>a+(r.visits||0),0);
+    const typeform = mine.reduce((a,r)=>a+(r.typeform||0),0);
+    const sess = (state.ga4Rows||[]).filter(r=>r.host===cfg.hostname && r.path===v.path && r.date>=since && r.date<=state.until).reduce((a,r)=>a+(r.sessions||0),0);
+    const clicks = (state.ga4AbRows||[]).filter(r=>r.path===v.path && r.date>=since && r.date<=state.until).reduce((a,r)=>a+(r.value||0),0);
+    return {...v, spend, visits, typeform, sess, clicks,
+      clickRate: sess ? clicks/sess : null,
+      cpa: typeform ? spend/typeform : null,
+      tfRate: visits ? typeform/visits : null};
+  });
+  const bestCpa = Math.min(...byV.filter(v=>v.cpa!=null).map(v=>v.cpa));
+
+  grid.innerHTML = `<div class="panel" style="overflow-x:auto;">
+    <table class="ab-table">
+      <thead><tr>
+        <th>변형 (랜딩 경로)</th><th>💰 광고비</th><th>🌐 유입 (Meta)</th><th>세션 (GA4)</th>
+        <th>🪜 신청 클릭</th><th>클릭률</th><th>🎯 타입폼 완료 (Meta)</th><th>완료 전환율</th><th>완료당 비용</th>
+      </tr></thead>
+      <tbody>${byV.map(v=>`<tr${v.cpa!=null&&v.cpa===bestCpa?' class="ab-best"':''}>
+        <td><b>${v.label}</b> <span class="cap">${cfg.hostname}${v.path}</span></td>
+        <td>${fmtWon(v.spend)}</td>
+        <td>${fmtNum(v.visits)}</td>
+        <td>${fmtNum(v.sess)}</td>
+        <td>${fmtNum(v.clicks)}</td>
+        <td>${v.clickRate!=null?fmtPct(v.clickRate):'—'}</td>
+        <td><b>${fmtNum(v.typeform)}</b></td>
+        <td>${v.tfRate!=null?fmtPct(v.tfRate):'—'}</td>
+        <td>${v.cpa!=null?fmtWon(v.cpa):'—'}</td>
+      </tr>`).join('')}</tbody>
+    </table>
+    <div class="cap" style="margin-top:8px;">유입·타입폼 완료·완료당 비용 = Meta 광고세트 귀속 / 세션·신청 클릭 = GA4 경로 기준(오가닉 포함) · 결제 단계는 변형 구분이 없어 할인퍼널 카드에서 합산으로 확인 · <b>강조 행 = 완료당 비용 우위</b></div>
+  </div>`;
+}
 
 // ── 랜딩 퍼널 카드: 섹션 드롭다운으로 유입경로 일괄 전환 (2026-07-14) ──
 //  전체              = GA4 전체 세션·단계 + 시트 합계 결제 (광고비는 참고 표시, 블렌디드 ROAS)
