@@ -533,7 +533,7 @@ async function setSource(name, opts={}){
   }
   const ga4 = await loadGa4(name);
   Object.assign(state, ga4);
-  state.depositSummary = await loadDepositSummary();   // 러버블 실시간 매출(예약금 결제완료·결제금액)
+  state.depositSummary = DEPOSIT_LIVE_ENABLED ? await loadDepositSummary() : [];   // 러버블 실시간 매출(보류 중)
   document.querySelectorAll('#srcToggle button').forEach(b=>b.classList.toggle('active', b.dataset.src===state.source));
   render();
 }
@@ -544,6 +544,9 @@ async function setSource(name, opts={}){
 // ⚠️ view는 퍼널 구분 없는 전 퍼널 합산(검증: 7/03 임팩트미 건 포함) → 랜딩 카드에 꽂지 않고
 //   전 퍼널 실시간 요약 줄로 표시. 담당자가 landing 컬럼 추가해주면 카드별 실시간으로 승격 예정.
 // anon key는 이 집계 view만 RLS로 열려 있어 공개돼도 안전. 원본 원장 테이블은 차단됨.
+// 2026-07-19 보류: 러버블에서 랜딩 구분이 당장 어려워 시트(수기) 기준으로 복귀 — 사용자 지시.
+//   view에 landing 컬럼이 생기면 이 플래그만 true로 바꾸고 카드별 연동으로 승격.
+const DEPOSIT_LIVE_ENABLED = false;
 const SUPABASE_URL = 'https://ztwowgfqatizbjwsbtqs.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0d293Z2ZxYXRpemJqd3NidHFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY1MTUyNjcsImV4cCI6MjA4MjA5MTI2N30.FPZYUppt8yM_6eoyQlFvQIjxAnuQS-2V4RPWK0LXt9Y';
 
@@ -980,6 +983,7 @@ function renderLandingFunnels(){
 function renderDepositLive(){
   const el = document.getElementById('depositLive');
   if(!el) return;
+  if(!DEPOSIT_LIVE_ENABLED){ el.style.display='none'; el.innerHTML=''; return; }
   const ds = (state.depositSummary||[]).filter(r=>r.date>=state.since && r.date<=state.until);
   if(!ds.length){ el.style.display='none'; el.innerHTML=''; return; }
   const cnt = ds.reduce((a,r)=>a+r.deposit_count,0);
