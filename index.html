@@ -195,6 +195,7 @@
       <span class="cap" id="landingRangeLabel"></span>
     </div>
     <div class="lf-legend" id="landingLegend"></div>
+    <div id="depositLive" style="display:none;"></div>
     <div class="landing-grid" id="landingGrid"></div>
 
     <div class="section-head" id="abSectionHead" style="margin-top:26px;display:none;">
@@ -347,6 +348,7 @@ const state = { source:'real', since:null, until:null, adRows:[], revRows:[], cr
   threadsDaily:[],     // 쓰레드(콘텐츠 채널, impact-me 랜딩) DB·예약 — 구글시트 Daily탭 D/H열 파생 threads_daily.csv
   discountTypeform:[], // 할인퍼널 타입폼 완료 확정치 — 구글시트 Daily탭 G열 파생 discount_typeform.csv
   abTest:{}, abRows:[], ga4AbRows:[],   // A/B 테스트(광고세트·경로 분해) — config.json/ga4_config.json "ab_test"
+  depositSummary:[],   // 러버블 Supabase daily_deposit_summary (전 퍼널 실시간 예약금·결제 코호트)
   historyRows:[], historyWritable:false, historySha:null };
 
 // 히스토리를 배포된 URL에서 직접 추가/삭제할 수 있게, GitHub Contents API로 history.csv를 직접 읽고 씀.
@@ -531,8 +533,32 @@ async function setSource(name, opts={}){
   }
   const ga4 = await loadGa4(name);
   Object.assign(state, ga4);
+  state.depositSummary = await loadDepositSummary();   // 러버블 실시간 매출(예약금 결제완료·결제금액)
   document.querySelectorAll('#srcToggle button').forEach(b=>b.classList.toggle('active', b.dataset.src===state.source));
   render();
+}
+
+// ── 러버블 매출관리(Supabase) 실시간 연동 — 담당자 제공(2026-07-19, index_러버블연동본.html) ──
+// daily_deposit_summary view: anchor_date(예약금 결제완료일=인입일) / deposit_count(인입 고객 수) /
+//   total_payment(그 날 인입 고객 코호트의 전체 결제 합계 — 이후 추가결제도 인입일에 누적).
+// ⚠️ view는 퍼널 구분 없는 전 퍼널 합산(검증: 7/03 임팩트미 건 포함) → 랜딩 카드에 꽂지 않고
+//   전 퍼널 실시간 요약 줄로 표시. 담당자가 landing 컬럼 추가해주면 카드별 실시간으로 승격 예정.
+// anon key는 이 집계 view만 RLS로 열려 있어 공개돼도 안전. 원본 원장 테이블은 차단됨.
+const SUPABASE_URL = 'https://ztwowgfqatizbjwsbtqs.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0d293Z2ZxYXRpemJqd3NidHFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY1MTUyNjcsImV4cCI6MjA4MjA5MTI2N30.FPZYUppt8yM_6eoyQlFvQIjxAnuQS-2V4RPWK0LXt9Y';
+
+async function loadDepositSummary(){
+  try{
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/daily_deposit_summary?select=anchor_date,deposit_count,total_payment`, {
+      headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` },
+      cache: 'no-store',
+    });
+    if(!res.ok) return [];
+    const rows = await res.json();
+    return (Array.isArray(rows)?rows:[]).map(r=>({
+      date: r.anchor_date, deposit_count: Number(r.deposit_count||0), total_payment: Number(r.total_payment||0),
+    })).filter(r=>r.date);
+  }catch(e){ return []; }
 }
 
 function buildMaps(){
@@ -945,7 +971,28 @@ function renderLandingFunnels(){
   if(visibleFunnels.length===0){ grid.innerHTML='<div class="empty">이 기간에 광고가 집행된 랜딩 퍼널이 없어요 (조회기간을 바꿔보세요)</div>'; return; }
   grid.innerHTML = visibleFunnels.map(lf=> renderLandingCard(lf, metricsByLanding, bucketsById)).join('');
 
+  renderDepositLive();
   renderAbTest();
+}
+
+// 💜 러버블 실시간 매출 요약 줄 — 전 퍼널 합산(view에 퍼널 구분 없음), 인입일 코호트 기준.
+// 시트 집계(revenue.csv 전 랜딩 합)와의 차이 = 시트에 아직 수기 반영 안 된 추가결제.
+function renderDepositLive(){
+  const el = document.getElementById('depositLive');
+  if(!el) return;
+  const ds = (state.depositSummary||[]).filter(r=>r.date>=state.since && r.date<=state.until);
+  if(!ds.length){ el.style.display='none'; el.innerHTML=''; return; }
+  const cnt = ds.reduce((a,r)=>a+r.deposit_count,0);
+  const pay = ds.reduce((a,r)=>a+r.total_payment,0);
+  const sheetRev = state.revRows.filter(r=>r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+r.revenue,0);
+  const gap = pay - sheetRev;
+  el.style.display='';
+  el.innerHTML = `<div class="panel" style="padding:12px 16px;margin-bottom:14px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:baseline;">
+    <span style="font-weight:800;">💜 러버블 실시간 매출 <span class="cap" style="font-weight:400;">전 퍼널 합산 · 인입일 코호트</span></span>
+    <span>인입 고객 <b>${fmtNum(cnt)}명</b></span>
+    <span>누적 결제 <b>${fmtWon(pay)}</b></span>
+    ${gap!==0?`<span class="cap">시트 집계 대비 <b style="color:${gap>0?'#1e8449':'#c0392b'};">${gap>0?'+':''}${fmtWon(gap)}</b>${gap>0?' (시트 미반영 추가결제)':''}</span>`:'<span class="cap">시트 집계와 일치</span>'}
+  </div>`;
 }
 
 function setLandingView(v){ state.landingView=v; renderLandingFunnels(); }
