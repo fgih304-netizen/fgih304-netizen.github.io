@@ -940,22 +940,28 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
   const fromMeta = !!bucket.stages_from_meta;
   const spend = m.spend;
 
-  // 이 랜딩(호스트)의 조회기간 채널별 세션 — ch뷰 유입·오가닉뷰 유입경로 분해에 사용
+  // 같은 호스트를 기간으로 나누는 퍼널(예: impact-me 랜딩 ~7/14=진단, 7/15~=할인퍼널) 지원:
+  // 이 카드의 유효 조회기간 = 전역 조회기간 ∩ 퍼널 기간(date_from~date_to). GA4 행은 fetch에서
+  // 이미 클리핑되지만, 결제 CSV·쓰레드·채널 세션은 전역 데이터라 여기서 잘라야 함 (2026-07-19).
+  const since = (lf.date_from && lf.date_from > state.since) ? lf.date_from : state.since;
+  const until = (lf.date_to && lf.date_to < state.until) ? lf.date_to : state.until;
+
+  // 이 랜딩(호스트)의 유효기간 채널별 세션 — ch뷰 유입·오가닉뷰 유입경로 분해에 사용
   const hostCh = {};
-  (state.ga4ChannelRows||[]).forEach(r=>{ if(r.host===lf.hostname && r.date>=state.since && r.date<=state.until) hostCh[r.channel]=(hostCh[r.channel]||0)+r.sessions; });
+  (state.ga4ChannelRows||[]).forEach(r=>{ if(r.host===lf.hostname && r.date>=since && r.date<=until) hostCh[r.channel]=(hostCh[r.channel]||0)+r.sessions; });
 
   // find-me: 결제페이지 도달→'예약 신청', 예약완료→'예약금 결제완료' 워딩 (2026-07-13)
   const rateFinalLabel = lf.id==='find-me' ? '결제 전환율' : '전환율';
   const bookingLabel = lf.id==='find-me' ? '예약금 결제완료' : (lf.id==='discount-me' ? '예약금 결제' : '예약완료');
 
   // ── 결제(시트 합계 + 수기 채널·귀속 구분) ──
-  const booking = state.bookingCompleted.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+r.count,0);
-  const revRowsForLanding = state.revRows.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
+  const booking = state.bookingCompleted.filter(r=>r.landing_id===lf.id && r.date>=since && r.date<=until).reduce((a,r)=>a+r.count,0);
+  const revRowsForLanding = state.revRows.filter(r=>r.landing_id===lf.id && r.date>=since && r.date<=until);
   const contracts = revRowsForLanding.reduce((a,r)=>a+r.contracts,0);
   const revenue = revRowsForLanding.reduce((a,r)=>a+r.revenue,0);
   // organic_revenue.csv: attribution=organic 행은 광고에서 차감, ads 행(예: 인스타 광고→네이버 결제)은
   // 광고 귀속 유지 + 채널 구분 표시만 (2026-07-14)
-  const orAllRows = state.organicRevRows.filter(r=>r.landing_id===lf.id && r.date>=state.since && r.date<=state.until);
+  const orAllRows = state.organicRevRows.filter(r=>r.landing_id===lf.id && r.date>=since && r.date<=until);
   const orgAttrRows = orAllRows.filter(r=>r.attribution!=='ads');
   const adsAttrRows = orAllRows.filter(r=>r.attribution==='ads');
   const orBookings = orgAttrRows.reduce((a,r)=>a+r.bookings,0);
@@ -963,7 +969,7 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
   const orRevenue = orgAttrRows.reduce((a,r)=>a+r.revenue,0);
   // 쓰레드(콘텐츠 채널): impact-me 랜딩 사용·UTM 부착. DB·예약은 구글시트 D/G열(threads_daily.csv)이 기준.
   // 시트 E열(진단퍼널 DB→typeform_submits)·H열(진단 예약→booking_completed)에는 쓰레드가 빠져 있어 합산해도 이중집계 없음.
-  const thRows = lf.id==='impact-me' ? state.threadsDaily.filter(r=>r.date>=state.since && r.date<=state.until) : [];
+  const thRows = lf.id==='impact-me' ? state.threadsDaily.filter(r=>r.date>=since && r.date<=until) : [];
   const thDb = thRows.reduce((a,r)=>a+r.db,0);
   const thBookings = thRows.reduce((a,r)=>a+r.bookings,0);
   const thBookingBadge = thBookings ? `콘텐츠(쓰레드) <b>${fmtNum(thBookings)}</b>` : '';
@@ -976,7 +982,7 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
       revenue: keys.map(ch=>`${OR_CHANNEL_LABELS[ch]||ch} <b>${fmtWon(by[ch].revenue)}</b>`).join(' · '),
     };
   };
-  const sumByChannel = (rows, ch) => (rows||[]).filter(r=>r.channel===ch && r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+Number(r.value||0),0);
+  const sumByChannel = (rows, ch) => (rows||[]).filter(r=>r.channel===ch && r.date>=since && r.date<=until).reduce((a,r)=>a+Number(r.value||0),0);
 
   // ── view별 수치 ──
   let firstBox='', visits=0, stage2=0, finalConv=0, stage2Label=lf.stage2_label, finalLabel=lf.stage3_label;
@@ -991,27 +997,27 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
       stage2 = m.booking; finalConv = m.checkout;
     } else if (lf.id === 'impact-me') {
       // 상담하기 클릭은 유료 채널만 (쓰레드 등 오가닉 클릭 제외 — 2026-07-14 채널 분리)
-      stage2 = (lf.stage2_by_channel_rows||[]).filter(r=>PAID_CHANNELS.includes(r.channel) && r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+Number(r.value||0),0);
-      finalConv = state.typeformSubmits.filter(r=>r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+r.count,0);
+      stage2 = (lf.stage2_by_channel_rows||[]).filter(r=>PAID_CHANNELS.includes(r.channel) && r.date>=since && r.date<=until).reduce((a,r)=>a+Number(r.value||0),0);
+      finalConv = state.typeformSubmits.filter(r=>r.date>=since && r.date<=until).reduce((a,r)=>a+r.count,0);
       finalLabel = '타입폼 제출완료';
     } else {
-      stage2 = sumInRange(lf.stage2_rows, state.since, state.until); finalConv = m.leads;
+      stage2 = sumInRange(lf.stage2_rows, since, until); finalConv = m.leads;
       finalLabel = '전환(리드)';
     }
     bookingV = Math.max(0, booking - orBookings);
     contractsV = Math.max(0, contracts - orContracts);
     revenueV = Math.max(0, revenue - orRevenue);
     const d = chDetailOf(adsAttrRows); bookingDetail=d.bookings; revenueDetail=d.revenue;
-    naverClicks = (lf.outbound_by_channel_rows||[]).filter(r=>PAID_CHANNELS.includes(r.channel) && r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+Number(r.value||0),0);
+    naverClicks = (lf.outbound_by_channel_rows||[]).filter(r=>PAID_CHANNELS.includes(r.channel) && r.date>=since && r.date<=until).reduce((a,r)=>a+Number(r.value||0),0);
     roas = spend ? revenueV/spend : null;
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">💰 광고비</div><div class="lf-stage-value">${fmtWon(spend)}</div></div>`;
   } else if(view==='organic'){
-    visits = sumInRange(lf.sessions_organic_rows||[], state.since, state.until);
-    stage2 = sumInRange(lf.stage2_organic_rows||[], state.since, state.until);
-    finalConv = sumInRange(lf.stage3_organic_rows||[], state.since, state.until);
+    visits = sumInRange(lf.sessions_organic_rows||[], since, until);
+    stage2 = sumInRange(lf.stage2_organic_rows||[], since, until);
+    finalConv = sumInRange(lf.stage3_organic_rows||[], since, until);
     bookingV = orBookings; contractsV = orContracts; revenueV = orRevenue;
     const d = chDetailOf(orgAttrRows); bookingDetail=d.bookings; revenueDetail=d.revenue;
-    naverClicks = sumInRange(lf.outbound_organic_rows||[], state.since, state.until);
+    naverClicks = sumInRange(lf.outbound_organic_rows||[], since, until);
     // 쓰레드(콘텐츠)는 2026-07-14부터 별도 카테고리 — 오가닉 뷰에는 포함하지 않음 (콘텐츠 뷰에서 확인)
     const chBy = {};
     Object.keys(hostCh).forEach(ch=>{ if(!PAID_CHANNELS.includes(ch) && !CONTENT_CHANNELS.includes(ch)) chBy[ch]=hostCh[ch]; });
@@ -1020,22 +1026,22 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">🧭 유입 경로</div><div class="lf-stage-value" style="font-size:14px;padding-top:3px;">${chSorted.length?(CHANNEL_LABELS[chSorted[0][0]]||chSorted[0][0]):'—'}</div><div class="lf-stage-sub">${chDetail||'이 기간 광고 외 유입 없음'}</div></div>`;
   } else if(view==='all'){
     costSubs = true;   // 전체 뷰도 전환당 비용 표시 — 광고비/전체 전환이라 블렌디드 기준 (2026-07-14 요청)
-    visits = sumInRange(lf.sessions_rows||[], state.since, state.until);
-    stage2 = sumInRange(lf.stage2_rows||[], state.since, state.until);
-    finalConv = sumInRange(lf.stage3_rows||[], state.since, state.until);
+    visits = sumInRange(lf.sessions_rows||[], since, until);
+    stage2 = sumInRange(lf.stage2_rows||[], since, until);
+    finalConv = sumInRange(lf.stage3_rows||[], since, until);
     bookingV = booking; contractsV = contracts; revenueV = revenue;
     const d = chDetailOf(orAllRows); bookingDetail=d.bookings; revenueDetail=d.revenue;
-    naverClicks = sumInRange(lf.outbound_rows||[], state.since, state.until);
+    naverClicks = sumInRange(lf.outbound_rows||[], since, until);
     // impact-me 전체 = 광고(시트 E열)+쓰레드(시트 D열) — 최종단계를 메타 뷰와 같은 시트 기준으로 통일
     if(lf.id==='impact-me'){
-      finalConv = state.typeformSubmits.filter(r=>r.date>=state.since && r.date<=state.until).reduce((a,r)=>a+r.count,0) + thDb;
+      finalConv = state.typeformSubmits.filter(r=>r.date>=since && r.date<=until).reduce((a,r)=>a+r.count,0) + thDb;
       finalLabel = '타입폼 제출완료';
       bookingV = booking + thBookings;
       bookingDetail = [bookingDetail, thBookingBadge].filter(Boolean).join(' · ');
     }
     roas = spend ? revenueV/spend : null;
     // 광고:콘텐츠:오가닉 비율 한 줄 — 유입은 GA4 세션, 예약은 시트 광고분/쓰레드(콘텐츠)/오가닉 확인건 (2026-07-14 3분류)
-    const orgSess = sumInRange(lf.sessions_organic_rows||[], state.since, state.until);
+    const orgSess = sumInRange(lf.sessions_organic_rows||[], since, until);
     const contentSess = CONTENT_CHANNELS.reduce((a,ch)=>a+(hostCh[ch]||0),0);
     const paidSess = Math.max(0, visits - orgSess - contentSess);
     const contentBookAll = thBookings;
