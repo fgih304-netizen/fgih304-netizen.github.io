@@ -1017,24 +1017,26 @@ function renderAbTest(){
   head.style.display='';
   document.getElementById('abCap').textContent = `${cfg.label||''} · ${since} ~ ${state.until} · 캠페인 ${(cfg.campaign_names||[]).join(', ')}`;
 
-  // 타입폼 완료 변형별 분배 (2026-07-19 사용자 지시): 확정치는 시트(discount_typeform.csv).
-  // 일자별로 Meta 광고세트 귀속값을 먼저 쓰고, 시트 확정치와의 잔여분은 변형에 반반 분배.
-  // (타입폼→Meta 연결이 2026-07-19라 그 전 데이터는 Meta 귀속이 0 → 전부 반반. 예: 7/17 8건 → 4/4)
+  // 타입폼 완료 변형별 분배 (2026-07-19 지시, 2026-07-20 정수화·합일치 수정): 기준은 시트 확정치(discount_typeform.csv).
+  //   할인퍼널 카드(전체 뷰)와 항상 합이 일치하도록 시트 확정치만 나눈다(Meta 귀속값은 시트와 합이 안 맞아 미사용).
+  //   날짜별로 변형 수만큼 정수로 나누고, 나머지(홀수 등)는 그날 신청 클릭이 많은 변형부터 1건씩 배정 → 소수 없음.
   const sheetByDate = {};
   (state.discountTypeform||[]).filter(r=>r.date>=since && r.date<=state.until).forEach(r=>{ sheetByDate[r.date]=(sheetByDate[r.date]||0)+r.count; });
-  const metaTfByDate = {};  // date -> {variantIdx: 타입폼}
-  variants.forEach((v,i)=>{
-    abRows.filter(r=>(r.adset_name||'').includes(v.adset_contains)).forEach(r=>{
-      (metaTfByDate[r.date] = metaTfByDate[r.date] || {})[i] = ((metaTfByDate[r.date]||{})[i]||0) + (r.typeform||0);
-    });
-  });
+  // 날짜별 변형 클릭 수 (나머지 배정 우선순위 결정용)
+  const clicksByDatePath = {};
+  (state.ga4AbRows||[]).forEach(r=>{ if(r.date>=since && r.date<=state.until){ (clicksByDatePath[r.date]=clicksByDatePath[r.date]||{})[r.path]=(clicksByDatePath[r.date][r.path]||0)+(r.value||0); } });
   const tfByVariant = variants.map(()=>0);
-  const allDates = new Set([...Object.keys(sheetByDate), ...Object.keys(metaTfByDate)]);
-  allDates.forEach(d=>{
-    const meta = metaTfByDate[d] || {};
-    const metaSum = variants.reduce((a,_,i)=>a+(meta[i]||0),0);
-    const remainder = Math.max(0, (sheetByDate[d]||0) - metaSum);
-    variants.forEach((_,i)=>{ tfByVariant[i] += (meta[i]||0) + remainder/variants.length; });
+  Object.keys(sheetByDate).forEach(d=>{
+    const remainder = sheetByDate[d];
+    const n = variants.length;
+    const base = Math.floor(remainder / n);
+    variants.forEach((_,i)=>{ tfByVariant[i] += base; });
+    let extra = remainder - base * n;   // 0 ~ n-1
+    if(extra > 0){
+      const dc = clicksByDatePath[d] || {};
+      const order = variants.map((v,i)=>({i, c:dc[v.path]||0})).sort((a,b)=>b.c-a.c);
+      for(let k=0; k<extra; k++) tfByVariant[order[k].i]++;
+    }
   });
 
   const byV = variants.map((v,i)=>{
