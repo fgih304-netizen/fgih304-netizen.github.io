@@ -1039,8 +1039,10 @@ function renderAbTest(){
     }
   });
 
+  // adset_contains가 문자열이든 배열이든 매칭 (2026-07-20: 캠페인마다 광고세트명이 달라 배열 지원)
+  const matchAdset = (name, pat) => (Array.isArray(pat) ? pat : [pat]).some(k => (name||'').includes(k));
   const byV = variants.map((v,i)=>{
-    const mine = abRows.filter(r=>(r.adset_name||'').includes(v.adset_contains));
+    const mine = abRows.filter(r=>matchAdset(r.adset_name, v.adset_contains));
     const spend = mine.reduce((a,r)=>a+(r.spend||0),0);
     const sess = (state.ga4Rows||[]).filter(r=>r.host===cfg.hostname && r.path===v.path && r.date>=since && r.date<=state.until).reduce((a,r)=>a+(r.sessions||0),0);
     const clicks = (state.ga4AbRows||[]).filter(r=>r.path===v.path && r.date>=since && r.date<=state.until).reduce((a,r)=>a+(r.value||0),0);
