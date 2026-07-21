@@ -1060,7 +1060,7 @@ function renderAbTest(){
         <th>🪜 신청 클릭</th><th>클릭률</th><th>🎯 타입폼 완료</th><th>완료 전환율</th><th>완료당 비용</th>
       </tr></thead>
       <tbody>${byV.map(v=>`<tr${v.cpa!=null&&v.cpa===bestCpa?' class="ab-best"':''}>
-        <td><b>${v.label}</b> <span class="cap">${cfg.hostname}${v.path}</span></td>
+        <td><b>${v.label}</b> <a class="cap" href="https://${cfg.hostname}${v.path}" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:none;">${cfg.hostname}${v.path} ↗</a></td>
         <td>${fmtWon(v.spend)}</td>
         <td>${fmtNum(v.sess)}</td>
         <td>${fmtNum(v.clicks)}</td>
