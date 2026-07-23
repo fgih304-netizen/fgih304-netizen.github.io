@@ -482,6 +482,7 @@ async function loadSource(name){
   const thText = (thRes && thRes.ok) ? await thRes.text() : '';
   const threadsDaily = parseCSV(thText).map(r=>({
     date:r.date, db:Number(r.db||0), bookings:Number(r.bookings||0),
+    payments:Number(r.payments||0), revenue:Number(r.revenue||0),
   })).filter(r=>r.date);
   // 할인퍼널 타입폼 완료 확정치 — 구글시트 G열(할인퍼널 DB) 파생. GA4 form_submit은 외부 타입폼이라 발화 불가,
   // begin_checkout(시크릿 도달)은 재방문 중복으로 부풀어서 메타·전체 뷰는 이 시트 값을 쓴다 (2026-07-19).
@@ -1116,10 +1117,18 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
   const orRevenue = orgAttrRows.reduce((a,r)=>a+r.revenue,0);
   // 쓰레드(콘텐츠 채널): impact-me 랜딩 사용·UTM 부착. DB·예약은 구글시트 D/G열(threads_daily.csv)이 기준.
   // 시트 E열(진단퍼널 DB→typeform_submits)·H열(진단 예약→booking_completed)에는 쓰레드가 빠져 있어 합산해도 이중집계 없음.
-  const thRows = lf.id==='impact-me' ? state.threadsDaily.filter(r=>r.date>=since && r.date<=until) : [];
+  // 쓰레드(콘텐츠 채널)는 랜딩이 impact-me→discount로 넘어갔으므로 날짜로 시대 구분해 해당 카드에 붙인다
+  // (≤2026-07-14 = 진단퍼널 impact-me, ≥2026-07-15 = 할인퍼널 discount-me). 두 카드가 같은 기간에 떠도 이중집계 없음.
+  const thRows = (lf.id==='impact-me' || lf.id==='discount-me')
+    ? state.threadsDaily.filter(r=> r.date>=since && r.date<=until &&
+        (lf.id==='discount-me' ? r.date>='2026-07-15' : r.date<='2026-07-14'))
+    : [];
   const thDb = thRows.reduce((a,r)=>a+r.db,0);
   const thBookings = thRows.reduce((a,r)=>a+r.bookings,0);
+  const thPayments = thRows.reduce((a,r)=>a+(r.payments||0),0);
+  const thRevenue = thRows.reduce((a,r)=>a+(r.revenue||0),0);
   const thBookingBadge = thBookings ? `콘텐츠(쓰레드) <b>${fmtNum(thBookings)}</b>` : '';
+  const thPayBadge = (thPayments||thRevenue) ? `쓰레드 예약금 결제 <b>${fmtNum(thPayments)}</b>건 · <b>${fmtWon(thRevenue)}</b>` : '';
   const chDetailOf = rows => {
     const by = {};
     rows.forEach(r=>{ const ch=r.channel||'unknown'; if(!by[ch]) by[ch]={bookings:0,revenue:0}; by[ch].bookings+=r.bookings; by[ch].revenue+=r.revenue; });
@@ -1202,10 +1211,12 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     const orgSess = sumInRange(lf.sessions_organic_rows||[], since, until);
     const contentSess = CONTENT_CHANNELS.reduce((a,ch)=>a+(hostCh[ch]||0),0);
     const paidSess = Math.max(0, visits - orgSess - contentSess);
-    const contentBookAll = thBookings;
+    // 쓰레드 예약을 총합에서 차감하는 건 impact-me뿐(그 카드는 bookingV에 thBookings를 더해 합산).
+    // discount-me는 쓰레드가 booking_completed에 안 섞여 있어(별도 funnel 행) 차감하면 광고분이 깎임 → 0.
+    const contentBookAll = lf.id==='impact-me' ? thBookings : 0;
     const orgBookAll = orBookings;
     const adsBookAll = Math.max(0, (bookingV||0) - orgBookAll - contentBookAll);
-    if(visits) splitBadge = `⚖️ 광고 ${fmtPct(paidSess/visits)} · 콘텐츠 ${fmtPct(contentSess/visits)} · 오가닉 ${fmtPct(orgSess/visits)} <span style="font-weight:400;color:#8a919c;">(유입 기준)</span>${bookingV?` · ${bookingLabel} 광고 <b>${fmtNum(adsBookAll)}</b>·콘텐츠 <b>${fmtNum(contentBookAll)}</b>·오가닉 <b>${fmtNum(orgBookAll)}</b>`:''}`;
+    if(visits) splitBadge = `⚖️ 광고 ${fmtPct(paidSess/visits)} · 콘텐츠 ${fmtPct(contentSess/visits)} · 오가닉 ${fmtPct(orgSess/visits)} <span style="font-weight:400;color:#8a919c;">(유입 기준)</span>${bookingV?` · ${bookingLabel} 광고 <b>${fmtNum(adsBookAll)}</b>·콘텐츠 <b>${fmtNum(contentBookAll)}</b>·오가닉 <b>${fmtNum(orgBookAll)}</b>`:''}${thPayBadge?`<br>🧵 ${thPayBadge}`:''}`;
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">💰 광고비</div><div class="lf-stage-value">${fmtWon(spend)}</div><div class="lf-stage-sub">참고 (전체 유입 기준)</div></div>`;
   } else {  // 'ch:GA4채널그룹'
     const ch = view.slice(3);
@@ -1215,10 +1226,11 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     naverClicks = sumByChannel(lf.outbound_by_channel_rows, ch);
     payNote = '채널그룹 단위 수기 구분 없음';
     // 콘텐츠(Organic Social) 뷰의 impact-me = 쓰레드 — DB·예약을 시트 D/G열 기준으로 표시
-    if(lf.id==='impact-me' && ch==='Organic Social' && (thDb||thBookings)){
+    if(lf.id==='impact-me' && ch==='Organic Social' && (thDb||thBookings||thPayments)){
       finalConv = thDb; finalLabel = '타입폼 제출완료 (시트 쓰레드)';
       bookingV = thBookings; bookingDetail = thBookingBadge;
-      payNote = '쓰레드 결제(매출)는 아직 시트에 없음';
+      contractsV = thPayments; revenueV = thRevenue;
+      payNote = thPayBadge ? `콘텐츠(쓰레드) — ${thPayBadge}` : '쓰레드 결제 없음';
     }
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">🧭 유입 경로</div><div class="lf-stage-value" style="font-size:14px;padding-top:3px;">${CHANNEL_LABELS[ch]||ch}</div><div class="lf-stage-sub">GA4 채널그룹 기준</div></div>`;
   }
