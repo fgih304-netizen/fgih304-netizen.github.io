@@ -338,8 +338,8 @@
 
 <script>
 const SOURCES = {
-  real: { data: 'data.json', revenue: 'revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv', discountTypeform: 'discount_typeform.csv' },
-  demo: { data: 'demo_data.json', revenue: 'demo_revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv', discountTypeform: 'discount_typeform.csv' },
+  real: { data: 'data.json', revenue: 'revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv', discountTypeform: 'discount_typeform.csv', abPayments: 'ab_payments.csv' },
+  demo: { data: 'demo_data.json', revenue: 'demo_revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv', discountTypeform: 'discount_typeform.csv', abPayments: 'ab_payments.csv' },
 };
 const GA4_SOURCES = { real: 'ga4_data.json', demo: 'demo_ga4_data.json' };
 const state = { source:'real', since:null, until:null, adRows:[], revRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[], organicRevRows:[],
@@ -347,7 +347,7 @@ const state = { source:'real', since:null, until:null, adRows:[], revRows:[], cr
   landingView:'all',   // 랜딩 퍼널 섹션의 유입경로 드롭다운 선택값 ('all'|'meta'|'organic'|'ch:채널그룹') — 모든 카드에 일괄 적용
   threadsDaily:[],     // 쓰레드(콘텐츠 채널, impact-me 랜딩) DB·예약 — 구글시트 Daily탭 D/H열 파생 threads_daily.csv
   discountTypeform:[], // 할인퍼널 타입폼 완료 확정치 — 구글시트 Daily탭 G열 파생 discount_typeform.csv
-  abTest:{}, abRows:[], ga4AbRows:[],   // A/B 테스트(광고세트·경로 분해) — config.json/ga4_config.json "ab_test"
+  abTest:{}, abRows:[], ga4AbRows:[], abPayments:[],   // A/B 테스트(광고세트·경로 분해) — config.json/ga4_config.json "ab_test", 변형별 결제는 ab_payments.csv
   depositSummary:[],   // 러버블 Supabase daily_deposit_summary (전 퍼널 실시간 예약금·결제 코호트)
   historyRows:[], historyWritable:false, historySha:null };
 
@@ -448,7 +448,7 @@ function parseCSV(text){
 
 async function loadSource(name){
   const src = SOURCES[name];
-  const [dataRes, revRes, tfRes, bcRes, orRes, thRes, d50Res] = await Promise.all([
+  const [dataRes, revRes, tfRes, bcRes, orRes, thRes, d50Res, abPayRes] = await Promise.all([
     fetch(bust(src.data)).catch(()=>null),
     fetch(bust(src.revenue)).catch(()=>null),
     fetch(bust(src.typeformSubmits)).catch(()=>null),
@@ -456,6 +456,7 @@ async function loadSource(name){
     fetch(bust(src.organicRevenue)).catch(()=>null),
     fetch(bust(src.threads)).catch(()=>null),
     fetch(bust(src.discountTypeform)).catch(()=>null),
+    fetch(bust(src.abPayments)).catch(()=>null),
   ]);
   if (!dataRes || !dataRes.ok) throw new Error('data missing');
   const dataJson = await dataRes.json();
@@ -490,7 +491,12 @@ async function loadSource(name){
   const discountTypeform = parseCSV(d50Text).map(r=>({
     date:r.date, count:Number(r.count||0),
   })).filter(r=>r.date);
-  return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abTest: dataJson.ab_test||{}, abRows: dataJson.ab_rows||[] };
+  // A/B 변형별 예약금 결제(수기, 구글시트 AB결제 탭 파생). 변형은 '얼굴'/'좋은분' 등 config 변형 label의 부분문자열로 매칭.
+  const abPayText = (abPayRes && abPayRes.ok) ? await abPayRes.text() : '';
+  const abPayments = parseCSV(abPayText).map(r=>({
+    date:r.date, variant:(r.variant||'').trim(), payments:Number(r.payments||0), revenue:Number(r.revenue||0),
+  })).filter(r=>r.date && r.variant);
+  return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTest: dataJson.ab_test||{}, abRows: dataJson.ab_rows||[] };
 }
 
 function showBanner(msg){
@@ -516,8 +522,8 @@ async function loadGa4(name){
 
 async function setSource(name, opts={}){
   try{
-    const { adRows, revRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abTest, abRows } = await loadSource(name);
-    state.source=name; state.adRows=adRows; state.revRows=revRows; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted; state.organicRevRows=organicRevRows; state.threadsDaily=threadsDaily; state.discountTypeform=discountTypeform; state.abTest=abTest; state.abRows=abRows;
+    const { adRows, revRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTest, abRows } = await loadSource(name);
+    state.source=name; state.adRows=adRows; state.revRows=revRows; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted; state.organicRevRows=organicRevRows; state.threadsDaily=threadsDaily; state.discountTypeform=discountTypeform; state.abPayments=abPayments; state.abTest=abTest; state.abRows=abRows;
     if (name==='real' && adRows.length===0 && !opts.silentEmpty)
       showBanner('아직 실데이터가 없어요. fetch_data.py 를 실행하면 메타 데이터가 채워집니다.');
     else if (name==='demo')
@@ -1042,18 +1048,27 @@ function renderAbTest(){
 
   // adset_contains가 문자열이든 배열이든 매칭 (2026-07-20: 캠페인마다 광고세트명이 달라 배열 지원)
   const matchAdset = (name, pat) => (Array.isArray(pat) ? pat : [pat]).some(k => (name||'').includes(k));
+  // 변형별 예약금 결제(수기 ab_payments.csv) — 변형 label의 부분문자열로 매칭(예: 'A · 얼굴' ⊇ '얼굴')
+  const payRows = (state.abPayments||[]).filter(r=>r.date>=since && r.date<=state.until);
   const byV = variants.map((v,i)=>{
     const mine = abRows.filter(r=>matchAdset(r.adset_name, v.adset_contains));
     const spend = mine.reduce((a,r)=>a+(r.spend||0),0);
     const sess = (state.ga4Rows||[]).filter(r=>r.host===cfg.hostname && r.path===v.path && r.date>=since && r.date<=state.until).reduce((a,r)=>a+(r.sessions||0),0);
     const clicks = (state.ga4AbRows||[]).filter(r=>r.path===v.path && r.date>=since && r.date<=state.until).reduce((a,r)=>a+(r.value||0),0);
     const typeform = tfByVariant[i];
-    return {...v, spend, typeform, sess, clicks,
+    const myPay = payRows.filter(r=>v.label.includes(r.variant) || r.variant.includes(v.label));
+    const payments = myPay.reduce((a,r)=>a+(r.payments||0),0);
+    const payRevenue = myPay.reduce((a,r)=>a+(r.revenue||0),0);
+    return {...v, spend, typeform, sess, clicks, payments, payRevenue,
       clickRate: sess ? clicks/sess : null,
       cpa: typeform ? spend/typeform : null,
-      tfRate: clicks ? typeform/clicks : null};
+      tfRate: clicks ? typeform/clicks : null,
+      payCpa: payments ? spend/payments : null,
+      payRate: typeform ? payments/typeform : null,
+      roas: (spend && payRevenue) ? payRevenue/spend : null};
   });
   const bestCpa = Math.min(...byV.filter(v=>v.cpa!=null).map(v=>v.cpa));
+  const anyRevenue = byV.some(v=>v.payRevenue>0);
   const fmtTf = n => Number.isInteger(n) ? fmtNum(n) : n.toFixed(1);
 
   grid.innerHTML = `<div class="panel" style="overflow-x:auto;">
@@ -1061,6 +1076,7 @@ function renderAbTest(){
       <thead><tr>
         <th>변형 (랜딩 경로)</th><th>💰 광고비</th><th>🌐 랜딩 유입</th>
         <th>🪜 신청 클릭</th><th>클릭률</th><th>🎯 타입폼 완료</th><th>완료 전환율</th><th>완료당 비용</th>
+        <th>💳 예약금 결제</th><th>결제 전환율</th><th>결제당 비용</th>${anyRevenue?'<th>💰 매출</th><th>ROAS</th>':''}
       </tr></thead>
       <tbody>${byV.map(v=>`<tr${v.cpa!=null&&v.cpa===bestCpa?' class="ab-best"':''}>
         <td><b>${v.label}</b> <a class="cap" href="https://${cfg.hostname}${v.path}" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:none;">${cfg.hostname}${v.path} ↗</a></td>
@@ -1071,6 +1087,9 @@ function renderAbTest(){
         <td><b>${fmtTf(v.typeform)}</b></td>
         <td>${v.tfRate!=null?fmtPct(v.tfRate):'—'}</td>
         <td>${v.cpa!=null?fmtWon(v.cpa):'—'}</td>
+        <td><b>${fmtNum(v.payments)}</b></td>
+        <td>${v.payRate!=null?fmtPct(v.payRate):'—'}</td>
+        <td>${v.payCpa!=null?fmtWon(v.payCpa):'—'}</td>${anyRevenue?`<td>${fmtWon(v.payRevenue)}</td><td>${v.roas!=null?v.roas.toFixed(2)+'x':'—'}</td>`:''}
       </tr>`).join('')}</tbody>
     </table>
   </div>`;
