@@ -1060,17 +1060,20 @@ function renderAbTest(){
   const payRows = (state.abPayments||[]).filter(r=>r.date>=since && r.date<=state.until);
   const tfRows  = (state.abTypeform||[]).filter(r=>r.date>=since && r.date<=state.until);
   const byV = variants.map((v,i)=>{
-    const utmOnly = !!v.utm_only;
     const matchV = r => v.label.includes(r.variant) || r.variant.includes(v.label);
-    const mine = abRows.filter(r=>matchAdset(r.adset_name, v.adset_contains));
-    const spend = utmOnly ? null : mine.reduce((a,r)=>a+(r.spend||0),0);
-    const sess = utmOnly ? null : (state.ga4Rows||[]).filter(r=>r.host===cfg.hostname && r.path===v.path && r.date>=since && r.date<=state.until).reduce((a,r)=>a+(r.sessions||0),0);
-    const clicks = utmOnly ? null : (state.ga4AbRows||[]).filter(r=>r.path===v.path && r.date>=since && r.date<=state.until).reduce((a,r)=>a+(r.value||0),0);
+    // 변형별 날짜창(전역 조회기간 ∩ 변형 date_from~date_to) — 같은 경로를 시대로 나누는 B/C 겹침 방지
+    const vsince = (v.date_from && v.date_from > since) ? v.date_from : since;
+    const vuntil = (v.date_to && v.date_to < state.until) ? v.date_to : state.until;
+    const hasAdset = Array.isArray(v.adset_contains) && v.adset_contains.length > 0;
+    // 광고비=전용 광고세트 있을 때만(C는 없음→'—') · 유입/클릭=랜딩 경로 있을 때만
+    const spend = hasAdset ? abRows.filter(r=>matchAdset(r.adset_name, v.adset_contains) && r.date>=vsince && r.date<=vuntil).reduce((a,r)=>a+(r.spend||0),0) : null;
+    const sess = v.path ? (state.ga4Rows||[]).filter(r=>r.host===cfg.hostname && r.path===v.path && r.date>=vsince && r.date<=vuntil).reduce((a,r)=>a+(r.sessions||0),0) : null;
+    const clicks = v.path ? (state.ga4AbRows||[]).filter(r=>r.path===v.path && r.date>=vsince && r.date<=vuntil).reduce((a,r)=>a+(r.value||0),0) : null;
     const typeform = tfRows.filter(matchV).reduce((a,r)=>a+(r.count||0),0);
     const myPay = payRows.filter(matchV);
     const payments = myPay.reduce((a,r)=>a+(r.payments||0),0);
     const payRevenue = myPay.reduce((a,r)=>a+(r.revenue||0),0);
-    return {...v, utmOnly, spend, typeform, sess, clicks, payments, payRevenue,
+    return {...v, spend, typeform, sess, clicks, payments, payRevenue,
       clickRate: sess ? clicks/sess : null,
       cpa: (spend!=null && typeform) ? spend/typeform : null,
       tfRate: clicks ? typeform/clicks : null,
@@ -1091,7 +1094,7 @@ function renderAbTest(){
         <th>💳 예약금 결제</th><th>결제 전환율</th><th>결제당 비용</th>${anyRevenue?'<th>💰 매출</th><th>ROAS</th>':''}
       </tr></thead>
       <tbody>${byV.map(v=>`<tr${v.cpa!=null&&v.cpa===bestCpa?' class="ab-best"':''}>
-        <td><b>${v.label}</b> ${v.utmOnly?'<span class="cap" style="color:#8a919c;">utm 구분 (광고세트·경로 없음)</span>':`<a class="cap" href="https://${cfg.hostname}${v.path}" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:none;">${cfg.hostname}${v.path} ↗</a>`}</td>
+        <td><b>${v.label}</b> ${v.path?`<a class="cap" href="https://${cfg.hostname}${v.path}" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:none;">${cfg.hostname}${v.path} ↗</a>`:'<span class="cap" style="color:#8a919c;">utm 구분</span>'}${v.date_from?` <span class="cap" style="color:#8a919c;">(${v.date_from}~)</span>`:(v.date_to?` <span class="cap" style="color:#8a919c;">(~${v.date_to})</span>`:'')}</td>
         <td>${v.spend!=null?fmtWon(v.spend):'—'}</td>
         <td>${v.sess!=null?fmtNum(v.sess):'—'}</td>
         <td>${v.clicks!=null?fmtNum(v.clicks):'—'}</td>
