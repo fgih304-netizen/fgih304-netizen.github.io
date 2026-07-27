@@ -981,8 +981,15 @@ function renderLandingFunnels(){
   //  - 진단퍼널(impact-me): 광고 집행일(~7/09)에만 노출
   //  - 할인퍼널(discount-me): 2026-07-15 시작 → 그 이전엔 숨김
   //  - 구예약퍼널(change-me): 초기 운영일에만 노출
+  // 예외(2026-07-27): 광고비 0이어도 조회기간에 쓰레드(threads_daily) 활동이 있으면 카드 노출
+  // — 쓰레드는 7/14부터 find-me로 운영 중인데 find-me 광고가 꺼져 있으면 결제가 안 보이는 문제 해결.
+  //   시대구분(≤7/13 impact-me / ≥7/14 find-me)은 renderLandingCard의 thRows와 항상 동일하게 유지할 것.
+  const hasThreadActivity = lf => (lf.id==='impact-me' || lf.id==='find-me') &&
+    (state.threadsDaily||[]).some(r=> r.date>=state.since && r.date<=state.until &&
+      (lf.id==='find-me' ? r.date>='2026-07-14' : r.date<='2026-07-13') &&
+      ((r.db||0)+(r.bookings||0)+(r.payments||0)+(r.revenue||0) > 0));
   const visibleFunnels = state.ga4LandingFunnels.filter(lf =>
-    (metricsByLanding[lf.id]?.spend || 0) > 0);
+    (metricsByLanding[lf.id]?.spend || 0) > 0 || hasThreadActivity(lf));
 
   if(visibleFunnels.length===0){ grid.innerHTML='<div class="empty">이 기간에 광고가 집행된 랜딩 퍼널이 없어요 (조회기간을 바꿔보세요)</div>'; return; }
   grid.innerHTML = visibleFunnels.map(lf=> renderLandingCard(lf, metricsByLanding, bucketsById)).join('');
