@@ -1259,8 +1259,9 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     finalConv = sumByChannel(lf.stage3_by_channel_rows, ch);
     naverClicks = sumByChannel(lf.outbound_by_channel_rows, ch);
     payNote = '채널그룹 단위 수기 구분 없음';
-    // 콘텐츠(Organic Social) 뷰의 impact-me = 쓰레드 — DB·예약을 시트 D/G열 기준으로 표시
-    if(lf.id==='impact-me' && ch==='Organic Social' && (thDb||thBookings||thPayments)){
+    // 콘텐츠(Organic Social) 뷰 = 쓰레드 — DB·예약·결제를 시트(threads_daily) 기준으로 표시.
+    // thRows가 날짜로 시대 구분(≤7/14 impact-me, ≥7/15 discount-me)하므로 두 카드 모두 여기서 연결 (2026-07-27 확장).
+    if((lf.id==='impact-me' || lf.id==='discount-me') && ch==='Organic Social' && (thDb||thBookings||thPayments)){
       finalConv = thDb; finalLabel = '타입폼 제출완료 (시트 쓰레드)';
       bookingV = thBookings; bookingDetail = thBookingBadge;
       contractsV = thPayments; revenueV = thRevenue;
