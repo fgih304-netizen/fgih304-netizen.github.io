@@ -1001,7 +1001,17 @@ function renderLandingFunnels(){
     (metricsByLanding[lf.id]?.spend || 0) > 0 || hasThreadActivity(lf));
 
   if(visibleFunnels.length===0){ grid.innerHTML='<div class="empty">이 기간에 광고가 집행된 랜딩 퍼널이 없어요 (조회기간을 바꿔보세요)</div>'; return; }
-  grid.innerHTML = visibleFunnels.map(lf=> renderLandingCard(lf, metricsByLanding, bucketsById)).join('');
+  // 광고비 0 + 쓰레드 활동만으로 노출되는 랜딩은 광고 퍼널 카드 대신 콘텐츠(쓰레드) 카드로 표시 (2026-07-27 사용자 요청)
+  // — 실체가 콘텐츠 채널인데 광고 퍼널 모양으로 보이면 헷갈림. 광고 재개 시 자동으로 랜딩 카드(+🧵 배지)로 복귀.
+  let contentCardShown = false;
+  grid.innerHTML = visibleFunnels.map(lf=>{
+    if((metricsByLanding[lf.id]?.spend||0)===0 && hasThreadActivity(lf)){
+      if(contentCardShown) return '';
+      contentCardShown = true;
+      return renderContentCard();
+    }
+    return renderLandingCard(lf, metricsByLanding, bucketsById);
+  }).join('');
 
   renderDepositLive();
   renderAbTest();
