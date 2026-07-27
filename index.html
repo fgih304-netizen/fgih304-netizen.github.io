@@ -1557,13 +1557,21 @@ function renderHistory(){
   }).join('');
 }
 
+// 히스토리 이미지 표시 URL — GitHub Pages는 커밋 후 빌드 지연(1~2분)이 있어 추가 직후엔 404(깨짐)라,
+// 커밋 즉시 서빙되는 raw.githubusercontent 를 쓴다(표시·fetch 다운로드 CORS 모두 확인됨, 2026-07-23).
+function histImgUrl(path){
+  if(!path) return '';
+  if(/^https?:\/\//.test(path)) return path;
+  return `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}`;
+}
+
 // as-is/to-be 썸네일 ('사진 → 사진'). 오버=미리보기(CSS), 클릭=다운로드(histList 핸들러)
 function histThumbsHTML(r){
   if(!r.before_img && !r.after_img) return '';
-  const cell = (path,label)=> `<span class="hist-thumb-wrap">
-      <img class="hist-thumb" src="${path}" data-full="${path}" loading="lazy" alt="${label}" title="${label} · 클릭하면 다운로드">
-      <img class="hist-thumb-preview" src="${path}" alt="">
-    </span>`;
+  const cell = (path,label)=>{ const u = histImgUrl(path); return `<span class="hist-thumb-wrap">
+      <img class="hist-thumb" src="${u}" data-full="${u}" data-name="${path.split('/').pop()}" loading="lazy" alt="${label}" title="${label} · 클릭하면 다운로드">
+      <img class="hist-thumb-preview" src="${u}" alt="">
+    </span>`; };
   const parts = [];
   if(r.before_img) parts.push(cell(r.before_img,'as-is'));
   if(r.before_img && r.after_img) parts.push('<span class="hist-thumb-arrow">→</span>');
@@ -1733,7 +1741,7 @@ document.getElementById('histList').addEventListener('click', async (e)=>{
   const thumb = e.target.closest('.hist-thumb');
   if(thumb){
     const path = thumb.dataset.full; if(!path) return;
-    const name = path.split('/').pop();
+    const name = thumb.dataset.name || path.split('/').pop();
     try{
       const res = await fetch(path); if(!res.ok) throw new Error('fetch');
       const blob = await res.blob();
