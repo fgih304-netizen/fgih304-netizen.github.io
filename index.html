@@ -148,6 +148,13 @@
   .hist-gh-btn{border:1px solid var(--line);background:#fff;color:var(--sub);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer;white-space:nowrap;}
   .hist-gh-btn:hover{border-color:var(--ink);color:var(--ink);}
   .hist-del:hover{color:var(--red);}
+  .hist-thumbs{display:flex;align-items:center;gap:5px;flex:none;padding-top:1px;}
+  .hist-thumb-wrap{position:relative;display:inline-flex;}
+  .hist-thumb{height:38px;width:52px;object-fit:cover;border-radius:5px;border:1px solid var(--line);cursor:pointer;display:block;background:#f5f6f8;transition:border-color .12s;}
+  .hist-thumb:hover{border-color:var(--amber);}
+  .hist-thumb-arrow{color:#9aa0a8;font-size:13px;font-weight:700;}
+  .hist-thumb-preview{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);max-width:360px;max-height:340px;border-radius:8px;border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.24);z-index:60;background:#fff;pointer-events:none;}
+  .hist-thumb-wrap:hover .hist-thumb-preview{display:block;}
 </style>
 </head>
 <body>
@@ -326,6 +333,16 @@
           <input type="text" id="histMemo" placeholder="예: 썸네일 교체, 타겟 연령 확장">
         </div>
         <button type="submit" id="histSubmit">+ 추가</button>
+        <div id="histImgRow" style="grid-column:1/-1;">
+          <label>이미지 (선택) — as-is → to-be. 첨부하면 목록에 작게 표시, 마우스 올리면 미리보기, 클릭하면 PC로 다운로드</label>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span style="font-size:11px;color:var(--sub);font-weight:700;">비포</span>
+            <input type="file" id="histImgBefore" accept="image/*" style="max-width:230px;">
+            <span style="font-size:13px;color:#9aa0a8;font-weight:700;">→</span>
+            <span style="font-size:11px;color:var(--sub);font-weight:700;">애프터</span>
+            <input type="file" id="histImgAfter" accept="image/*" style="max-width:230px;">
+          </div>
+        </div>
       </form>
       <div class="hist-note" id="histNote"></div>
     </div>
@@ -376,10 +393,61 @@ function csvField(v){
   return /[",\r\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
 }
 function historyRowsToCSV(rows){
-  const cols = ['id', 'date', 'type', 'target', 'memo'];
+  const cols = ['id', 'date', 'type', 'target', 'memo', 'before_img', 'after_img'];
   const lines = [cols.join(',')];
   rows.forEach(r => lines.push(cols.map(c => csvField(r[c])).join(',')));
   return lines.join('\n') + '\n';
+}
+
+// as-is/to-be 이미지: 업로드 전 캔버스로 리사이즈(가로세로 최대 maxPx, JPEG)해 용량을 줄인다.
+function resizeImageToDataURL(file, maxPx, quality){
+  return new Promise((resolve, reject)=>{
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = ()=>{
+      URL.revokeObjectURL(url);
+      let w = img.naturalWidth, h = img.naturalHeight;
+      const scale = Math.min(1, maxPx / Math.max(w, h));
+      w = Math.round(w * scale); h = Math.round(h * scale);
+      const cv = document.createElement('canvas');
+      cv.width = w; cv.height = h;
+      const ctx = cv.getContext('2d');
+      ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, w, h);   // 투명 PNG → 흰 배경
+      ctx.drawImage(img, 0, 0, w, h);
+      resolve(cv.toDataURL('image/jpeg', quality));
+    };
+    img.onerror = ()=>{ URL.revokeObjectURL(url); reject(new Error('이미지를 읽지 못했어요')); };
+    img.src = url;
+  });
+}
+
+// GitHub 리포에 이미지 파일 생성(Contents API). id 기반 고유 경로라 항상 신규 → sha 불필요.
+// deploy_github.py 는 base_tree 증분 방식이라 이 파일들을 배포해도 지우지 않음(history.csv 와 동일).
+async function ghUploadImage(token, path, dataUrl, message){
+  const content = dataUrl.split(',')[1];
+  const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message, content }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || `이미지 업로드 실패 (${res.status})`);
+  }
+}
+
+async function ghDeleteImage(token, path){   // 삭제는 best-effort (실패해도 히스토리 삭제는 진행)
+  try{
+    const g = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
+      headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' } });
+    if (!g.ok) return;
+    const j = await g.json();
+    await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: `history image 삭제: ${path}`, sha: j.sha }),
+    });
+  }catch(e){ /* 무시 */ }
 }
 
 async function ghReadHistory(token){
@@ -1483,9 +1551,24 @@ function renderHistory(){
         ${r.target ? `<div class="hist-target">${r.target}</div>` : ''}
         ${r.memo ? `<div class="hist-memo">${r.memo}</div>` : ''}
       </div>
+      ${histThumbsHTML(r)}
       ${delBtn}
     </div>`;
   }).join('');
+}
+
+// as-is/to-be 썸네일 ('사진 → 사진'). 오버=미리보기(CSS), 클릭=다운로드(histList 핸들러)
+function histThumbsHTML(r){
+  if(!r.before_img && !r.after_img) return '';
+  const cell = (path,label)=> `<span class="hist-thumb-wrap">
+      <img class="hist-thumb" src="${path}" data-full="${path}" loading="lazy" alt="${label}" title="${label} · 클릭하면 다운로드">
+      <img class="hist-thumb-preview" src="${path}" alt="">
+    </span>`;
+  const parts = [];
+  if(r.before_img) parts.push(cell(r.before_img,'as-is'));
+  if(r.before_img && r.after_img) parts.push('<span class="hist-thumb-arrow">→</span>');
+  if(r.after_img) parts.push(cell(r.after_img,'to-be'));
+  return `<div class="hist-thumbs">${parts.join('')}</div>`;
 }
 
 function newHistoryId(){
@@ -1509,9 +1592,9 @@ async function ghSaveHistory(mutate, message){
   }
 }
 
-async function addHistoryEntry(entry){
+async function addHistoryEntry(entry, id){
   if (state.historyMode === 'github') {
-    const row = { id: newHistoryId(), ...entry };
+    const row = { id: id || newHistoryId(), ...entry };
     await ghSaveHistory(rows=>[...rows, row], `history: ${entry.date} ${entry.type} 추가`);
     return;
   }
@@ -1527,7 +1610,10 @@ async function addHistoryEntry(entry){
 
 async function deleteHistoryEntry(id){
   if (state.historyMode === 'github') {
+    const row = state.historyRows.find(r=>r.id===id);
     await ghSaveHistory(rows=>rows.filter(r=>r.id!==id), `history: ${id} 삭제`);
+    if(row && row.before_img) await ghDeleteImage(ghToken(), row.before_img);
+    if(row && row.after_img) await ghDeleteImage(ghToken(), row.after_img);
     return;
   }
   const res = await fetch(`/api/history?id=${encodeURIComponent(id)}`, { method:'DELETE' });
@@ -1607,11 +1693,34 @@ document.getElementById('histForm').addEventListener('submit', async (e)=>{
     memo: document.getElementById('histMemo').value,
   };
   if(!entry.date){ alert('날짜를 선택해주세요'); return; }
-  btn.disabled = true; btn.textContent='추가 중…';
+  const beforeFile = document.getElementById('histImgBefore').files[0];
+  const afterFile = document.getElementById('histImgAfter').files[0];
+  if((beforeFile || afterFile) && state.historyMode !== 'github'){
+    alert('이미지 첨부는 "🔑 연동 설정"으로 GitHub 토큰을 등록한 상태에서만 가능해요.'); return;
+  }
+  btn.disabled = true;
   try{
-    await addHistoryEntry(entry);
+    const id = newHistoryId();
+    if(beforeFile){
+      btn.textContent='비포 업로드 중…';
+      const d = await resizeImageToDataURL(beforeFile, 1600, 0.85);
+      const path = `images/history/${id}_before.jpg`;
+      await ghUploadImage(ghToken(), path, d, `history image: ${id} before`);
+      entry.before_img = path;
+    }
+    if(afterFile){
+      btn.textContent='애프터 업로드 중…';
+      const d = await resizeImageToDataURL(afterFile, 1600, 0.85);
+      const path = `images/history/${id}_after.jpg`;
+      await ghUploadImage(ghToken(), path, d, `history image: ${id} after`);
+      entry.after_img = path;
+    }
+    btn.textContent='추가 중…';
+    await addHistoryEntry(entry, id);
     document.getElementById('histTarget').value='';
     document.getElementById('histMemo').value='';
+    document.getElementById('histImgBefore').value='';
+    document.getElementById('histImgAfter').value='';
     renderHistory();
     markHistorySeen();
   }catch(err){
@@ -1621,6 +1730,20 @@ document.getElementById('histForm').addEventListener('submit', async (e)=>{
   }
 });
 document.getElementById('histList').addEventListener('click', async (e)=>{
+  const thumb = e.target.closest('.hist-thumb');
+  if(thumb){
+    const path = thumb.dataset.full; if(!path) return;
+    const name = path.split('/').pop();
+    try{
+      const res = await fetch(path); if(!res.ok) throw new Error('fetch');
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url), 2000);
+    }catch(err){ window.open(path, '_blank'); }   // 실패 시 새 탭으로 열기(수동 저장)
+    return;
+  }
   const btn = e.target.closest('.hist-del'); if(!btn) return;
   const id = btn.dataset.id; if(!id) return;
   if(!confirm('이 히스토리 기록을 삭제할까요?')) return;
