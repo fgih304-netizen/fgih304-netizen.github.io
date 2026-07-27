@@ -1577,7 +1577,8 @@ document.getElementById('quick').addEventListener('click',e=>{
   e.target.classList.add('active');
   const today=new Date();
   if(q==='yesterday'){const y=addDays(today,-1);setRange(toISO(y),toISO(y));}
-  else setRange(toISO(addDays(today,-(Number(q)-1))),toISO(today));
+  // N일 프리셋 = 어제 종료 기준 (데이터가 항상 어제자까지라 오늘 포함 시 마지막 날이 비어 보임 — 2026-07-27)
+  else{const y=addDays(today,-1);setRange(toISO(addDays(y,-(Number(q)-1))),toISO(y));}
 });
 document.getElementById('srcToggle').addEventListener('click',e=>{const s=e.target.dataset.src; if(s) setSource(s);});
 
