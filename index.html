@@ -956,12 +956,21 @@ function renderLandingFunnels(){
   const LEGEND_BY_VIEW = {
     'all': '<b>전체</b> — 광고+콘텐츠+오가닉 합산. 사업 전체 CAC·ROI(블렌디드)는 여기서 봐요.',
     'meta': '<b>메타 광고</b> — 인스타·페북 유료 광고 유입. 광고비 대비 효율(예산 판단)은 여기서.',
-    'ch:Organic Social': '<b>콘텐츠</b> — 쓰레드·블로그 등 우리가 직접 발행하는 콘텐츠 경유 유입 (UTM 기준).',
+    'ch:Organic Social': '<b>콘텐츠</b> — 쓰레드·블로그 등 우리가 직접 발행하는 채널의 성과를 랜딩 구분 없이 채널 기준으로 봐요 (유입=GA4 · DB/결제=시트 일일기록).',
     'organic': '<b>오가닉</b> — 직접 유입·미분류·외부 링크·검색 등 자연 유입. 실제 바이럴 여부는 여기서.',
   };
   const legendEl = document.getElementById('landingLegend');
   if(legendEl) legendEl.innerHTML = LEGEND_BY_VIEW[state.landingView]
     || `<b>${CHANNEL_LABELS[state.landingView.slice(3)]||state.landingView.slice(3)}</b> — GA4 채널그룹 기준 개별 채널 유입. 결제 단계는 채널 단위 수기 구분이 없어 표시되지 않아요.`;
+
+  // 콘텐츠 뷰(2026-07-27): 랜딩 카드에 얹는 대신 채널(쓰레드) 중심 '콘텐츠 전용 카드' 1장으로 표시.
+  // 쓰레드가 어느 랜딩으로 운영되든(임팩트미→find-me 등) 카드가 깨지지 않는다 — 시대구분 불필요.
+  if(state.landingView==='ch:Organic Social'){
+    grid.innerHTML = renderContentCard();
+    renderDepositLive();
+    renderAbTest();
+    return;
+  }
 
   const metricsByLanding = {};
   state.landingMetrics.filter(r=>r.date>=state.since && r.date<=state.until).forEach(r=>{
@@ -1021,6 +1030,44 @@ function renderDepositLive(){
 
 function setLandingView(v){ state.landingView=v; renderLandingFunnels(); }
 
+// 🧵 콘텐츠 전용 카드 (2026-07-27) — 콘텐츠 뷰에서 랜딩 카드 대신 표시.
+// 유입 = 전 호스트 Organic Social 세션 합(GA4), DB·예약·결제·매출 = 시트 일일기록 threads(threads_daily.csv).
+// 광고비 0원 채널이라 비용 지표 대신 단계 전환율만 보여준다.
+function renderContentCard(){
+  const since=state.since, until=state.until;
+  const rows=(state.threadsDaily||[]).filter(r=>r.date>=since && r.date<=until);
+  const db=rows.reduce((a,r)=>a+(r.db||0),0);
+  const bookings=rows.reduce((a,r)=>a+(r.bookings||0),0);
+  const payments=rows.reduce((a,r)=>a+(r.payments||0),0);
+  const revenue=rows.reduce((a,r)=>a+(r.revenue||0),0);
+  const byHost={};
+  (state.ga4ChannelRows||[]).forEach(r=>{ if(CONTENT_CHANNELS.includes(r.channel) && r.date>=since && r.date<=until){ byHost[r.host]=(byHost[r.host]||0)+r.sessions; } });
+  const visits=Object.values(byHost).reduce((a,b)=>a+b,0);
+  const hostDetail=Object.entries(byHost).sort((a,b)=>b[1]-a[1]).map(([h,s])=>`${String(h).replace('.real-me.co.kr','')} <b>${fmtNum(s)}</b>`).join(' · ');
+  const rateDb = visits? db/visits : null;
+  const rateBook = db? bookings/db : null;
+  const ratePay = bookings? payments/bookings : null;
+  return `<div class="panel landing-card">
+    <div class="lf-head">
+      <div class="lf-title">🧵 콘텐츠 (쓰레드)</div>
+      <span class="lf-sub">광고비 0원 채널 · 랜딩 구분 없이 채널 기준 집계 · 현재 쓰레드는 find-me 랜딩으로 운영 중</span>
+    </div>
+    <div class="lf-stages">
+      <div class="lf-stage-box lf-spend"><div class="lf-stage-label">🧭 유입 경로</div><div class="lf-stage-value" style="font-size:14px;padding-top:3px;">콘텐츠 (쓰레드·블로그)</div><div class="lf-stage-sub">GA4 채널그룹 기준</div></div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s1"><div class="lf-stage-label">🌐 랜딩 유입</div><div class="lf-stage-value">${fmtNum(visits)}</div><div class="lf-stage-sub">${hostDetail||'GA4 세션 기준'}</div></div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s3"><div class="lf-stage-label">🎯 DB (시트 쓰레드)</div><div class="lf-stage-value">${fmtNum(db)}</div><div class="lf-stage-sub">전환율 <b>${rateDb!=null?fmtPct(rateDb):'—'}</b></div></div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s4"><div class="lf-stage-label">📅 예약 DB</div><div class="lf-stage-value">${fmtNum(bookings)}</div><div class="lf-stage-sub">전환율 <b>${rateBook!=null?fmtPct(rateBook):'—'}</b></div></div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s5"><div class="lf-stage-label">🏦 예약금 결제</div><div class="lf-stage-value">${fmtNum(payments)}</div><div class="lf-stage-sub">결제전환율 <b>${ratePay!=null?fmtPct(ratePay):'—'}</b></div></div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s6"><div class="lf-stage-label">🤝 결제금액</div><div class="lf-stage-value">${fmtWon(revenue)}</div><div class="lf-stage-sub">시트 일일기록 기준</div></div>
+    </div>
+  </div>`;
+}
+
 // 🧪 A/B 테스트 패널 — 같은 캠페인 안에서 광고세트별로 다른 랜딩(히어로 문구)을 태우는 실험 (2026-07-19).
 // 광고비·유입·타입폼완료 = Meta 광고세트 단위(ab_rows), 랜딩 세션·신청 클릭 = GA4 경로 단위(ga4Rows·ga4AbRows).
 // 주의: GA4 경로 수치엔 오가닉·재방문도 섞임(경로=변형 기준), Meta 수치는 광고 귀속만. 결제·매출은 변형 구분 불가.
@@ -1028,6 +1075,11 @@ function renderAbTest(){
   const head = document.getElementById('abSectionHead');
   const grid = document.getElementById('abGrid');
   if(!head || !grid) return;
+  // A/B 패널은 광고 실험이라 전체·메타 광고 뷰에서만 표시 (2026-07-27 사용자 요청)
+  if(state.landingView!=='all' && state.landingView!=='meta'){
+    head.style.display='none'; grid.style.display='none'; return;
+  }
+  grid.style.display='';
   const cfg = state.abTest || {};
   const variants = cfg.variants || [];
   const from = cfg.date_from || '';
