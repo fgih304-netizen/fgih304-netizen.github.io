@@ -148,13 +148,17 @@
   .hist-gh-btn{border:1px solid var(--line);background:#fff;color:var(--sub);font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer;white-space:nowrap;}
   .hist-gh-btn:hover{border-color:var(--ink);color:var(--ink);}
   .hist-del:hover{color:var(--red);}
-  .hist-thumbs{display:flex;align-items:center;gap:5px;flex:none;padding-top:1px;}
-  .hist-thumb-wrap{position:relative;display:inline-flex;}
+  .hist-thumbs{display:flex;align-items:center;gap:5px;flex:none;padding-top:1px;position:relative;}
   .hist-thumb{height:38px;width:52px;object-fit:cover;border-radius:5px;border:1px solid var(--line);cursor:pointer;display:block;background:#f5f6f8;transition:border-color .12s;}
   .hist-thumb:hover{border-color:var(--amber);}
   .hist-thumb-arrow{color:#9aa0a8;font-size:13px;font-weight:700;}
-  .hist-thumb-preview{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);max-width:360px;max-height:340px;border-radius:8px;border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.24);z-index:60;background:#fff;pointer-events:none;}
-  .hist-thumb-wrap:hover .hist-thumb-preview{display:block;}
+  /* 비포/애프터를 한 쌍으로 묶어 미리보기 — thumbs 위에 마우스 올리면 둘이 나란히 뜬다(한눈 비교) */
+  .hist-pair-preview{display:none;position:absolute;bottom:calc(100% + 8px);right:0;align-items:flex-end;gap:12px;padding:11px;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 34px rgba(0,0,0,.24);z-index:60;pointer-events:none;}
+  .hist-thumbs:hover .hist-pair-preview{display:flex;}
+  .hist-pv-fig{margin:0;text-align:center;}
+  .hist-pv-fig figcaption{font-size:10px;font-weight:800;color:var(--sub);margin-bottom:5px;letter-spacing:.05em;}
+  .hist-pv-fig img{max-width:270px;max-height:320px;border-radius:6px;display:block;}
+  .hist-pv-arrow{font-size:18px;color:#9aa0a8;font-weight:700;align-self:center;padding-bottom:12px;}
 </style>
 </head>
 <body>
@@ -1565,18 +1569,19 @@ function histImgUrl(path){
   return `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}`;
 }
 
-// as-is/to-be 썸네일 ('사진 → 사진'). 오버=미리보기(CSS), 클릭=다운로드(histList 핸들러)
+// as-is/to-be 썸네일 ('사진 → 사진'). 쌍 전체에 마우스 올리면 비포·애프터가 나란히 뜬다(한눈 비교).
+// 클릭은 개별 썸네일 = 그 사진만 다운로드(histList 핸들러).
 function histThumbsHTML(r){
   if(!r.before_img && !r.after_img) return '';
-  const cell = (path,label)=>{ const u = histImgUrl(path); return `<span class="hist-thumb-wrap">
-      <img class="hist-thumb" src="${u}" data-full="${u}" data-name="${path.split('/').pop()}" loading="lazy" alt="${label}" title="${label} · 클릭하면 다운로드">
-      <img class="hist-thumb-preview" src="${u}" alt="">
-    </span>`; };
-  const parts = [];
-  if(r.before_img) parts.push(cell(r.before_img,'as-is'));
-  if(r.before_img && r.after_img) parts.push('<span class="hist-thumb-arrow">→</span>');
-  if(r.after_img) parts.push(cell(r.after_img,'to-be'));
-  return `<div class="hist-thumbs">${parts.join('')}</div>`;
+  const thumb = (path,label)=>{ const u = histImgUrl(path); return `<img class="hist-thumb" src="${u}" data-full="${u}" data-name="${path.split('/').pop()}" loading="lazy" alt="${label}" title="${label} · 클릭하면 다운로드">`; };
+  const pvFig = (path,label)=> path ? `<figure class="hist-pv-fig"><figcaption>${label}</figcaption><img src="${histImgUrl(path)}" alt=""></figure>` : '';
+  const inline = [
+    r.before_img ? thumb(r.before_img,'as-is') : '',
+    (r.before_img && r.after_img) ? '<span class="hist-thumb-arrow">→</span>' : '',
+    r.after_img ? thumb(r.after_img,'to-be') : '',
+  ].join('');
+  const preview = `<div class="hist-pair-preview">${pvFig(r.before_img,'AS-IS')}${(r.before_img && r.after_img) ? '<span class="hist-pv-arrow">→</span>' : ''}${pvFig(r.after_img,'TO-BE')}</div>`;
+  return `<div class="hist-thumbs">${inline}${preview}</div>`;
 }
 
 function newHistoryId(){
