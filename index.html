@@ -1151,11 +1151,11 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
   const orRevenue = orgAttrRows.reduce((a,r)=>a+r.revenue,0);
   // 쓰레드(콘텐츠 채널): impact-me 랜딩 사용·UTM 부착. DB·예약은 구글시트 D/G열(threads_daily.csv)이 기준.
   // 시트 E열(진단퍼널 DB→typeform_submits)·H열(진단 예약→booking_completed)에는 쓰레드가 빠져 있어 합산해도 이중집계 없음.
-  // 쓰레드(콘텐츠 채널)는 랜딩이 impact-me→discount로 넘어갔으므로 날짜로 시대 구분해 해당 카드에 붙인다
-  // (≤2026-07-14 = 진단퍼널 impact-me, ≥2026-07-15 = 할인퍼널 discount-me). 두 카드가 같은 기간에 떠도 이중집계 없음.
-  const thRows = (lf.id==='impact-me' || lf.id==='discount-me')
+  // 쓰레드(콘텐츠 채널) 시대구분 정정(2026-07-27 사용자 확인): 쓰레드는 7/14부터 find-me로 운영 중.
+  // ≤2026-07-13 = 진단퍼널(impact-me), ≥2026-07-14 = find-me. (7/23의 discount 귀속은 오인이라 제거)
+  const thRows = (lf.id==='impact-me' || lf.id==='find-me')
     ? state.threadsDaily.filter(r=> r.date>=since && r.date<=until &&
-        (lf.id==='discount-me' ? r.date>='2026-07-15' : r.date<='2026-07-14'))
+        (lf.id==='find-me' ? r.date>='2026-07-14' : r.date<='2026-07-13'))
     : [];
   const thDb = thRows.reduce((a,r)=>a+r.db,0);
   const thBookings = thRows.reduce((a,r)=>a+r.bookings,0);
@@ -1260,9 +1260,9 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     naverClicks = sumByChannel(lf.outbound_by_channel_rows, ch);
     payNote = '채널그룹 단위 수기 구분 없음';
     // 콘텐츠(Organic Social) 뷰 = 쓰레드 — DB·예약·결제를 시트(threads_daily) 기준으로 표시.
-    // thRows가 날짜로 시대 구분(≤7/14 impact-me, ≥7/15 discount-me)하므로 두 카드 모두 여기서 연결 (2026-07-27 확장).
-    if((lf.id==='impact-me' || lf.id==='discount-me') && ch==='Organic Social' && (thDb||thBookings||thPayments)){
-      finalConv = thDb; finalLabel = '타입폼 제출완료 (시트 쓰레드)';
+    // thRows가 날짜로 시대 구분(≤7/13 impact-me, ≥7/14 find-me)하므로 두 카드 모두 여기서 연결 (2026-07-27 정정).
+    if((lf.id==='impact-me' || lf.id==='find-me') && ch==='Organic Social' && (thDb||thBookings||thPayments)){
+      finalConv = thDb; finalLabel = lf.id==='find-me' ? '쓰레드 DB (시트)' : '타입폼 제출완료 (시트 쓰레드)';
       bookingV = thBookings; bookingDetail = thBookingBadge;
       contractsV = thPayments; revenueV = thRevenue;
       payNote = thPayBadge ? `콘텐츠(쓰레드) — ${thPayBadge}` : '쓰레드 결제 없음';
