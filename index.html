@@ -1231,7 +1231,7 @@ function renderAbTest(){
       <thead><tr>
         <th>변형 (랜딩 경로)</th><th>💰 광고비</th><th>🌐 랜딩 유입</th>
         <th>🪜 신청 클릭</th><th>클릭률</th><th>🎯 타입폼 완료</th><th>완료 전환율</th><th>완료당 비용</th>
-        <th>💳 예약금 결제</th><th>결제 전환율</th><th>결제당 비용</th>${anyRevenue?'<th>💰 매출</th><th>ROAS</th>':''}
+        <th>💳 예약금 결제</th><th>결제 전환율</th><th>결제당 비용</th>
       </tr></thead>
       <tbody>${byV.map(v=>`<tr${v.cpa!=null&&v.cpa===bestCpa?' class="ab-best"':''}>
         <td><b>${v.label}</b> ${v.path?`<a class="cap" href="https://${cfg.hostname}${v.path}" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:none;">${cfg.hostname}${v.path} ↗</a>`:'<span class="cap" style="color:#8a919c;">utm 구분</span>'}${v.date_from?` <span class="cap" style="color:#8a919c;">(${v.date_from}~)</span>`:(v.date_to?` <span class="cap" style="color:#8a919c;">(~${v.date_to})</span>`:'')}</td>
@@ -1244,7 +1244,7 @@ function renderAbTest(){
         <td>${v.cpa!=null?fmtWon(v.cpa):'—'}</td>
         <td><b>${fmtNum(v.payments)}</b></td>
         <td>${v.payRate!=null?fmtPct(v.payRate):'—'}</td>
-        <td>${v.payCpa!=null?fmtWon(v.payCpa):'—'}</td>${anyRevenue?`<td>${fmtWon(v.payRevenue)}</td><td>${v.roas!=null?v.roas.toFixed(2)+'x':'—'}</td>`:''}
+        <td>${v.payCpa!=null?fmtWon(v.payCpa):'—'}</td>
       </tr>`).join('')}</tbody>
     </table>
   </div>`;
