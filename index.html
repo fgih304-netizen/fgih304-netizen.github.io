@@ -1149,104 +1149,86 @@ function renderContentCard(){
   </div>`;
 }
 
-// 🧪 A/B 테스트 패널 — 같은 캠페인 안에서 광고세트별로 다른 랜딩(히어로 문구)을 태우는 실험 (2026-07-19).
-// 광고비·유입·타입폼완료 = Meta 광고세트 단위(ab_rows), 랜딩 세션·신청 클릭 = GA4 경로 단위(ga4Rows·ga4AbRows).
-// 주의: GA4 경로 수치엔 오가닉·재방문도 섞임(경로=변형 기준), Meta 수치는 광고 귀속만. 결제·매출은 변형 구분 불가.
+// 🧪 소재별 성과 패널 — utm_content(={{ad.name}}) 기준 자동 집계 (2026-07-30 개편).
+// 새 소재는 광고 이름만 지으면 등록 없이 자동으로 줄이 생긴다. '- 사본' 복제 광고는 원소재로 합산.
+// 광고비 = Meta 광고 단위(data.json rows.ad_name), 타입폼 완료·예약금 결제 = 시트 교차검증 CSV(variant=정규화 소재명).
+// 초기(~7/16, utm_content 없던) 응답은 구 라벨(얼굴/좋은분/상세형)로 표시되며 광고비 매칭이 없어 '—'.
+function canonCreative(c){
+  c = String(c||'').trim();
+  if(!c) return '';
+  return c.replace(/(\s*-\s*사본)+\s*$/,'').replace(/_사본$/,'').replace(/^20(\d{6}_)/,'$1').trim();
+}
 function renderAbTest(){
   const head = document.getElementById('abSectionHead');
   const grid = document.getElementById('abGrid');
   if(!head || !grid) return;
-  // A/B 패널은 광고 실험이라 전체·메타 광고 뷰에서만 표시 (2026-07-27 사용자 요청)
+  // 광고 실험 패널이라 전체·메타 광고 뷰에서만 표시 (2026-07-27 사용자 요청)
   if(state.landingView!=='all' && state.landingView!=='meta'){
     head.style.display='none'; grid.style.display='none'; return;
   }
   grid.style.display='';
   const cfg = state.abTest || {};
-  const variants = cfg.variants || [];
-  const from = cfg.date_from || '';
+  const from = cfg.date_from || '2026-07-15';
   const since = (from && from > state.since) ? from : state.since;
-  const abRows = (state.abRows||[]).filter(r=>r.date>=since && r.date<=state.until);
-  if(!variants.length || !abRows.length){ head.style.display='none'; grid.innerHTML=''; return; }
+  const until = state.until;
+
+  const tfRows  = (state.abTypeform||[]).filter(r=>r.date>=since && r.date<=until);
+  const payRows = (state.abPayments||[]).filter(r=>r.date>=since && r.date<=until);
+
+  // 소재별 광고비 — 할인퍼널 캠페인(cfg.campaign_names)으로 한정, 광고명 정규화 합산
+  const camps = cfg.campaign_names || [];
+  const adAgg = {};
+  (state.adRows||[]).forEach(r=>{
+    if(r.date<since || r.date>until) return;
+    if(camps.length && !camps.includes(r.campaign_name)) return;
+    const key = canonCreative(r.ad_name);
+    if(!key) return;
+    (adAgg[key] = adAgg[key] || {spend:0}).spend += (Number(r.spend)||0);
+  });
+
+  const vset = new Set();
+  tfRows.forEach(r=>vset.add(r.variant));
+  payRows.forEach(r=>vset.add(r.variant));
+  Object.keys(adAgg).forEach(k=>{ if(adAgg[k].spend>0) vset.add(k); });
+  if(!vset.size){ head.style.display='none'; grid.innerHTML=''; return; }
   head.style.display='';
-  document.getElementById('abCap').textContent = `${cfg.label||''} · ${since} ~ ${state.until} · 캠페인 ${(cfg.campaign_names||[]).join(', ')}`;
+  document.getElementById('abCap').textContent =
+    `소재별 자동 집계 (utm_content=광고명 · 사본 통합) · ${since} ~ ${until}`;
 
-  // 타입폼 완료 변형별 분배 (2026-07-19 지시, 2026-07-20 정수화·합일치 수정): 기준은 시트 확정치(discount_typeform.csv).
-  //   할인퍼널 카드(전체 뷰)와 항상 합이 일치하도록 시트 확정치만 나눈다(Meta 귀속값은 시트와 합이 안 맞아 미사용).
-  //   날짜별로 변형 수만큼 정수로 나누고, 나머지(홀수 등)는 그날 신청 클릭이 많은 변형부터 1건씩 배정 → 소수 없음.
-  const sheetByDate = {};
-  (state.discountTypeform||[]).filter(r=>r.date>=since && r.date<=state.until).forEach(r=>{ sheetByDate[r.date]=(sheetByDate[r.date]||0)+r.count; });
-  // 날짜별 변형 클릭 수 (나머지 배정 우선순위 결정용)
-  const clicksByDatePath = {};
-  (state.ga4AbRows||[]).forEach(r=>{ if(r.date>=since && r.date<=state.until){ (clicksByDatePath[r.date]=clicksByDatePath[r.date]||{})[r.path]=(clicksByDatePath[r.date][r.path]||0)+(r.value||0); } });
-  const tfByVariant = variants.map(()=>0);
-  Object.keys(sheetByDate).forEach(d=>{
-    const remainder = sheetByDate[d];
-    const n = variants.length;
-    const base = Math.floor(remainder / n);
-    variants.forEach((_,i)=>{ tfByVariant[i] += base; });
-    let extra = remainder - base * n;   // 0 ~ n-1
-    if(extra > 0){
-      const dc = clicksByDatePath[d] || {};
-      const order = variants.map((v,i)=>({i, c:dc[v.path]||0})).sort((a,b)=>b.c-a.c);
-      for(let k=0; k<extra; k++) tfByVariant[order[k].i]++;
-    }
-  });
-
-  // adset_contains가 문자열이든 배열이든 매칭 (2026-07-20: 캠페인마다 광고세트명이 달라 배열 지원)
-  const matchAdset = (name, pat) => (Array.isArray(pat) ? pat : [pat]).some(k => (name||'').includes(k));
-  // 변형별 타입폼 완료(utm 기준 ab_typeform.csv)·예약금 결제(교차검증 ab_payments.csv).
-  // 변형 매칭 = config label의 부분문자열(예: 'A · 얼굴' ⊇ '얼굴'). utm_only 변형(C·상세형)은
-  // 광고세트/랜딩이 없어 광고비·유입·클릭을 못 뽑으므로 null → 표에 '—'.
-  const payRows = (state.abPayments||[]).filter(r=>r.date>=since && r.date<=state.until);
-  const tfRows  = (state.abTypeform||[]).filter(r=>r.date>=since && r.date<=state.until);
-  const byV = variants.map((v,i)=>{
-    const matchV = r => v.label.includes(r.variant) || r.variant.includes(v.label);
-    // 변형별 날짜창(전역 조회기간 ∩ 변형 date_from~date_to) — 같은 경로를 시대로 나누는 B/C 겹침 방지
-    const vsince = (v.date_from && v.date_from > since) ? v.date_from : since;
-    const vuntil = (v.date_to && v.date_to < state.until) ? v.date_to : state.until;
-    const hasAdset = Array.isArray(v.adset_contains) && v.adset_contains.length > 0;
-    // 광고비=전용 광고세트 있을 때만(C는 없음→'—') · 유입/클릭=랜딩 경로 있을 때만
-    const spend = hasAdset ? abRows.filter(r=>matchAdset(r.adset_name, v.adset_contains) && r.date>=vsince && r.date<=vuntil).reduce((a,r)=>a+(r.spend||0),0) : null;
-    const sess = v.path ? (state.ga4Rows||[]).filter(r=>r.host===cfg.hostname && r.path===v.path && r.date>=vsince && r.date<=vuntil).reduce((a,r)=>a+(r.sessions||0),0) : null;
-    const clicks = v.path ? (state.ga4AbRows||[]).filter(r=>r.path===v.path && r.date>=vsince && r.date<=vuntil).reduce((a,r)=>a+(r.value||0),0) : null;
-    const typeform = tfRows.filter(matchV).reduce((a,r)=>a+(r.count||0),0);
-    const myPay = payRows.filter(matchV);
-    const payments = myPay.reduce((a,r)=>a+(r.payments||0),0);
-    const payRevenue = myPay.reduce((a,r)=>a+(r.revenue||0),0);
-    return {...v, spend, typeform, sess, clicks, payments, payRevenue,
-      clickRate: sess ? clicks/sess : null,
-      cpa: (spend!=null && typeform) ? spend/typeform : null,
-      tfRate: clicks ? typeform/clicks : null,
-      payCpa: (spend!=null && payments) ? spend/payments : null,
+  const rows = [...vset].map(v=>{
+    const spend = (v in adAgg) ? adAgg[v].spend : null;
+    const typeform = tfRows.filter(r=>r.variant===v).reduce((a,r)=>a+(r.count||0),0);
+    const pr = payRows.filter(r=>r.variant===v);
+    const payments = pr.reduce((a,r)=>a+(r.payments||0),0);
+    const payRevenue = pr.reduce((a,r)=>a+(r.revenue||0),0);
+    return {label:v, spend, typeform, payments, payRevenue,
+      cpl: (spend && typeform) ? spend/typeform : null,
       payRate: typeform ? payments/typeform : null,
-      roas: (spend && payRevenue) ? payRevenue/spend : null};
-  });
-  const cpas = byV.filter(v=>v.cpa!=null).map(v=>v.cpa);
-  const bestCpa = cpas.length ? Math.min(...cpas) : null;
-  const anyRevenue = byV.some(v=>v.payRevenue>0);
-  const fmtTf = n => Number.isInteger(n) ? fmtNum(n) : n.toFixed(1);
+      payCpa: (spend && payments) ? spend/payments : null};
+  }).sort((a,b)=> (b.typeform - a.typeform) || ((b.spend||0) - (a.spend||0)));
+
+  // 베스트(완료당 비용 최저) — 표본 3건 미만 소재는 후보 제외(소표본 왜곡 방지)
+  const cpls = rows.filter(r=>r.cpl!=null && r.typeform>=3).map(r=>r.cpl);
+  const best = cpls.length ? Math.min(...cpls) : null;
 
   grid.innerHTML = `<div class="panel" style="overflow-x:auto;">
     <table class="ab-table">
       <thead><tr>
-        <th>변형 (랜딩 경로)</th><th>💰 광고비</th><th>🌐 랜딩 유입</th>
-        <th>🪜 신청 클릭</th><th>클릭률</th><th>🎯 타입폼 완료</th><th>완료 전환율</th><th>완료당 비용</th>
-        <th>💳 예약금 결제</th><th>결제 전환율</th><th>결제당 비용</th>
+        <th>소재 (광고명)</th><th>💰 광고비</th><th>🎯 타입폼 완료</th><th>완료당 비용</th>
+        <th>💳 예약금 결제</th><th>결제 전환율</th><th>결제당 비용</th><th>💰 매출(예약금)</th>
       </tr></thead>
-      <tbody>${byV.map(v=>`<tr${v.cpa!=null&&v.cpa===bestCpa?' class="ab-best"':''}>
-        <td><b>${v.label}</b> ${v.path?`<a class="cap" href="https://${cfg.hostname}${v.path}" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:none;">${cfg.hostname}${v.path} ↗</a>`:'<span class="cap" style="color:#8a919c;">utm 구분</span>'}${v.date_from?` <span class="cap" style="color:#8a919c;">(${v.date_from}~)</span>`:(v.date_to?` <span class="cap" style="color:#8a919c;">(~${v.date_to})</span>`:'')}</td>
-        <td>${v.spend!=null?fmtWon(v.spend):'—'}</td>
-        <td>${v.sess!=null?fmtNum(v.sess):'—'}</td>
-        <td>${v.clicks!=null?fmtNum(v.clicks):'—'}</td>
-        <td>${v.clickRate!=null?fmtPct(v.clickRate):'—'}</td>
-        <td><b>${fmtTf(v.typeform)}</b></td>
-        <td>${v.tfRate!=null?fmtPct(v.tfRate):'—'}</td>
-        <td>${v.cpa!=null?fmtWon(v.cpa):'—'}</td>
-        <td><b>${fmtNum(v.payments)}</b></td>
-        <td>${v.payRate!=null?fmtPct(v.payRate):'—'}</td>
-        <td>${v.payCpa!=null?fmtWon(v.payCpa):'—'}</td>
+      <tbody>${rows.map(r=>`<tr${r.cpl!=null && r.cpl===best ? ' class="ab-best"' : ''}>
+        <td><b>${r.label}</b></td>
+        <td>${r.spend!=null ? fmtWon(r.spend) : '—'}</td>
+        <td><b>${fmtNum(r.typeform)}</b></td>
+        <td>${r.cpl!=null ? fmtWon(r.cpl) : '—'}</td>
+        <td><b>${fmtNum(r.payments)}</b></td>
+        <td>${r.payRate!=null ? fmtPct(r.payRate) : '—'}</td>
+        <td>${r.payCpa!=null ? fmtWon(r.payCpa) : '—'}</td>
+        <td>${r.payRevenue ? fmtWon(r.payRevenue) : '—'}</td>
       </tr>`).join('')}</tbody>
     </table>
+    <p class="cap" style="margin-top:8px;color:#8a919c;">새 소재는 광고 이름만 지으면 자동으로 추가됩니다 · 완료 3건 미만 소재는 베스트 후보에서 제외 · 구 라벨(얼굴·좋은분·상세형)은 utm_content 도입 전(~7/16) 응답</p>
   </div>`;
 }
 
