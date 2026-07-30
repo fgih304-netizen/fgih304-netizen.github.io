@@ -360,8 +360,8 @@
 
 <script>
 const SOURCES = {
-  real: { data: 'data.json', revenue: 'revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv', discountTypeform: 'discount_typeform.csv', abPayments: 'ab_payments.csv', abTypeform: 'ab_typeform.csv' },
-  demo: { data: 'demo_data.json', revenue: 'demo_revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv', discountTypeform: 'discount_typeform.csv', abPayments: 'ab_payments.csv', abTypeform: 'ab_typeform.csv' },
+  real: { data: 'data.json', revenue: 'revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv', discountTypeform: 'discount_typeform.csv', abPayments: 'ab_payments.csv', abTypeform: 'ab_typeform.csv', creativePayments: 'creative_payments.csv', creativeTypeform: 'creative_typeform.csv' },
+  demo: { data: 'demo_data.json', revenue: 'demo_revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv', discountTypeform: 'discount_typeform.csv', abPayments: 'ab_payments.csv', abTypeform: 'ab_typeform.csv', creativePayments: 'creative_payments.csv', creativeTypeform: 'creative_typeform.csv' },
 };
 const GA4_SOURCES = { real: 'ga4_data.json', demo: 'demo_ga4_data.json' };
 const state = { source:'real', since:null, until:null, adRows:[], revRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[], organicRevRows:[],
@@ -369,7 +369,7 @@ const state = { source:'real', since:null, until:null, adRows:[], revRows:[], cr
   landingView:'all',   // 랜딩 퍼널 섹션의 유입경로 드롭다운 선택값 ('all'|'meta'|'organic'|'ch:채널그룹') — 모든 카드에 일괄 적용
   threadsDaily:[],     // 쓰레드(콘텐츠 채널, impact-me 랜딩) DB·예약 — 구글시트 Daily탭 D/H열 파생 threads_daily.csv
   discountTypeform:[], // 할인퍼널 타입폼 완료 확정치 — 구글시트 Daily탭 G열 파생 discount_typeform.csv
-  abTest:{}, abRows:[], ga4AbRows:[], abPayments:[], abTypeform:[],   // A/B 테스트 — 변형별 결제=ab_payments.csv, 변형별 타입폼완료=ab_typeform.csv(utm 기준)
+  abTest:{}, abRows:[], ga4AbRows:[], abPayments:[], abTypeform:[], creativePayments:[], creativeTypeform:[],   // A/B 테스트 — 변형별 결제=ab_payments.csv, 변형별 타입폼완료=ab_typeform.csv(utm 기준)
   depositSummary:[],   // 러버블 Supabase daily_deposit_summary (전 퍼널 실시간 예약금·결제 코호트)
   historyRows:[], historyWritable:false, historySha:null };
 
@@ -521,7 +521,7 @@ function parseCSV(text){
 
 async function loadSource(name){
   const src = SOURCES[name];
-  const [dataRes, revRes, tfRes, bcRes, orRes, thRes, d50Res, abPayRes, abTfRes] = await Promise.all([
+  const [dataRes, revRes, tfRes, bcRes, orRes, thRes, d50Res, abPayRes, abTfRes, crPayRes, crTfRes] = await Promise.all([
     fetch(bust(src.data)).catch(()=>null),
     fetch(bust(src.revenue)).catch(()=>null),
     fetch(bust(src.typeformSubmits)).catch(()=>null),
@@ -531,6 +531,8 @@ async function loadSource(name){
     fetch(bust(src.discountTypeform)).catch(()=>null),
     fetch(bust(src.abPayments)).catch(()=>null),
     fetch(bust(src.abTypeform)).catch(()=>null),
+    fetch(bust(src.creativePayments)).catch(()=>null),
+    fetch(bust(src.creativeTypeform)).catch(()=>null),
   ]);
   if (!dataRes || !dataRes.ok) throw new Error('data missing');
   const dataJson = await dataRes.json();
@@ -575,7 +577,16 @@ async function loadSource(name){
   const abTypeform = parseCSV(abTfText).map(r=>({
     date:r.date, variant:(r.variant||'').trim(), count:Number(r.count||0),
   })).filter(r=>r.date && r.variant);
-  return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTypeform, abTest: dataJson.ab_test||{}, abRows: dataJson.ab_rows||[] };
+  // 소재별(utm_content=광고명) 집계 — 베스트 광고 탭 소재 성과표용 (2026-07-30)
+  const crPayText = (crPayRes && crPayRes.ok) ? await crPayRes.text() : '';
+  const creativePayments = parseCSV(crPayText).map(r=>({
+    date:r.date, variant:(r.variant||'').trim(), payments:Number(r.payments||0), revenue:Number(r.revenue||0),
+  })).filter(r=>r.date && r.variant);
+  const crTfText = (crTfRes && crTfRes.ok) ? await crTfRes.text() : '';
+  const creativeTypeform = parseCSV(crTfText).map(r=>({
+    date:r.date, variant:(r.variant||'').trim(), count:Number(r.count||0),
+  })).filter(r=>r.date && r.variant);
+  return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTypeform, creativePayments, creativeTypeform, abTest: dataJson.ab_test||{}, abRows: dataJson.ab_rows||[] };
 }
 
 function showBanner(msg){
@@ -601,8 +612,8 @@ async function loadGa4(name){
 
 async function setSource(name, opts={}){
   try{
-    const { adRows, revRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTypeform, abTest, abRows } = await loadSource(name);
-    state.source=name; state.adRows=adRows; state.revRows=revRows; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted; state.organicRevRows=organicRevRows; state.threadsDaily=threadsDaily; state.discountTypeform=discountTypeform; state.abPayments=abPayments; state.abTypeform=abTypeform; state.abTest=abTest; state.abRows=abRows;
+    const { adRows, revRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTypeform, creativePayments, creativeTypeform, abTest, abRows } = await loadSource(name);
+    state.source=name; state.adRows=adRows; state.revRows=revRows; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted; state.organicRevRows=organicRevRows; state.threadsDaily=threadsDaily; state.discountTypeform=discountTypeform; state.abPayments=abPayments; state.abTypeform=abTypeform; state.creativePayments=creativePayments; state.creativeTypeform=creativeTypeform; state.abTest=abTest; state.abRows=abRows;
     if (name==='real' && adRows.length===0 && !opts.silentEmpty)
       showBanner('아직 실데이터가 없어요. fetch_data.py 를 실행하면 메타 데이터가 채워집니다.');
     else if (name==='demo')
@@ -1166,8 +1177,8 @@ function renderCreativePerf(){
   const floor = '2026-07-15';   // utm_content 수집 시작 이전은 집계 불가
   const since = state.since > floor ? state.since : floor;
   const until = state.until;
-  const tfRows  = (state.abTypeform||[]).filter(r=>r.date>=since && r.date<=until);
-  const payRows = (state.abPayments||[]).filter(r=>r.date>=since && r.date<=until);
+  const tfRows  = (state.creativeTypeform||[]).filter(r=>r.date>=since && r.date<=until);
+  const payRows = (state.creativePayments||[]).filter(r=>r.date>=since && r.date<=until);
   const adAgg = {};
   (state.adRows||[]).forEach(r=>{
     if(r.date<since || r.date>until) return;
