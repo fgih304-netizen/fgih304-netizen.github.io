@@ -1075,28 +1075,20 @@ function renderLandingFunnels(){
   //  - 진단퍼널(impact-me): 광고 집행일(~7/09)에만 노출
   //  - 할인퍼널(discount-me): 2026-07-15 시작 → 그 이전엔 숨김
   //  - 구예약퍼널(change-me): 초기 운영일에만 노출
-  // 예외(2026-07-27): 광고비 0이어도 조회기간에 쓰레드(threads_daily) 활동이 있으면 카드 노출
-  // — 쓰레드는 7/14부터 find-me로 운영 중인데 find-me 광고가 꺼져 있으면 결제가 안 보이는 문제 해결.
-  //   시대구분(≤7/13 impact-me / ≥7/14 find-me)은 renderLandingCard의 thRows와 항상 동일하게 유지할 것.
-  const hasThreadActivity = lf => (lf.id==='impact-me' || lf.id==='find-me') &&
-    (state.threadsDaily||[]).some(r=> r.date>=state.since && r.date<=state.until &&
-      (lf.id==='find-me' ? r.date>='2026-07-14' : r.date<='2026-07-13') &&
-      ((r.db||0)+(r.bookings||0)+(r.payments||0)+(r.revenue||0) > 0));
-  const visibleFunnels = state.ga4LandingFunnels.filter(lf =>
-    (metricsByLanding[lf.id]?.spend || 0) > 0 || hasThreadActivity(lf));
+  // 🧵 쓰레드 = 랜딩이 아니라 채널. 2026-08-04 사용자 확정: **전체 뷰에 쓰레드 단독 카드 1장**으로 분리한다.
+  // 이전엔 시대구분(≤7/13 impact-me / ≥7/14 find-me)에 따라 광고 랜딩 카드에 합산·배지로 붙였는데
+  //  ①어느 카드에 붙는지가 날짜마다 바뀌어 헷갈리고 ②광고 예약당비용이 콘텐츠 건수로 좋아 보이게 왜곡되고
+  //  ③카드 합계가 원장 총계와 안 맞았다(7월: 카드합 20 vs 실제 24 — 쓰레드 4건이 find-me 배지에만 있었음).
+  // 랜딩 카드는 광고 귀속만, 쓰레드는 이 카드에서 전 기간 합산(renderContentCard는 시대구분 없음).
+  // 메타·오가닉 뷰에는 안 붙인다 — 쓰레드는 유료도 자연유입도 아니라 그 뷰의 정의에 안 맞음.
+  const threadActivity = state.landingView==='all' && (state.threadsDaily||[]).some(r=>
+    r.date>=state.since && r.date<=state.until &&
+    ((r.db||0)+(r.bookings||0)+(r.payments||0)+(r.revenue||0) > 0));
+  const visibleFunnels = state.ga4LandingFunnels.filter(lf => (metricsByLanding[lf.id]?.spend || 0) > 0);
 
-  if(visibleFunnels.length===0){ grid.innerHTML='<div class="empty">이 기간에 광고가 집행된 랜딩 퍼널이 없어요 (조회기간을 바꿔보세요)</div>'; return; }
-  // 광고비 0 + 쓰레드 활동만으로 노출되는 랜딩은 광고 퍼널 카드 대신 콘텐츠(쓰레드) 카드로 표시 (2026-07-27 사용자 요청)
-  // — 실체가 콘텐츠 채널인데 광고 퍼널 모양으로 보이면 헷갈림. 광고 재개 시 자동으로 랜딩 카드(+🧵 배지)로 복귀.
-  let contentCardShown = false;
-  grid.innerHTML = visibleFunnels.map(lf=>{
-    if((metricsByLanding[lf.id]?.spend||0)===0 && hasThreadActivity(lf)){
-      if(contentCardShown) return '';
-      contentCardShown = true;
-      return renderContentCard();
-    }
-    return renderLandingCard(lf, metricsByLanding, bucketsById);
-  }).join('');
+  if(visibleFunnels.length===0 && !threadActivity){ grid.innerHTML='<div class="empty">이 기간에 광고가 집행된 랜딩 퍼널이 없어요 (조회기간을 바꿔보세요)</div>'; return; }
+  grid.innerHTML = visibleFunnels.map(lf=>renderLandingCard(lf, metricsByLanding, bucketsById)).join('')
+    + (threadActivity ? renderContentCard() : '');
 
   renderDepositLive();
   renderAbTest();
@@ -1444,12 +1436,11 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     bookingV = booking; contractsV = contracts; revenueV = revenue;
     const d = chDetailOf(orAllRows); bookingDetail=d.bookings; revenueDetail=d.revenue;
     naverClicks = sumInRange(lf.outbound_rows||[], since, until);
-    // impact-me 전체 = 광고(시트 E열)+쓰레드(시트 D열) — 최종단계를 메타 뷰와 같은 시트 기준으로 통일
+    // impact-me 전체 = 광고(시트 E열)만 — 최종단계를 메타 뷰와 같은 시트 기준으로 통일.
+    // 2026-08-04: 쓰레드(thDb·thBookings) 합산 제거 — 쓰레드는 단독 카드(renderContentCard)가 담당한다.
     if(lf.id==='impact-me'){
-      finalConv = state.typeformSubmits.filter(r=>r.date>=since && r.date<=until).reduce((a,r)=>a+r.count,0) + thDb;
+      finalConv = state.typeformSubmits.filter(r=>r.date>=since && r.date<=until).reduce((a,r)=>a+r.count,0);
       finalLabel = '타입폼 제출완료';
-      bookingV = booking + thBookings;
-      bookingDetail = [bookingDetail, thBookingBadge].filter(Boolean).join(' · ');
     }
     // discount-me 전체 = 시트 G열(할인퍼널 DB, 전 채널 합산 확정치) — GA4 begin_checkout 중복 회피
     if(lf.id==='discount-me'){
@@ -1461,12 +1452,12 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     const orgSess = sumInRange(lf.sessions_organic_rows||[], since, until);
     const contentSess = CONTENT_CHANNELS.reduce((a,ch)=>a+(hostCh[ch]||0),0);
     const paidSess = Math.max(0, visits - orgSess - contentSess);
-    // 쓰레드 예약을 총합에서 차감하는 건 impact-me뿐(그 카드는 bookingV에 thBookings를 더해 합산).
-    // discount-me는 쓰레드가 booking_completed에 안 섞여 있어(별도 funnel 행) 차감하면 광고분이 깎임 → 0.
-    const contentBookAll = lf.id==='impact-me' ? thBookings : 0;
+    // 2026-08-04: 랜딩 카드 예약수에는 쓰레드가 더 이상 안 섞이므로 콘텐츠 차감분은 항상 0.
+    // (쓰레드 건수·매출은 🧵 콘텐츠 단독 카드에서 본다 — 유입 비율만 참고용으로 남긴다.)
+    const contentBookAll = 0;
     const orgBookAll = orBookings;
     const adsBookAll = Math.max(0, (bookingV||0) - orgBookAll - contentBookAll);
-    if(visits) splitBadge = `⚖️ 광고 ${fmtPct(paidSess/visits)} · 콘텐츠 ${fmtPct(contentSess/visits)} · 오가닉 ${fmtPct(orgSess/visits)} <span style="font-weight:400;color:#8a919c;">(유입 기준)</span>${bookingV?` · ${bookingLabel} 광고 <b>${fmtNum(adsBookAll)}</b>·콘텐츠 <b>${fmtNum(contentBookAll)}</b>·오가닉 <b>${fmtNum(orgBookAll)}</b>`:''}${thPayBadge?`<br>🧵 ${thPayBadge}`:''}`;
+    if(visits) splitBadge = `⚖️ 광고 ${fmtPct(paidSess/visits)} · 콘텐츠 ${fmtPct(contentSess/visits)} · 오가닉 ${fmtPct(orgSess/visits)} <span style="font-weight:400;color:#8a919c;">(유입 기준)</span>${bookingV?` · ${bookingLabel} 광고 <b>${fmtNum(adsBookAll)}</b>·오가닉 <b>${fmtNum(orgBookAll)}</b>`:''}`;
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">💰 광고비</div><div class="lf-stage-value">${fmtWon(spend)}</div><div class="lf-stage-sub">참고 (전체 유입 기준)</div></div>`;
   } else {  // 'ch:GA4채널그룹'
     const ch = view.slice(3);
