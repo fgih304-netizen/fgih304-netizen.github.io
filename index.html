@@ -1385,6 +1385,13 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     };
   };
   const sumByChannel = (rows, ch) => (rows||[]).filter(r=>r.channel===ch && r.date>=since && r.date<=until).reduce((a,r)=>a+Number(r.value||0),0);
+  // 유료 채널 합계. 채널 분해 행이 아예 없는 퍼널(설정 누락·구데이터)에서는 0으로 깎이지 않게
+  // 전체 행(fallbackRows)으로 되돌린다 — 카드가 빈 것처럼 보이는 사고 방지.
+  const sumPaidCh = (chRows, fallbackRows) => {
+    const rows = (chRows||[]).filter(r=>r.date>=since && r.date<=until);
+    if(!rows.length) return sumInRange(fallbackRows||[], since, until);
+    return rows.filter(r=>PAID_CHANNELS.includes(r.channel)).reduce((a,r)=>a+Number(r.value||0),0);
+  };
 
   // ── view별 수치 ──
   let firstBox='', visits=0, stage2=0, finalConv=0, stage2Label=lf.stage2_label, finalLabel=lf.stage3_label;
@@ -1434,13 +1441,15 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">🧭 유입 경로</div><div class="lf-stage-value" style="font-size:14px;padding-top:3px;">${chSorted.length?(CHANNEL_LABELS[chSorted[0][0]]||chSorted[0][0]):'—'}</div><div class="lf-stage-sub">${chDetail||'이 기간 광고 외 유입 없음'}</div></div>`;
   } else if(view==='all'){
     costSubs = true;   // 전체 뷰도 전환당 비용 표시 — 광고비/전체 전환이라 블렌디드 기준 (2026-07-14 요청)
-    // 🌐 랜딩 유입 = **유료 채널 세션만** (2026-08-04 사용자 지시: "유료광고는 유료광고로 들어온 것만").
-    // 광고 랜딩 카드이므로 콘텐츠(쓰레드)·Direct·Referral·검색 유입을 섞지 않는다 — 유입당비용이
-    // 광고비/광고유입으로 정확해진다. 아래 비율 배지도 같은 원천(hostCh)으로 계산해 합이 맞게 한다.
-    // 참고: 하위 단계(도달·완료)는 시트 확정치(전 채널)나 GA4 전체라 유료로 바꾸지 않았다 —
-    //       바꾸면 시트 기준 최종단계와 분모가 어긋나 전환율이 왜곡됨(진단퍼널 54/233=23% 같은 과대).
+    // 🌐 랜딩 유입 · 🪜 도달 = **유료 채널만** (2026-08-04 사용자 지시: "유료광고는 유료광고로 들어온 것만",
+    // 이어서 "도달 단계까지 유료로 맞춰줘"). 광고 랜딩 카드이므로 콘텐츠(쓰레드)·Direct·Referral·검색을
+    // 섞지 않는다 — 유입당비용·도달당비용이 광고비/광고분으로 정확해진다.
+    // 비율 배지는 같은 원천(hostCh)으로 계산해 합이 맞게 한다.
+    // 최종 단계(finalConv)는 유료로 못 바꾼다: 할인·진단은 시트 확정치(채널 구분 없음)이고,
+    // find-me는 GA4라 분해는 되지만(유료 5 vs 전체 14) 그러면 예약금 결제(원장 6, 광고→네이버
+    // 재유입 포함)보다 작아져 예약전환율이 120%로 깨진다. 축이 다른 지표라 억지로 맞추지 않는다.
     visits = PAID_CHANNELS.reduce((a,ch)=>a+(hostCh[ch]||0), 0);
-    stage2 = sumInRange(lf.stage2_rows||[], since, until);
+    stage2 = sumPaidCh(lf.stage2_by_channel_rows, lf.stage2_rows);
     finalConv = sumInRange(lf.stage3_rows||[], since, until);
     bookingV = booking; contractsV = contracts; revenueV = revenue;
     const d = chDetailOf(orAllRows); bookingDetail=d.bookings; revenueDetail=d.revenue;
@@ -1516,7 +1525,7 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
       </div>
       <div class="lf-arrow">→</div>
       <div class="lf-stage-box lf-s2">
-        <div class="lf-stage-label">🪜 ${stage2Label}</div>
+        <div class="lf-stage-label">🪜 ${stage2Label}${view==='all'?' <span style="font-weight:400;font-size:11px;color:#8a919c;">(유료)</span>':''}</div>
         <div class="lf-stage-value">${fmtNum(stage2)}</div>
         <div class="lf-stage-sub">전환율 <b>${rate2!=null?fmtPct(rate2):'—'}</b>${cpa2!=null?` · 전환당비용 <b>${fmtWon(cpa2)}</b>`:''}</div>
       </div>
