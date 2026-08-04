@@ -1127,8 +1127,12 @@ function renderContentCard(){
   const bookings=rows.reduce((a,r)=>a+(r.bookings||0),0);
   const payments=rows.reduce((a,r)=>a+(r.payments||0),0);
   const revenue=rows.reduce((a,r)=>a+(r.revenue||0),0);
+  // 쓰레드가 실제로 쓴 랜딩은 find-me·impact-me 둘뿐 (2026-08-04 사용자 확인).
+  // 전 호스트를 합치면 타입폼(artin1ife.pro.typeform.com)·사전질의서(realmeschedule.lovable.app) 같은
+  // 하위 단계 페이지의 Organic Social까지 랜딩 유입으로 잡혀 부풀었다 — 두 호스트만 센다.
+  const THREAD_HOSTS = ['find-me.real-me.co.kr', 'impact-me.real-me.co.kr'];
   const byHost={};
-  (state.ga4ChannelRows||[]).forEach(r=>{ if(CONTENT_CHANNELS.includes(r.channel) && r.date>=since && r.date<=until){ byHost[r.host]=(byHost[r.host]||0)+r.sessions; } });
+  (state.ga4ChannelRows||[]).forEach(r=>{ if(CONTENT_CHANNELS.includes(r.channel) && THREAD_HOSTS.includes(r.host) && r.date>=since && r.date<=until){ byHost[r.host]=(byHost[r.host]||0)+r.sessions; } });
   const visits=Object.values(byHost).reduce((a,b)=>a+b,0);
   const hostDetail=Object.entries(byHost).sort((a,b)=>b[1]-a[1]).map(([h,s])=>`${String(h).replace('.real-me.co.kr','')} <b>${fmtNum(s)}</b>`).join(' · ');
   const rateDb = visits? db/visits : null;
@@ -1430,7 +1434,12 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">🧭 유입 경로</div><div class="lf-stage-value" style="font-size:14px;padding-top:3px;">${chSorted.length?(CHANNEL_LABELS[chSorted[0][0]]||chSorted[0][0]):'—'}</div><div class="lf-stage-sub">${chDetail||'이 기간 광고 외 유입 없음'}</div></div>`;
   } else if(view==='all'){
     costSubs = true;   // 전체 뷰도 전환당 비용 표시 — 광고비/전체 전환이라 블렌디드 기준 (2026-07-14 요청)
-    visits = sumInRange(lf.sessions_rows||[], since, until);
+    // 🌐 랜딩 유입 = **유료 채널 세션만** (2026-08-04 사용자 지시: "유료광고는 유료광고로 들어온 것만").
+    // 광고 랜딩 카드이므로 콘텐츠(쓰레드)·Direct·Referral·검색 유입을 섞지 않는다 — 유입당비용이
+    // 광고비/광고유입으로 정확해진다. 아래 비율 배지도 같은 원천(hostCh)으로 계산해 합이 맞게 한다.
+    // 참고: 하위 단계(도달·완료)는 시트 확정치(전 채널)나 GA4 전체라 유료로 바꾸지 않았다 —
+    //       바꾸면 시트 기준 최종단계와 분모가 어긋나 전환율이 왜곡됨(진단퍼널 54/233=23% 같은 과대).
+    visits = PAID_CHANNELS.reduce((a,ch)=>a+(hostCh[ch]||0), 0);
     stage2 = sumInRange(lf.stage2_rows||[], since, until);
     finalConv = sumInRange(lf.stage3_rows||[], since, until);
     bookingV = booking; contractsV = contracts; revenueV = revenue;
@@ -1448,17 +1457,21 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
       finalLabel = '타입폼 완료(시트)';
     }
     roas = spend ? revenueV/spend : null;
-    // 광고:콘텐츠:오가닉 비율 한 줄 — 유입은 GA4 세션, 예약은 시트 광고분/쓰레드(콘텐츠)/오가닉 확인건 (2026-07-14 3분류)
-    const orgSess = sumInRange(lf.sessions_organic_rows||[], since, until);
+    // 광고:콘텐츠:오가닉 비율 한 줄 — 2026-08-04부터 세 값 모두 hostCh(GA4 채널×호스트) 한 원천에서
+    // 뽑는다. 전엔 오가닉만 sessions_organic_rows(별도 fetch)라 합이 100%와 어긋났고, visits가
+    // 유료만으로 바뀐 뒤엔 잔차 계산(visits-org-content)이 음수가 될 수 있었다.
+    const hostTotal = Object.values(hostCh).reduce((a,b)=>a+b, 0);
     const contentSess = CONTENT_CHANNELS.reduce((a,ch)=>a+(hostCh[ch]||0),0);
-    const paidSess = Math.max(0, visits - orgSess - contentSess);
+    const paidSess = visits;                                        // = 유료 채널 세션
+    const orgSess = Math.max(0, hostTotal - paidSess - contentSess); // 그 외(직접·추천·검색·미지정)
     // 2026-08-04: 랜딩 카드 예약수에는 쓰레드가 더 이상 안 섞이므로 콘텐츠 차감분은 항상 0.
     // (쓰레드 건수·매출은 🧵 콘텐츠 단독 카드에서 본다 — 유입 비율만 참고용으로 남긴다.)
     const contentBookAll = 0;
     const orgBookAll = orBookings;
     const adsBookAll = Math.max(0, (bookingV||0) - orgBookAll - contentBookAll);
-    if(visits) splitBadge = `⚖️ 광고 ${fmtPct(paidSess/visits)} · 콘텐츠 ${fmtPct(contentSess/visits)} · 오가닉 ${fmtPct(orgSess/visits)} <span style="font-weight:400;color:#8a919c;">(유입 기준)</span>${bookingV?` · ${bookingLabel} 광고 <b>${fmtNum(adsBookAll)}</b>·오가닉 <b>${fmtNum(orgBookAll)}</b>`:''}`;
-    firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">💰 광고비</div><div class="lf-stage-value">${fmtWon(spend)}</div><div class="lf-stage-sub">참고 (전체 유입 기준)</div></div>`;
+    // 비율 분모 = 이 랜딩 호스트의 전체 세션(hostTotal). visits(유료)로 나누면 광고가 항상 100%가 된다.
+    if(hostTotal) splitBadge = `⚖️ 광고 ${fmtPct(paidSess/hostTotal)} · 콘텐츠 ${fmtPct(contentSess/hostTotal)} · 오가닉 ${fmtPct(orgSess/hostTotal)} <span style="font-weight:400;color:#8a919c;">(호스트 전체 세션 ${fmtNum(hostTotal)} 기준)</span>${bookingV?` · ${bookingLabel} 광고 <b>${fmtNum(adsBookAll)}</b>·오가닉 <b>${fmtNum(orgBookAll)}</b>`:''}`;
+    firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">💰 광고비</div><div class="lf-stage-value">${fmtWon(spend)}</div><div class="lf-stage-sub">참고 (유료 유입 기준)</div></div>`;
   } else {  // 'ch:GA4채널그룹'
     const ch = view.slice(3);
     visits = hostCh[ch]||0;
@@ -1497,7 +1510,7 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
       ${firstBox}
       <div class="lf-arrow">→</div>
       <div class="lf-stage-box lf-s1">
-        <div class="lf-stage-label">🌐 랜딩 유입</div>
+        <div class="lf-stage-label">🌐 랜딩 유입${view==='all'?' <span style="font-weight:400;font-size:11px;color:#8a919c;">(유료)</span>':''}</div>
         <div class="lf-stage-value">${fmtNum(visits)}</div>
         <div class="lf-stage-sub">${costSubs?`유입당비용 <b>${cpv!=null?fmtWon(cpv):'—'}</b>`:'GA4 세션 기준'}</div>
       </div>
