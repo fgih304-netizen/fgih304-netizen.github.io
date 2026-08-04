@@ -365,7 +365,7 @@ const SOURCES = {
 };
 const GA4_SOURCES = { real: 'ga4_data.json', demo: 'demo_ga4_data.json' };
 const state = { source:'real', since:null, until:null, adRows:[], revRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[], organicRevRows:[],
-  ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Source:null,
+  ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Attributed:[], ga4Source:null,
   landingView:'all',   // 랜딩 퍼널 섹션의 유입경로 드롭다운 선택값 ('all'|'meta'|'organic'|'ch:채널그룹') — 모든 카드에 일괄 적용
   threadsDaily:[],     // 쓰레드(콘텐츠 채널, impact-me 랜딩) DB·예약 — 구글시트 Daily탭 D/H열 파생 threads_daily.csv
   discountTypeform:[], // 할인퍼널 타입폼 완료 확정치 — 구글시트 Daily탭 G열 파생 discount_typeform.csv
@@ -606,8 +606,8 @@ async function loadGa4(name){
     json = await tryFile(GA4_SOURCES.demo);
     usedSource = 'demo';
   }
-  if (!json) return { ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4AbRows:[], ga4Source:null };
-  return { ga4Rows: json.rows||[], ga4ChannelRows: json.channel_rows||[], ga4Funnels: json.funnels||[], ga4LandingFunnels: json.landing_funnels||[], ga4AbRows: json.ab_event_rows||[], ga4Source: usedSource };
+  if (!json) return { ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4AbRows:[], ga4Attributed:[], ga4Source:null };
+  return { ga4Rows: json.rows||[], ga4ChannelRows: json.channel_rows||[], ga4Funnels: json.funnels||[], ga4LandingFunnels: json.landing_funnels||[], ga4AbRows: json.ab_event_rows||[], ga4Attributed: json.attributed_rows||[], ga4Source: usedSource };
 }
 
 async function setSource(name, opts={}){
@@ -1081,9 +1081,11 @@ function renderLandingFunnels(){
   //  ③카드 합계가 원장 총계와 안 맞았다(7월: 카드합 20 vs 실제 24 — 쓰레드 4건이 find-me 배지에만 있었음).
   // 랜딩 카드는 광고 귀속만, 쓰레드는 이 카드에서 전 기간 합산(renderContentCard는 시대구분 없음).
   // 메타·오가닉 뷰에는 안 붙인다 — 쓰레드는 유료도 자연유입도 아니라 그 뷰의 정의에 안 맞음.
-  const threadActivity = state.landingView==='all' && (state.threadsDaily||[]).some(r=>
-    r.date>=state.since && r.date<=state.until &&
-    ((r.db||0)+(r.bookings||0)+(r.payments||0)+(r.revenue||0) > 0));
+  const inRange = r => r.date>=state.since && r.date<=state.until;
+  const threadActivity = state.landingView==='all' && (
+    (state.threadsDaily||[]).some(r=> inRange(r) &&
+      ((r.db||0)+(r.bookings||0)+(r.payments||0)+(r.revenue||0) > 0)) ||
+    (state.ga4Attributed||[]).some(r=> r.kind==='content' && inRange(r) && r.sessions>0));
   const visibleFunnels = state.ga4LandingFunnels.filter(lf => (metricsByLanding[lf.id]?.spend || 0) > 0);
 
   if(visibleFunnels.length===0 && !threadActivity){ grid.innerHTML='<div class="empty">이 기간에 광고가 집행된 랜딩 퍼널이 없어요 (조회기간을 바꿔보세요)</div>'; return; }
@@ -1127,12 +1129,18 @@ function renderContentCard(){
   const bookings=rows.reduce((a,r)=>a+(r.bookings||0),0);
   const payments=rows.reduce((a,r)=>a+(r.payments||0),0);
   const revenue=rows.reduce((a,r)=>a+(r.revenue||0),0);
-  // 쓰레드가 실제로 쓴 랜딩은 find-me·impact-me 둘뿐 (2026-08-04 사용자 확인).
-  // 전 호스트를 합치면 타입폼(artin1ife.pro.typeform.com)·사전질의서(realmeschedule.lovable.app) 같은
-  // 하위 단계 페이지의 Organic Social까지 랜딩 유입으로 잡혀 부풀었다 — 두 호스트만 센다.
-  const THREAD_HOSTS = ['find-me.real-me.co.kr', 'impact-me.real-me.co.kr'];
+  // 유입 = fetch_ga4 의 캠페인 기준 귀속에서 kind='content' 인 세션 (2026-08-04 사용자 확정):
+  //   utm_source=threads + 페이스북·인스타 리퍼러(UTM 없는 소셜 재유입) = 쓰레드.
+  //   카카오 알림톡(CRM)은 kind='crm' 으로 빠져 할인퍼널에 귀속되므로 여기 안 섞인다.
+  //   랜딩 호스트만 집계돼 타입폼·사전질의서 같은 하위 단계 페이지도 안 섞인다(7월 720→566).
+  const attrContent = (state.ga4Attributed||[]).filter(r=>r.kind==='content' && r.date>=since && r.date<=until);
   const byHost={};
-  (state.ga4ChannelRows||[]).forEach(r=>{ if(CONTENT_CHANNELS.includes(r.channel) && THREAD_HOSTS.includes(r.host) && r.date>=since && r.date<=until){ byHost[r.host]=(byHost[r.host]||0)+r.sessions; } });
+  if(attrContent.length){
+    attrContent.forEach(r=>{ byHost[r.funnel]=(byHost[r.funnel]||0)+r.sessions; });
+  } else {   // attributed_rows 없는 구데이터 폴백: 쓰레드가 쓴 랜딩 호스트의 Organic Social
+    const THREAD_HOSTS = ['find-me.real-me.co.kr', 'impact-me.real-me.co.kr'];
+    (state.ga4ChannelRows||[]).forEach(r=>{ if(CONTENT_CHANNELS.includes(r.channel) && THREAD_HOSTS.includes(r.host) && r.date>=since && r.date<=until){ byHost[r.host]=(byHost[r.host]||0)+r.sessions; } });
+  }
   const visits=Object.values(byHost).reduce((a,b)=>a+b,0);
   const hostDetail=Object.entries(byHost).sort((a,b)=>b[1]-a[1]).map(([h,s])=>`${String(h).replace('.real-me.co.kr','')} <b>${fmtNum(s)}</b>`).join(' · ');
   const rateDb = visits? db/visits : null;
@@ -1344,6 +1352,17 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
   const hostCh = {};
   (state.ga4ChannelRows||[]).forEach(r=>{ if(r.host===lf.hostname && r.date>=since && r.date<=until) hostCh[r.channel]=(hostCh[r.channel]||0)+r.sessions; });
 
+  // 캠페인 기준 귀속 세션(fetch_ga4 attributed_rows) — 이 퍼널 몫을 종류별로 합산.
+  // 퍼널 배정에 날짜창이 이미 반영돼 있어 전역 조회기간으로 걸러도 안전하다.
+  // attr.paid 가 null 이면 attributed_rows 없는 구데이터 → 호출부에서 채널그룹으로 폴백.
+  const attr = {paid:null, content:0, crm:0, organic:0, total:0};
+  (state.ga4Attributed||[]).forEach(r=>{
+    if(r.funnel!==lf.id || r.date<state.since || r.date>state.until) return;
+    if(attr.paid===null) attr.paid = 0;
+    attr[r.kind] = (attr[r.kind]||0) + r.sessions;
+    attr.total += r.sessions;
+  });
+
   // find-me: 결제페이지 도달→'예약 신청', 예약완료→'예약금 결제완료' 워딩 (2026-07-13)
   const rateFinalLabel = lf.id==='find-me' ? '결제 전환율' : '전환율';
   const bookingLabel = lf.id==='find-me' ? '예약금 결제완료' : (lf.id==='discount-me' ? '예약금 결제' : '예약완료');
@@ -1441,14 +1460,14 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     firstBox = `<div class="lf-stage-box lf-spend"><div class="lf-stage-label">🧭 유입 경로</div><div class="lf-stage-value" style="font-size:14px;padding-top:3px;">${chSorted.length?(CHANNEL_LABELS[chSorted[0][0]]||chSorted[0][0]):'—'}</div><div class="lf-stage-sub">${chDetail||'이 기간 광고 외 유입 없음'}</div></div>`;
   } else if(view==='all'){
     costSubs = true;   // 전체 뷰도 전환당 비용 표시 — 광고비/전체 전환이라 블렌디드 기준 (2026-07-14 요청)
-    // 🌐 랜딩 유입 · 🪜 도달 = **유료 채널만** (2026-08-04 사용자 지시: "유료광고는 유료광고로 들어온 것만",
-    // 이어서 "도달 단계까지 유료로 맞춰줘"). 광고 랜딩 카드이므로 콘텐츠(쓰레드)·Direct·Referral·검색을
-    // 섞지 않는다 — 유입당비용·도달당비용이 광고비/광고분으로 정확해진다.
-    // 비율 배지는 같은 원천(hostCh)으로 계산해 합이 맞게 한다.
+    // 🌐 랜딩 유입 · 🪜 도달 = **유료만** (2026-08-04 사용자 지시: "유료광고는 유료광고로 들어온 것만",
+    // "도달 단계까지 유료로 맞춰줘"). 유입은 fetch_ga4 의 **캠페인 기준 귀속**(attributed_rows)을 쓴다:
+    // 퍼널 귀속의 1순위가 캠페인이라 캠페인이 다른 랜딩으로 유입돼도 캠페인을 따라간다(사용자 ③).
+    // attributed_rows 가 없는 구데이터면 채널그룹 기준으로 폴백.
     // 최종 단계(finalConv)는 유료로 못 바꾼다: 할인·진단은 시트 확정치(채널 구분 없음)이고,
     // find-me는 GA4라 분해는 되지만(유료 5 vs 전체 14) 그러면 예약금 결제(원장 6, 광고→네이버
     // 재유입 포함)보다 작아져 예약전환율이 120%로 깨진다. 축이 다른 지표라 억지로 맞추지 않는다.
-    visits = PAID_CHANNELS.reduce((a,ch)=>a+(hostCh[ch]||0), 0);
+    visits = attr.paid!=null ? attr.paid : PAID_CHANNELS.reduce((a,ch)=>a+(hostCh[ch]||0), 0);
     stage2 = sumPaidCh(lf.stage2_by_channel_rows, lf.stage2_rows);
     finalConv = sumInRange(lf.stage3_rows||[], since, until);
     bookingV = booking; contractsV = contracts; revenueV = revenue;
@@ -1469,10 +1488,13 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
     // 광고:콘텐츠:오가닉 비율 한 줄 — 2026-08-04부터 세 값 모두 hostCh(GA4 채널×호스트) 한 원천에서
     // 뽑는다. 전엔 오가닉만 sessions_organic_rows(별도 fetch)라 합이 100%와 어긋났고, visits가
     // 유료만으로 바뀐 뒤엔 잔차 계산(visits-org-content)이 음수가 될 수 있었다.
-    const hostTotal = Object.values(hostCh).reduce((a,b)=>a+b, 0);
-    const contentSess = CONTENT_CHANNELS.reduce((a,ch)=>a+(hostCh[ch]||0),0);
-    const paidSess = visits;                                        // = 유료 채널 세션
-    const orgSess = Math.max(0, hostTotal - paidSess - contentSess); // 그 외(직접·추천·검색·미지정)
+    const useAttr = attr.paid!==null;
+    const hostTotal = useAttr ? attr.total : Object.values(hostCh).reduce((a,b)=>a+b, 0);
+    const contentSess = useAttr ? attr.content : CONTENT_CHANNELS.reduce((a,ch)=>a+(hostCh[ch]||0),0);
+    const paidSess = visits;                                        // = 유료(캠페인 귀속) 세션
+    // 알림톡(crm)은 우리가 보낸 CRM 재유입 — 광고도 콘텐츠도 아니라 오가닉 쪽에 합쳐 표시한다.
+    const orgSess = useAttr ? (attr.organic + attr.crm)
+                            : Math.max(0, hostTotal - paidSess - contentSess);
     // 2026-08-04: 랜딩 카드 예약수에는 쓰레드가 더 이상 안 섞이므로 콘텐츠 차감분은 항상 0.
     // (쓰레드 건수·매출은 🧵 콘텐츠 단독 카드에서 본다 — 유입 비율만 참고용으로 남긴다.)
     const contentBookAll = 0;
