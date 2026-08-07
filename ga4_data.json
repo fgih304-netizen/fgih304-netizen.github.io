@@ -990,8 +990,8 @@
       "host": "impact-me.real-me.co.kr",
       "path": "/style",
       "landing_page": "https://impact-me.real-me.co.kr/style",
-      "sessions": 32,
-      "users": 32
+      "sessions": 34,
+      "users": 34
     },
     {
       "date": "2026-07-16",
@@ -2783,6 +2783,13 @@
       "users": 29
     },
     {
+      "date": "2026-08-07",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Paid Social",
+      "sessions": 40,
+      "users": 39
+    },
+    {
       "date": "2026-07-15",
       "host": "impact-me.real-me.co.kr",
       "channel": "Organic Social",
@@ -2795,13 +2802,6 @@
       "channel": "Direct",
       "sessions": 38,
       "users": 31
-    },
-    {
-      "date": "2026-08-07",
-      "host": "impact-me.real-me.co.kr",
-      "channel": "Paid Social",
-      "sessions": 38,
-      "users": 37
     },
     {
       "date": "2026-06-30",
@@ -7629,7 +7629,7 @@
       "date": "2026-08-07",
       "funnel": "discount-me",
       "kind": "paid",
-      "sessions": 38
+      "sessions": 40
     },
     {
       "date": "2026-08-07",
@@ -8649,7 +8649,7 @@
         {
           "date": "2026-08-07",
           "event_name": "page_view",
-          "event_count": 57
+          "event_count": 59
         },
         {
           "date": "2026-07-26",
@@ -10620,7 +10620,7 @@
         },
         {
           "date": "2026-08-07",
-          "value": 44
+          "value": 46
         }
       ],
       "stage2_rows": [
