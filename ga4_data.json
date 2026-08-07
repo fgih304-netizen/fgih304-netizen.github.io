@@ -191,6 +191,11 @@
       "value": 9
     },
     {
+      "date": "2026-08-07",
+      "path": "/style",
+      "value": 9
+    },
+    {
       "date": "2026-07-17",
       "path": "/",
       "value": 8
@@ -213,11 +218,6 @@
     {
       "date": "2026-08-02",
       "path": "/",
-      "value": 8
-    },
-    {
-      "date": "2026-08-07",
-      "path": "/style",
       "value": 8
     },
     {
@@ -978,18 +978,18 @@
       "users": 41
     },
     {
-      "date": "2026-07-22",
-      "host": "find-me.real-me.co.kr",
-      "path": "/",
-      "landing_page": "https://find-me.real-me.co.kr/",
-      "sessions": 34,
-      "users": 34
-    },
-    {
       "date": "2026-08-07",
       "host": "impact-me.real-me.co.kr",
       "path": "/style",
       "landing_page": "https://impact-me.real-me.co.kr/style",
+      "sessions": 37,
+      "users": 37
+    },
+    {
+      "date": "2026-07-22",
+      "host": "find-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://find-me.real-me.co.kr/",
       "sessions": 34,
       "users": 34
     },
@@ -2769,6 +2769,13 @@
       "users": 33
     },
     {
+      "date": "2026-08-07",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Paid Social",
+      "sessions": 43,
+      "users": 42
+    },
+    {
       "date": "2026-06-29",
       "host": "find-me.real-me.co.kr",
       "channel": "Paid Other",
@@ -2781,13 +2788,6 @@
       "channel": "Direct",
       "sessions": 41,
       "users": 29
-    },
-    {
-      "date": "2026-08-07",
-      "host": "impact-me.real-me.co.kr",
-      "channel": "Paid Social",
-      "sessions": 40,
-      "users": 39
     },
     {
       "date": "2026-07-15",
@@ -3133,6 +3133,13 @@
       "users": 15
     },
     {
+      "date": "2026-08-07",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Unassigned",
+      "sessions": 19,
+      "users": 19
+    },
+    {
       "date": "2026-06-12",
       "host": "find-me.real-me.co.kr",
       "channel": "Direct",
@@ -3257,13 +3264,6 @@
       "channel": "Paid Social",
       "sessions": 16,
       "users": 14
-    },
-    {
-      "date": "2026-08-07",
-      "host": "impact-me.real-me.co.kr",
-      "channel": "Unassigned",
-      "sessions": 16,
-      "users": 16
     },
     {
       "date": "2026-06-25",
@@ -7623,13 +7623,13 @@
       "date": "2026-08-07",
       "funnel": "discount-me",
       "kind": "organic",
-      "sessions": 23
+      "sessions": 26
     },
     {
       "date": "2026-08-07",
       "funnel": "discount-me",
       "kind": "paid",
-      "sessions": 40
+      "sessions": 43
     },
     {
       "date": "2026-08-07",
@@ -8649,7 +8649,7 @@
         {
           "date": "2026-08-07",
           "event_name": "page_view",
-          "event_count": 59
+          "event_count": 62
         },
         {
           "date": "2026-07-26",
@@ -8857,6 +8857,11 @@
           "event_count": 10
         },
         {
+          "date": "2026-08-07",
+          "event_name": "cta_click",
+          "event_count": 10
+        },
+        {
           "date": "2026-06-19",
           "event_name": "cta_click",
           "event_count": 9
@@ -8869,11 +8874,6 @@
         {
           "date": "2026-07-11",
           "event_name": "page_view",
-          "event_count": 9
-        },
-        {
-          "date": "2026-08-07",
-          "event_name": "cta_click",
           "event_count": 9
         },
         {
@@ -10620,7 +10620,7 @@
         },
         {
           "date": "2026-08-07",
-          "value": 46
+          "value": 49
         }
       ],
       "stage2_rows": [
@@ -10718,7 +10718,7 @@
         },
         {
           "date": "2026-08-07",
-          "value": 9
+          "value": 10
         }
       ],
       "stage3_rows": [
@@ -10914,7 +10914,7 @@
         },
         {
           "date": "2026-08-07",
-          "value": 16
+          "value": 19
         }
       ],
       "stage2_organic_rows": [
@@ -10964,7 +10964,7 @@
         },
         {
           "date": "2026-08-07",
-          "value": 3
+          "value": 4
         }
       ],
       "stage3_organic_rows": [
@@ -11185,6 +11185,11 @@
           "value": 5
         },
         {
+          "date": "2026-08-07",
+          "channel": "Unassigned",
+          "value": 4
+        },
+        {
           "date": "2026-07-23",
           "channel": "Paid Other",
           "value": 3
@@ -11207,11 +11212,6 @@
         {
           "date": "2026-08-06",
           "channel": "Cross-network",
-          "value": 3
-        },
-        {
-          "date": "2026-08-07",
-          "channel": "Unassigned",
           "value": 3
         },
         {
