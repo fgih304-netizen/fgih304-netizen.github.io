@@ -1434,6 +1434,14 @@ function renderLandingCard(lf, metricsByLanding, bucketsById){
       stage2 = (lf.stage2_by_channel_rows||[]).filter(r=>PAID_CHANNELS.includes(r.channel) && r.date>=since && r.date<=until).reduce((a,r)=>a+Number(r.value||0),0);
       finalConv = state.discountTypeform.filter(r=>r.date>=since && r.date<=until).reduce((a,r)=>a+r.count,0);
       finalLabel = '타입폼 완료(시트)';
+    } else if (lf.id === 'premium') {
+      // 프리미엄(퀴즈) 퍼널 — 2026-08-20 등록. 예약페이지가 없어 booking 맞춤전환이 없으니
+      // stages_from_meta 를 못 쓴다. 중간=GA4 퀴즈 완료(유료 채널만 — 2026-08-04 "유료는 유료만" 지시 유지),
+      // 최종=Meta initiate_checkout(쿠폰 신청 폼 제출 시 발화). m.leads(lead 액션)가 아니라 이 값이
+      // Ads Manager '결과' 열·GA4 generate_lead 와 일치한다(2026-08-20 실측 둘 다 8).
+      stage2 = (lf.stage2_by_channel_rows||[]).filter(r=>PAID_CHANNELS.includes(r.channel) && r.date>=since && r.date<=until).reduce((a,r)=>a+Number(r.value||0),0);
+      finalConv = m.checkout;
+      finalLabel = '쿠폰 신청';
     } else {
       stage2 = sumInRange(lf.stage2_rows, since, until); finalConv = m.leads;
       finalLabel = '전환(리드)';
