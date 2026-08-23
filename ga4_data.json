@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-08-22",
+  "generated_at": "2026-08-23",
   "source": "ga4-api",
   "range": {
-    "since": "2026-05-25",
-    "until": "2026-08-22"
+    "since": "2026-05-26",
+    "until": "2026-08-23"
   },
   "ab_test": {
     "hostname": "impact-me.real-me.co.kr",
@@ -66,6 +66,11 @@
       "value": 38
     },
     {
+      "date": "2026-08-21",
+      "path": "/",
+      "value": 35
+    },
+    {
       "date": "2026-08-07",
       "path": "/style",
       "value": 34
@@ -74,11 +79,6 @@
       "date": "2026-07-27",
       "path": "/style",
       "value": 32
-    },
-    {
-      "date": "2026-08-21",
-      "path": "/",
-      "value": 31
     },
     {
       "date": "2026-08-08",
@@ -103,6 +103,11 @@
     {
       "date": "2026-08-13",
       "path": "/",
+      "value": 27
+    },
+    {
+      "date": "2026-08-22",
+      "path": "/style",
       "value": 27
     },
     {
@@ -326,6 +331,11 @@
       "value": 10
     },
     {
+      "date": "2026-08-22",
+      "path": "/",
+      "value": 10
+    },
+    {
       "date": "2026-08-06",
       "path": "/",
       "value": 9
@@ -356,11 +366,6 @@
       "value": 8
     },
     {
-      "date": "2026-08-22",
-      "path": "/style",
-      "value": 8
-    },
-    {
       "date": "2026-07-18",
       "path": "/style",
       "value": 7
@@ -371,13 +376,13 @@
       "value": 7
     },
     {
-      "date": "2026-07-16",
-      "path": "/",
-      "value": 6
-    },
-    {
       "date": "2026-08-21",
       "path": "/style",
+      "value": 7
+    },
+    {
+      "date": "2026-07-16",
+      "path": "/",
       "value": 6
     },
     {
@@ -399,11 +404,6 @@
       "date": "2026-07-18",
       "path": "/",
       "value": 3
-    },
-    {
-      "date": "2026-08-22",
-      "path": "/",
-      "value": 2
     }
   ],
   "rows": [
@@ -544,6 +544,14 @@
       "users": 164
     },
     {
+      "date": "2026-08-21",
+      "host": "impact-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://impact-me.real-me.co.kr/",
+      "sessions": 160,
+      "users": 160
+    },
+    {
       "date": "2026-08-20",
       "host": "impact-me.real-me.co.kr",
       "path": "/style",
@@ -622,14 +630,6 @@
       "landing_page": "https://impact-me.real-me.co.kr/",
       "sessions": 142,
       "users": 142
-    },
-    {
-      "date": "2026-08-21",
-      "host": "impact-me.real-me.co.kr",
-      "path": "/",
-      "landing_page": "https://impact-me.real-me.co.kr/",
-      "sessions": 141,
-      "users": 141
     },
     {
       "date": "2026-06-28",
@@ -968,6 +968,14 @@
       "users": 81
     },
     {
+      "date": "2026-08-22",
+      "host": "impact-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://impact-me.real-me.co.kr/",
+      "sessions": 80,
+      "users": 80
+    },
+    {
       "date": "2026-06-17",
       "host": "change-me.real-me.co.kr",
       "path": "/",
@@ -1000,6 +1008,14 @@
       "users": 75
     },
     {
+      "date": "2026-08-22",
+      "host": "impact-me.real-me.co.kr",
+      "path": "/style",
+      "landing_page": "https://impact-me.real-me.co.kr/style",
+      "sessions": 77,
+      "users": 77
+    },
+    {
       "date": "2026-07-17",
       "host": "impact-me.real-me.co.kr",
       "path": "/",
@@ -1028,6 +1044,14 @@
       "host": "impact-me.real-me.co.kr",
       "path": "/",
       "landing_page": "https://impact-me.real-me.co.kr/",
+      "sessions": 75,
+      "users": 75
+    },
+    {
+      "date": "2026-08-21",
+      "host": "impact-me.real-me.co.kr",
+      "path": "/style",
+      "landing_page": "https://impact-me.real-me.co.kr/style",
       "sessions": 75,
       "users": 75
     },
@@ -1102,14 +1126,6 @@
       "landing_page": "https://impact-me.real-me.co.kr/style",
       "sessions": 69,
       "users": 69
-    },
-    {
-      "date": "2026-08-21",
-      "host": "impact-me.real-me.co.kr",
-      "path": "/style",
-      "landing_page": "https://impact-me.real-me.co.kr/style",
-      "sessions": 68,
-      "users": 68
     },
     {
       "date": "2026-07-29",
@@ -1352,20 +1368,20 @@
       "users": 37
     },
     {
+      "date": "2026-08-21",
+      "host": "find-me.real-me.co.kr",
+      "path": "/realme-booking-A.html",
+      "landing_page": "https://find-me.real-me.co.kr/realme-booking-A.html",
+      "sessions": 36,
+      "users": 35
+    },
+    {
       "date": "2026-07-22",
       "host": "find-me.real-me.co.kr",
       "path": "/",
       "landing_page": "https://find-me.real-me.co.kr/",
       "sessions": 34,
       "users": 34
-    },
-    {
-      "date": "2026-08-21",
-      "host": "find-me.real-me.co.kr",
-      "path": "/realme-booking-A.html",
-      "landing_page": "https://find-me.real-me.co.kr/realme-booking-A.html",
-      "sessions": 32,
-      "users": 32
     },
     {
       "date": "2026-07-16",
@@ -1456,6 +1472,14 @@
       "users": 10
     },
     {
+      "date": "2026-08-21",
+      "host": "find-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://find-me.real-me.co.kr/",
+      "sessions": 16,
+      "users": 15
+    },
+    {
       "date": "2026-07-10",
       "host": "impact-me.real-me.co.kr",
       "path": "/",
@@ -1469,14 +1493,6 @@
       "path": "/",
       "landing_page": "https://change-me.real-me.co.kr/",
       "sessions": 15,
-      "users": 14
-    },
-    {
-      "date": "2026-08-21",
-      "host": "find-me.real-me.co.kr",
-      "path": "/",
-      "landing_page": "https://find-me.real-me.co.kr/",
-      "sessions": 14,
       "users": 14
     },
     {
@@ -1520,10 +1536,10 @@
       "users": 12
     },
     {
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "host": "impact-me.real-me.co.kr",
-      "path": "/",
-      "landing_page": "https://impact-me.real-me.co.kr/",
+      "path": "/style",
+      "landing_page": "https://impact-me.real-me.co.kr/style",
       "sessions": 10,
       "users": 10
     },
@@ -1544,6 +1560,14 @@
       "users": 2
     },
     {
+      "date": "2026-08-21",
+      "host": "change-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://change-me.real-me.co.kr/",
+      "sessions": 9,
+      "users": 9
+    },
+    {
       "date": "2026-08-07",
       "host": "find-me.real-me.co.kr",
       "path": "/",
@@ -1560,10 +1584,10 @@
       "users": 9
     },
     {
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "host": "impact-me.real-me.co.kr",
-      "path": "/style",
-      "landing_page": "https://impact-me.real-me.co.kr/style",
+      "path": "/",
+      "landing_page": "https://impact-me.real-me.co.kr/",
       "sessions": 9,
       "users": 9
     },
@@ -1680,14 +1704,6 @@
       "users": 7
     },
     {
-      "date": "2026-08-21",
-      "host": "change-me.real-me.co.kr",
-      "path": "/",
-      "landing_page": "https://change-me.real-me.co.kr/",
-      "sessions": 7,
-      "users": 7
-    },
-    {
       "date": "2026-07-11",
       "host": "impact-me.real-me.co.kr",
       "path": "/",
@@ -1769,6 +1785,14 @@
     },
     {
       "date": "2026-07-08",
+      "host": "find-me.real-me.co.kr",
+      "path": "/realme-booking-A.html",
+      "landing_page": "https://find-me.real-me.co.kr/realme-booking-A.html",
+      "sessions": 6,
+      "users": 6
+    },
+    {
+      "date": "2026-08-22",
       "host": "find-me.real-me.co.kr",
       "path": "/realme-booking-A.html",
       "landing_page": "https://find-me.real-me.co.kr/realme-booking-A.html",
@@ -2152,12 +2176,12 @@
       "users": 2
     },
     {
-      "date": "2026-08-21",
-      "host": "realmeschedule.lovable.app",
-      "path": "/booking/step-2-photos",
-      "landing_page": "https://realmeschedule.lovable.app/booking/step-2-photos",
+      "date": "2026-08-22",
+      "host": "change-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://change-me.real-me.co.kr/",
       "sessions": 3,
-      "users": 1
+      "users": 3
     },
     {
       "date": "2026-06-10",
@@ -2456,10 +2480,18 @@
       "users": 2
     },
     {
+      "date": "2026-08-21",
+      "host": "realmeschedule.lovable.app",
+      "path": "/booking/step-3-styling",
+      "landing_page": "https://realmeschedule.lovable.app/booking/step-3-styling",
+      "sessions": 2,
+      "users": 2
+    },
+    {
       "date": "2026-08-22",
-      "host": "find-me.real-me.co.kr",
-      "path": "/realme-booking-A.html",
-      "landing_page": "https://find-me.real-me.co.kr/realme-booking-A.html",
+      "host": "artin1ife.pro.typeform.com",
+      "path": "/REAL-ME",
+      "landing_page": "https://artin1ife.pro.typeform.com/REAL-ME",
       "sessions": 2,
       "users": 2
     },
@@ -2976,34 +3008,26 @@
       "users": 1
     },
     {
-      "date": "2026-08-21",
-      "host": "artin1ife.pro.typeform.com",
-      "path": "/REAL-ME",
-      "landing_page": "https://artin1ife.pro.typeform.com/REAL-ME",
-      "sessions": 1,
-      "users": 1
-    },
-    {
-      "date": "2026-08-21",
-      "host": "realmeschedule.lovable.app",
-      "path": "/booking/step-3-styling",
-      "landing_page": "https://realmeschedule.lovable.app/booking/step-3-styling",
-      "sessions": 1,
-      "users": 1
-    },
-    {
-      "date": "2026-08-21",
-      "host": "realmeschedule.lovable.app",
-      "path": "/booking/step-4-schedule",
-      "landing_page": "https://realmeschedule.lovable.app/booking/step-4-schedule",
-      "sessions": 1,
-      "users": 1
-    },
-    {
       "date": "2026-08-22",
-      "host": "change-me.real-me.co.kr",
+      "host": "find-me.real-me.co.kr",
       "path": "/",
-      "landing_page": "https://change-me.real-me.co.kr/",
+      "landing_page": "https://find-me.real-me.co.kr/",
+      "sessions": 1,
+      "users": 1
+    },
+    {
+      "date": "2026-08-23",
+      "host": "find-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://find-me.real-me.co.kr/",
+      "sessions": 1,
+      "users": 1
+    },
+    {
+      "date": "2026-08-23",
+      "host": "find-me.real-me.co.kr",
+      "path": "/realme-booking-A.html",
+      "landing_page": "https://find-me.real-me.co.kr/realme-booking-A.html",
       "sessions": 1,
       "users": 1
     }
@@ -3080,6 +3104,13 @@
       "users": 236
     },
     {
+      "date": "2026-08-21",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Paid Social",
+      "sessions": 233,
+      "users": 228
+    },
+    {
       "date": "2026-08-08",
       "host": "impact-me.real-me.co.kr",
       "channel": "Paid Social",
@@ -3099,13 +3130,6 @@
       "channel": "Paid Social",
       "sessions": 216,
       "users": 208
-    },
-    {
-      "date": "2026-08-21",
-      "host": "impact-me.real-me.co.kr",
-      "channel": "Paid Social",
-      "sessions": 211,
-      "users": 207
     },
     {
       "date": "2026-07-08",
@@ -3206,6 +3230,13 @@
       "users": 147
     },
     {
+      "date": "2026-08-22",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Paid Social",
+      "sessions": 159,
+      "users": 156
+    },
+    {
       "date": "2026-06-15",
       "host": "change-me.real-me.co.kr",
       "channel": "Paid Social",
@@ -3267,13 +3298,6 @@
       "channel": "Paid Social",
       "sessions": 146,
       "users": 137
-    },
-    {
-      "date": "2026-08-21",
-      "host": "impact-me.real-me.co.kr",
-      "channel": "Unassigned",
-      "sessions": 145,
-      "users": 144
     },
     {
       "date": "2026-07-18",
@@ -3444,6 +3468,13 @@
       "users": 99
     },
     {
+      "date": "2026-08-22",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Unassigned",
+      "sessions": 100,
+      "users": 99
+    },
+    {
       "date": "2026-07-13",
       "host": "find-me.real-me.co.kr",
       "channel": "Paid Social",
@@ -3563,13 +3594,6 @@
       "users": 71
     },
     {
-      "date": "2026-08-21",
-      "host": "find-me.real-me.co.kr",
-      "channel": "Unassigned",
-      "sessions": 71,
-      "users": 70
-    },
-    {
       "date": "2026-07-09",
       "host": "impact-me.real-me.co.kr",
       "channel": "Paid Social",
@@ -3617,6 +3641,13 @@
       "channel": "Paid Social",
       "sessions": 64,
       "users": 61
+    },
+    {
+      "date": "2026-08-22",
+      "host": "find-me.real-me.co.kr",
+      "channel": "Paid Social",
+      "sessions": 63,
+      "users": 62
     },
     {
       "date": "2026-07-08",
@@ -3680,6 +3711,13 @@
       "channel": "Paid Social",
       "sessions": 56,
       "users": 55
+    },
+    {
+      "date": "2026-08-22",
+      "host": "find-me.real-me.co.kr",
+      "channel": "Unassigned",
+      "sessions": 56,
+      "users": 56
     },
     {
       "date": "2026-06-16",
@@ -3878,6 +3916,13 @@
       "users": 37
     },
     {
+      "date": "2026-08-21",
+      "host": "find-me.real-me.co.kr",
+      "channel": "Paid Social",
+      "sessions": 38,
+      "users": 37
+    },
+    {
       "date": "2026-06-30",
       "host": "find-me.real-me.co.kr",
       "channel": "Paid Other",
@@ -3911,6 +3956,20 @@
       "channel": "Paid Other",
       "sessions": 36,
       "users": 34
+    },
+    {
+      "date": "2026-08-21",
+      "host": "artin1ife.pro.typeform.com",
+      "channel": "Paid Social",
+      "sessions": 36,
+      "users": 35
+    },
+    {
+      "date": "2026-08-21",
+      "host": "find-me.real-me.co.kr",
+      "channel": "Referral",
+      "sessions": 36,
+      "users": 35
     },
     {
       "date": "2026-06-24",
@@ -3948,6 +4007,13 @@
       "users": 33
     },
     {
+      "date": "2026-08-22",
+      "host": "artin1ife.pro.typeform.com",
+      "channel": "Unassigned",
+      "sessions": 34,
+      "users": 33
+    },
+    {
       "date": "2026-07-01",
       "host": "realmeschedule.lovable.app",
       "channel": "Direct",
@@ -3962,13 +4028,6 @@
       "users": 32
     },
     {
-      "date": "2026-08-21",
-      "host": "find-me.real-me.co.kr",
-      "channel": "Paid Social",
-      "sessions": 32,
-      "users": 31
-    },
-    {
       "date": "2026-07-22",
       "host": "realmeschedule.lovable.app",
       "channel": "Direct",
@@ -3981,6 +4040,13 @@
       "channel": "Direct",
       "sessions": 30,
       "users": 19
+    },
+    {
+      "date": "2026-08-21",
+      "host": "realmeschedule.lovable.app",
+      "channel": "Direct",
+      "sessions": 30,
+      "users": 16
     },
     {
       "date": "2026-07-15",
@@ -4011,25 +4077,11 @@
       "users": 28
     },
     {
-      "date": "2026-08-21",
-      "host": "artin1ife.pro.typeform.com",
-      "channel": "Unassigned",
-      "sessions": 28,
-      "users": 28
-    },
-    {
-      "date": "2026-08-21",
+      "date": "2026-08-23",
       "host": "find-me.real-me.co.kr",
-      "channel": "Referral",
+      "channel": "Paid Social",
       "sessions": 28,
       "users": 28
-    },
-    {
-      "date": "2026-08-21",
-      "host": "realmeschedule.lovable.app",
-      "channel": "Direct",
-      "sessions": 28,
-      "users": 15
     },
     {
       "date": "2026-06-30",
@@ -4081,13 +4133,6 @@
       "users": 27
     },
     {
-      "date": "2026-08-21",
-      "host": "artin1ife.pro.typeform.com",
-      "channel": "Paid Social",
-      "sessions": 27,
-      "users": 26
-    },
-    {
       "date": "2026-06-27",
       "host": "impact-me.real-me.co.kr",
       "channel": "Paid Other",
@@ -4114,6 +4159,13 @@
       "channel": "Direct",
       "sessions": 26,
       "users": 22
+    },
+    {
+      "date": "2026-08-22",
+      "host": "artin1ife.pro.typeform.com",
+      "channel": "Paid Social",
+      "sessions": 26,
+      "users": 26
     },
     {
       "date": "2026-06-30",
@@ -4158,13 +4210,6 @@
       "users": 18
     },
     {
-      "date": "2026-08-21",
-      "host": "realmeschedule.lovable.app",
-      "channel": "Unassigned",
-      "sessions": 23,
-      "users": 14
-    },
-    {
       "date": "2026-06-19",
       "host": "realmeschedule.lovable.app",
       "channel": "Direct",
@@ -4284,6 +4329,13 @@
       "users": 14
     },
     {
+      "date": "2026-08-23",
+      "host": "find-me.real-me.co.kr",
+      "channel": "Unassigned",
+      "sessions": 21,
+      "users": 20
+    },
+    {
       "date": "2026-07-29",
       "host": "realmeschedule.lovable.app",
       "channel": "Direct",
@@ -4396,6 +4448,13 @@
       "users": 16
     },
     {
+      "date": "2026-08-23",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Paid Social",
+      "sessions": 18,
+      "users": 18
+    },
+    {
       "date": "2026-06-19",
       "host": "find-me.real-me.co.kr",
       "channel": "Unassigned",
@@ -4475,13 +4534,6 @@
     {
       "date": "2026-08-11",
       "host": "artin1ife.pro.typeform.com",
-      "channel": "Paid Social",
-      "sessions": 16,
-      "users": 16
-    },
-    {
-      "date": "2026-08-22",
-      "host": "impact-me.real-me.co.kr",
       "channel": "Paid Social",
       "sessions": 16,
       "users": 16
@@ -4606,13 +4658,6 @@
       "users": 14
     },
     {
-      "date": "2026-08-22",
-      "host": "artin1ife.pro.typeform.com",
-      "channel": "Unassigned",
-      "sessions": 14,
-      "users": 14
-    },
-    {
       "date": "2026-06-18",
       "host": "find-me.real-me.co.kr",
       "channel": "Direct",
@@ -4648,7 +4693,7 @@
       "users": 13
     },
     {
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "host": "impact-me.real-me.co.kr",
       "channel": "Unassigned",
       "sessions": 13,
@@ -4879,6 +4924,20 @@
       "users": 9
     },
     {
+      "date": "2026-08-21",
+      "host": "change-me.real-me.co.kr",
+      "channel": "Direct",
+      "sessions": 9,
+      "users": 9
+    },
+    {
+      "date": "2026-08-21",
+      "host": "find-me.real-me.co.kr",
+      "channel": "Organic Social",
+      "sessions": 9,
+      "users": 8
+    },
+    {
       "date": "2026-06-12",
       "host": "change-me.real-me.co.kr",
       "channel": "Direct",
@@ -4977,18 +5036,11 @@
       "users": 8
     },
     {
-      "date": "2026-08-22",
-      "host": "artin1ife.pro.typeform.com",
-      "channel": "Paid Social",
-      "sessions": 8,
-      "users": 8
-    },
-    {
-      "date": "2026-08-22",
+      "date": "2026-08-21",
       "host": "find-me.real-me.co.kr",
       "channel": "Unassigned",
       "sessions": 8,
-      "users": 8
+      "users": 7
     },
     {
       "date": "2026-06-15",
@@ -5085,20 +5137,6 @@
       "date": "2026-08-18",
       "host": "artin1ife.pro.typeform.com",
       "channel": "Paid Other",
-      "sessions": 7,
-      "users": 7
-    },
-    {
-      "date": "2026-08-21",
-      "host": "change-me.real-me.co.kr",
-      "channel": "Direct",
-      "sessions": 7,
-      "users": 7
-    },
-    {
-      "date": "2026-08-21",
-      "host": "find-me.real-me.co.kr",
-      "channel": "Organic Social",
       "sessions": 7,
       "users": 7
     },
@@ -5264,9 +5302,9 @@
       "users": 6
     },
     {
-      "date": "2026-08-21",
+      "date": "2026-08-23",
       "host": "artin1ife.pro.typeform.com",
-      "channel": "Paid Other",
+      "channel": "Paid Social",
       "sessions": 6,
       "users": 6
     },
@@ -5537,6 +5575,13 @@
       "users": 5
     },
     {
+      "date": "2026-08-21",
+      "host": "artin1ife.pro.typeform.com",
+      "channel": "Paid Other",
+      "sessions": 5,
+      "users": 5
+    },
+    {
       "date": "2026-06-13",
       "host": "find-me.real-me.co.kr",
       "channel": "Direct",
@@ -5775,9 +5820,23 @@
       "users": 3
     },
     {
+      "date": "2026-08-21",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Direct",
+      "sessions": 4,
+      "users": 4
+    },
+    {
       "date": "2026-08-22",
-      "host": "find-me.real-me.co.kr",
-      "channel": "Paid Social",
+      "host": "change-me.real-me.co.kr",
+      "channel": "Direct",
+      "sessions": 4,
+      "users": 4
+    },
+    {
+      "date": "2026-08-22",
+      "host": "realmeschedule.lovable.app",
+      "channel": "Direct",
       "sessions": 4,
       "users": 4
     },
@@ -6261,6 +6320,27 @@
       "date": "2026-08-21",
       "host": "impact-me.real-me.co.kr",
       "channel": "SMS",
+      "sessions": 3,
+      "users": 3
+    },
+    {
+      "date": "2026-08-22",
+      "host": "artin1ife.pro.typeform.com",
+      "channel": "Paid Other",
+      "sessions": 3,
+      "users": 3
+    },
+    {
+      "date": "2026-08-22",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "SMS",
+      "sessions": 3,
+      "users": 3
+    },
+    {
+      "date": "2026-08-23",
+      "host": "artin1ife.pro.typeform.com",
+      "channel": "Unassigned",
       "sessions": 3,
       "users": 3
     },
@@ -6889,20 +6969,6 @@
     },
     {
       "date": "2026-08-21",
-      "host": "change-me.real-me.co.kr",
-      "channel": "Unassigned",
-      "sessions": 2,
-      "users": 2
-    },
-    {
-      "date": "2026-08-21",
-      "host": "impact-me.real-me.co.kr",
-      "channel": "Direct",
-      "sessions": 2,
-      "users": 2
-    },
-    {
-      "date": "2026-08-21",
       "host": "impact-me.real-me.co.kr",
       "channel": "Referral",
       "sessions": 2,
@@ -6911,7 +6977,21 @@
     {
       "date": "2026-08-22",
       "host": "change-me.real-me.co.kr",
+      "channel": "Unassigned",
+      "sessions": 2,
+      "users": 2
+    },
+    {
+      "date": "2026-08-22",
+      "host": "impact-me.real-me.co.kr",
       "channel": "Direct",
+      "sessions": 2,
+      "users": 2
+    },
+    {
+      "date": "2026-08-22",
+      "host": "realmeschedule.lovable.app",
+      "channel": "Unassigned",
       "sessions": 2,
       "users": 2
     },
@@ -8233,22 +8313,22 @@
     },
     {
       "date": "2026-08-21",
+      "host": "artin1ife.pro.typeform.com",
+      "channel": "Organic Search",
+      "sessions": 1,
+      "users": 1
+    },
+    {
+      "date": "2026-08-21",
       "host": "find-me.real-me.co.kr",
       "channel": "SMS",
       "sessions": 1,
       "users": 1
     },
     {
-      "date": "2026-08-21",
-      "host": "impact-me.real-me.co.kr",
-      "channel": "Paid Other",
-      "sessions": 1,
-      "users": 1
-    },
-    {
       "date": "2026-08-22",
-      "host": "change-me.real-me.co.kr",
-      "channel": "Unassigned",
+      "host": "artin1ife.pro.typeform.com",
+      "channel": "Organic Search",
       "sessions": 1,
       "users": 1
     },
@@ -8262,28 +8342,28 @@
     {
       "date": "2026-08-22",
       "host": "impact-me.real-me.co.kr",
-      "channel": "Direct",
+      "channel": "Organic Social",
       "sessions": 1,
       "users": 1
     },
     {
       "date": "2026-08-22",
       "host": "impact-me.real-me.co.kr",
-      "channel": "SMS",
+      "channel": "Referral",
       "sessions": 1,
       "users": 1
     },
     {
-      "date": "2026-08-22",
-      "host": "realmeschedule.lovable.app",
+      "date": "2026-08-23",
+      "host": "find-me.real-me.co.kr",
+      "channel": "Organic Social",
+      "sessions": 1,
+      "users": 1
+    },
+    {
+      "date": "2026-08-23",
+      "host": "impact-me.real-me.co.kr",
       "channel": "Direct",
-      "sessions": 1,
-      "users": 1
-    },
-    {
-      "date": "2026-08-22",
-      "host": "realmeschedule.lovable.app",
-      "channel": "Unassigned",
       "sessions": 1,
       "users": 1
     }
@@ -10489,49 +10569,55 @@
       "date": "2026-08-21",
       "funnel": "discount-me",
       "kind": "organic",
-      "sessions": 152
+      "sessions": 9
     },
     {
       "date": "2026-08-21",
       "funnel": "discount-me",
       "kind": "paid",
-      "sessions": 212
+      "sessions": 233
     },
     {
       "date": "2026-08-21",
       "funnel": "find-me",
       "kind": "content",
-      "sessions": 35
+      "sessions": 45
     },
     {
       "date": "2026-08-21",
       "funnel": "find-me",
       "kind": "organic",
-      "sessions": 76
+      "sessions": 9
     },
     {
       "date": "2026-08-21",
       "funnel": "find-me",
       "kind": "paid",
-      "sessions": 32
+      "sessions": 38
     },
     {
       "date": "2026-08-22",
       "funnel": "change-me",
       "kind": "organic",
-      "sessions": 3
+      "sessions": 6
+    },
+    {
+      "date": "2026-08-22",
+      "funnel": "discount-me",
+      "kind": "content",
+      "sessions": 1
     },
     {
       "date": "2026-08-22",
       "funnel": "discount-me",
       "kind": "organic",
-      "sessions": 15
+      "sessions": 106
     },
     {
       "date": "2026-08-22",
       "funnel": "discount-me",
       "kind": "paid",
-      "sessions": 16
+      "sessions": 160
     },
     {
       "date": "2026-08-22",
@@ -10543,13 +10629,43 @@
       "date": "2026-08-22",
       "funnel": "find-me",
       "kind": "organic",
-      "sessions": 8
+      "sessions": 56
     },
     {
       "date": "2026-08-22",
       "funnel": "find-me",
       "kind": "paid",
-      "sessions": 4
+      "sessions": 64
+    },
+    {
+      "date": "2026-08-23",
+      "funnel": "discount-me",
+      "kind": "organic",
+      "sessions": 14
+    },
+    {
+      "date": "2026-08-23",
+      "funnel": "discount-me",
+      "kind": "paid",
+      "sessions": 18
+    },
+    {
+      "date": "2026-08-23",
+      "funnel": "find-me",
+      "kind": "content",
+      "sessions": 1
+    },
+    {
+      "date": "2026-08-23",
+      "funnel": "find-me",
+      "kind": "organic",
+      "sessions": 20
+    },
+    {
+      "date": "2026-08-23",
+      "funnel": "find-me",
+      "kind": "paid",
+      "sessions": 30
     }
   ],
   "funnels": [
@@ -10698,6 +10814,11 @@
           "event_count": 125
         },
         {
+          "date": "2026-08-21",
+          "event_name": "page_view",
+          "event_count": 123
+        },
+        {
           "date": "2026-06-30",
           "event_name": "page_view",
           "event_count": 118
@@ -10714,11 +10835,6 @@
         },
         {
           "date": "2026-08-15",
-          "event_name": "page_view",
-          "event_count": 104
-        },
-        {
-          "date": "2026-08-21",
           "event_name": "page_view",
           "event_count": 104
         },
@@ -10741,6 +10857,11 @@
           "date": "2026-06-28",
           "event_name": "page_view",
           "event_count": 90
+        },
+        {
+          "date": "2026-08-22",
+          "event_name": "page_view",
+          "event_count": 85
         },
         {
           "date": "2026-07-04",
@@ -10804,6 +10925,11 @@
         },
         {
           "date": "2026-06-12",
+          "event_name": "page_view",
+          "event_count": 35
+        },
+        {
+          "date": "2026-08-23",
           "event_name": "page_view",
           "event_count": 35
         },
@@ -10999,11 +11125,6 @@
         },
         {
           "date": "2026-07-24",
-          "event_name": "page_view",
-          "event_count": 6
-        },
-        {
-          "date": "2026-08-22",
           "event_name": "page_view",
           "event_count": 6
         },
@@ -11294,6 +11415,11 @@
           "event_count": 13
         },
         {
+          "date": "2026-08-21",
+          "event_name": "page_view",
+          "event_count": 9
+        },
+        {
           "date": "2026-08-13",
           "event_name": "page_view",
           "event_count": 8
@@ -11305,11 +11431,6 @@
         },
         {
           "date": "2026-08-14",
-          "event_name": "page_view",
-          "event_count": 7
-        },
-        {
-          "date": "2026-08-21",
           "event_name": "page_view",
           "event_count": 7
         },
@@ -11375,6 +11496,11 @@
         },
         {
           "date": "2026-08-16",
+          "event_name": "page_view",
+          "event_count": 3
+        },
+        {
+          "date": "2026-08-22",
           "event_name": "page_view",
           "event_count": 3
         },
@@ -11492,11 +11618,6 @@
           "date": "2026-08-19",
           "event_name": "page_view",
           "event_count": 1
-        },
-        {
-          "date": "2026-08-22",
-          "event_name": "page_view",
-          "event_count": 1
         }
       ]
     },
@@ -11565,6 +11686,11 @@
           "event_count": 324
         },
         {
+          "date": "2026-08-21",
+          "event_name": "page_view",
+          "event_count": 307
+        },
+        {
           "date": "2026-07-15",
           "event_name": "page_view",
           "event_count": 301
@@ -11583,11 +11709,6 @@
           "date": "2026-08-13",
           "event_name": "page_view",
           "event_count": 282
-        },
-        {
-          "date": "2026-08-21",
-          "event_name": "page_view",
-          "event_count": 278
         },
         {
           "date": "2026-07-30",
@@ -11673,6 +11794,11 @@
           "date": "2026-07-17",
           "event_name": "page_view",
           "event_count": 197
+        },
+        {
+          "date": "2026-08-22",
+          "event_name": "page_view",
+          "event_count": 193
         },
         {
           "date": "2026-06-27",
@@ -11880,6 +12006,11 @@
           "event_count": 42
         },
         {
+          "date": "2026-08-21",
+          "event_name": "cta_click",
+          "event_count": 42
+        },
+        {
           "date": "2026-07-28",
           "event_name": "cta_click",
           "event_count": 40
@@ -11900,7 +12031,7 @@
           "event_count": 37
         },
         {
-          "date": "2026-08-21",
+          "date": "2026-08-22",
           "event_name": "cta_click",
           "event_count": 37
         },
@@ -12000,6 +12131,11 @@
           "event_count": 25
         },
         {
+          "date": "2026-08-23",
+          "event_name": "page_view",
+          "event_count": 25
+        },
+        {
           "date": "2026-06-26",
           "event_name": "cta_click",
           "event_count": 24
@@ -12022,11 +12158,6 @@
         {
           "date": "2026-07-17",
           "event_name": "cta_click",
-          "event_count": 22
-        },
-        {
-          "date": "2026-08-22",
-          "event_name": "page_view",
           "event_count": 22
         },
         {
@@ -12086,11 +12217,6 @@
         },
         {
           "date": "2026-07-18",
-          "event_name": "cta_click",
-          "event_count": 10
-        },
-        {
-          "date": "2026-08-22",
           "event_name": "cta_click",
           "event_count": 10
         },
@@ -12287,12 +12413,12 @@
           "value": 49
         },
         {
-          "date": "2026-07-22",
-          "value": 37
+          "date": "2026-08-21",
+          "value": 52
         },
         {
-          "date": "2026-08-21",
-          "value": 46
+          "date": "2026-07-22",
+          "value": 37
         },
         {
           "date": "2026-07-16",
@@ -12387,6 +12513,10 @@
           "value": 11
         },
         {
+          "date": "2026-08-22",
+          "value": 7
+        },
+        {
           "date": "2026-07-28",
           "value": 6
         },
@@ -12463,16 +12593,16 @@
           "value": 2
         },
         {
-          "date": "2026-08-22",
-          "value": 2
-        },
-        {
           "date": "2026-08-01",
           "value": 1
         },
         {
           "date": "2026-08-02",
           "value": 1
+        },
+        {
+          "date": "2026-08-23",
+          "value": 2
         }
       ],
       "stage2_rows": [
@@ -12482,7 +12612,7 @@
         },
         {
           "date": "2026-08-21",
-          "value": 48
+          "value": 55
         },
         {
           "date": "2026-08-13",
@@ -12649,6 +12779,10 @@
           "value": 7
         },
         {
+          "date": "2026-08-22",
+          "value": 7
+        },
+        {
           "date": "2026-06-24",
           "value": 6
         },
@@ -12697,10 +12831,6 @@
           "value": 2
         },
         {
-          "date": "2026-08-22",
-          "value": 2
-        },
-        {
           "date": "2026-07-11",
           "value": 1
         },
@@ -12726,6 +12856,10 @@
         },
         {
           "date": "2026-08-03",
+          "value": 1
+        },
+        {
+          "date": "2026-08-23",
           "value": 1
         }
       ],
@@ -13074,11 +13208,15 @@
         },
         {
           "date": "2026-08-21",
-          "value": 100
+          "value": 45
         },
         {
           "date": "2026-08-22",
-          "value": 9
+          "value": 57
+        },
+        {
+          "date": "2026-08-23",
+          "value": 21
         }
       ],
       "stage2_organic_rows": [
@@ -13276,11 +13414,15 @@
         },
         {
           "date": "2026-08-21",
-          "value": 38
+          "value": 44
         },
         {
           "date": "2026-08-22",
-          "value": 2
+          "value": 6
+        },
+        {
+          "date": "2026-08-23",
+          "value": 1
         }
       ],
       "stage3_organic_rows": [
@@ -13332,14 +13474,14 @@
           "value": 38
         },
         {
+          "date": "2026-08-21",
+          "channel": "Referral",
+          "value": 37
+        },
+        {
           "date": "2026-08-13",
           "channel": "Paid Social",
           "value": 30
-        },
-        {
-          "date": "2026-08-21",
-          "channel": "Referral",
-          "value": 28
         },
         {
           "date": "2026-08-14",
@@ -13532,11 +13674,6 @@
           "value": 9
         },
         {
-          "date": "2026-08-21",
-          "channel": "Unassigned",
-          "value": 9
-        },
-        {
           "date": "2026-08-12",
           "channel": "Unassigned",
           "value": 8
@@ -13544,11 +13681,6 @@
         {
           "date": "2026-08-15",
           "channel": "Unassigned",
-          "value": 8
-        },
-        {
-          "date": "2026-08-21",
-          "channel": "Organic Social",
           "value": 8
         },
         {
@@ -13607,6 +13739,11 @@
           "value": 6
         },
         {
+          "date": "2026-08-21",
+          "channel": "Paid Social",
+          "value": 6
+        },
+        {
           "date": "2026-06-16",
           "channel": "Organic Social",
           "value": 5
@@ -13623,6 +13760,21 @@
         },
         {
           "date": "2026-08-18",
+          "channel": "Unassigned",
+          "value": 5
+        },
+        {
+          "date": "2026-08-21",
+          "channel": "Organic Social",
+          "value": 5
+        },
+        {
+          "date": "2026-08-21",
+          "channel": "Unassigned",
+          "value": 5
+        },
+        {
+          "date": "2026-08-22",
           "channel": "Unassigned",
           "value": 5
         },
@@ -13948,7 +14100,7 @@
         },
         {
           "date": "2026-08-21",
-          "channel": "Paid Social",
+          "channel": "SMS",
           "value": 2
         },
         {
@@ -14087,8 +14239,8 @@
           "value": 1
         },
         {
-          "date": "2026-08-21",
-          "channel": "SMS",
+          "date": "2026-08-22",
+          "channel": "Paid Social",
           "value": 1
         },
         {
@@ -14097,7 +14249,7 @@
           "value": 1
         },
         {
-          "date": "2026-08-22",
+          "date": "2026-08-23",
           "channel": "Unassigned",
           "value": 1
         }
@@ -14362,6 +14514,10 @@
           "value": 333
         },
         {
+          "date": "2026-08-21",
+          "value": 235
+        },
+        {
           "date": "2026-08-20",
           "value": 306
         },
@@ -14376,10 +14532,6 @@
         {
           "date": "2026-08-18",
           "value": 197
-        },
-        {
-          "date": "2026-08-21",
-          "value": 209
         },
         {
           "date": "2026-08-09",
@@ -14442,6 +14594,10 @@
           "value": 139
         },
         {
+          "date": "2026-08-22",
+          "value": 157
+        },
+        {
           "date": "2026-08-03",
           "value": 151
         },
@@ -14482,7 +14638,7 @@
           "value": 86
         },
         {
-          "date": "2026-08-22",
+          "date": "2026-08-23",
           "value": 19
         }
       ],
@@ -14548,6 +14704,10 @@
           "value": 42
         },
         {
+          "date": "2026-08-21",
+          "value": 42
+        },
+        {
           "date": "2026-07-28",
           "value": 40
         },
@@ -14564,7 +14724,7 @@
           "value": 37
         },
         {
-          "date": "2026-08-21",
+          "date": "2026-08-22",
           "value": 37
         },
         {
@@ -14638,10 +14798,6 @@
         {
           "date": "2026-07-18",
           "value": 10
-        },
-        {
-          "date": "2026-08-22",
-          "value": 10
         }
       ],
       "stage3_rows": [
@@ -14655,7 +14811,7 @@
         },
         {
           "date": "2026-08-21",
-          "value": 20
+          "value": 21
         },
         {
           "date": "2026-07-31",
@@ -14770,6 +14926,10 @@
           "value": 4
         },
         {
+          "date": "2026-08-22",
+          "value": 4
+        },
+        {
           "date": "2026-07-18",
           "value": 3
         },
@@ -14796,10 +14956,6 @@
         {
           "date": "2026-07-23",
           "value": 2
-        },
-        {
-          "date": "2026-08-22",
-          "value": 1
         }
       ],
       "sessions_organic_rows": [
@@ -14953,11 +15109,15 @@
         },
         {
           "date": "2026-08-21",
-          "value": 152
+          "value": 9
         },
         {
           "date": "2026-08-22",
-          "value": 15
+          "value": 106
+        },
+        {
+          "date": "2026-08-23",
+          "value": 14
         }
       ],
       "stage2_organic_rows": [
@@ -15010,12 +15170,8 @@
           "value": 3
         },
         {
-          "date": "2026-08-21",
-          "value": 23
-        },
-        {
           "date": "2026-08-22",
-          "value": 8
+          "value": 23
         }
       ],
       "stage3_organic_rows": [
@@ -15153,11 +15309,11 @@
         },
         {
           "date": "2026-08-21",
-          "value": 15
+          "value": 8
         },
         {
           "date": "2026-08-22",
-          "value": 1
+          "value": 3
         }
       ],
       "stage2_by_channel_rows": [
@@ -15233,6 +15389,11 @@
         },
         {
           "date": "2026-08-19",
+          "channel": "Paid Social",
+          "value": 42
+        },
+        {
+          "date": "2026-08-21",
           "channel": "Paid Social",
           "value": 42
         },
@@ -15317,7 +15478,7 @@
           "value": 23
         },
         {
-          "date": "2026-08-21",
+          "date": "2026-08-22",
           "channel": "Unassigned",
           "value": 23
         },
@@ -15337,9 +15498,9 @@
           "value": 15
         },
         {
-          "date": "2026-08-21",
+          "date": "2026-08-22",
           "channel": "Paid Social",
-          "value": 13
+          "value": 14
         },
         {
           "date": "2026-07-15",
@@ -15360,11 +15521,6 @@
           "date": "2026-07-19",
           "channel": "Paid Social",
           "value": 9
-        },
-        {
-          "date": "2026-08-22",
-          "channel": "Unassigned",
-          "value": 8
         },
         {
           "date": "2026-07-23",
@@ -15419,11 +15575,6 @@
         {
           "date": "2026-08-04",
           "channel": "Referral",
-          "value": 2
-        },
-        {
-          "date": "2026-08-22",
-          "channel": "Paid Social",
           "value": 2
         },
         {
@@ -15485,11 +15636,6 @@
           "date": "2026-08-06",
           "channel": "Direct",
           "value": 1
-        },
-        {
-          "date": "2026-08-21",
-          "channel": "Paid Other",
-          "value": 1
         }
       ],
       "stage3_by_channel_rows": [
@@ -15501,11 +15647,6 @@
         {
           "date": "2026-07-27",
           "channel": "Paid Social",
-          "value": 12
-        },
-        {
-          "date": "2026-08-21",
-          "channel": "Unassigned",
           "value": 12
         },
         {
@@ -15574,6 +15715,11 @@
           "value": 7
         },
         {
+          "date": "2026-08-21",
+          "channel": "Paid Social",
+          "value": 7
+        },
+        {
           "date": "2026-07-17",
           "channel": "Paid Social",
           "value": 6
@@ -15606,6 +15752,11 @@
         {
           "date": "2026-08-17",
           "channel": "SMS",
+          "value": 6
+        },
+        {
+          "date": "2026-08-21",
+          "channel": "Organic Social",
           "value": 6
         },
         {
@@ -15735,7 +15886,17 @@
         },
         {
           "date": "2026-08-21",
+          "channel": "Direct",
+          "value": 3
+        },
+        {
+          "date": "2026-08-21",
           "channel": "Referral",
+          "value": 3
+        },
+        {
+          "date": "2026-08-22",
+          "channel": "Unassigned",
           "value": 3
         },
         {
@@ -15905,12 +16066,7 @@
         },
         {
           "date": "2026-08-21",
-          "channel": "Organic Social",
-          "value": 2
-        },
-        {
-          "date": "2026-08-21",
-          "channel": "Paid Social",
+          "channel": "SMS",
           "value": 2
         },
         {
@@ -16119,13 +16275,8 @@
           "value": 1
         },
         {
-          "date": "2026-08-21",
-          "channel": "Paid Other",
-          "value": 1
-        },
-        {
           "date": "2026-08-22",
-          "channel": "Unassigned",
+          "channel": "Paid Social",
           "value": 1
         }
       ],
@@ -16164,11 +16315,11 @@
           "value": 9
         },
         {
-          "date": "2026-08-13",
-          "value": 7
+          "date": "2026-08-21",
+          "value": 9
         },
         {
-          "date": "2026-08-21",
+          "date": "2026-08-13",
           "value": 7
         },
         {
@@ -16217,6 +16368,10 @@
         },
         {
           "date": "2026-08-16",
+          "value": 3
+        },
+        {
+          "date": "2026-08-22",
           "value": 3
         },
         {
@@ -16305,10 +16460,6 @@
         },
         {
           "date": "2026-08-19",
-          "value": 1
-        },
-        {
-          "date": "2026-08-22",
           "value": 1
         }
       ],
@@ -16503,7 +16654,7 @@
         },
         {
           "date": "2026-08-22",
-          "value": 3
+          "value": 6
         }
       ],
       "stage2_organic_rows": [
