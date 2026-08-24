@@ -1703,20 +1703,20 @@
       "users": 25
     },
     {
+      "date": "2026-08-24",
+      "host": "impact-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://impact-me.real-me.co.kr/",
+      "sessions": 23,
+      "users": 23
+    },
+    {
       "date": "2026-06-12",
       "host": "find-me.real-me.co.kr",
       "path": "/",
       "landing_page": "https://find-me.real-me.co.kr/",
       "sessions": 21,
       "users": 11
-    },
-    {
-      "date": "2026-08-24",
-      "host": "impact-me.real-me.co.kr",
-      "path": "/",
-      "landing_page": "https://impact-me.real-me.co.kr/",
-      "sessions": 21,
-      "users": 21
     },
     {
       "date": "2026-08-24",
@@ -4365,6 +4365,13 @@
       "users": 40
     },
     {
+      "date": "2026-08-24",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Paid Social",
+      "sessions": 41,
+      "users": 40
+    },
+    {
       "date": "2026-08-20",
       "host": "find-me.real-me.co.kr",
       "channel": "Paid Social",
@@ -4377,13 +4384,6 @@
       "channel": "Paid Social",
       "sessions": 40,
       "users": 40
-    },
-    {
-      "date": "2026-08-24",
-      "host": "impact-me.real-me.co.kr",
-      "channel": "Paid Social",
-      "sessions": 40,
-      "users": 39
     },
     {
       "date": "2026-08-20",
@@ -4480,8 +4480,8 @@
       "date": "2026-08-24",
       "host": "impact-me.real-me.co.kr",
       "channel": "Unassigned",
-      "sessions": 35,
-      "users": 34
+      "sessions": 36,
+      "users": 35
     },
     {
       "date": "2026-06-24",
@@ -11573,13 +11573,13 @@
       "date": "2026-08-24",
       "funnel": "discount-me",
       "kind": "organic",
-      "sessions": 39
+      "sessions": 40
     },
     {
       "date": "2026-08-24",
       "funnel": "discount-me",
       "kind": "paid",
-      "sessions": 40
+      "sessions": 41
     },
     {
       "date": "2026-08-24",
@@ -12942,7 +12942,7 @@
         {
           "date": "2026-08-24",
           "event_name": "page_view",
-          "event_count": 49
+          "event_count": 50
         },
         {
           "date": "2026-07-07",
@@ -16646,7 +16646,7 @@
         },
         {
           "date": "2026-08-24",
-          "value": 42
+          "value": 44
         }
       ],
       "stage2_rows": [
@@ -17144,7 +17144,7 @@
         },
         {
           "date": "2026-08-24",
-          "value": 39
+          "value": 40
         }
       ],
       "stage2_organic_rows": [
