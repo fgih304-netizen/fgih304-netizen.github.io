@@ -364,8 +364,8 @@
 
 <script>
 const SOURCES = {
-  real: { data: 'data.json', revenue: 'revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv', discountTypeform: 'discount_typeform.csv', abPayments: 'ab_payments.csv', abTypeform: 'ab_typeform.csv', creativePayments: 'creative_payments.csv', creativeTypeform: 'creative_typeform.csv' },
-  demo: { data: 'demo_data.json', revenue: 'demo_revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv', discountTypeform: 'discount_typeform.csv', abPayments: 'ab_payments.csv', abTypeform: 'ab_typeform.csv', creativePayments: 'creative_payments.csv', creativeTypeform: 'creative_typeform.csv' },
+  real: { data: 'data.json', revenue: 'revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv', discountTypeform: 'discount_typeform.csv', abPayments: 'ab_payments.csv', abTypeform: 'ab_typeform.csv', creativePayments: 'creative_payments.csv', creativeTypeform: 'creative_typeform.csv', funnelLeads: 'funnel_leads.csv' },
+  demo: { data: 'demo_data.json', revenue: 'demo_revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv', discountTypeform: 'discount_typeform.csv', abPayments: 'ab_payments.csv', abTypeform: 'ab_typeform.csv', creativePayments: 'creative_payments.csv', creativeTypeform: 'creative_typeform.csv', funnelLeads: 'funnel_leads.csv' },
 };
 const GA4_SOURCES = { real: 'ga4_data.json', demo: 'demo_ga4_data.json' };
 const state = { source:'real', since:null, until:null, adRows:[], revRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[], organicRevRows:[],
@@ -375,6 +375,7 @@ const state = { source:'real', since:null, until:null, adRows:[], revRows:[], cr
   threadsDaily:[],     // 쓰레드(콘텐츠 채널, impact-me 랜딩) DB·예약 — 구글시트 Daily탭 D/H열 파생 threads_daily.csv
   discountTypeform:[], // 할인퍼널 타입폼 완료 확정치 — 구글시트 Daily탭 G열 파생 discount_typeform.csv
   abTest:{}, abRows:[], ga4AbRows:[], abPayments:[], abTypeform:[], creativePayments:[], creativeTypeform:[],   // A/B 테스트 — 변형별 결제=ab_payments.csv, 변형별 타입폼완료=ab_typeform.csv(utm 기준)
+  funnelLeads:[],      // 퍼널 자체 리드 원장(소재별 인입·결제) — funnel_leads.csv. 현재 프리미엄만.
   depositSummary:[],   // 러버블 Supabase daily_deposit_summary (전 퍼널 실시간 예약금·결제 코호트)
   historyRows:[], historyWritable:false, historySha:null };
 
@@ -526,7 +527,7 @@ function parseCSV(text){
 
 async function loadSource(name){
   const src = SOURCES[name];
-  const [dataRes, revRes, tfRes, bcRes, orRes, thRes, d50Res, abPayRes, abTfRes, crPayRes, crTfRes] = await Promise.all([
+  const [dataRes, revRes, tfRes, bcRes, orRes, thRes, d50Res, abPayRes, abTfRes, crPayRes, crTfRes, flRes] = await Promise.all([
     fetch(bust(src.data)).catch(()=>null),
     fetch(bust(src.revenue)).catch(()=>null),
     fetch(bust(src.typeformSubmits)).catch(()=>null),
@@ -538,6 +539,7 @@ async function loadSource(name){
     fetch(bust(src.abTypeform)).catch(()=>null),
     fetch(bust(src.creativePayments)).catch(()=>null),
     fetch(bust(src.creativeTypeform)).catch(()=>null),
+    fetch(bust(src.funnelLeads)).catch(()=>null),
   ]);
   if (!dataRes || !dataRes.ok) throw new Error('data missing');
   const dataJson = await dataRes.json();
@@ -591,7 +593,14 @@ async function loadSource(name){
   const creativeTypeform = parseCSV(crTfText).map(r=>({
     date:r.date, variant:(r.variant||'').trim(), count:Number(r.count||0),
   })).filter(r=>r.date && r.variant);
-  return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTypeform, creativePayments, creativeTypeform, abTest: dataJson.ab_test||{}, abRows: dataJson.ab_rows||[] };
+  // 퍼널 자체 리드 원장(2026-08-24) — 자기 랜딩에서 utm_content 와 함께 리드를 받는 퍼널의
+  // 소재별 인입·결제. 지금은 프리미엄(구글시트 '프리미엄' 탭)만. fetch_ab_variant.py 가 생성.
+  const flText = (flRes && flRes.ok) ? await flRes.text() : '';
+  const funnelLeads = parseCSV(flText).map(r=>({
+    landing_id:(r.landing_id||'').trim(), date:r.date, variant:(r.variant||'').trim(),
+    leads:Number(r.leads||0), payments:Number(r.payments||0), revenue:Number(r.revenue||0),
+  })).filter(r=>r.date && r.landing_id && r.variant);
+  return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTypeform, creativePayments, creativeTypeform, funnelLeads, abTest: dataJson.ab_test||{}, abRows: dataJson.ab_rows||[] };
 }
 
 function showBanner(msg){
@@ -617,8 +626,8 @@ async function loadGa4(name){
 
 async function setSource(name, opts={}){
   try{
-    const { adRows, revRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTypeform, creativePayments, creativeTypeform, abTest, abRows } = await loadSource(name);
-    state.source=name; state.adRows=adRows; state.revRows=revRows; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted; state.organicRevRows=organicRevRows; state.threadsDaily=threadsDaily; state.discountTypeform=discountTypeform; state.abPayments=abPayments; state.abTypeform=abTypeform; state.creativePayments=creativePayments; state.creativeTypeform=creativeTypeform; state.abTest=abTest; state.abRows=abRows;
+    const { adRows, revRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTypeform, creativePayments, creativeTypeform, funnelLeads, abTest, abRows } = await loadSource(name);
+    state.source=name; state.adRows=adRows; state.revRows=revRows; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted; state.organicRevRows=organicRevRows; state.threadsDaily=threadsDaily; state.discountTypeform=discountTypeform; state.abPayments=abPayments; state.abTypeform=abTypeform; state.creativePayments=creativePayments; state.creativeTypeform=creativeTypeform; state.funnelLeads=funnelLeads; state.abTest=abTest; state.abRows=abRows;
     if (name==='real' && adRows.length===0 && !opts.silentEmpty)
       showBanner('아직 실데이터가 없어요. fetch_data.py 를 실행하면 메타 데이터가 채워집니다.');
     else if (name==='demo')
@@ -1311,8 +1320,8 @@ function renderCreativePerf(allowed){
     if(!key || !keep(key)) return;
     const lid = r.landing_id || '_unmatched';
     const f = byFunnel[lid] || (byFunnel[lid] = {spend:0, rows:[], creatives:{}});
-    const c = f.creatives[key] || (f.creatives[key] = {spend:0,leads:0,booking:0,checkout:0,final_custom:0,result_count:0});
-    ['spend','leads','booking','checkout','final_custom','result_count'].forEach(k=>{ c[k] += Number(r[k]||0); });
+    const c = f.creatives[key] || (f.creatives[key] = {spend:0,leads:0,booking:0,checkout:0,final_custom:0,result_count:0,impressions:0,clicks:0});
+    ['spend','leads','booking','checkout','final_custom','result_count','impressions','clicks'].forEach(k=>{ c[k] += Number(r[k]||0); });
     f.spend += Number(r.spend||0);
     f.rows.push(r);
   });
@@ -1333,6 +1342,10 @@ function renderCreativePerf(allowed){
 function renderCreativeFunnelPanel(id, f, tfRows, payRows, sumBy, sheetSince, until){
   const isDiscount = !!SHEET_TRUTH[id];
   const convLabel = isDiscount ? '타입폼 완료' : convLabelFor(f.rows);
+  // 퍼널 자체 리드 원장이 있는 퍼널(프리미엄) — 노출·클릭·CTR + 시트 인입·결제까지 한 줄에 본다.
+  // Meta '결제 시작'은 사람이 아니라 이벤트라 시트 인입보다 크게 잡히므로 둘을 나란히 보여준다.
+  const flRows = (state.funnelLeads||[]).filter(r=>r.landing_id===id && r.date>=state.since && r.date<=state.until);
+  const hasLedger = flRows.length>0;
   // 그 기간 Meta '결과'가 곧 예약 신청인 퍼널(2026년 6~7월 find-me·change-me)에서는
   // 중간단계 열이 최종 전환과 같은 값이 되므로 중복 열을 만들지 않는다.
   let mid = MID_STAGE[id] || null;
@@ -1346,29 +1359,50 @@ function renderCreativeFunnelPanel(id, f, tfRows, payRows, sumBy, sheetSince, un
     tfRows.forEach(r=>{ if(!names.includes(r.variant)) names.push(r.variant); });
     payRows.forEach(r=>{ if(!names.includes(r.variant)) names.push(r.variant); });
   }
+  if(hasLedger){
+    // UTM이 안 붙은 인입('(UTM 없음)'·'(UTM 매크로 미치환)')도 줄로 남긴다 — 조용히 사라지면
+    // 소재별 합이 퍼널 합보다 적은데 이유를 알 수 없다.
+    flRows.forEach(r=>{ if(!names.includes(r.variant)) names.push(r.variant); });
+  }
 
   const rows = names.map(v=>{
     const c = f.creatives[v] || null;
     const spend = c ? c.spend : null;
     const conv = isDiscount ? sumBy(tfRows, v, 'count') : (c ? Number(c[CONV_KEY]||0) : 0);
     const midV = (mid && c) ? Number(c[mid.key]||0) : null;
-    const payments = isDiscount ? sumBy(payRows, v, 'payments') : null;
-    const payRevenue = isDiscount ? sumBy(payRows, v, 'revenue') : null;
-    return {label:v, spend, conv, mid:midV, payments, payRevenue,
+    let payments = isDiscount ? sumBy(payRows, v, 'payments') : null;
+    let payRevenue = isDiscount ? sumBy(payRows, v, 'revenue') : null;
+    let intake = null;
+    if(hasLedger){
+      intake = sumBy(flRows, v, 'leads');
+      payments = sumBy(flRows, v, 'payments');
+      payRevenue = sumBy(flRows, v, 'revenue');
+    }
+    const base = hasLedger ? intake : conv;     // 결제 전환율의 분모
+    return {label:v, spend, conv, mid:midV, intake, payments, payRevenue,
+      impressions: c ? c.impressions : null,
+      clicks: c ? c.clicks : null,
+      ctr: (c && c.impressions) ? c.clicks/c.impressions : null,
       cpa: (spend && conv) ? spend/conv : null,
       midCpa: (spend && midV) ? spend/midV : null,
-      payRate: conv ? (payments||0)/conv : null,
+      intakeCpa: (spend && intake) ? spend/intake : null,
+      payRate: base ? (payments||0)/base : null,
       payCpa: (spend && payments) ? spend/payments : null};
-  }).filter(r=>r.spend || r.conv || r.payments)
-    .sort((a,b)=> (b.conv-a.conv) || ((b.spend||0)-(a.spend||0)));
+  }).filter(r=>r.spend || r.conv || r.payments || r.intake)
+    .sort((a,b)=> (hasLedger ? ((b.intake||0)-(a.intake||0)) || (b.conv-a.conv) : (b.conv-a.conv))
+      || ((b.spend||0)-(a.spend||0)));
   if(!rows.length) return '';
 
-  // 최고 효율 하이라이트 — 전환 2건 이상만(1건은 우연이라 오해를 부름)
-  const cands = rows.filter(r=>r.cpa!=null && r.conv>=2).map(r=>r.cpa);
+  // 최고 효율 하이라이트 — 2건 이상만(1건은 우연이라 오해를 부름).
+  // 리드 원장이 있는 퍼널은 Meta 이벤트가 아니라 '실제 인입당 비용'으로 판정한다.
+  const costKey = hasLedger ? 'intakeCpa' : 'cpa';
+  const baseKey = hasLedger ? 'intake' : 'conv';
+  const cands = rows.filter(r=>r[costKey]!=null && (r[baseKey]||0)>=2).map(r=>r[costKey]);
   const best = cands.length ? Math.min(...cands) : null;
 
   const convSum = rows.reduce((a,r)=>a+(r.conv||0),0);
   const spendSum = rows.reduce((a,r)=>a+(r.spend||0),0);
+  const intakeSum = rows.reduce((a,r)=>a+(r.intake||0),0);
 
   // 퍼널 확정 결제 = revenue.csv(총결제내역 원장, 인입일 코호트). 소재 단위로는 귀속이 불가능한
   // 퍼널(프리미엄 등)도 이 줄에서 '결제가 실제로 있었다'는 사실은 반드시 보이게 한다.
@@ -1380,6 +1414,7 @@ function renderCreativeFunnelPanel(id, f, tfRows, payRows, sumBy, sheetSince, un
     <span style="font-weight:800;">🎯 ${funnelLabelOf(id)}</span>
     <span class="cap">광고비 <b>${fmtWon(spendSum)}</b></span>
     <span class="cap">${convLabel} <b>${fmtNum(convSum)}</b>${convSum&&spendSum?` · 전환당 <b>${fmtWon(spendSum/convSum)}</b>`:''}</span>
+    ${hasLedger?`<span class="cap">🙋 인입 <b>${fmtNum(intakeSum)}명</b>${intakeSum&&spendSum?` · 인입당 <b>${fmtWon(spendSum/intakeSum)}</b>`:''}</span>`:''}
     ${ledgerPay||ledgerRev?`<span class="cap">확정 결제 <b>${fmtNum(ledgerPay)}건</b> · <b>${fmtWon(ledgerRev)}</b> <span style="color:#8a919c;">(원장·인입일 코호트)</span></span>`:''}
   </div>
   <div class="cap" style="color:#8a919c;margin-bottom:8px;">
@@ -1387,18 +1422,24 @@ function renderCreativeFunnelPanel(id, f, tfRows, payRows, sumBy, sheetSince, un
       ? `시트 확정치(타입폼 응답) · ${sheetSince} ~ ${until}${metaConv!==convSum?` · Meta 결과수는 ${fmtNum(metaConv)}건 (차이 = utm_content 미매칭)`:''}`
       : 'Meta 결과수 (Ads Manager 「결과」 열)'}
     · 소재명 = utm_content(광고명) · 사본 통합
-    ${isDiscount ? '' : ' · 이 퍼널은 소재별 결제 귀속 원천이 없어 결제는 위 퍼널 합계로만 표시'}
+    ${hasLedger
+      ? ' · 🙋 인입·💳 결제는 구글시트 「프리미엄」 탭의 utm_content 기준 실제 신청자 (Meta 「결제 시작」은 사람이 아닌 이벤트 수라 더 크게 잡힘)'
+      : (isDiscount ? '' : ' · 이 퍼널은 소재별 결제 귀속 원천이 없어 결제는 위 퍼널 합계로만 표시')}
   </div>`;
 
   const cols = isDiscount
     ? `<th>소재 (광고명)</th><th>💰 광고비</th><th>🎯 ${convLabel}</th><th>완료당 비용</th>
        <th>💳 예약금 결제</th><th>결제 전환율</th><th>결제당 비용</th><th>💰 매출(예약금)</th>`
+    : hasLedger
+    ? `<th>소재 (광고명)</th><th>👀 노출</th><th>🖱 클릭</th><th>CTR</th><th>💰 광고비</th>
+       <th>🎯 ${convLabel}</th><th>🙋 인입</th><th>인입당 비용</th>
+       <th>💳 결제</th><th>결제 전환율</th><th>결제당 비용</th>`
     : (mid
       ? `<th>소재 (광고명)</th><th>💰 광고비</th><th>📅 ${mid.label}</th><th>${mid.label}당 비용</th><th>🎯 ${convLabel}</th><th>전환당 비용</th>`
       : `<th>소재 (광고명)</th><th>💰 광고비</th><th>🎯 ${convLabel}</th><th>전환당 비용</th>`);
 
   const body = rows.map(r=>{
-    const cls = (r.cpa!=null && r.cpa===best) ? ' class="ab-best"' : '';
+    const cls = (r[costKey]!=null && r[costKey]===best) ? ' class="ab-best"' : '';
     const cells = isDiscount
       ? `<td>${r.spend!=null?fmtWon(r.spend):'—'}</td>
          <td><b>${fmtNum(r.conv)}</b></td>
@@ -1407,6 +1448,17 @@ function renderCreativeFunnelPanel(id, f, tfRows, payRows, sumBy, sheetSince, un
          <td>${r.payRate!=null?fmtPct(r.payRate):'—'}</td>
          <td>${r.payCpa!=null?fmtWon(r.payCpa):'—'}</td>
          <td>${r.payRevenue?fmtWon(r.payRevenue):'—'}</td>`
+      : hasLedger
+      ? `<td>${r.impressions!=null?fmtNum(r.impressions):'—'}</td>
+         <td>${r.clicks!=null?fmtNum(r.clicks):'—'}</td>
+         <td>${r.ctr!=null?(r.ctr*100).toFixed(1)+'%':'—'}</td>
+         <td>${r.spend!=null?fmtWon(r.spend):'—'}</td>
+         <td>${fmtNum(r.conv)}</td>
+         <td><b>${fmtNum(r.intake||0)}</b></td>
+         <td>${r.intakeCpa!=null?fmtWon(r.intakeCpa):'—'}</td>
+         <td><b>${fmtNum(r.payments||0)}</b></td>
+         <td>${r.payRate!=null?fmtPct(r.payRate):'—'}</td>
+         <td>${r.payCpa!=null?fmtWon(r.payCpa):'—'}</td>`
       : (mid
         ? `<td>${r.spend!=null?fmtWon(r.spend):'—'}</td>
            <td><b>${fmtNum(r.mid||0)}</b></td>
