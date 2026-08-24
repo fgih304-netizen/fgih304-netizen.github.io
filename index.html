@@ -254,7 +254,11 @@
       <span class="cap" id="adRangeLabel"></span>
     </div>
     <div class="ad-toolbar">
-      <label>정렬</label>
+      <label>캠페인</label>
+      <select id="adCampaign">
+        <option value="all">전체</option>
+      </select>
+      <label style="margin-left:6px;">정렬</label>
       <select id="adSort">
         <option value="leads">리드 많은순</option>
         <option value="cpl">CPL 낮은순</option>
@@ -367,6 +371,7 @@ const GA4_SOURCES = { real: 'ga4_data.json', demo: 'demo_ga4_data.json' };
 const state = { source:'real', since:null, until:null, adRows:[], revRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[], organicRevRows:[],
   ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Attributed:[], ga4Source:null,
   landingView:'all',   // 랜딩 퍼널 섹션의 유입경로 드롭다운 선택값 ('all'|'meta'|'organic'|'ch:채널그룹') — 모든 카드에 일괄 적용
+  adCampaign:'all',    // 베스트 광고 소재 탭의 캠페인 드롭다운 ('all' | campaign_name) — 소재 카드·소재별 성과표에 함께 적용
   threadsDaily:[],     // 쓰레드(콘텐츠 채널, impact-me 랜딩) DB·예약 — 구글시트 Daily탭 D/H열 파생 threads_daily.csv
   discountTypeform:[], // 할인퍼널 타입폼 완료 확정치 — 구글시트 Daily탭 G열 파생 discount_typeform.csv
   abTest:{}, abRows:[], ga4AbRows:[], abPayments:[], abTypeform:[], creativePayments:[], creativeTypeform:[],   // A/B 테스트 — 변형별 결제=ab_payments.csv, 변형별 타입폼완료=ab_typeform.csv(utm 기준)
@@ -800,7 +805,42 @@ function renderFunnel(cur){
 
 function hashHue(s){ let h=0; for(let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))%360; return h; }
 
-function renderBestAds(rowsInRange){
+// 캠페인 드롭다운(2026-08-24) — 조회기간에 실제로 존재하는 캠페인만 채운다.
+// 랜딩 힌트는 data.json 의 landing_buckets 역인덱스. 한 캠페인이 여러 랜딩에 걸리는 경우가
+// 있어서(Lead_260623_typeform = 할인퍼널·진단퍼널 공용) 힌트는 '·'로 이어 붙인다 — 그래서
+// 필터 축은 랜딩이 아니라 캠페인이다. 랜딩으로 끊으면 이 캠페인이 양쪽에 이중 계상된다.
+function escAttr(s){
+  return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function campaignLandingHint(name){
+  const hits=(state.landingBuckets||[]).filter(b=>(b.campaign_names||[]).includes(name));
+  if(!hits.length) return '';
+  return hits.map(b=>String(b.label||b.id||'').split(' (')[0].trim()).filter(Boolean).join('·');
+}
+const NO_CAMPAIGN='(캠페인 없음)';
+function campaignOf(r){ return r.campaign_name || NO_CAMPAIGN; }
+
+function syncAdCampaignOptions(rowsInRange){
+  const sel=document.getElementById('adCampaign');
+  if(!sel) return;
+  const agg={};
+  rowsInRange.forEach(r=>{ const c=campaignOf(r); agg[c]=(agg[c]||0)+Number(r.spend||0); });
+  const names=Object.keys(agg).sort((a,b)=>(agg[b]-agg[a])||a.localeCompare(b));
+  // 기간을 바꿔 선택한 캠페인이 사라지면 조용히 전체로 되돌린다(빈 화면 방지)
+  if(state.adCampaign!=='all' && !names.includes(state.adCampaign)) state.adCampaign='all';
+  sel.innerHTML=`<option value="all">전체 (캠페인 ${names.length}개)</option>`+
+    names.map(n=>{
+      const hint=campaignLandingHint(n);
+      return `<option value="${escAttr(n)}">${hint?escAttr(hint)+' · ':''}${escAttr(n)} — ${fmtWon(agg[n])}</option>`;
+    }).join('');
+  sel.value=state.adCampaign;
+}
+
+function renderBestAds(rowsInRangeAll){
+  syncAdCampaignOptions(rowsInRangeAll);
+  const rowsInRange = state.adCampaign==='all'
+    ? rowsInRangeAll
+    : rowsInRangeAll.filter(r=>campaignOf(r)===state.adCampaign);
   const by={};
   rowsInRange.forEach(r=>{
     const id = r.ad_id || r.ad_name;
@@ -823,10 +863,21 @@ function renderBestAds(rowsInRange){
   });
 
   document.getElementById('adRangeLabel').textContent = `${state.since} ~ ${state.until}`;
-  renderCreativePerf();
-  document.getElementById('adCount').textContent = `광고 ${ads.length}개`;
+  // 캠페인을 고르면 아래 소재별 성과표도 같은 캠페인의 소재로 좁힌다(광고명 canon 기준)
+  const allowed = state.adCampaign==='all'
+    ? null
+    : new Set(rowsInRange.map(r=>canonCreative(r.ad_name)).filter(Boolean));
+  renderCreativePerf(allowed);
+  const spendSum = ads.reduce((a,x)=>a+x.spend,0);
+  document.getElementById('adCount').textContent =
+    `광고 ${ads.length}개` + (state.adCampaign==='all' ? '' : ` · ${state.adCampaign} · 지출 ${fmtWon(spendSum)}`);
   const grid = document.getElementById('adGrid');
-  if(ads.length===0){ grid.innerHTML='<div class="empty">이 기간에 집행된 광고가 없어요</div>'; return; }
+  if(ads.length===0){
+    grid.innerHTML=`<div class="empty">${state.adCampaign==='all'
+      ? '이 기간에 집행된 광고가 없어요'
+      : '이 캠페인은 선택한 기간에 집행된 광고가 없어요'}</div>`;
+    return;
+  }
 
   grid.innerHTML = ads.map((a,i)=>{
     const cr = state.creatives[a.ad_id] || {};
@@ -1175,19 +1226,26 @@ function canonCreative(c){
   if(!c) return '';
   return c.replace(/(\s*-\s*사본)+\s*$/,'').replace(/_사본$/,'').replace(/^20(\d{6}_)/,'$1').trim();
 }
-function renderCreativePerf(){
+// allowed = 캠페인 드롭다운으로 좁힌 소재(canon 광고명) Set. null 이면 전체.
+// 타입폼·결제는 utm_content 기준이라 광고명이 아닌 레거시 변형('얼굴','상세형' 등)도 섞여 있다
+// — 캠페인을 고르면 이들은 광고명과 매칭되지 않아 자연히 빠진다(전체 뷰에서는 그대로 보인다).
+function renderCreativePerf(allowed){
   const el = document.getElementById('creativePerf');
   if(!el) return;
   const floor = '2026-07-15';   // utm_content 수집 시작 이전은 집계 불가
   const since = state.since > floor ? state.since : floor;
   const until = state.until;
-  const tfRows  = (state.creativeTypeform||[]).filter(r=>r.date>=since && r.date<=until);
-  const payRows = (state.creativePayments||[]).filter(r=>r.date>=since && r.date<=until);
+  const keep = v => !allowed || allowed.has(canonCreative(v));
+  const tfRows  = (state.creativeTypeform||[]).filter(r=>r.date>=since && r.date<=until && keep(r.variant));
+  const payRows = (state.creativePayments||[]).filter(r=>r.date>=since && r.date<=until && keep(r.variant));
   const adAgg = {};
   (state.adRows||[]).forEach(r=>{
     if(r.date<since || r.date>until) return;
+    // 광고비는 캠페인 자체로 끊는다 — 같은 소재가 여러 캠페인에서 돌면 allowed 만으로는
+    // 다른 캠페인 지출까지 합쳐져 위쪽 카드와 숫자가 어긋난다.
+    if(state.adCampaign!=='all' && campaignOf(r)!==state.adCampaign) return;
     const key = canonCreative(r.ad_name);
-    if(!key) return;
+    if(!key || !keep(key)) return;
     (adAgg[key] = adAgg[key] || {spend:0}).spend += (Number(r.spend)||0);
   });
   const vset = new Set();
@@ -1209,7 +1267,7 @@ function renderCreativePerf(){
   const cpls = rows.filter(r=>r.cpl!=null && r.typeform>=3).map(r=>r.cpl);
   const best = cpls.length ? Math.min(...cpls) : null;
   el.innerHTML = `<div class="panel" style="overflow-x:auto;">
-    <div style="font-weight:800;margin-bottom:8px;">🎯 소재별 성과 <span class="cap" style="font-weight:400;color:#8a919c;">utm_content(광고명) 자동 집계 · 사본 통합 · ${since} ~ ${until}</span></div>
+    <div style="font-weight:800;margin-bottom:8px;">🎯 소재별 성과 <span class="cap" style="font-weight:400;color:#8a919c;">utm_content(광고명) 자동 집계 · 사본 통합 · ${since} ~ ${until}${state.adCampaign==='all'?'':' · 캠페인 '+state.adCampaign}</span></div>
     <table class="ab-table">
       <thead><tr>
         <th>소재 (광고명)</th><th>💰 광고비</th><th>🎯 타입폼 완료</th><th>완료당 비용</th>
@@ -1810,9 +1868,13 @@ document.getElementById('viewtabs').addEventListener('click',e=>{
   document.getElementById('viewHistory').classList.toggle('active', v==='history');
   if(v==='history') markHistorySeen();
 });
-document.getElementById('adSort').addEventListener('change',()=>{
-  const rows=state.adRows.filter(r=>r.date>=state.since && r.date<=state.until);
-  renderBestAds(rows);
+function rerenderBestAds(){
+  renderBestAds(state.adRows.filter(r=>r.date>=state.since && r.date<=state.until));
+}
+document.getElementById('adSort').addEventListener('change', rerenderBestAds);
+document.getElementById('adCampaign').addEventListener('change', e=>{
+  state.adCampaign = e.target.value || 'all';
+  rerenderBestAds();
 });
 
 document.getElementById('histForm').addEventListener('submit', async (e)=>{
