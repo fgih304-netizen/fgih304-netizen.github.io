@@ -368,7 +368,7 @@ const SOURCES = {
   demo: { data: 'demo_data.json', revenue: 'demo_revenue.csv', typeformSubmits: 'typeform_submits.csv', bookingCompleted: 'booking_completed.csv', organicRevenue: 'organic_revenue.csv', threads: 'threads_daily.csv', discountTypeform: 'discount_typeform.csv', abPayments: 'ab_payments.csv', abTypeform: 'ab_typeform.csv', creativePayments: 'creative_payments.csv', creativeTypeform: 'creative_typeform.csv', funnelLeads: 'funnel_leads.csv' },
 };
 const GA4_SOURCES = { real: 'ga4_data.json', demo: 'demo_ga4_data.json' };
-const state = { source:'real', since:null, until:null, adRows:[], revRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[], organicRevRows:[],
+const state = { source:'real', since:null, until:null, adRows:[], revRows:[], threadsLedgerRows:[], creatives:{}, landingMetrics:[], landingBuckets:[], typeformSubmits:[], bookingCompleted:[], organicRevRows:[],
   ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4Attributed:[], ga4Source:null,
   landingView:'all',   // 랜딩 퍼널 섹션의 유입경로 드롭다운 선택값 ('all'|'meta'|'organic'|'ch:채널그룹') — 모든 카드에 일괄 적용
   adCampaign:'all',    // 베스트 광고 소재 탭의 캠페인 드롭다운 ('all' | campaign_name) — 소재 카드·소재별 성과표에 함께 적용
@@ -544,9 +544,14 @@ async function loadSource(name){
   if (!dataRes || !dataRes.ok) throw new Error('data missing');
   const dataJson = await dataRes.json();
   const revText = (revRes && revRes.ok) ? await revRes.text() : '';
-  const revRows = parseCSV(revText).map(r=>({
+  // revenue.csv 는 2026-08-25부터 threads(쓰레드 콘텐츠) 행도 담는다. 같은 금액이 threads_daily.csv
+  // 에도 있으므로, 대시보드 합계가 두 번 세지 않도록 여기서 분리한다. 기존 revRows 소비자(합계·퍼널별)
+  // 의 동작은 그대로 유지되고, 쓰레드는 종전처럼 threadsDaily(콘텐츠 카드)가 담당한다.
+  const revRowsAll = parseCSV(revText).map(r=>({
     date:r.date, contracts:Number(r.contracts||0), revenue:Number(r.revenue||0), landing_id:(r.landing_id||'').trim(),
   })).filter(r=>r.date);
+  const revRows = revRowsAll.filter(r=>r.landing_id!=='threads');
+  const threadsLedgerRows = revRowsAll.filter(r=>r.landing_id==='threads');
   const tfText = (tfRes && tfRes.ok) ? await tfRes.text() : '';
   const typeformSubmits = parseCSV(tfText).map(r=>({
     date:r.date, count:Number(r.count||0),
@@ -600,7 +605,7 @@ async function loadSource(name){
     landing_id:(r.landing_id||'').trim(), date:r.date, variant:(r.variant||'').trim(),
     leads:Number(r.leads||0), payments:Number(r.payments||0), revenue:Number(r.revenue||0),
   })).filter(r=>r.date && r.landing_id && r.variant);
-  return { adRows: dataJson.rows||[], revRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTypeform, creativePayments, creativeTypeform, funnelLeads, abTest: dataJson.ab_test||{}, abRows: dataJson.ab_rows||[] };
+  return { adRows: dataJson.rows||[], revRows, threadsLedgerRows, creatives: dataJson.creatives||{}, landingMetrics: dataJson.landing_metrics||[], landingBuckets: dataJson.landing_buckets||[], typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTypeform, creativePayments, creativeTypeform, funnelLeads, abTest: dataJson.ab_test||{}, abRows: dataJson.ab_rows||[] };
 }
 
 function showBanner(msg){
@@ -626,8 +631,8 @@ async function loadGa4(name){
 
 async function setSource(name, opts={}){
   try{
-    const { adRows, revRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTypeform, creativePayments, creativeTypeform, funnelLeads, abTest, abRows } = await loadSource(name);
-    state.source=name; state.adRows=adRows; state.revRows=revRows; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted; state.organicRevRows=organicRevRows; state.threadsDaily=threadsDaily; state.discountTypeform=discountTypeform; state.abPayments=abPayments; state.abTypeform=abTypeform; state.creativePayments=creativePayments; state.creativeTypeform=creativeTypeform; state.funnelLeads=funnelLeads; state.abTest=abTest; state.abRows=abRows;
+    const { adRows, revRows, threadsLedgerRows, creatives, landingMetrics, landingBuckets, typeformSubmits, bookingCompleted, organicRevRows, threadsDaily, discountTypeform, abPayments, abTypeform, creativePayments, creativeTypeform, funnelLeads, abTest, abRows } = await loadSource(name);
+    state.source=name; state.adRows=adRows; state.revRows=revRows; state.threadsLedgerRows=threadsLedgerRows||[]; state.creatives=creatives; state.landingMetrics=landingMetrics; state.landingBuckets=landingBuckets; state.typeformSubmits=typeformSubmits; state.bookingCompleted=bookingCompleted; state.organicRevRows=organicRevRows; state.threadsDaily=threadsDaily; state.discountTypeform=discountTypeform; state.abPayments=abPayments; state.abTypeform=abTypeform; state.creativePayments=creativePayments; state.creativeTypeform=creativeTypeform; state.funnelLeads=funnelLeads; state.abTest=abTest; state.abRows=abRows;
     if (name==='real' && adRows.length===0 && !opts.silentEmpty)
       showBanner('아직 실데이터가 없어요. fetch_data.py 를 실행하면 메타 데이터가 채워집니다.');
     else if (name==='demo')
