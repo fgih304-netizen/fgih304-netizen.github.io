@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-27",
+  "generated_at": "2026-08-28",
   "currency": "KRW",
   "source": "meta-api",
   "range": {
-    "since": "2026-05-30",
-    "until": "2026-08-27"
+    "since": "2026-05-31",
+    "until": "2026-08-28"
   },
   "rows": [
     {
@@ -17352,14 +17352,14 @@
       "campaign_name": "Lead_260623_typeform",
       "ad_name": "260707_고객후기_캐러셀_1",
       "ad_id": "120253280343240496",
-      "spend": 3573,
-      "clicks": 4,
-      "impressions": 105,
+      "spend": 5308,
+      "clicks": 7,
+      "impressions": 213,
       "leads": 0,
       "result_count": 0,
       "result_type": "타입폼 완료",
       "landing_id": "discount-me",
-      "visits": 3,
+      "visits": 4,
       "booking": 0,
       "checkout": 0,
       "final_custom": 0
@@ -17369,9 +17369,26 @@
       "campaign_name": "Lead_260623_typeform",
       "ad_name": "260615_AI_디렉팅_코디",
       "ad_id": "120253715341620496",
-      "spend": 11655,
-      "clicks": 6,
-      "impressions": 253,
+      "spend": 13959,
+      "clicks": 9,
+      "impressions": 353,
+      "leads": 0,
+      "result_count": 1,
+      "result_type": "타입폼 완료",
+      "landing_id": "discount-me",
+      "visits": 9,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Lead_260623_typeform",
+      "ad_name": "260615_AI_디렉팅_코디",
+      "ad_id": "120253715381770496",
+      "spend": 13670,
+      "clicks": 7,
+      "impressions": 379,
       "leads": 0,
       "result_count": 1,
       "result_type": "타입폼 완료",
@@ -17384,33 +17401,16 @@
     {
       "date": "2026-08-27",
       "campaign_name": "Lead_260623_typeform",
-      "ad_name": "260615_AI_디렉팅_코디",
-      "ad_id": "120253715381770496",
-      "spend": 9777,
-      "clicks": 5,
-      "impressions": 251,
-      "leads": 0,
-      "result_count": 1,
-      "result_type": "타입폼 완료",
-      "landing_id": "discount-me",
-      "visits": 4,
-      "booking": 0,
-      "checkout": 0,
-      "final_custom": 0
-    },
-    {
-      "date": "2026-08-27",
-      "campaign_name": "Lead_260623_typeform",
       "ad_name": "260805_고객후기_캐러셀_경령님",
       "ad_id": "120254136511300496",
-      "spend": 49345,
-      "clicks": 64,
-      "impressions": 2534,
+      "spend": 78069,
+      "clicks": 94,
+      "impressions": 3834,
       "leads": 0,
       "result_count": 1,
       "result_type": "타입폼 완료",
       "landing_id": "discount-me",
-      "visits": 40,
+      "visits": 60,
       "booking": 0,
       "checkout": 0,
       "final_custom": 0
@@ -17420,14 +17420,14 @@
       "campaign_name": "Lead_260623_typeform",
       "ad_name": "260805_고객후기_캐러셀_경령님 - 사본",
       "ad_id": "120254138777060496",
-      "spend": 55872,
-      "clicks": 79,
-      "impressions": 2782,
+      "spend": 81530,
+      "clicks": 118,
+      "impressions": 4272,
       "leads": 0,
-      "result_count": 1,
+      "result_count": 3,
       "result_type": "타입폼 완료",
       "landing_id": "discount-me",
-      "visits": 48,
+      "visits": 78,
       "booking": 0,
       "checkout": 0,
       "final_custom": 0
@@ -17437,14 +17437,14 @@
       "campaign_name": "Lead_260623_typeform",
       "ad_name": "260814_BA 자신감",
       "ad_id": "120254401875070496",
-      "spend": 4381,
-      "clicks": 5,
-      "impressions": 167,
+      "spend": 9321,
+      "clicks": 7,
+      "impressions": 334,
       "leads": 0,
       "result_count": 0,
       "result_type": "타입폼 완료",
       "landing_id": "discount-me",
-      "visits": 2,
+      "visits": 5,
       "booking": 0,
       "checkout": 0,
       "final_custom": 0
@@ -17469,16 +17469,33 @@
     {
       "date": "2026-08-27",
       "campaign_name": "Lead_260623_typeform",
-      "ad_name": "260814_BA 자신감 - 사본",
-      "ad_id": "120254402519060496",
-      "spend": 7166,
-      "clicks": 8,
-      "impressions": 335,
+      "ad_name": "260814_엄마디렉터 - 사본",
+      "ad_id": "120254402519050496",
+      "spend": 1078,
+      "clicks": 3,
+      "impressions": 86,
       "leads": 0,
       "result_count": 0,
       "result_type": "타입폼 완료",
       "landing_id": "discount-me",
-      "visits": 7,
+      "visits": 3,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Lead_260623_typeform",
+      "ad_name": "260814_BA 자신감 - 사본",
+      "ad_id": "120254402519060496",
+      "spend": 10541,
+      "clicks": 13,
+      "impressions": 518,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "타입폼 완료",
+      "landing_id": "discount-me",
+      "visits": 12,
       "booking": 0,
       "checkout": 0,
       "final_custom": 0
@@ -17505,9 +17522,9 @@
       "campaign_name": "Conv_260812_pro_impact",
       "ad_name": "260814_기회형_실력전달",
       "ad_id": "120254402727800496",
-      "spend": 1572,
+      "spend": 1616,
       "clicks": 1,
-      "impressions": 55,
+      "impressions": 56,
       "leads": 0,
       "result_count": 0,
       "result_type": "결제 시작",
@@ -17522,9 +17539,9 @@
       "campaign_name": "Conv_260812_pro_impact",
       "ad_name": "260814_기회형_경쟁력",
       "ad_id": "120254402753010496",
-      "spend": 3920,
+      "spend": 4030,
       "clicks": 1,
-      "impressions": 84,
+      "impressions": 86,
       "leads": 0,
       "result_count": 0,
       "result_type": "결제 시작",
@@ -17539,14 +17556,14 @@
       "campaign_name": "Conv_260812_pro_impact",
       "ad_name": "260814_기회형_여의도",
       "ad_id": "120254402769650496",
-      "spend": 16950,
+      "spend": 16982,
       "clicks": 15,
-      "impressions": 441,
+      "impressions": 442,
       "leads": 0,
       "result_count": 1,
       "result_type": "결제 시작",
       "landing_id": "premium",
-      "visits": 9,
+      "visits": 10,
       "booking": 0,
       "checkout": 0,
       "final_custom": 0
@@ -17556,9 +17573,9 @@
       "campaign_name": "Conv_260812_pro_impact",
       "ad_name": "260814_기회형_옆세무사",
       "ad_id": "120254402877190496",
-      "spend": 3787,
-      "clicks": 12,
-      "impressions": 172,
+      "spend": 3818,
+      "clicks": 13,
+      "impressions": 180,
       "leads": 0,
       "result_count": 0,
       "result_type": "결제 시작",
@@ -17675,9 +17692,9 @@
       "campaign_name": "Lead_260623_typeform",
       "ad_name": "고객후기_캐러셀_박준형",
       "ad_id": "120254618476020496",
-      "spend": 655,
+      "spend": 812,
       "clicks": 1,
-      "impressions": 26,
+      "impressions": 32,
       "leads": 0,
       "result_count": 0,
       "result_type": "타입폼 완료",
@@ -17692,9 +17709,9 @@
       "campaign_name": "Lead_260623_typeform",
       "ad_name": "고객후기_캐러셀_박준형",
       "ad_id": "120254618476320496",
-      "spend": 262,
+      "spend": 364,
       "clicks": 0,
-      "impressions": 11,
+      "impressions": 16,
       "leads": 0,
       "result_count": 0,
       "result_type": "타입폼 완료",
@@ -17709,9 +17726,9 @@
       "campaign_name": "Conv_260807_findme_story",
       "ad_name": "고객후기_캐러셀_박준형",
       "ad_id": "120254618477500496",
-      "spend": 24184,
+      "spend": 24355,
       "clicks": 13,
-      "impressions": 749,
+      "impressions": 754,
       "leads": 0,
       "result_count": 1,
       "result_type": "결제 시작",
@@ -17720,638 +17737,1337 @@
       "booking": 2,
       "checkout": 0,
       "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Conv_260827_premium_v2",
+      "ad_name": "260814_기회형_옆세무사 - 사본",
+      "ad_id": "120254682826420496",
+      "spend": 519,
+      "clicks": 2,
+      "impressions": 36,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "결과",
+      "landing_id": "premium",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Conv_260827_premium_v2",
+      "ad_name": "260814_연애형_반응 - 사본",
+      "ad_id": "120254682826430496",
+      "spend": 174,
+      "clicks": 0,
+      "impressions": 16,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "결과",
+      "landing_id": "premium",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Conv_260827_premium_v2",
+      "ad_name": "260814_기회형_실력전달 - 사본",
+      "ad_id": "120254682826470496",
+      "spend": 7088,
+      "clicks": 4,
+      "impressions": 375,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "결과",
+      "landing_id": "premium",
+      "visits": 3,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Conv_260827_premium_v2",
+      "ad_name": "260814_연애형_카톡_진국 - 사본",
+      "ad_id": "120254682826480496",
+      "spend": 338,
+      "clicks": 0,
+      "impressions": 21,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "결과",
+      "landing_id": "premium",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Conv_260827_premium_v2",
+      "ad_name": "260814_기회형_경쟁력 - 사본",
+      "ad_id": "120254682826490496",
+      "spend": 1416,
+      "clicks": 3,
+      "impressions": 74,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "결과",
+      "landing_id": "premium",
+      "visits": 3,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Conv_260827_premium_v2",
+      "ad_name": "260814_연애형_태도 - 사본",
+      "ad_id": "120254682826500496",
+      "spend": 3801,
+      "clicks": 2,
+      "impressions": 212,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "결과",
+      "landing_id": "premium",
+      "visits": 2,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "find_story_260615_AI_디렉팅_코디 - 사본",
+      "ad_id": "120254683444750496",
+      "spend": 3716,
+      "clicks": 8,
+      "impressions": 307,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 9,
+      "booking": 2,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "find_story_before_after_video_202600805_지환님 - 사본",
+      "ad_id": "120254683444760496",
+      "spend": 62,
+      "clicks": 0,
+      "impressions": 12,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "고객후기_캐러셀_박준형 - 사본",
+      "ad_id": "120254683444770496",
+      "spend": 101,
+      "clicks": 0,
+      "impressions": 8,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "find_story_before_after_video_20260727_유민수님 - 사본",
+      "ad_id": "120254683444780496",
+      "spend": 2466,
+      "clicks": 7,
+      "impressions": 198,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 7,
+      "booking": 1,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "find_story_260707_고객후기_캐러셀_2 - 사본",
+      "ad_id": "120254683444790496",
+      "spend": 1101,
+      "clicks": 3,
+      "impressions": 100,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 2,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "260814_BA 자신감 - 사본 - 사본",
+      "ad_id": "120254683444800496",
+      "spend": 561,
+      "clicks": 0,
+      "impressions": 51,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-27",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "find_story_260805_고객후기_캐러셀_경령님 - 사본",
+      "ad_id": "120254683444810496",
+      "spend": 2105,
+      "clicks": 6,
+      "impressions": 196,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 4,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Lead_260623_typeform",
+      "ad_name": "260707_고객후기_캐러셀_1",
+      "ad_id": "120253280343240496",
+      "spend": 1815,
+      "clicks": 5,
+      "impressions": 57,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "타입폼 완료",
+      "landing_id": "discount-me",
+      "visits": 2,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Lead_260623_typeform",
+      "ad_name": "260615_AI_디렉팅_코디",
+      "ad_id": "120253715341620496",
+      "spend": 3540,
+      "clicks": 5,
+      "impressions": 94,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "타입폼 완료",
+      "landing_id": "discount-me",
+      "visits": 4,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Lead_260623_typeform",
+      "ad_name": "260615_AI_디렉팅_코디",
+      "ad_id": "120253715381770496",
+      "spend": 4186,
+      "clicks": 3,
+      "impressions": 91,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "타입폼 완료",
+      "landing_id": "discount-me",
+      "visits": 1,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Lead_260623_typeform",
+      "ad_name": "260805_고객후기_캐러셀_경령님",
+      "ad_id": "120254136511300496",
+      "spend": 12842,
+      "clicks": 14,
+      "impressions": 681,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "타입폼 완료",
+      "landing_id": "discount-me",
+      "visits": 10,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Lead_260623_typeform",
+      "ad_name": "260805_고객후기_캐러셀_경령님 - 사본",
+      "ad_id": "120254138777060496",
+      "spend": 14403,
+      "clicks": 24,
+      "impressions": 634,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "타입폼 완료",
+      "landing_id": "discount-me",
+      "visits": 20,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Lead_260623_typeform",
+      "ad_name": "260814_BA 자신감",
+      "ad_id": "120254401875070496",
+      "spend": 4707,
+      "clicks": 3,
+      "impressions": 156,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "타입폼 완료",
+      "landing_id": "discount-me",
+      "visits": 3,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Lead_260623_typeform",
+      "ad_name": "260814_엄마디렉터 - 사본",
+      "ad_id": "120254402519050496",
+      "spend": 2056,
+      "clicks": 4,
+      "impressions": 115,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "타입폼 완료",
+      "landing_id": "discount-me",
+      "visits": 4,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Lead_260623_typeform",
+      "ad_name": "260814_BA 자신감 - 사본",
+      "ad_id": "120254402519060496",
+      "spend": 3076,
+      "clicks": 5,
+      "impressions": 122,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "타입폼 완료",
+      "landing_id": "discount-me",
+      "visits": 2,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Lead_260623_typeform",
+      "ad_name": "고객후기_캐러셀_박준형",
+      "ad_id": "120254618476020496",
+      "spend": 31,
+      "clicks": 0,
+      "impressions": 4,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "타입폼 완료",
+      "landing_id": "discount-me",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Lead_260623_typeform",
+      "ad_name": "고객후기_캐러셀_박준형",
+      "ad_id": "120254618476320496",
+      "spend": 10,
+      "clicks": 0,
+      "impressions": 1,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "타입폼 완료",
+      "landing_id": "discount-me",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_premium_v2",
+      "ad_name": "260814_기회형_옆세무사 - 사본",
+      "ad_id": "120254682826420496",
+      "spend": 323,
+      "clicks": 1,
+      "impressions": 21,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "결과",
+      "landing_id": "premium",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_premium_v2",
+      "ad_name": "260814_연애형_반응 - 사본",
+      "ad_id": "120254682826430496",
+      "spend": 67,
+      "clicks": 0,
+      "impressions": 7,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "결과",
+      "landing_id": "premium",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_premium_v2",
+      "ad_name": "260814_연애형_친구보다 - 사본",
+      "ad_id": "120254682826450496",
+      "spend": 12,
+      "clicks": 0,
+      "impressions": 1,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "결과",
+      "landing_id": "premium",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_premium_v2",
+      "ad_name": "260814_기회형_실력전달 - 사본",
+      "ad_id": "120254682826470496",
+      "spend": 12418,
+      "clicks": 6,
+      "impressions": 487,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "결과",
+      "landing_id": "premium",
+      "visits": 5,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_premium_v2",
+      "ad_name": "260814_연애형_카톡_진국 - 사본",
+      "ad_id": "120254682826480496",
+      "spend": 131,
+      "clicks": 0,
+      "impressions": 9,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "결과",
+      "landing_id": "premium",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_premium_v2",
+      "ad_name": "260814_기회형_경쟁력 - 사본",
+      "ad_id": "120254682826490496",
+      "spend": 799,
+      "clicks": 2,
+      "impressions": 39,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "결과",
+      "landing_id": "premium",
+      "visits": 2,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_premium_v2",
+      "ad_name": "260814_연애형_태도 - 사본",
+      "ad_id": "120254682826500496",
+      "spend": 1582,
+      "clicks": 2,
+      "impressions": 62,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "결과",
+      "landing_id": "premium",
+      "visits": 2,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "find_story_260615_AI_디렉팅_코디 - 사본",
+      "ad_id": "120254683444750496",
+      "spend": 1356,
+      "clicks": 4,
+      "impressions": 66,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 4,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "find_story_before_after_video_202600805_지환님 - 사본",
+      "ad_id": "120254683444760496",
+      "spend": 491,
+      "clicks": 3,
+      "impressions": 18,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 3,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "고객후기_캐러셀_박준형 - 사본",
+      "ad_id": "120254683444770496",
+      "spend": 303,
+      "clicks": 0,
+      "impressions": 15,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "find_story_before_after_video_20260727_유민수님 - 사본",
+      "ad_id": "120254683444780496",
+      "spend": 2068,
+      "clicks": 7,
+      "impressions": 167,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 3,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "find_story_260707_고객후기_캐러셀_2 - 사본",
+      "ad_id": "120254683444790496",
+      "spend": 40,
+      "clicks": 0,
+      "impressions": 3,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 0,
+      "booking": 0,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "260814_BA 자신감 - 사본 - 사본",
+      "ad_id": "120254683444800496",
+      "spend": 2306,
+      "clicks": 8,
+      "impressions": 72,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 7,
+      "booking": 3,
+      "checkout": 0,
+      "final_custom": 0
+    },
+    {
+      "date": "2026-08-28",
+      "campaign_name": "Conv_260827_booking_v2",
+      "ad_name": "find_story_260805_고객후기_캐러셀_경령님 - 사본",
+      "ad_id": "120254683444810496",
+      "spend": 318,
+      "clicks": 2,
+      "impressions": 31,
+      "leads": 0,
+      "result_count": 0,
+      "result_type": "맞춤전환",
+      "landing_id": "story",
+      "visits": 1,
+      "booking": 1,
+      "checkout": 0,
+      "final_custom": 0
     }
   ],
   "creatives": {
     "120251862135380496": {
       "ad_name": "260615_AI_디렉팅_코디",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=3JPD6IxNGwMQ7kNvwHFhnXB&_nc_oc=Adoq249I7dpqpp2vr_f4t_-a1N6A9SE3ouJl9IIX753rK1H5x_5gG9scGNbMGskM6zI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI_p_n48KW5JQr7bEjwMoab2-oXtRi4dh0iZS1BGPhWjB_iFey73KQ9vJah1rulibIvnzttoSHl_A&oh=00_AQG0RhcOoPLwYA4MFet4zO-7vg_LTGeYfLjkwDZu0Xvgrg&oe=6A95DECC"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=9oYFr9VffNgQ7kNvwFVxXOO&_nc_oc=Adrtam5RNEG-iGoLrX1vvS-sY0RFgr6ab-d6_Ij21OAYnEUdWH4GfPf7nMfNTBNqEaA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKVofU30qg0ZMZmPNKsX7oUr83xVvZy-XYk8Ho5BCxNUjpOe6xOrO2IgN7Qro74che_kOU7VKdaRw&oh=00_AQHa52LaSY1Iqmt_F1rnwv-cLC43qsvxaEFroG2A3A7-Uw&oe=6A96BFCC"
     },
     "120251862470400496": {
       "ad_name": "260615_AI_디렉팅_취향",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLPGKHaHKkLZi2n7gyMStL1HYcGTjeDfAaQAA-LqmpGXS_nmaFu1tboLsxGvGHz0JHm8oi5Bo9HrQ&oh=00_AQGmav3dFtQ3KymnceLo4IjXKYNo4LVlI-jpCddQDIn2ag&oe=6A95F34B"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLxUYxBpZHpnkUT1FB7hOxnTiAsc99F-NiN_5DBccuxRssFGLsCPC6C1RkA9QYR6qC_IJDrBDwCiQ&oh=00_AQEr27EZnaZMLS1FcxnjEAbilzy0ZYyX97BlvR3wXfnaDA&oe=6A969C0B"
     },
     "120251862470410496": {
       "ad_name": "260615_리얼미_01",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724320530_122116334168735105_8900885506971685808_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=0LrFsvF1qk4Q7kNvwHMMImL&_nc_oc=Adq0DudZY2proUo-7flLaAUA5CqQk4tKwlcDaXleMTLS8d2Iz2Ukp32CwwHkuLBMzho&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIHu3qCwP1iaMXEGOgRG5fX6a1IpjFoAPTiChfm0AorOtd6VYC7MAWP0T0xr4HuzV-tNPrjpzKbjg&oh=00_AQFJIFOI8IS2dnhm-mnAfnASzZuYkyNbQFsT3o9mamY82g&oe=6A95D7AD"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724320530_122116334168735105_8900885506971685808_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=0LrFsvF1qk4Q7kNvwHMMImL&_nc_oc=Adq0DudZY2proUo-7flLaAUA5CqQk4tKwlcDaXleMTLS8d2Iz2Ukp32CwwHkuLBMzho&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI0cNeNfXbR_MD6kH_TS0_IfrKDmZrRGFp79XrdjEkG8Okfe2lBe5kPLAsMiIVcbMCAb4-AjPT26Q&oh=00_AQGCGJtg4b-itGiLRGNWmuxOwR6bC2fccDqYCYa6bFlL2Q&oe=6A96B8AD"
     },
     "120251862470440496": {
       "ad_name": "260615_리얼미_03",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=FhtICjBMc3MQ7kNvwH683Kw&_nc_oc=AdrEXujM5d2NwERDurYsJNhQmGbO1ly7bZATnN6ufEjXlRzTt8eR7Rcjd_EEOqUEZ3Q&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLYkyLXAS6yMp-6bV0jYn4RGv7-MsWNjtawN3jo_8L_guLP36RVku4plTmIZDsFJmpowyFjrZTINA&oh=00_AQFRHdROy75b8Xf_VmRqS1fN05b-NqyzOBoeXwx-JSkTLg&oe=6A95F703"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kJKZtE4lB8kQ7kNvwHJ4INI&_nc_oc=AdouXKV4JbzZfzzBIkIUjCZOQwegE4TYM1DWpCNPJ2-N1a0uGC_estFDmczH2gJMa2c&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJih9g3aeum_OszhBUOIZWP6ufNP4LfKT7qGFBWTtA_BvRou4lJztMhFdL7RhK5OL30b1KV4B8KNQ&oh=00_AQG-OaFEe_A9KchLuMZu1xXWW5xxhZMIhtXN5FxzWT2VoQ&oe=6A969FC3"
     },
     "120251862470450496": {
       "ad_name": "260615_리얼미_05",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=m_u29Ag6GE4Q7kNvwFa8SoL&_nc_oc=AdrRoEo3pSg54zSRTN-51ju8NUwIv__SXuZBlJGP8CukyZluk1EjmsrKBdqsjWvnLP0&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJVR_JkCLFrdXeibpQumnDg-kgCuTlGBNZZOeHvECqn0IP5wzKrpzZ6rftkeh2oPiLUQisQk-dVHg&oh=00_AQFQG4-bzl7MRN5CqalvGDMCq5Ni4AAdFsv7mgljXUqoeQ&oe=6A95EC08"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=jbzQ8xL7cmEQ7kNvwE54hUf&_nc_oc=AdqCv6VYouE6PVRseRZ0hZX-yrGSW0UgVT1dc9gjpdk1lo5UtNER36HtzOhAZb8i9gU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=y-9BoL8RPERZQu9nUfqR_A&_nc_tpa=Q5bMBQKiWqqBVhcqEYslkv_vMo229qD66ArKz3uTTGKjV1S-_MZCk047NhigbLl9RCnSdsGUyV1NYL6UCA&oh=00_AQHNGAhLuMlJyEFrhDY1e8XsTtYiQoxjq-giCnRQOLlueg&oe=6A96CD08"
     },
     "120251862470460496": {
       "ad_name": "260615_리얼미_07",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724361460_122116334330735105_4050783293139687856_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=5mnKNKTT6MIQ7kNvwGXAEAV&_nc_oc=AdoC3GLSCMxkWAFASOi6qldU0FykcBmPxa5P811DShfxjajbUUIqR-5JR_TSa7A3umM&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI76HsQQBHyeU7iAiBg0Z7GLVgjToTZnD74SloKFQd742b7nYvMiaQZnwvGxgvYUfmg9ZyxEz_QJg&oh=00_AQEMaehsmYR-TglJDvQrHh1ZbNWG1Us-VVQt7SfKflA20A&oe=6A95CE48"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724361460_122116334330735105_4050783293139687856_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=5mnKNKTT6MIQ7kNvwGXAEAV&_nc_oc=AdoC3GLSCMxkWAFASOi6qldU0FykcBmPxa5P811DShfxjajbUUIqR-5JR_TSa7A3umM&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=y-9BoL8RPERZQu9nUfqR_A&_nc_tpa=Q5bMBQLUy0AlM7TwSGc3fnf-C1Ktnhm1N45vBRQCj5WErDZusG-D29i9fjshJUXB6_N6CMbmm0xmCy6bfQ&oh=00_AQHqEVmSrfX1YL2sp6_FKxNacj9WIWwlvv54Jv8zaJednA&oe=6A96AF48"
     },
     "120251862833710496": {
       "ad_name": "260615_리얼미_08",
       "campaign_name": "realme_conv_260615_B_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/722664506_122116334252735105_3153069869140567856_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=TtVj4Ei4K6EQ7kNvwFa92-J&_nc_oc=AdoMctmBmXfN9UuZ8xoJ8iOcXBHE91jMiZmthQMB8oBzVCvmRleJxOVMZZHRK_v15oI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJzGesQ_4MOYDe5oeflbkpmDQ8ROEQlgiC4NlRtAkgenZ5DJCmYK-lj5kJ6RYkT_Q-MwT2IefIxdg&oh=00_AQGaqzJrcxtY0u0IKey5gKW6VPX48cBqUwvNvQ9hd_BW_w&oe=6A95FC78"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/722664506_122116334252735105_3153069869140567856_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=bLX7UfwQK2EQ7kNvwEwaBPB&_nc_oc=Adqsc1Y5eTdomOB67-m-vo_OhIa6nj2qFW0gugFAAijVrAMu8Y5zL_ndXQ4u3hxzPH8&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQL5A9HmxVAzdosCbpG73rcMm36zUuutXuHiiDnkeqOgg9Jl980ZG9wenBZ3X8YVM7zf_1P9uddTNw&oh=00_AQF8NbX_uP7qkvhxMV2JZQW-mET2nPzVWmlFWfGKFVPP7Q&oe=6A96A538"
     },
     "120251862833720496": {
       "ad_name": "260615_AI_디렉팅_취향",
       "campaign_name": "realme_conv_260615_B_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLPGKHaHKkLZi2n7gyMStL1HYcGTjeDfAaQAA-LqmpGXS_nmaFu1tboLsxGvGHz0JHm8oi5Bo9HrQ&oh=00_AQGmav3dFtQ3KymnceLo4IjXKYNo4LVlI-jpCddQDIn2ag&oe=6A95F34B"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLxUYxBpZHpnkUT1FB7hOxnTiAsc99F-NiN_5DBccuxRssFGLsCPC6C1RkA9QYR6qC_IJDrBDwCiQ&oh=00_AQEr27EZnaZMLS1FcxnjEAbilzy0ZYyX97BlvR3wXfnaDA&oe=6A969C0B"
     },
     "120251862833730496": {
       "ad_name": "260615_리얼미_검은티",
       "campaign_name": "realme_conv_260615_B_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723509133_122116334150735105_1989633725758008645_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=C-HdRX-YcEkQ7kNvwH5pVmv&_nc_oc=AdqByF7gSaVU-3fpmIYC7onKGgz4wW6Cpxi62IswbyWTjK1yX2SePdR-mMu_Ep_BZmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJBaYICOl8eJs3BE3QTh6wAwpTVP5uIJHlCiy5lnAH82_CYH3qpHNDz8dScAUeWlXB0Q1qpbaDdgg&oh=00_AQFDwSLz67F_1tJlimQJU3qVmizPP8EWkwG7FQFbvLT-Fw&oe=6A95E3F1"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723509133_122116334150735105_1989633725758008645_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=C-HdRX-YcEkQ7kNvwH5pVmv&_nc_oc=AdqByF7gSaVU-3fpmIYC7onKGgz4wW6Cpxi62IswbyWTjK1yX2SePdR-mMu_Ep_BZmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI4H3--76q-YhWe81PxmW4TxjoA3W9cyAHTedZl9rwYP7vdiS8bTtN3zQjDi8LpiLEikAifQu2SqA&oh=00_AQHWBaJxSTgbuiq6VZlJEyC08lIBx3QL6ZS2b91OsFFL4w&oe=6A96C4F1"
     },
     "120251862833740496": {
       "ad_name": "260615_리얼미_05",
       "campaign_name": "realme_conv_260615_B_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=m_u29Ag6GE4Q7kNvwFa8SoL&_nc_oc=AdrRoEo3pSg54zSRTN-51ju8NUwIv__SXuZBlJGP8CukyZluk1EjmsrKBdqsjWvnLP0&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJVR_JkCLFrdXeibpQumnDg-kgCuTlGBNZZOeHvECqn0IP5wzKrpzZ6rftkeh2oPiLUQisQk-dVHg&oh=00_AQFQG4-bzl7MRN5CqalvGDMCq5Ni4AAdFsv7mgljXUqoeQ&oe=6A95EC08"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=jbzQ8xL7cmEQ7kNvwE54hUf&_nc_oc=AdqCv6VYouE6PVRseRZ0hZX-yrGSW0UgVT1dc9gjpdk1lo5UtNER36HtzOhAZb8i9gU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKoZumSBI0TvDCbSjJgJSEDEgh6merI7eqZvthZRin19DeQqa83S9-yc_2hbMvwqsXUwZmVar72yQ&oh=00_AQGuvP9TfMqITfHMnAhXRV1oGjlfRSqvOXelPXplmX1yDQ&oe=6A96CD08"
     },
     "120251862833750496": {
       "ad_name": "260615_리얼미_01",
       "campaign_name": "realme_conv_260615_B_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724320530_122116334168735105_8900885506971685808_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=0LrFsvF1qk4Q7kNvwHMMImL&_nc_oc=Adq0DudZY2proUo-7flLaAUA5CqQk4tKwlcDaXleMTLS8d2Iz2Ukp32CwwHkuLBMzho&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIHu3qCwP1iaMXEGOgRG5fX6a1IpjFoAPTiChfm0AorOtd6VYC7MAWP0T0xr4HuzV-tNPrjpzKbjg&oh=00_AQFJIFOI8IS2dnhm-mnAfnASzZuYkyNbQFsT3o9mamY82g&oe=6A95D7AD"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724320530_122116334168735105_8900885506971685808_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=0LrFsvF1qk4Q7kNvwHMMImL&_nc_oc=Adq0DudZY2proUo-7flLaAUA5CqQk4tKwlcDaXleMTLS8d2Iz2Ukp32CwwHkuLBMzho&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI0cNeNfXbR_MD6kH_TS0_IfrKDmZrRGFp79XrdjEkG8Okfe2lBe5kPLAsMiIVcbMCAb4-AjPT26Q&oh=00_AQGCGJtg4b-itGiLRGNWmuxOwR6bC2fccDqYCYa6bFlL2Q&oe=6A96B8AD"
     },
     "120251862833760496": {
       "ad_name": "260615_리얼미_03",
       "campaign_name": "realme_conv_260615_B_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=FhtICjBMc3MQ7kNvwH683Kw&_nc_oc=AdrEXujM5d2NwERDurYsJNhQmGbO1ly7bZATnN6ufEjXlRzTt8eR7Rcjd_EEOqUEZ3Q&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLYkyLXAS6yMp-6bV0jYn4RGv7-MsWNjtawN3jo_8L_guLP36RVku4plTmIZDsFJmpowyFjrZTINA&oh=00_AQFRHdROy75b8Xf_VmRqS1fN05b-NqyzOBoeXwx-JSkTLg&oe=6A95F703"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kJKZtE4lB8kQ7kNvwHJ4INI&_nc_oc=AdouXKV4JbzZfzzBIkIUjCZOQwegE4TYM1DWpCNPJ2-N1a0uGC_estFDmczH2gJMa2c&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJih9g3aeum_OszhBUOIZWP6ufNP4LfKT7qGFBWTtA_BvRou4lJztMhFdL7RhK5OL30b1KV4B8KNQ&oh=00_AQG-OaFEe_A9KchLuMZu1xXWW5xxhZMIhtXN5FxzWT2VoQ&oe=6A969FC3"
     },
     "120251862833770496": {
       "ad_name": "260615_AI_디렉팅_코디",
       "campaign_name": "realme_conv_260615_B_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=3JPD6IxNGwMQ7kNvwHFhnXB&_nc_oc=Adoq249I7dpqpp2vr_f4t_-a1N6A9SE3ouJl9IIX753rK1H5x_5gG9scGNbMGskM6zI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI_p_n48KW5JQr7bEjwMoab2-oXtRi4dh0iZS1BGPhWjB_iFey73KQ9vJah1rulibIvnzttoSHl_A&oh=00_AQG0RhcOoPLwYA4MFet4zO-7vg_LTGeYfLjkwDZu0Xvgrg&oe=6A95DECC"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=9oYFr9VffNgQ7kNvwFVxXOO&_nc_oc=Adrtam5RNEG-iGoLrX1vvS-sY0RFgr6ab-d6_Ij21OAYnEUdWH4GfPf7nMfNTBNqEaA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKVofU30qg0ZMZmPNKsX7oUr83xVvZy-XYk8Ho5BCxNUjpOe6xOrO2IgN7Qro74che_kOU7VKdaRw&oh=00_AQHa52LaSY1Iqmt_F1rnwv-cLC43qsvxaEFroG2A3A7-Uw&oe=6A96BFCC"
     },
     "120251862833780496": {
       "ad_name": "260615_리얼미_09",
       "campaign_name": "realme_conv_260615_B_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724445886_122116334306735105_950905070826260757_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=mb8AAY9tilQQ7kNvwGDxZi5&_nc_oc=AdpZ061ElSP1DMGSeNMUzlIUTtQqjge4LuCvSUi24IUfS-zNXZPHDhrUBjxSAm3qNHA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKWBzGFxA86RcQHZ_K4fXIJv4OKYUL9SK5I2UYrTWWUfJauR6ELp4ANS2oHzYmVsebZyYZGwHXy_g&oh=00_AQFl0GqEXaSfMPF6Ce38c-xnKKKpBVBx-Q0LFSHDWKcW7g&oe=6A9600C8"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724445886_122116334306735105_950905070826260757_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=mb8AAY9tilQQ7kNvwGDxZi5&_nc_oc=AdpZ061ElSP1DMGSeNMUzlIUTtQqjge4LuCvSUi24IUfS-zNXZPHDhrUBjxSAm3qNHA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLCxVP4XaF6_F3BURn0GqnCKkqBho-Fpp-X9CgEzgDmeXA8UlM-xV6n3Sl0ZAKS38DzVjPYgjDHLg&oh=00_AQH-5aR2aXz9b5VFs-vSE5wDXSIWPVQjPsmcfVT9HEnjcg&oe=6A96A988"
     },
     "120251862833790496": {
       "ad_name": "260615_리얼미_02",
       "campaign_name": "realme_conv_260615_B_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724720119_122116371956735105_4829275115750187806_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kMeWl0cN8NUQ7kNvwHHsEKE&_nc_oc=AdrabJ5GgsA3-Gy_5k837e9sCP6YaQew6HwYxpdot-P711epPPzOB4FOK8UAf1jJG88&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJTrZt2z-SyRi1ock21pTQjuiYODttGgvwpA02r2wBXFncHVeQPTqiyO8W3oMIEbk2nk38Vm_bXQw&oh=00_AQFCkoex79jssp65JYOhO50TUAcBDBYyWb8nOkDdT4bpxQ&oe=6A95F32E"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724720119_122116371956735105_4829275115750187806_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kMeWl0cN8NUQ7kNvwHHsEKE&_nc_oc=AdrabJ5GgsA3-Gy_5k837e9sCP6YaQew6HwYxpdot-P711epPPzOB4FOK8UAf1jJG88&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKaabB5NHe270yMUrRi3ZYt1GllMKWwC6QOCSqlC3Eu91fwNAAb1mUSwYPi6oHT1HvDKj4_CLna8Q&oh=00_AQFj5PyRDkNLAAHx4nvmiJ9CfP8pzAFEIp-Bj1I3aKG1-w&oe=6A969BEE"
     },
     "120251862833800496": {
       "ad_name": "260615_리얼미_카톡후기",
       "campaign_name": "realme_conv_260615_B_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724639705_122116334210735105_8253719930030915788_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=Krlw5WlQSQcQ7kNvwF--rms&_nc_oc=AdqdoCEx8J5rhYHgr9cFDI6SIpBiz9qJ5qyO5Et8HUaLylbFxe1hZ5-_SRMXkrsDFmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKNZDEafOsXVrKnpEQgDXvmPJmuOXmfydRKM4AqSgC9pZQmCJVhfJSIfm92bC3pmx62qriavVPP4w&oh=00_AQHf81lTdH6evflYlu6vMzj-G1cio9KaL405YAYOV2AN8w&oe=6A95E7E2"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724639705_122116334210735105_8253719930030915788_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=Krlw5WlQSQcQ7kNvwF--rms&_nc_oc=AdqdoCEx8J5rhYHgr9cFDI6SIpBiz9qJ5qyO5Et8HUaLylbFxe1hZ5-_SRMXkrsDFmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLRkLPlW3stBguv-sbUzrfvFb9nur8yNdKBkwzaA1bbnYq_LtdnQL2pgcLkkxIrcL0EDmPXNKgq7g&oh=00_AQEN0VbgygIvjaX5ZXK3JvMRy7OuVgXgXY2rSnimVHfDVg&oe=6A96C8E2"
     },
     "120251862833810496": {
       "ad_name": "260615_리얼미_07",
       "campaign_name": "realme_conv_260615_B_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724361460_122116334330735105_4050783293139687856_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=5mnKNKTT6MIQ7kNvwGXAEAV&_nc_oc=AdoC3GLSCMxkWAFASOi6qldU0FykcBmPxa5P811DShfxjajbUUIqR-5JR_TSa7A3umM&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI76HsQQBHyeU7iAiBg0Z7GLVgjToTZnD74SloKFQd742b7nYvMiaQZnwvGxgvYUfmg9ZyxEz_QJg&oh=00_AQEMaehsmYR-TglJDvQrHh1ZbNWG1Us-VVQt7SfKflA20A&oe=6A95CE48"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724361460_122116334330735105_4050783293139687856_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=5mnKNKTT6MIQ7kNvwGXAEAV&_nc_oc=AdoC3GLSCMxkWAFASOi6qldU0FykcBmPxa5P811DShfxjajbUUIqR-5JR_TSa7A3umM&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJf43pNDXXyVfA3oMHUcWKm1b-ce2XBD8L7dYbjzeI8G89pMX4K3-8M7JcpAosau-IRrtC-Ugfbug&oh=00_AQGSG_Fl-kwT3J5KIrNW2yGCgm5AfImj-iVypp5Y4IrbfQ&oe=6A96AF48"
     },
     "120251863210860496": {
       "ad_name": "260615_리얼미_검은티",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723509133_122116334150735105_1989633725758008645_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=C-HdRX-YcEkQ7kNvwH5pVmv&_nc_oc=AdqByF7gSaVU-3fpmIYC7onKGgz4wW6Cpxi62IswbyWTjK1yX2SePdR-mMu_Ep_BZmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJBaYICOl8eJs3BE3QTh6wAwpTVP5uIJHlCiy5lnAH82_CYH3qpHNDz8dScAUeWlXB0Q1qpbaDdgg&oh=00_AQFDwSLz67F_1tJlimQJU3qVmizPP8EWkwG7FQFbvLT-Fw&oe=6A95E3F1"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723509133_122116334150735105_1989633725758008645_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=C-HdRX-YcEkQ7kNvwH5pVmv&_nc_oc=AdqByF7gSaVU-3fpmIYC7onKGgz4wW6Cpxi62IswbyWTjK1yX2SePdR-mMu_Ep_BZmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI4H3--76q-YhWe81PxmW4TxjoA3W9cyAHTedZl9rwYP7vdiS8bTtN3zQjDi8LpiLEikAifQu2SqA&oh=00_AQHWBaJxSTgbuiq6VZlJEyC08lIBx3QL6ZS2b91OsFFL4w&oe=6A96C4F1"
     },
     "120251863210870496": {
       "ad_name": "260615_리얼미_07",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724361460_122116334330735105_4050783293139687856_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=5mnKNKTT6MIQ7kNvwGXAEAV&_nc_oc=AdoC3GLSCMxkWAFASOi6qldU0FykcBmPxa5P811DShfxjajbUUIqR-5JR_TSa7A3umM&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI76HsQQBHyeU7iAiBg0Z7GLVgjToTZnD74SloKFQd742b7nYvMiaQZnwvGxgvYUfmg9ZyxEz_QJg&oh=00_AQEMaehsmYR-TglJDvQrHh1ZbNWG1Us-VVQt7SfKflA20A&oe=6A95CE48"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724361460_122116334330735105_4050783293139687856_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=5mnKNKTT6MIQ7kNvwGXAEAV&_nc_oc=AdoC3GLSCMxkWAFASOi6qldU0FykcBmPxa5P811DShfxjajbUUIqR-5JR_TSa7A3umM&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJf43pNDXXyVfA3oMHUcWKm1b-ce2XBD8L7dYbjzeI8G89pMX4K3-8M7JcpAosau-IRrtC-Ugfbug&oh=00_AQGSG_Fl-kwT3J5KIrNW2yGCgm5AfImj-iVypp5Y4IrbfQ&oe=6A96AF48"
     },
     "120251863210880496": {
       "ad_name": "260615_AI_디렉팅_코디",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=3JPD6IxNGwMQ7kNvwHFhnXB&_nc_oc=Adoq249I7dpqpp2vr_f4t_-a1N6A9SE3ouJl9IIX753rK1H5x_5gG9scGNbMGskM6zI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI_p_n48KW5JQr7bEjwMoab2-oXtRi4dh0iZS1BGPhWjB_iFey73KQ9vJah1rulibIvnzttoSHl_A&oh=00_AQG0RhcOoPLwYA4MFet4zO-7vg_LTGeYfLjkwDZu0Xvgrg&oe=6A95DECC"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=9oYFr9VffNgQ7kNvwFVxXOO&_nc_oc=Adrtam5RNEG-iGoLrX1vvS-sY0RFgr6ab-d6_Ij21OAYnEUdWH4GfPf7nMfNTBNqEaA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKVofU30qg0ZMZmPNKsX7oUr83xVvZy-XYk8Ho5BCxNUjpOe6xOrO2IgN7Qro74che_kOU7VKdaRw&oh=00_AQHa52LaSY1Iqmt_F1rnwv-cLC43qsvxaEFroG2A3A7-Uw&oe=6A96BFCC"
     },
     "120251863210890496": {
       "ad_name": "260615_리얼미_08",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/722664506_122116334252735105_3153069869140567856_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=TtVj4Ei4K6EQ7kNvwFa92-J&_nc_oc=AdoMctmBmXfN9UuZ8xoJ8iOcXBHE91jMiZmthQMB8oBzVCvmRleJxOVMZZHRK_v15oI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJzGesQ_4MOYDe5oeflbkpmDQ8ROEQlgiC4NlRtAkgenZ5DJCmYK-lj5kJ6RYkT_Q-MwT2IefIxdg&oh=00_AQGaqzJrcxtY0u0IKey5gKW6VPX48cBqUwvNvQ9hd_BW_w&oe=6A95FC78"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/722664506_122116334252735105_3153069869140567856_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=bLX7UfwQK2EQ7kNvwEwaBPB&_nc_oc=Adqsc1Y5eTdomOB67-m-vo_OhIa6nj2qFW0gugFAAijVrAMu8Y5zL_ndXQ4u3hxzPH8&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQL5A9HmxVAzdosCbpG73rcMm36zUuutXuHiiDnkeqOgg9Jl980ZG9wenBZ3X8YVM7zf_1P9uddTNw&oh=00_AQF8NbX_uP7qkvhxMV2JZQW-mET2nPzVWmlFWfGKFVPP7Q&oe=6A96A538"
     },
     "120251863210900496": {
       "ad_name": "260615_리얼미_03",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=FhtICjBMc3MQ7kNvwH683Kw&_nc_oc=AdrEXujM5d2NwERDurYsJNhQmGbO1ly7bZATnN6ufEjXlRzTt8eR7Rcjd_EEOqUEZ3Q&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLYkyLXAS6yMp-6bV0jYn4RGv7-MsWNjtawN3jo_8L_guLP36RVku4plTmIZDsFJmpowyFjrZTINA&oh=00_AQFRHdROy75b8Xf_VmRqS1fN05b-NqyzOBoeXwx-JSkTLg&oe=6A95F703"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kJKZtE4lB8kQ7kNvwHJ4INI&_nc_oc=AdouXKV4JbzZfzzBIkIUjCZOQwegE4TYM1DWpCNPJ2-N1a0uGC_estFDmczH2gJMa2c&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJih9g3aeum_OszhBUOIZWP6ufNP4LfKT7qGFBWTtA_BvRou4lJztMhFdL7RhK5OL30b1KV4B8KNQ&oh=00_AQG-OaFEe_A9KchLuMZu1xXWW5xxhZMIhtXN5FxzWT2VoQ&oe=6A969FC3"
     },
     "120251863210910496": {
       "ad_name": "260615_리얼미_카톡후기",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724639705_122116334210735105_8253719930030915788_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=Krlw5WlQSQcQ7kNvwF--rms&_nc_oc=AdqdoCEx8J5rhYHgr9cFDI6SIpBiz9qJ5qyO5Et8HUaLylbFxe1hZ5-_SRMXkrsDFmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKNZDEafOsXVrKnpEQgDXvmPJmuOXmfydRKM4AqSgC9pZQmCJVhfJSIfm92bC3pmx62qriavVPP4w&oh=00_AQHf81lTdH6evflYlu6vMzj-G1cio9KaL405YAYOV2AN8w&oe=6A95E7E2"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724639705_122116334210735105_8253719930030915788_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=Krlw5WlQSQcQ7kNvwF--rms&_nc_oc=AdqdoCEx8J5rhYHgr9cFDI6SIpBiz9qJ5qyO5Et8HUaLylbFxe1hZ5-_SRMXkrsDFmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLRkLPlW3stBguv-sbUzrfvFb9nur8yNdKBkwzaA1bbnYq_LtdnQL2pgcLkkxIrcL0EDmPXNKgq7g&oh=00_AQEN0VbgygIvjaX5ZXK3JvMRy7OuVgXgXY2rSnimVHfDVg&oe=6A96C8E2"
     },
     "120251863210920496": {
       "ad_name": "260615_리얼미_09",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724445886_122116334306735105_950905070826260757_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=mb8AAY9tilQQ7kNvwGDxZi5&_nc_oc=AdpZ061ElSP1DMGSeNMUzlIUTtQqjge4LuCvSUi24IUfS-zNXZPHDhrUBjxSAm3qNHA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKWBzGFxA86RcQHZ_K4fXIJv4OKYUL9SK5I2UYrTWWUfJauR6ELp4ANS2oHzYmVsebZyYZGwHXy_g&oh=00_AQFl0GqEXaSfMPF6Ce38c-xnKKKpBVBx-Q0LFSHDWKcW7g&oe=6A9600C8"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724445886_122116334306735105_950905070826260757_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=mb8AAY9tilQQ7kNvwGDxZi5&_nc_oc=AdpZ061ElSP1DMGSeNMUzlIUTtQqjge4LuCvSUi24IUfS-zNXZPHDhrUBjxSAm3qNHA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLCxVP4XaF6_F3BURn0GqnCKkqBho-Fpp-X9CgEzgDmeXA8UlM-xV6n3Sl0ZAKS38DzVjPYgjDHLg&oh=00_AQH-5aR2aXz9b5VFs-vSE5wDXSIWPVQjPsmcfVT9HEnjcg&oe=6A96A988"
     },
     "120251863210930496": {
       "ad_name": "260615_리얼미_01",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724320530_122116334168735105_8900885506971685808_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=0LrFsvF1qk4Q7kNvwHMMImL&_nc_oc=Adq0DudZY2proUo-7flLaAUA5CqQk4tKwlcDaXleMTLS8d2Iz2Ukp32CwwHkuLBMzho&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIHu3qCwP1iaMXEGOgRG5fX6a1IpjFoAPTiChfm0AorOtd6VYC7MAWP0T0xr4HuzV-tNPrjpzKbjg&oh=00_AQFJIFOI8IS2dnhm-mnAfnASzZuYkyNbQFsT3o9mamY82g&oe=6A95D7AD"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724320530_122116334168735105_8900885506971685808_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=0LrFsvF1qk4Q7kNvwHMMImL&_nc_oc=Adq0DudZY2proUo-7flLaAUA5CqQk4tKwlcDaXleMTLS8d2Iz2Ukp32CwwHkuLBMzho&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI0cNeNfXbR_MD6kH_TS0_IfrKDmZrRGFp79XrdjEkG8Okfe2lBe5kPLAsMiIVcbMCAb4-AjPT26Q&oh=00_AQGCGJtg4b-itGiLRGNWmuxOwR6bC2fccDqYCYa6bFlL2Q&oe=6A96B8AD"
     },
     "120251863210940496": {
       "ad_name": "260615_AI_디렉팅_취향",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLPGKHaHKkLZi2n7gyMStL1HYcGTjeDfAaQAA-LqmpGXS_nmaFu1tboLsxGvGHz0JHm8oi5Bo9HrQ&oh=00_AQGmav3dFtQ3KymnceLo4IjXKYNo4LVlI-jpCddQDIn2ag&oe=6A95F34B"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLxUYxBpZHpnkUT1FB7hOxnTiAsc99F-NiN_5DBccuxRssFGLsCPC6C1RkA9QYR6qC_IJDrBDwCiQ&oh=00_AQEr27EZnaZMLS1FcxnjEAbilzy0ZYyX97BlvR3wXfnaDA&oe=6A969C0B"
     },
     "120251863210950496": {
       "ad_name": "260615_리얼미_05",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=m_u29Ag6GE4Q7kNvwFa8SoL&_nc_oc=AdrRoEo3pSg54zSRTN-51ju8NUwIv__SXuZBlJGP8CukyZluk1EjmsrKBdqsjWvnLP0&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJVR_JkCLFrdXeibpQumnDg-kgCuTlGBNZZOeHvECqn0IP5wzKrpzZ6rftkeh2oPiLUQisQk-dVHg&oh=00_AQFQG4-bzl7MRN5CqalvGDMCq5Ni4AAdFsv7mgljXUqoeQ&oe=6A95EC08"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=jbzQ8xL7cmEQ7kNvwE54hUf&_nc_oc=AdqCv6VYouE6PVRseRZ0hZX-yrGSW0UgVT1dc9gjpdk1lo5UtNER36HtzOhAZb8i9gU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKoZumSBI0TvDCbSjJgJSEDEgh6merI7eqZvthZRin19DeQqa83S9-yc_2hbMvwqsXUwZmVar72yQ&oh=00_AQGuvP9TfMqITfHMnAhXRV1oGjlfRSqvOXelPXplmX1yDQ&oe=6A96CD08"
     },
     "120251863554990496": {
       "ad_name": "260615_리얼미_02",
       "campaign_name": "realme_conv_260615_A_randing",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724720119_122116371956735105_4829275115750187806_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kMeWl0cN8NUQ7kNvwHHsEKE&_nc_oc=AdrabJ5GgsA3-Gy_5k837e9sCP6YaQew6HwYxpdot-P711epPPzOB4FOK8UAf1jJG88&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJTrZt2z-SyRi1ock21pTQjuiYODttGgvwpA02r2wBXFncHVeQPTqiyO8W3oMIEbk2nk38Vm_bXQw&oh=00_AQFCkoex79jssp65JYOhO50TUAcBDBYyWb8nOkDdT4bpxQ&oe=6A95F32E"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724720119_122116371956735105_4829275115750187806_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kMeWl0cN8NUQ7kNvwHHsEKE&_nc_oc=AdrabJ5GgsA3-Gy_5k837e9sCP6YaQew6HwYxpdot-P711epPPzOB4FOK8UAf1jJG88&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKaabB5NHe270yMUrRi3ZYt1GllMKWwC6QOCSqlC3Eu91fwNAAb1mUSwYPi6oHT1HvDKj4_CLna8Q&oh=00_AQFj5PyRDkNLAAHx4nvmiJ9CfP8pzAFEIp-Bj1I3aKG1-w&oe=6A969BEE"
     },
     "120252023034770496": {
       "ad_name": "260615_리얼미_07 - 사본",
       "campaign_name": "conv_260617_A_rand_only",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724361460_122116334330735105_4050783293139687856_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=5mnKNKTT6MIQ7kNvwGXAEAV&_nc_oc=AdoC3GLSCMxkWAFASOi6qldU0FykcBmPxa5P811DShfxjajbUUIqR-5JR_TSa7A3umM&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI76HsQQBHyeU7iAiBg0Z7GLVgjToTZnD74SloKFQd742b7nYvMiaQZnwvGxgvYUfmg9ZyxEz_QJg&oh=00_AQEMaehsmYR-TglJDvQrHh1ZbNWG1Us-VVQt7SfKflA20A&oe=6A95CE48"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724361460_122116334330735105_4050783293139687856_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=5mnKNKTT6MIQ7kNvwGXAEAV&_nc_oc=AdoC3GLSCMxkWAFASOi6qldU0FykcBmPxa5P811DShfxjajbUUIqR-5JR_TSa7A3umM&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJf43pNDXXyVfA3oMHUcWKm1b-ce2XBD8L7dYbjzeI8G89pMX4K3-8M7JcpAosau-IRrtC-Ugfbug&oh=00_AQGSG_Fl-kwT3J5KIrNW2yGCgm5AfImj-iVypp5Y4IrbfQ&oe=6A96AF48"
     },
     "120252023034820496": {
       "ad_name": "260615_AI_디렉팅_취향 - 사본",
       "campaign_name": "conv_260617_A_rand_only",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLPGKHaHKkLZi2n7gyMStL1HYcGTjeDfAaQAA-LqmpGXS_nmaFu1tboLsxGvGHz0JHm8oi5Bo9HrQ&oh=00_AQGmav3dFtQ3KymnceLo4IjXKYNo4LVlI-jpCddQDIn2ag&oe=6A95F34B"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLxUYxBpZHpnkUT1FB7hOxnTiAsc99F-NiN_5DBccuxRssFGLsCPC6C1RkA9QYR6qC_IJDrBDwCiQ&oh=00_AQEr27EZnaZMLS1FcxnjEAbilzy0ZYyX97BlvR3wXfnaDA&oe=6A969C0B"
     },
     "120252023034840496": {
       "ad_name": "260615_리얼미_03 - 사본",
       "campaign_name": "conv_260617_A_rand_only",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=FhtICjBMc3MQ7kNvwH683Kw&_nc_oc=AdrEXujM5d2NwERDurYsJNhQmGbO1ly7bZATnN6ufEjXlRzTt8eR7Rcjd_EEOqUEZ3Q&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLYkyLXAS6yMp-6bV0jYn4RGv7-MsWNjtawN3jo_8L_guLP36RVku4plTmIZDsFJmpowyFjrZTINA&oh=00_AQFRHdROy75b8Xf_VmRqS1fN05b-NqyzOBoeXwx-JSkTLg&oe=6A95F703"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kJKZtE4lB8kQ7kNvwHJ4INI&_nc_oc=AdouXKV4JbzZfzzBIkIUjCZOQwegE4TYM1DWpCNPJ2-N1a0uGC_estFDmczH2gJMa2c&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJih9g3aeum_OszhBUOIZWP6ufNP4LfKT7qGFBWTtA_BvRou4lJztMhFdL7RhK5OL30b1KV4B8KNQ&oh=00_AQG-OaFEe_A9KchLuMZu1xXWW5xxhZMIhtXN5FxzWT2VoQ&oe=6A969FC3"
     },
     "120252023034870496": {
       "ad_name": "260615_리얼미_01 - 사본",
       "campaign_name": "conv_260617_A_rand_only",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724320530_122116334168735105_8900885506971685808_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=0LrFsvF1qk4Q7kNvwHMMImL&_nc_oc=Adq0DudZY2proUo-7flLaAUA5CqQk4tKwlcDaXleMTLS8d2Iz2Ukp32CwwHkuLBMzho&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIHu3qCwP1iaMXEGOgRG5fX6a1IpjFoAPTiChfm0AorOtd6VYC7MAWP0T0xr4HuzV-tNPrjpzKbjg&oh=00_AQFJIFOI8IS2dnhm-mnAfnASzZuYkyNbQFsT3o9mamY82g&oe=6A95D7AD"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724320530_122116334168735105_8900885506971685808_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=0LrFsvF1qk4Q7kNvwHMMImL&_nc_oc=Adq0DudZY2proUo-7flLaAUA5CqQk4tKwlcDaXleMTLS8d2Iz2Ukp32CwwHkuLBMzho&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI0cNeNfXbR_MD6kH_TS0_IfrKDmZrRGFp79XrdjEkG8Okfe2lBe5kPLAsMiIVcbMCAb4-AjPT26Q&oh=00_AQGCGJtg4b-itGiLRGNWmuxOwR6bC2fccDqYCYa6bFlL2Q&oe=6A96B8AD"
     },
     "120252023034780496": {
       "ad_name": "260615_리얼미_검은티 - 사본",
       "campaign_name": "conv_260617_A_rand_only",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723509133_122116334150735105_1989633725758008645_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=C-HdRX-YcEkQ7kNvwH5pVmv&_nc_oc=AdqByF7gSaVU-3fpmIYC7onKGgz4wW6Cpxi62IswbyWTjK1yX2SePdR-mMu_Ep_BZmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJBaYICOl8eJs3BE3QTh6wAwpTVP5uIJHlCiy5lnAH82_CYH3qpHNDz8dScAUeWlXB0Q1qpbaDdgg&oh=00_AQFDwSLz67F_1tJlimQJU3qVmizPP8EWkwG7FQFbvLT-Fw&oe=6A95E3F1"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723509133_122116334150735105_1989633725758008645_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=C-HdRX-YcEkQ7kNvwH5pVmv&_nc_oc=AdqByF7gSaVU-3fpmIYC7onKGgz4wW6Cpxi62IswbyWTjK1yX2SePdR-mMu_Ep_BZmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI4H3--76q-YhWe81PxmW4TxjoA3W9cyAHTedZl9rwYP7vdiS8bTtN3zQjDi8LpiLEikAifQu2SqA&oh=00_AQHWBaJxSTgbuiq6VZlJEyC08lIBx3QL6ZS2b91OsFFL4w&oe=6A96C4F1"
     },
     "120252023034790496": {
       "ad_name": "260615_리얼미_02 - 사본",
       "campaign_name": "conv_260617_A_rand_only",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724720119_122116371956735105_4829275115750187806_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kMeWl0cN8NUQ7kNvwHHsEKE&_nc_oc=AdrabJ5GgsA3-Gy_5k837e9sCP6YaQew6HwYxpdot-P711epPPzOB4FOK8UAf1jJG88&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJTrZt2z-SyRi1ock21pTQjuiYODttGgvwpA02r2wBXFncHVeQPTqiyO8W3oMIEbk2nk38Vm_bXQw&oh=00_AQFCkoex79jssp65JYOhO50TUAcBDBYyWb8nOkDdT4bpxQ&oe=6A95F32E"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724720119_122116371956735105_4829275115750187806_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kMeWl0cN8NUQ7kNvwHHsEKE&_nc_oc=AdrabJ5GgsA3-Gy_5k837e9sCP6YaQew6HwYxpdot-P711epPPzOB4FOK8UAf1jJG88&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKaabB5NHe270yMUrRi3ZYt1GllMKWwC6QOCSqlC3Eu91fwNAAb1mUSwYPi6oHT1HvDKj4_CLna8Q&oh=00_AQFj5PyRDkNLAAHx4nvmiJ9CfP8pzAFEIp-Bj1I3aKG1-w&oe=6A969BEE"
     },
     "120252023034800496": {
       "ad_name": "260615_AI_디렉팅_코디 - 사본",
       "campaign_name": "conv_260617_A_rand_only",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=3JPD6IxNGwMQ7kNvwHFhnXB&_nc_oc=Adoq249I7dpqpp2vr_f4t_-a1N6A9SE3ouJl9IIX753rK1H5x_5gG9scGNbMGskM6zI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI_p_n48KW5JQr7bEjwMoab2-oXtRi4dh0iZS1BGPhWjB_iFey73KQ9vJah1rulibIvnzttoSHl_A&oh=00_AQG0RhcOoPLwYA4MFet4zO-7vg_LTGeYfLjkwDZu0Xvgrg&oe=6A95DECC"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=9oYFr9VffNgQ7kNvwFVxXOO&_nc_oc=Adrtam5RNEG-iGoLrX1vvS-sY0RFgr6ab-d6_Ij21OAYnEUdWH4GfPf7nMfNTBNqEaA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKVofU30qg0ZMZmPNKsX7oUr83xVvZy-XYk8Ho5BCxNUjpOe6xOrO2IgN7Qro74che_kOU7VKdaRw&oh=00_AQHa52LaSY1Iqmt_F1rnwv-cLC43qsvxaEFroG2A3A7-Uw&oe=6A96BFCC"
     },
     "120252023034810496": {
       "ad_name": "260615_리얼미_카톡후기 - 사본",
       "campaign_name": "conv_260617_A_rand_only",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724639705_122116334210735105_8253719930030915788_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=Krlw5WlQSQcQ7kNvwF--rms&_nc_oc=AdqdoCEx8J5rhYHgr9cFDI6SIpBiz9qJ5qyO5Et8HUaLylbFxe1hZ5-_SRMXkrsDFmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKNZDEafOsXVrKnpEQgDXvmPJmuOXmfydRKM4AqSgC9pZQmCJVhfJSIfm92bC3pmx62qriavVPP4w&oh=00_AQHf81lTdH6evflYlu6vMzj-G1cio9KaL405YAYOV2AN8w&oe=6A95E7E2"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724639705_122116334210735105_8253719930030915788_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=Krlw5WlQSQcQ7kNvwF--rms&_nc_oc=AdqdoCEx8J5rhYHgr9cFDI6SIpBiz9qJ5qyO5Et8HUaLylbFxe1hZ5-_SRMXkrsDFmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLRkLPlW3stBguv-sbUzrfvFb9nur8yNdKBkwzaA1bbnYq_LtdnQL2pgcLkkxIrcL0EDmPXNKgq7g&oh=00_AQEN0VbgygIvjaX5ZXK3JvMRy7OuVgXgXY2rSnimVHfDVg&oe=6A96C8E2"
     },
     "120252023034830496": {
       "ad_name": "260615_리얼미_05 - 사본",
       "campaign_name": "conv_260617_A_rand_only",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=m_u29Ag6GE4Q7kNvwFa8SoL&_nc_oc=AdrRoEo3pSg54zSRTN-51ju8NUwIv__SXuZBlJGP8CukyZluk1EjmsrKBdqsjWvnLP0&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJVR_JkCLFrdXeibpQumnDg-kgCuTlGBNZZOeHvECqn0IP5wzKrpzZ6rftkeh2oPiLUQisQk-dVHg&oh=00_AQFQG4-bzl7MRN5CqalvGDMCq5Ni4AAdFsv7mgljXUqoeQ&oe=6A95EC08"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=jbzQ8xL7cmEQ7kNvwE54hUf&_nc_oc=AdqCv6VYouE6PVRseRZ0hZX-yrGSW0UgVT1dc9gjpdk1lo5UtNER36HtzOhAZb8i9gU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKoZumSBI0TvDCbSjJgJSEDEgh6merI7eqZvthZRin19DeQqa83S9-yc_2hbMvwqsXUwZmVar72yQ&oh=00_AQGuvP9TfMqITfHMnAhXRV1oGjlfRSqvOXelPXplmX1yDQ&oe=6A96CD08"
     },
     "120252023034850496": {
       "ad_name": "260615_리얼미_09 - 사본",
       "campaign_name": "conv_260617_A_rand_only",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724445886_122116334306735105_950905070826260757_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=mb8AAY9tilQQ7kNvwGDxZi5&_nc_oc=AdpZ061ElSP1DMGSeNMUzlIUTtQqjge4LuCvSUi24IUfS-zNXZPHDhrUBjxSAm3qNHA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKWBzGFxA86RcQHZ_K4fXIJv4OKYUL9SK5I2UYrTWWUfJauR6ELp4ANS2oHzYmVsebZyYZGwHXy_g&oh=00_AQFl0GqEXaSfMPF6Ce38c-xnKKKpBVBx-Q0LFSHDWKcW7g&oe=6A9600C8"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724445886_122116334306735105_950905070826260757_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=mb8AAY9tilQQ7kNvwGDxZi5&_nc_oc=AdpZ061ElSP1DMGSeNMUzlIUTtQqjge4LuCvSUi24IUfS-zNXZPHDhrUBjxSAm3qNHA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLCxVP4XaF6_F3BURn0GqnCKkqBho-Fpp-X9CgEzgDmeXA8UlM-xV6n3Sl0ZAKS38DzVjPYgjDHLg&oh=00_AQH-5aR2aXz9b5VFs-vSE5wDXSIWPVQjPsmcfVT9HEnjcg&oe=6A96A988"
     },
     "120252023034860496": {
       "ad_name": "260615_리얼미_08 - 사본",
       "campaign_name": "conv_260617_A_rand_only",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/722664506_122116334252735105_3153069869140567856_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=TtVj4Ei4K6EQ7kNvwFa92-J&_nc_oc=AdoMctmBmXfN9UuZ8xoJ8iOcXBHE91jMiZmthQMB8oBzVCvmRleJxOVMZZHRK_v15oI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJzGesQ_4MOYDe5oeflbkpmDQ8ROEQlgiC4NlRtAkgenZ5DJCmYK-lj5kJ6RYkT_Q-MwT2IefIxdg&oh=00_AQGaqzJrcxtY0u0IKey5gKW6VPX48cBqUwvNvQ9hd_BW_w&oe=6A95FC78"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/722664506_122116334252735105_3153069869140567856_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=bLX7UfwQK2EQ7kNvwEwaBPB&_nc_oc=Adqsc1Y5eTdomOB67-m-vo_OhIa6nj2qFW0gugFAAijVrAMu8Y5zL_ndXQ4u3hxzPH8&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQL5A9HmxVAzdosCbpG73rcMm36zUuutXuHiiDnkeqOgg9Jl980ZG9wenBZ3X8YVM7zf_1P9uddTNw&oh=00_AQF8NbX_uP7qkvhxMV2JZQW-mET2nPzVWmlFWfGKFVPP7Q&oe=6A96A538"
     },
     "120252185634850496": {
       "ad_name": "260615_AI_디렉팅_코디 - 사본 - 사본",
       "campaign_name": "Lead_260619_new_free_rand",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=3JPD6IxNGwMQ7kNvwHFhnXB&_nc_oc=Adoq249I7dpqpp2vr_f4t_-a1N6A9SE3ouJl9IIX753rK1H5x_5gG9scGNbMGskM6zI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI_p_n48KW5JQr7bEjwMoab2-oXtRi4dh0iZS1BGPhWjB_iFey73KQ9vJah1rulibIvnzttoSHl_A&oh=00_AQG0RhcOoPLwYA4MFet4zO-7vg_LTGeYfLjkwDZu0Xvgrg&oe=6A95DECC"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=9oYFr9VffNgQ7kNvwFVxXOO&_nc_oc=Adrtam5RNEG-iGoLrX1vvS-sY0RFgr6ab-d6_Ij21OAYnEUdWH4GfPf7nMfNTBNqEaA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKVofU30qg0ZMZmPNKsX7oUr83xVvZy-XYk8Ho5BCxNUjpOe6xOrO2IgN7Qro74che_kOU7VKdaRw&oh=00_AQHa52LaSY1Iqmt_F1rnwv-cLC43qsvxaEFroG2A3A7-Uw&oe=6A96BFCC"
     },
     "120252185634860496": {
       "ad_name": "260615_AI_디렉팅_취향 - 사본 - 사본",
       "campaign_name": "Lead_260619_new_free_rand",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLPGKHaHKkLZi2n7gyMStL1HYcGTjeDfAaQAA-LqmpGXS_nmaFu1tboLsxGvGHz0JHm8oi5Bo9HrQ&oh=00_AQGmav3dFtQ3KymnceLo4IjXKYNo4LVlI-jpCddQDIn2ag&oe=6A95F34B"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLxUYxBpZHpnkUT1FB7hOxnTiAsc99F-NiN_5DBccuxRssFGLsCPC6C1RkA9QYR6qC_IJDrBDwCiQ&oh=00_AQEr27EZnaZMLS1FcxnjEAbilzy0ZYyX97BlvR3wXfnaDA&oe=6A969C0B"
     },
     "120252185634880496": {
       "ad_name": "260615_리얼미_05 - 사본 - 사본",
       "campaign_name": "Lead_260619_new_free_rand",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=m_u29Ag6GE4Q7kNvwFa8SoL&_nc_oc=AdrRoEo3pSg54zSRTN-51ju8NUwIv__SXuZBlJGP8CukyZluk1EjmsrKBdqsjWvnLP0&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJVR_JkCLFrdXeibpQumnDg-kgCuTlGBNZZOeHvECqn0IP5wzKrpzZ6rftkeh2oPiLUQisQk-dVHg&oh=00_AQFQG4-bzl7MRN5CqalvGDMCq5Ni4AAdFsv7mgljXUqoeQ&oe=6A95EC08"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=jbzQ8xL7cmEQ7kNvwE54hUf&_nc_oc=AdqCv6VYouE6PVRseRZ0hZX-yrGSW0UgVT1dc9gjpdk1lo5UtNER36HtzOhAZb8i9gU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKoZumSBI0TvDCbSjJgJSEDEgh6merI7eqZvthZRin19DeQqa83S9-yc_2hbMvwqsXUwZmVar72yQ&oh=00_AQGuvP9TfMqITfHMnAhXRV1oGjlfRSqvOXelPXplmX1yDQ&oe=6A96CD08"
     },
     "120252185634890496": {
       "ad_name": "260615_리얼미_07 - 사본 - 사본",
       "campaign_name": "Lead_260619_new_free_rand",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724361460_122116334330735105_4050783293139687856_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=5mnKNKTT6MIQ7kNvwGXAEAV&_nc_oc=AdoC3GLSCMxkWAFASOi6qldU0FykcBmPxa5P811DShfxjajbUUIqR-5JR_TSa7A3umM&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI76HsQQBHyeU7iAiBg0Z7GLVgjToTZnD74SloKFQd742b7nYvMiaQZnwvGxgvYUfmg9ZyxEz_QJg&oh=00_AQEMaehsmYR-TglJDvQrHh1ZbNWG1Us-VVQt7SfKflA20A&oe=6A95CE48"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724361460_122116334330735105_4050783293139687856_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=5mnKNKTT6MIQ7kNvwGXAEAV&_nc_oc=AdoC3GLSCMxkWAFASOi6qldU0FykcBmPxa5P811DShfxjajbUUIqR-5JR_TSa7A3umM&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJf43pNDXXyVfA3oMHUcWKm1b-ce2XBD8L7dYbjzeI8G89pMX4K3-8M7JcpAosau-IRrtC-Ugfbug&oh=00_AQGSG_Fl-kwT3J5KIrNW2yGCgm5AfImj-iVypp5Y4IrbfQ&oe=6A96AF48"
     },
     "120252185634900496": {
       "ad_name": "260615_리얼미_검은티 - 사본 - 사본",
       "campaign_name": "Lead_260619_new_free_rand",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723509133_122116334150735105_1989633725758008645_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=C-HdRX-YcEkQ7kNvwH5pVmv&_nc_oc=AdqByF7gSaVU-3fpmIYC7onKGgz4wW6Cpxi62IswbyWTjK1yX2SePdR-mMu_Ep_BZmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJBaYICOl8eJs3BE3QTh6wAwpTVP5uIJHlCiy5lnAH82_CYH3qpHNDz8dScAUeWlXB0Q1qpbaDdgg&oh=00_AQFDwSLz67F_1tJlimQJU3qVmizPP8EWkwG7FQFbvLT-Fw&oe=6A95E3F1"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723509133_122116334150735105_1989633725758008645_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=C-HdRX-YcEkQ7kNvwH5pVmv&_nc_oc=AdqByF7gSaVU-3fpmIYC7onKGgz4wW6Cpxi62IswbyWTjK1yX2SePdR-mMu_Ep_BZmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI4H3--76q-YhWe81PxmW4TxjoA3W9cyAHTedZl9rwYP7vdiS8bTtN3zQjDi8LpiLEikAifQu2SqA&oh=00_AQHWBaJxSTgbuiq6VZlJEyC08lIBx3QL6ZS2b91OsFFL4w&oe=6A96C4F1"
     },
     "120252185634910496": {
       "ad_name": "260615_리얼미_카톡후기 - 사본 - 사본",
       "campaign_name": "Lead_260619_new_free_rand",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724639705_122116334210735105_8253719930030915788_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=Krlw5WlQSQcQ7kNvwF--rms&_nc_oc=AdqdoCEx8J5rhYHgr9cFDI6SIpBiz9qJ5qyO5Et8HUaLylbFxe1hZ5-_SRMXkrsDFmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKNZDEafOsXVrKnpEQgDXvmPJmuOXmfydRKM4AqSgC9pZQmCJVhfJSIfm92bC3pmx62qriavVPP4w&oh=00_AQHf81lTdH6evflYlu6vMzj-G1cio9KaL405YAYOV2AN8w&oe=6A95E7E2"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724639705_122116334210735105_8253719930030915788_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=Krlw5WlQSQcQ7kNvwF--rms&_nc_oc=AdqdoCEx8J5rhYHgr9cFDI6SIpBiz9qJ5qyO5Et8HUaLylbFxe1hZ5-_SRMXkrsDFmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLRkLPlW3stBguv-sbUzrfvFb9nur8yNdKBkwzaA1bbnYq_LtdnQL2pgcLkkxIrcL0EDmPXNKgq7g&oh=00_AQEN0VbgygIvjaX5ZXK3JvMRy7OuVgXgXY2rSnimVHfDVg&oe=6A96C8E2"
     },
     "120252185634920496": {
       "ad_name": "260615_리얼미_02 - 사본 - 사본",
       "campaign_name": "Lead_260619_new_free_rand",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724720119_122116371956735105_4829275115750187806_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kMeWl0cN8NUQ7kNvwHHsEKE&_nc_oc=AdrabJ5GgsA3-Gy_5k837e9sCP6YaQew6HwYxpdot-P711epPPzOB4FOK8UAf1jJG88&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJTrZt2z-SyRi1ock21pTQjuiYODttGgvwpA02r2wBXFncHVeQPTqiyO8W3oMIEbk2nk38Vm_bXQw&oh=00_AQFCkoex79jssp65JYOhO50TUAcBDBYyWb8nOkDdT4bpxQ&oe=6A95F32E"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724720119_122116371956735105_4829275115750187806_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kMeWl0cN8NUQ7kNvwHHsEKE&_nc_oc=AdrabJ5GgsA3-Gy_5k837e9sCP6YaQew6HwYxpdot-P711epPPzOB4FOK8UAf1jJG88&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKaabB5NHe270yMUrRi3ZYt1GllMKWwC6QOCSqlC3Eu91fwNAAb1mUSwYPi6oHT1HvDKj4_CLna8Q&oh=00_AQFj5PyRDkNLAAHx4nvmiJ9CfP8pzAFEIp-Bj1I3aKG1-w&oe=6A969BEE"
     },
     "120252185634930496": {
       "ad_name": "260615_리얼미_03 - 사본 - 사본",
       "campaign_name": "Lead_260619_new_free_rand",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=FhtICjBMc3MQ7kNvwH683Kw&_nc_oc=AdrEXujM5d2NwERDurYsJNhQmGbO1ly7bZATnN6ufEjXlRzTt8eR7Rcjd_EEOqUEZ3Q&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLYkyLXAS6yMp-6bV0jYn4RGv7-MsWNjtawN3jo_8L_guLP36RVku4plTmIZDsFJmpowyFjrZTINA&oh=00_AQFRHdROy75b8Xf_VmRqS1fN05b-NqyzOBoeXwx-JSkTLg&oe=6A95F703"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kJKZtE4lB8kQ7kNvwHJ4INI&_nc_oc=AdouXKV4JbzZfzzBIkIUjCZOQwegE4TYM1DWpCNPJ2-N1a0uGC_estFDmczH2gJMa2c&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJih9g3aeum_OszhBUOIZWP6ufNP4LfKT7qGFBWTtA_BvRou4lJztMhFdL7RhK5OL30b1KV4B8KNQ&oh=00_AQG-OaFEe_A9KchLuMZu1xXWW5xxhZMIhtXN5FxzWT2VoQ&oe=6A969FC3"
     },
     "120252185634940496": {
       "ad_name": "260615_리얼미_09 - 사본 - 사본",
       "campaign_name": "Lead_260619_new_free_rand",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724445886_122116334306735105_950905070826260757_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=mb8AAY9tilQQ7kNvwGDxZi5&_nc_oc=AdpZ061ElSP1DMGSeNMUzlIUTtQqjge4LuCvSUi24IUfS-zNXZPHDhrUBjxSAm3qNHA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKWBzGFxA86RcQHZ_K4fXIJv4OKYUL9SK5I2UYrTWWUfJauR6ELp4ANS2oHzYmVsebZyYZGwHXy_g&oh=00_AQFl0GqEXaSfMPF6Ce38c-xnKKKpBVBx-Q0LFSHDWKcW7g&oe=6A9600C8"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724445886_122116334306735105_950905070826260757_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=mb8AAY9tilQQ7kNvwGDxZi5&_nc_oc=AdpZ061ElSP1DMGSeNMUzlIUTtQqjge4LuCvSUi24IUfS-zNXZPHDhrUBjxSAm3qNHA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLCxVP4XaF6_F3BURn0GqnCKkqBho-Fpp-X9CgEzgDmeXA8UlM-xV6n3Sl0ZAKS38DzVjPYgjDHLg&oh=00_AQH-5aR2aXz9b5VFs-vSE5wDXSIWPVQjPsmcfVT9HEnjcg&oe=6A96A988"
     },
     "120252185634950496": {
       "ad_name": "260615_리얼미_01 - 사본 - 사본",
       "campaign_name": "Lead_260619_new_free_rand",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724320530_122116334168735105_8900885506971685808_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=0LrFsvF1qk4Q7kNvwHMMImL&_nc_oc=Adq0DudZY2proUo-7flLaAUA5CqQk4tKwlcDaXleMTLS8d2Iz2Ukp32CwwHkuLBMzho&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIHu3qCwP1iaMXEGOgRG5fX6a1IpjFoAPTiChfm0AorOtd6VYC7MAWP0T0xr4HuzV-tNPrjpzKbjg&oh=00_AQFJIFOI8IS2dnhm-mnAfnASzZuYkyNbQFsT3o9mamY82g&oe=6A95D7AD"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724320530_122116334168735105_8900885506971685808_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=0LrFsvF1qk4Q7kNvwHMMImL&_nc_oc=Adq0DudZY2proUo-7flLaAUA5CqQk4tKwlcDaXleMTLS8d2Iz2Ukp32CwwHkuLBMzho&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI0cNeNfXbR_MD6kH_TS0_IfrKDmZrRGFp79XrdjEkG8Okfe2lBe5kPLAsMiIVcbMCAb4-AjPT26Q&oh=00_AQGCGJtg4b-itGiLRGNWmuxOwR6bC2fccDqYCYa6bFlL2Q&oe=6A96B8AD"
     },
     "120252185634870496": {
       "ad_name": "260615_리얼미_08 - 사본 - 사본",
       "campaign_name": "Lead_260619_new_free_rand",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/722664506_122116334252735105_3153069869140567856_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=TtVj4Ei4K6EQ7kNvwFa92-J&_nc_oc=AdoMctmBmXfN9UuZ8xoJ8iOcXBHE91jMiZmthQMB8oBzVCvmRleJxOVMZZHRK_v15oI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJzGesQ_4MOYDe5oeflbkpmDQ8ROEQlgiC4NlRtAkgenZ5DJCmYK-lj5kJ6RYkT_Q-MwT2IefIxdg&oh=00_AQGaqzJrcxtY0u0IKey5gKW6VPX48cBqUwvNvQ9hd_BW_w&oe=6A95FC78"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/722664506_122116334252735105_3153069869140567856_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=bLX7UfwQK2EQ7kNvwEwaBPB&_nc_oc=Adqsc1Y5eTdomOB67-m-vo_OhIa6nj2qFW0gugFAAijVrAMu8Y5zL_ndXQ4u3hxzPH8&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQL5A9HmxVAzdosCbpG73rcMm36zUuutXuHiiDnkeqOgg9Jl980ZG9wenBZ3X8YVM7zf_1P9uddTNw&oh=00_AQF8NbX_uP7qkvhxMV2JZQW-mET2nPzVWmlFWfGKFVPP7Q&oe=6A96A538"
     },
     "120252608307250496": {
       "ad_name": "260615_AI_디렉팅_코디 - 사본 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=3JPD6IxNGwMQ7kNvwHFhnXB&_nc_oc=Adoq249I7dpqpp2vr_f4t_-a1N6A9SE3ouJl9IIX753rK1H5x_5gG9scGNbMGskM6zI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI_p_n48KW5JQr7bEjwMoab2-oXtRi4dh0iZS1BGPhWjB_iFey73KQ9vJah1rulibIvnzttoSHl_A&oh=00_AQG0RhcOoPLwYA4MFet4zO-7vg_LTGeYfLjkwDZu0Xvgrg&oe=6A95DECC"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=9oYFr9VffNgQ7kNvwFVxXOO&_nc_oc=Adrtam5RNEG-iGoLrX1vvS-sY0RFgr6ab-d6_Ij21OAYnEUdWH4GfPf7nMfNTBNqEaA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKVofU30qg0ZMZmPNKsX7oUr83xVvZy-XYk8Ho5BCxNUjpOe6xOrO2IgN7Qro74che_kOU7VKdaRw&oh=00_AQHa52LaSY1Iqmt_F1rnwv-cLC43qsvxaEFroG2A3A7-Uw&oe=6A96BFCC"
     },
     "120252608307260496": {
       "ad_name": "260615_리얼미_03 - 사본 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=FhtICjBMc3MQ7kNvwH683Kw&_nc_oc=AdrEXujM5d2NwERDurYsJNhQmGbO1ly7bZATnN6ufEjXlRzTt8eR7Rcjd_EEOqUEZ3Q&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLYkyLXAS6yMp-6bV0jYn4RGv7-MsWNjtawN3jo_8L_guLP36RVku4plTmIZDsFJmpowyFjrZTINA&oh=00_AQFRHdROy75b8Xf_VmRqS1fN05b-NqyzOBoeXwx-JSkTLg&oe=6A95F703"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kJKZtE4lB8kQ7kNvwHJ4INI&_nc_oc=AdouXKV4JbzZfzzBIkIUjCZOQwegE4TYM1DWpCNPJ2-N1a0uGC_estFDmczH2gJMa2c&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJih9g3aeum_OszhBUOIZWP6ufNP4LfKT7qGFBWTtA_BvRou4lJztMhFdL7RhK5OL30b1KV4B8KNQ&oh=00_AQG-OaFEe_A9KchLuMZu1xXWW5xxhZMIhtXN5FxzWT2VoQ&oe=6A969FC3"
     },
     "120252608307270496": {
       "ad_name": "260615_리얼미_09 - 사본 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724445886_122116334306735105_950905070826260757_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=mb8AAY9tilQQ7kNvwGDxZi5&_nc_oc=AdpZ061ElSP1DMGSeNMUzlIUTtQqjge4LuCvSUi24IUfS-zNXZPHDhrUBjxSAm3qNHA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKWBzGFxA86RcQHZ_K4fXIJv4OKYUL9SK5I2UYrTWWUfJauR6ELp4ANS2oHzYmVsebZyYZGwHXy_g&oh=00_AQFl0GqEXaSfMPF6Ce38c-xnKKKpBVBx-Q0LFSHDWKcW7g&oe=6A9600C8"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724445886_122116334306735105_950905070826260757_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=mb8AAY9tilQQ7kNvwGDxZi5&_nc_oc=AdpZ061ElSP1DMGSeNMUzlIUTtQqjge4LuCvSUi24IUfS-zNXZPHDhrUBjxSAm3qNHA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLCxVP4XaF6_F3BURn0GqnCKkqBho-Fpp-X9CgEzgDmeXA8UlM-xV6n3Sl0ZAKS38DzVjPYgjDHLg&oh=00_AQH-5aR2aXz9b5VFs-vSE5wDXSIWPVQjPsmcfVT9HEnjcg&oe=6A96A988"
     },
     "120252608307280496": {
       "ad_name": "260615_리얼미_카톡후기 - 사본 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724639705_122116334210735105_8253719930030915788_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=Krlw5WlQSQcQ7kNvwF--rms&_nc_oc=AdqdoCEx8J5rhYHgr9cFDI6SIpBiz9qJ5qyO5Et8HUaLylbFxe1hZ5-_SRMXkrsDFmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKNZDEafOsXVrKnpEQgDXvmPJmuOXmfydRKM4AqSgC9pZQmCJVhfJSIfm92bC3pmx62qriavVPP4w&oh=00_AQHf81lTdH6evflYlu6vMzj-G1cio9KaL405YAYOV2AN8w&oe=6A95E7E2"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724639705_122116334210735105_8253719930030915788_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=Krlw5WlQSQcQ7kNvwF--rms&_nc_oc=AdqdoCEx8J5rhYHgr9cFDI6SIpBiz9qJ5qyO5Et8HUaLylbFxe1hZ5-_SRMXkrsDFmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLRkLPlW3stBguv-sbUzrfvFb9nur8yNdKBkwzaA1bbnYq_LtdnQL2pgcLkkxIrcL0EDmPXNKgq7g&oh=00_AQEN0VbgygIvjaX5ZXK3JvMRy7OuVgXgXY2rSnimVHfDVg&oe=6A96C8E2"
     },
     "120252608307290496": {
       "ad_name": "260615_리얼미_01 - 사본 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724320530_122116334168735105_8900885506971685808_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=0LrFsvF1qk4Q7kNvwHMMImL&_nc_oc=Adq0DudZY2proUo-7flLaAUA5CqQk4tKwlcDaXleMTLS8d2Iz2Ukp32CwwHkuLBMzho&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIHu3qCwP1iaMXEGOgRG5fX6a1IpjFoAPTiChfm0AorOtd6VYC7MAWP0T0xr4HuzV-tNPrjpzKbjg&oh=00_AQFJIFOI8IS2dnhm-mnAfnASzZuYkyNbQFsT3o9mamY82g&oe=6A95D7AD"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724320530_122116334168735105_8900885506971685808_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=0LrFsvF1qk4Q7kNvwHMMImL&_nc_oc=Adq0DudZY2proUo-7flLaAUA5CqQk4tKwlcDaXleMTLS8d2Iz2Ukp32CwwHkuLBMzho&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI0cNeNfXbR_MD6kH_TS0_IfrKDmZrRGFp79XrdjEkG8Okfe2lBe5kPLAsMiIVcbMCAb4-AjPT26Q&oh=00_AQGCGJtg4b-itGiLRGNWmuxOwR6bC2fccDqYCYa6bFlL2Q&oe=6A96B8AD"
     },
     "120252608307300496": {
       "ad_name": "260615_리얼미_검은티 - 사본 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723509133_122116334150735105_1989633725758008645_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=C-HdRX-YcEkQ7kNvwH5pVmv&_nc_oc=AdqByF7gSaVU-3fpmIYC7onKGgz4wW6Cpxi62IswbyWTjK1yX2SePdR-mMu_Ep_BZmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJBaYICOl8eJs3BE3QTh6wAwpTVP5uIJHlCiy5lnAH82_CYH3qpHNDz8dScAUeWlXB0Q1qpbaDdgg&oh=00_AQFDwSLz67F_1tJlimQJU3qVmizPP8EWkwG7FQFbvLT-Fw&oe=6A95E3F1"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723509133_122116334150735105_1989633725758008645_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=C-HdRX-YcEkQ7kNvwH5pVmv&_nc_oc=AdqByF7gSaVU-3fpmIYC7onKGgz4wW6Cpxi62IswbyWTjK1yX2SePdR-mMu_Ep_BZmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI4H3--76q-YhWe81PxmW4TxjoA3W9cyAHTedZl9rwYP7vdiS8bTtN3zQjDi8LpiLEikAifQu2SqA&oh=00_AQHWBaJxSTgbuiq6VZlJEyC08lIBx3QL6ZS2b91OsFFL4w&oe=6A96C4F1"
     },
     "120252608307310496": {
       "ad_name": "260615_리얼미_02 - 사본 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724720119_122116371956735105_4829275115750187806_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kMeWl0cN8NUQ7kNvwHHsEKE&_nc_oc=AdrabJ5GgsA3-Gy_5k837e9sCP6YaQew6HwYxpdot-P711epPPzOB4FOK8UAf1jJG88&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJTrZt2z-SyRi1ock21pTQjuiYODttGgvwpA02r2wBXFncHVeQPTqiyO8W3oMIEbk2nk38Vm_bXQw&oh=00_AQFCkoex79jssp65JYOhO50TUAcBDBYyWb8nOkDdT4bpxQ&oe=6A95F32E"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724720119_122116371956735105_4829275115750187806_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kMeWl0cN8NUQ7kNvwHHsEKE&_nc_oc=AdrabJ5GgsA3-Gy_5k837e9sCP6YaQew6HwYxpdot-P711epPPzOB4FOK8UAf1jJG88&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKaabB5NHe270yMUrRi3ZYt1GllMKWwC6QOCSqlC3Eu91fwNAAb1mUSwYPi6oHT1HvDKj4_CLna8Q&oh=00_AQFj5PyRDkNLAAHx4nvmiJ9CfP8pzAFEIp-Bj1I3aKG1-w&oe=6A969BEE"
     },
     "120252608307330496": {
       "ad_name": "260615_리얼미_05 - 사본 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=m_u29Ag6GE4Q7kNvwFa8SoL&_nc_oc=AdrRoEo3pSg54zSRTN-51ju8NUwIv__SXuZBlJGP8CukyZluk1EjmsrKBdqsjWvnLP0&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJVR_JkCLFrdXeibpQumnDg-kgCuTlGBNZZOeHvECqn0IP5wzKrpzZ6rftkeh2oPiLUQisQk-dVHg&oh=00_AQFQG4-bzl7MRN5CqalvGDMCq5Ni4AAdFsv7mgljXUqoeQ&oe=6A95EC08"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=jbzQ8xL7cmEQ7kNvwE54hUf&_nc_oc=AdqCv6VYouE6PVRseRZ0hZX-yrGSW0UgVT1dc9gjpdk1lo5UtNER36HtzOhAZb8i9gU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKoZumSBI0TvDCbSjJgJSEDEgh6merI7eqZvthZRin19DeQqa83S9-yc_2hbMvwqsXUwZmVar72yQ&oh=00_AQGuvP9TfMqITfHMnAhXRV1oGjlfRSqvOXelPXplmX1yDQ&oe=6A96CD08"
     },
     "120252608307340496": {
       "ad_name": "260615_리얼미_07 - 사본 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724361460_122116334330735105_4050783293139687856_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=5mnKNKTT6MIQ7kNvwGXAEAV&_nc_oc=AdoC3GLSCMxkWAFASOi6qldU0FykcBmPxa5P811DShfxjajbUUIqR-5JR_TSa7A3umM&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI76HsQQBHyeU7iAiBg0Z7GLVgjToTZnD74SloKFQd742b7nYvMiaQZnwvGxgvYUfmg9ZyxEz_QJg&oh=00_AQEMaehsmYR-TglJDvQrHh1ZbNWG1Us-VVQt7SfKflA20A&oe=6A95CE48"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724361460_122116334330735105_4050783293139687856_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=5mnKNKTT6MIQ7kNvwGXAEAV&_nc_oc=AdoC3GLSCMxkWAFASOi6qldU0FykcBmPxa5P811DShfxjajbUUIqR-5JR_TSa7A3umM&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJf43pNDXXyVfA3oMHUcWKm1b-ce2XBD8L7dYbjzeI8G89pMX4K3-8M7JcpAosau-IRrtC-Ugfbug&oh=00_AQGSG_Fl-kwT3J5KIrNW2yGCgm5AfImj-iVypp5Y4IrbfQ&oe=6A96AF48"
     },
     "120252608307350496": {
       "ad_name": "260615_AI_디렉팅_취향 - 사본 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLPGKHaHKkLZi2n7gyMStL1HYcGTjeDfAaQAA-LqmpGXS_nmaFu1tboLsxGvGHz0JHm8oi5Bo9HrQ&oh=00_AQGmav3dFtQ3KymnceLo4IjXKYNo4LVlI-jpCddQDIn2ag&oe=6A95F34B"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLxUYxBpZHpnkUT1FB7hOxnTiAsc99F-NiN_5DBccuxRssFGLsCPC6C1RkA9QYR6qC_IJDrBDwCiQ&oh=00_AQEr27EZnaZMLS1FcxnjEAbilzy0ZYyX97BlvR3wXfnaDA&oe=6A969C0B"
     },
     "120252608476860496": {
       "ad_name": "260615_AI_디렉팅_취향 - 사본 - 사본-사본",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLPGKHaHKkLZi2n7gyMStL1HYcGTjeDfAaQAA-LqmpGXS_nmaFu1tboLsxGvGHz0JHm8oi5Bo9HrQ&oh=00_AQGmav3dFtQ3KymnceLo4IjXKYNo4LVlI-jpCddQDIn2ag&oe=6A95F34B"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724142881_122116334258735105_7876784589545347462_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=BkNunG1leJEQ7kNvwEwMxX6&_nc_oc=AdpSJDQTnZsZUxJGHZ0nS09p1ZpiQDV1xfjA6axkTXpUziuMqEymxxS33B407Vs5yMI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLxUYxBpZHpnkUT1FB7hOxnTiAsc99F-NiN_5DBccuxRssFGLsCPC6C1RkA9QYR6qC_IJDrBDwCiQ&oh=00_AQEr27EZnaZMLS1FcxnjEAbilzy0ZYyX97BlvR3wXfnaDA&oe=6A969C0B"
     },
     "120252608788830496": {
       "ad_name": "260615_리얼미_03 - 사본 - 사본-사본",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=FhtICjBMc3MQ7kNvwH683Kw&_nc_oc=AdrEXujM5d2NwERDurYsJNhQmGbO1ly7bZATnN6ufEjXlRzTt8eR7Rcjd_EEOqUEZ3Q&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLYkyLXAS6yMp-6bV0jYn4RGv7-MsWNjtawN3jo_8L_guLP36RVku4plTmIZDsFJmpowyFjrZTINA&oh=00_AQFRHdROy75b8Xf_VmRqS1fN05b-NqyzOBoeXwx-JSkTLg&oe=6A95F703"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724375807_122116334222735105_6363158541347609103_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=kJKZtE4lB8kQ7kNvwHJ4INI&_nc_oc=AdouXKV4JbzZfzzBIkIUjCZOQwegE4TYM1DWpCNPJ2-N1a0uGC_estFDmczH2gJMa2c&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJih9g3aeum_OszhBUOIZWP6ufNP4LfKT7qGFBWTtA_BvRou4lJztMhFdL7RhK5OL30b1KV4B8KNQ&oh=00_AQG-OaFEe_A9KchLuMZu1xXWW5xxhZMIhtXN5FxzWT2VoQ&oe=6A969FC3"
     },
     "120252608788840496": {
       "ad_name": "260615_AI_디렉팅_코디 - 사본 - 사본-사본",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=3JPD6IxNGwMQ7kNvwHFhnXB&_nc_oc=Adoq249I7dpqpp2vr_f4t_-a1N6A9SE3ouJl9IIX753rK1H5x_5gG9scGNbMGskM6zI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI_p_n48KW5JQr7bEjwMoab2-oXtRi4dh0iZS1BGPhWjB_iFey73KQ9vJah1rulibIvnzttoSHl_A&oh=00_AQG0RhcOoPLwYA4MFet4zO-7vg_LTGeYfLjkwDZu0Xvgrg&oe=6A95DECC"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=9oYFr9VffNgQ7kNvwFVxXOO&_nc_oc=Adrtam5RNEG-iGoLrX1vvS-sY0RFgr6ab-d6_Ij21OAYnEUdWH4GfPf7nMfNTBNqEaA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKVofU30qg0ZMZmPNKsX7oUr83xVvZy-XYk8Ho5BCxNUjpOe6xOrO2IgN7Qro74che_kOU7VKdaRw&oh=00_AQHa52LaSY1Iqmt_F1rnwv-cLC43qsvxaEFroG2A3A7-Uw&oe=6A96BFCC"
     },
     "120252608788850496": {
       "ad_name": "260615_리얼미_05 - 사본 - 사본-사본",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=m_u29Ag6GE4Q7kNvwFa8SoL&_nc_oc=AdrRoEo3pSg54zSRTN-51ju8NUwIv__SXuZBlJGP8CukyZluk1EjmsrKBdqsjWvnLP0&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJVR_JkCLFrdXeibpQumnDg-kgCuTlGBNZZOeHvECqn0IP5wzKrpzZ6rftkeh2oPiLUQisQk-dVHg&oh=00_AQFQG4-bzl7MRN5CqalvGDMCq5Ni4AAdFsv7mgljXUqoeQ&oe=6A95EC08"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723109520_122116334288735105_2804798575808699827_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=jbzQ8xL7cmEQ7kNvwE54hUf&_nc_oc=AdqCv6VYouE6PVRseRZ0hZX-yrGSW0UgVT1dc9gjpdk1lo5UtNER36HtzOhAZb8i9gU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKoZumSBI0TvDCbSjJgJSEDEgh6merI7eqZvthZRin19DeQqa83S9-yc_2hbMvwqsXUwZmVar72yQ&oh=00_AQGuvP9TfMqITfHMnAhXRV1oGjlfRSqvOXelPXplmX1yDQ&oe=6A96CD08"
     },
     "120252608788860496": {
       "ad_name": "260615_리얼미_09 - 사본 - 사본-사본",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724445886_122116334306735105_950905070826260757_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=mb8AAY9tilQQ7kNvwGDxZi5&_nc_oc=AdpZ061ElSP1DMGSeNMUzlIUTtQqjge4LuCvSUi24IUfS-zNXZPHDhrUBjxSAm3qNHA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKWBzGFxA86RcQHZ_K4fXIJv4OKYUL9SK5I2UYrTWWUfJauR6ELp4ANS2oHzYmVsebZyYZGwHXy_g&oh=00_AQFl0GqEXaSfMPF6Ce38c-xnKKKpBVBx-Q0LFSHDWKcW7g&oe=6A9600C8"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/724445886_122116334306735105_950905070826260757_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=mb8AAY9tilQQ7kNvwGDxZi5&_nc_oc=AdpZ061ElSP1DMGSeNMUzlIUTtQqjge4LuCvSUi24IUfS-zNXZPHDhrUBjxSAm3qNHA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLCxVP4XaF6_F3BURn0GqnCKkqBho-Fpp-X9CgEzgDmeXA8UlM-xV6n3Sl0ZAKS38DzVjPYgjDHLg&oh=00_AQH-5aR2aXz9b5VFs-vSE5wDXSIWPVQjPsmcfVT9HEnjcg&oe=6A96A988"
     },
     "120252608307320496": {
       "ad_name": "260615_리얼미_08 - 사본 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/722664506_122116334252735105_3153069869140567856_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=TtVj4Ei4K6EQ7kNvwFa92-J&_nc_oc=AdoMctmBmXfN9UuZ8xoJ8iOcXBHE91jMiZmthQMB8oBzVCvmRleJxOVMZZHRK_v15oI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJzGesQ_4MOYDe5oeflbkpmDQ8ROEQlgiC4NlRtAkgenZ5DJCmYK-lj5kJ6RYkT_Q-MwT2IefIxdg&oh=00_AQGaqzJrcxtY0u0IKey5gKW6VPX48cBqUwvNvQ9hd_BW_w&oe=6A95FC78"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/722664506_122116334252735105_3153069869140567856_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=bLX7UfwQK2EQ7kNvwEwaBPB&_nc_oc=Adqsc1Y5eTdomOB67-m-vo_OhIa6nj2qFW0gugFAAijVrAMu8Y5zL_ndXQ4u3hxzPH8&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQL5A9HmxVAzdosCbpG73rcMm36zUuutXuHiiDnkeqOgg9Jl980ZG9wenBZ3X8YVM7zf_1P9uddTNw&oh=00_AQF8NbX_uP7qkvhxMV2JZQW-mET2nPzVWmlFWfGKFVPP7Q&oe=6A96A538"
     },
     "120253280343240496": {
       "ad_name": "260707_고객후기_캐러셀_1",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/17062573744763138625?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQL7KNotr4v4Vd1n0C6vMD1XVYFscGVEsXP1MI38eu3cFOKQeL0Y5Y4_cdsHnv69qC__AWP0bkoQC-xn6EUfp5-oBWNlVMUDC2j8H18BZrpJsif2TaMFe2MXru6FpL3_19xuhP7Lef_ZA_KcLhACP0Gl&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=Adr9y3z_lt5LzIRf547pTrc01aSTdPlNiE8lUpSOIrR7-93cwnSS286i6Y2j33cWZLc&ccb=13-1&oh=06_Q3_CAQ4MhLt3Nw_o0Z_DRNaw5B4GA2IYjkZ6Nct0bIa20sja&oe=6A91FAA7&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/17062573744763138625?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQL7KNotr4v4Vd1n0C6vMD1XVYFscGVEsXP1MI38eu3cFOKQeL0Y5Y4_cdsHnv69qC__AWP0bkoQC-xn6EUfp5-oBWNlVMUDC2j8H18BZrpJsif2TaMFe2MXru6FpL3_19xuhP7Lef_ZA_KcLhACP0Gl&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=Adr9y3z_lt5LzIRf547pTrc01aSTdPlNiE8lUpSOIrR7-93cwnSS286i6Y2j33cWZLc&ccb=13-1&oh=06_Q3_CAS2qta4DmYxgB_9b3e-jX5smMN4CZsn79c4UzGAC96W-&oe=6A92A367&_nc_sid=58080a"
     },
     "120253281797890496": {
       "ad_name": "260707_고객후기_캐러셀_2",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/7195572707067942171?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJawtn6LtH0FH1utFm8UJN18wehqtzeLQ8_hykEpVm7ltvfGAn4q6GSeFQ4WZISVfpJQ8tFJ7oUtxp1kmAF9MxwR5fApaRfOdre5c2m7v1VrDdbJs1jo6uozBOgaliIAE-5QKIbRB3ATuAfuZStdqRl&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=Ado-ndcKS7IE8UnbSLMVOlA0ynLzQRAXMeF9R00a8FnDPDPcPs3QI0vVtH33gC31h2w&ccb=13-1&oh=06_Q3_CAY6QEWM3h4E2MnxJ4g0SEJcZaHk-PCA4wDArq6zCEzvj&oe=6A91F420&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/7195572707067942171?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJawtn6LtH0FH1utFm8UJN18wehqtzeLQ8_hykEpVm7ltvfGAn4q6GSeFQ4WZISVfpJQ8tFJ7oUtxp1kmAF9MxwR5fApaRfOdre5c2m7v1VrDdbJs1jo6uozBOgaliIAE-5QKIbRB3ATuAfuZStdqRl&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdrByMPpZ2Txd7l3CjVDU4UsYaIzxESDyoGyZe1BieskwCUnKWVhskEY6iujDMJ5qcQ&ccb=13-1&oh=06_Q3_CAaL2Gc4AfSvAZAuTeczmU8G0GSz3IJh0f5sgxLwRhhlT&oe=6A92D520&_nc_sid=58080a"
     },
     "120253283950300496": {
       "ad_name": "260707_영상_소개팅0표남",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/740769659_1405060938337474_4695269018811893760_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=c_oqO5iWLb8Q7kNvwELg7FL&_nc_oc=AdobHbVkk1RiEsJcUtSTVaP88SNXRntcgfQuug-daErEEyvs9B7IPBUVCGboBdqWOI0&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKzKKHBJYcGdldRW7iyK7gik6EDEv3Vn2cXW9OjTEMAiQBqirWiXaMCFv8Ouwt5WlScXWBTEFkWgQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQEjNnYi3GKLzwA1grs-oB5VDBqomFONBtKmX7QzKVFoFg&oe=6A95D8C1"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/740769659_1405060938337474_4695269018811893760_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=7P28Pdf9oosQ7kNvwFrZrzZ&_nc_oc=AdoLGxweq5tm94-FoN5jpUpuHlMwuXdbatzpkk4og9k0hG_V8qDcOYo1ryanOU9jHNw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJKo944kaxLnSIaJ_68gzXrP9lVH9YqV6bszbqxGogTwzV_bP1ozB_C5CSrULhQ9vQsBZOQXvclKA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQEA8fFPWytkCVZyDI1oJx0Es4QQO0zSW4qwdRSoPz5hvg&oe=6A96B9C1"
     },
     "120253285054240496": {
       "ad_name": "20260707_고객후기_캐러셀_2_사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/11385134550999739898?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIRgRSP513QqYuthiG0gLI3YD5eJkVNt4Ce-NtERxECtqX9KyNYRsg8UJb0UCPRlBAQh8JvJXOcIX0uiep4KKrz-eNf5JYgdHmpfQwgfWs-2cPyn6OrHvz4PAj5pNiniCsxDypIHiWi03-6agC6w3K-&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdqkwDk1Mrh6ult4YrsmxYapGM1nodG8m1dw45tD-nZFuVwBkfvDtwdjKwA4L_d2pcU&ccb=13-1&oh=06_Q3_CATn6QmuqVgABr-vIGMRMjbzioWLLLDkQyAVFKwBnPCRw&oe=6A91E186&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/11385134550999739898?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIRgRSP513QqYuthiG0gLI3YD5eJkVNt4Ce-NtERxECtqX9KyNYRsg8UJb0UCPRlBAQh8JvJXOcIX0uiep4KKrz-eNf5JYgdHmpfQwgfWs-2cPyn6OrHvz4PAj5pNiniCsxDypIHiWi03-6agC6w3K-&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdqkwDk1Mrh6ult4YrsmxYapGM1nodG8m1dw45tD-nZFuVwBkfvDtwdjKwA4L_d2pcU&ccb=13-1&oh=06_Q3_CAT-sT8ugcHokeFG3EfBipHuJJgHW2hf99pYvBYl-J8BB&oe=6A92C286&_nc_sid=58080a"
     },
     "120253287259020496": {
       "ad_name": "260707_영상_소개팅0표남 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/740769659_1405060938337474_4695269018811893760_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=c_oqO5iWLb8Q7kNvwELg7FL&_nc_oc=AdobHbVkk1RiEsJcUtSTVaP88SNXRntcgfQuug-daErEEyvs9B7IPBUVCGboBdqWOI0&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJWxL66HjATB7f_uUlpXVYba7RjKbYUVaT9v395dnrb4mrsXU5jiI2lLQ9AZEyYvGXmVc9j6qgPEw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQGR0VXjuD9AWy9oYbDkViNpyF60bPP67pEXjT8kvPnXwg&oe=6A95D8C1"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/740769659_1405060938337474_4695269018811893760_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=7P28Pdf9oosQ7kNvwFrZrzZ&_nc_oc=AdoLGxweq5tm94-FoN5jpUpuHlMwuXdbatzpkk4og9k0hG_V8qDcOYo1ryanOU9jHNw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQIGVwEpuIA8hlbwnl_VFyXm17k7kRtbDNMM4SuYqNjHqhsZt6L-Cbi_7Yvl1rvqXfT8y2zljWF7YA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQHIm5jtsq8PSNRI8YA9wHrcPB9q0VD98BncWdByfzZkuw&oe=6A96B9C1"
     },
     "120253287494600496": {
       "ad_name": "260707_고객후기_캐러셀_1 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/1369729062684747120?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIBdqoP3syL89VDnkQ9KU2aOg4FQvSy_fFvqvBaxQB16zIiwTThSILEtSjcSwPAUQV3O83UTkGBM9Sea6VWfQBErm792g4imguXymJ_PNS4XNdVlRQ9YrSywewmgz1C4kegNRlwJ4G8u2p3rUxUlC4D&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdoJcqpzs06B5UZAltyL1Wv6EOhg-nBK_i0OefWBv0wgn9SlV9PN7XkRDRXZqLwv8P4&ccb=13-1&oh=06_Q3_CAR6semVepsgMUvCYSZsuEMvCuALRtsz250OV56YRSsSv&oe=6A91D832&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/1369729062684747120?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIBdqoP3syL89VDnkQ9KU2aOg4FQvSy_fFvqvBaxQB16zIiwTThSILEtSjcSwPAUQV3O83UTkGBM9Sea6VWfQBErm792g4imguXymJ_PNS4XNdVlRQ9YrSywewmgz1C4kegNRlwJ4G8u2p3rUxUlC4D&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdoJcqpzs06B5UZAltyL1Wv6EOhg-nBK_i0OefWBv0wgn9SlV9PN7XkRDRXZqLwv8P4&ccb=13-1&oh=06_Q3_CAbJfcMC_hyh63bB5lnn97x5mDA6K8-Weqzc7-v1mrtJ4&oe=6A92B932&_nc_sid=58080a"
     },
     "120253594326870496": {
       "ad_name": "20260707_고객후기_캐러셀_2_사본 - 사본",
       "campaign_name": "Conv_260715_disc50_AB",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/10073161673788295345?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLz7cG19ou7tXZpMgEFb9HKewv8NHedhiE6Fqiqixr51ukM6FVRVHFXZsYrxP3ectVmE2N6JezBK6OKqhB_tlIAwUu7K8B7vsUStY8vduGtBd9fhb4LAisAb7dZyz7xJnOu2NtPW1IeU2rql67xVSbi&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdoPfvZix3zQOHZT4_hvs-spHwhD54QAB9mCCMvndAjZuZJOjGsyKfNt2_3YQtpqRms&ccb=13-1&oh=06_Q3_CAUQGGwDDcx7ORHGaUQzr2pbVajy4xbNnjYcjUmMjGgNF&oe=6A920282&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/10073161673788295345?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLz7cG19ou7tXZpMgEFb9HKewv8NHedhiE6Fqiqixr51ukM6FVRVHFXZsYrxP3ectVmE2N6JezBK6OKqhB_tlIAwUu7K8B7vsUStY8vduGtBd9fhb4LAisAb7dZyz7xJnOu2NtPW1IeU2rql67xVSbi&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdoPfvZix3zQOHZT4_hvs-spHwhD54QAB9mCCMvndAjZuZJOjGsyKfNt2_3YQtpqRms&ccb=13-1&oh=06_Q3_CAePKTgDXvJC7bOeNlFySbKQL49xXwpfpBIeQfBeZ3DjC&oe=6A92AB42&_nc_sid=58080a"
     },
     "120253594326880496": {
       "ad_name": "260707_영상_소개팅0표남 - 사본 - 사본",
       "campaign_name": "Conv_260715_disc50_AB",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/740769659_1405060938337474_4695269018811893760_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=c_oqO5iWLb8Q7kNvwELg7FL&_nc_oc=AdobHbVkk1RiEsJcUtSTVaP88SNXRntcgfQuug-daErEEyvs9B7IPBUVCGboBdqWOI0&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIOP38Tg00lhoZpx8opmql6LJVIRGnUgPGJvsWL6oL-e3yMA51wmWvMumRAKnla3fXUjkF2GdBGrw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQFpX4soYIKTBLFl79pUqfbjbuot_AQ3nW03iRQum87JpA&oe=6A95D8C1"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/740769659_1405060938337474_4695269018811893760_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=7P28Pdf9oosQ7kNvwFrZrzZ&_nc_oc=AdoLGxweq5tm94-FoN5jpUpuHlMwuXdbatzpkk4og9k0hG_V8qDcOYo1ryanOU9jHNw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI5Hpq_wseeqdX8EU_pwHJ3e3_-N1NcDNm2jndWIJOYqNHVBGpA_cDh_K1AppJ0cqjct1KwYIIqFQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQGAIhxV_iKSL3-sG38PIN1Kw4dvuwVUnIssXyG8yXXrbg&oe=6A96B9C1"
     },
     "120253594326920496": {
       "ad_name": "260707_고객후기_캐러셀_1 - 사본 - 사본",
       "campaign_name": "Conv_260715_disc50_AB",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/16070310967998241443?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQISkGKAWMTpeZ1GhepbLkNnP-Y6R1b8fVaBdJ9c2moxOT1N-TYisVj79xLxsLjKs-j32YEu94UoG_v6W4YJAYxSQIfoasr0RL5aWQoZramZpyCzqvfWDgz6FeYfJBSYW5mDMP6OkVEffRjEx6ySbkfF&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdrrlpbaD3AgwIYmZuI6hnneGL8aJyXl0QR4SANgdLvFT2a1hC4anlGK0yQdVrzGJFo&ccb=13-1&oh=06_Q3_CAVxmJWeUK2YyuWKL4Hm-pr-o0Wm-Od_atPbqAb0WD8fU&oe=6A91D966&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/16070310967998241443?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQISkGKAWMTpeZ1GhepbLkNnP-Y6R1b8fVaBdJ9c2moxOT1N-TYisVj79xLxsLjKs-j32YEu94UoG_v6W4YJAYxSQIfoasr0RL5aWQoZramZpyCzqvfWDgz6FeYfJBSYW5mDMP6OkVEffRjEx6ySbkfF&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdqJVgIXBXC5TbROhkFOd_pgqJtadLgWmiFTxq3OKyAXJFmkzQQEUzX-IN1YRTOfNZc&ccb=13-1&oh=06_Q3_CASmnLNFwctjkvzNxgvyxVV0CL_lA_oKXE0rRxklCsitI&oe=6A92BA66&_nc_sid=58080a"
     },
     "120253594355220496": {
       "ad_name": "260615_리얼미_검은티 - 사본 - 사본 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723509133_122116334150735105_1989633725758008645_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=C-HdRX-YcEkQ7kNvwH5pVmv&_nc_oc=AdqByF7gSaVU-3fpmIYC7onKGgz4wW6Cpxi62IswbyWTjK1yX2SePdR-mMu_Ep_BZmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJBaYICOl8eJs3BE3QTh6wAwpTVP5uIJHlCiy5lnAH82_CYH3qpHNDz8dScAUeWlXB0Q1qpbaDdgg&oh=00_AQFDwSLz67F_1tJlimQJU3qVmizPP8EWkwG7FQFbvLT-Fw&oe=6A95E3F1"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723509133_122116334150735105_1989633725758008645_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=C-HdRX-YcEkQ7kNvwH5pVmv&_nc_oc=AdqByF7gSaVU-3fpmIYC7onKGgz4wW6Cpxi62IswbyWTjK1yX2SePdR-mMu_Ep_BZmU&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI4H3--76q-YhWe81PxmW4TxjoA3W9cyAHTedZl9rwYP7vdiS8bTtN3zQjDi8LpiLEikAifQu2SqA&oh=00_AQHWBaJxSTgbuiq6VZlJEyC08lIBx3QL6ZS2b91OsFFL4w&oe=6A96C4F1"
     },
     "120253594355230496": {
       "ad_name": "260615_AI_디렉팅_코디 - 사본 - 사본 - 사본",
       "campaign_name": "Conv_260623_findme",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=3JPD6IxNGwMQ7kNvwHFhnXB&_nc_oc=Adoq249I7dpqpp2vr_f4t_-a1N6A9SE3ouJl9IIX753rK1H5x_5gG9scGNbMGskM6zI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI_p_n48KW5JQr7bEjwMoab2-oXtRi4dh0iZS1BGPhWjB_iFey73KQ9vJah1rulibIvnzttoSHl_A&oh=00_AQG0RhcOoPLwYA4MFet4zO-7vg_LTGeYfLjkwDZu0Xvgrg&oe=6A95DECC"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=9oYFr9VffNgQ7kNvwFVxXOO&_nc_oc=Adrtam5RNEG-iGoLrX1vvS-sY0RFgr6ab-d6_Ij21OAYnEUdWH4GfPf7nMfNTBNqEaA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKVofU30qg0ZMZmPNKsX7oUr83xVvZy-XYk8Ho5BCxNUjpOe6xOrO2IgN7Qro74che_kOU7VKdaRw&oh=00_AQHa52LaSY1Iqmt_F1rnwv-cLC43qsvxaEFroG2A3A7-Uw&oe=6A96BFCC"
     },
     "120253594534840496": {
       "ad_name": "260707_영상_소개팅0표남 - 사본 - 사본 - 사본",
       "campaign_name": "Conv_260715_disc50_AB",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/740769659_1405060938337474_4695269018811893760_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=c_oqO5iWLb8Q7kNvwELg7FL&_nc_oc=AdobHbVkk1RiEsJcUtSTVaP88SNXRntcgfQuug-daErEEyvs9B7IPBUVCGboBdqWOI0&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLIUAXVf46k16HtDsf2ggWMM1neeIGWaUKgLDvMenVJVZw8O3AIP6JpJLNGiDV7_8u2-I62vQPhCw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQEpDfbBZ4ZRVqrVcdi95Vqm-bhYI5JrF4Ju0zdVAE9p8Q&oe=6A95D8C1"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/740769659_1405060938337474_4695269018811893760_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=7P28Pdf9oosQ7kNvwFrZrzZ&_nc_oc=AdoLGxweq5tm94-FoN5jpUpuHlMwuXdbatzpkk4og9k0hG_V8qDcOYo1ryanOU9jHNw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKRK-4lonTQq8luiq4W4qTWb5cAwjoiLGB666pVgpEnhcXoQmOZg7ze6gCdmfuoLUBaDgVyTDYK_g&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQE3W8Hc534ccEamtP4u-Dc7OW-TmP0JYWDeqvyrCcgmqg&oe=6A96B9C1"
     },
     "120253594534850496": {
       "ad_name": "260707_고객후기_캐러셀_1 - 사본 - 사본 - 사본",
       "campaign_name": "Conv_260715_disc50_AB",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/2308891111702247999?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLSTF1HlsQQ1QcShOv6wv2IZ7evysJzKXLH2k2bZv0mMnOAjqP8nI0kIk113JDAGH5YmKcfUGc-h7eRQGKTWODveXJXDM2wIwDmOVdstLLYH5Ekq53U5eU3_L2Q2wCYbHuqpqgUwBYE-uuGgDXiJgux&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdpERv6BWI_fFBqexHNdaENvxd_bu5FxlzfH5uZR7s1btrytmtuxZHGlyvRCHpuHoKI&ccb=13-1&oh=06_Q3_CAb9WK3h6zq3epBCQT2arAFhvAiA_BI-SBi5eVXiZiEyI&oe=6A92019C&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/2308891111702247999?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLSTF1HlsQQ1QcShOv6wv2IZ7evysJzKXLH2k2bZv0mMnOAjqP8nI0kIk113JDAGH5YmKcfUGc-h7eRQGKTWODveXJXDM2wIwDmOVdstLLYH5Ekq53U5eU3_L2Q2wCYbHuqpqgUwBYE-uuGgDXiJgux&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdpERv6BWI_fFBqexHNdaENvxd_bu5FxlzfH5uZR7s1btrytmtuxZHGlyvRCHpuHoKI&ccb=13-1&oh=06_Q3_CAar6TI8Zr_O1VIVhz1TrTMqc06PohFiXFoH2_kiS4Rqu&oe=6A92AA5C&_nc_sid=58080a"
     },
     "120253594534860496": {
       "ad_name": "20260707_고객후기_캐러셀_2_사본 - 사본 - 사본",
       "campaign_name": "Conv_260715_disc50_AB",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/3782875545256682733?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLECujs1niZdMD-BZLvqz6OeFO56PPD4j27ekAtiBYQctK6lGpYJ21XaCCjTPY6GtqZFGFp_95kci1-fsTCkcYCMa4zio-za5lI6tcP9MsTVHtCCmIwbny9cUuwZKunfWMZ9z29L3KF3XzC2FgaBqze&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdqmwBKUKQ-U0UfI-MVidWCxAxJJSJObof0gCJ_Td-lM78m0XLJ8b8UJJxaJqcPlb5k&ccb=13-1&oh=06_Q3_CAZZ_lqDbYMTJVxcGrIsqgJ2ozGj5E1ug41B0AxUHhoLv&oe=6A91EB26&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/3782875545256682733?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLECujs1niZdMD-BZLvqz6OeFO56PPD4j27ekAtiBYQctK6lGpYJ21XaCCjTPY6GtqZFGFp_95kci1-fsTCkcYCMa4zio-za5lI6tcP9MsTVHtCCmIwbny9cUuwZKunfWMZ9z29L3KF3XzC2FgaBqze&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdqmwBKUKQ-U0UfI-MVidWCxAxJJSJObof0gCJ_Td-lM78m0XLJ8b8UJJxaJqcPlb5k&ccb=13-1&oh=06_Q3_CAWET-Qh8zND_CyDvVGz2qyewKj5BCXCvtBa9bPLy7S0l&oe=6A92CC26&_nc_sid=58080a"
     },
     "120253715381750496": {
       "ad_name": "260707_고객후기_캐러셀_2",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/85576571890381986?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIXXoojKe5bviZHpBYvhGpuTBQXrdqBKwhs4aMzAKoyUoDGPyLp1Xpaq4NElCH4rJG-XIgwvFccncC9bZWPfaRkPSYAdS8r2-O3go4a2YMmvP-nOe3KZFUqt6l921C_jp8OcTorb9qCWl_VvkDcuUwF&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdoIDUolnbUoMtjxCuFzf9-fFqfkzJDzqoY1y947m2AQ7aaLbWMZ0nX_0AMZLHrk54Q&ccb=13-1&oh=06_Q3_CARtG1eJj_umkJTTWY8vBCQRGBOa9eNWsLjt157JMwNfZ&oe=6A91E36C&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/85576571890381986?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIXXoojKe5bviZHpBYvhGpuTBQXrdqBKwhs4aMzAKoyUoDGPyLp1Xpaq4NElCH4rJG-XIgwvFccncC9bZWPfaRkPSYAdS8r2-O3go4a2YMmvP-nOe3KZFUqt6l921C_jp8OcTorb9qCWl_VvkDcuUwF&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdoIDUolnbUoMtjxCuFzf9-fFqfkzJDzqoY1y947m2AQ7aaLbWMZ0nX_0AMZLHrk54Q&ccb=13-1&oh=06_Q3_CAfN0vq_YwGVyAk9cxDfrPLWwPNexsdfU3gxy9jRh8GWX&oe=6A92C46C&_nc_sid=58080a"
     },
     "120253715381760496": {
       "ad_name": "260707_고객후기_캐러셀_1",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/2176192912201165292?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQKl1sGYFmblreDNamK3j6O_jXXjgkt3bYLVQEEdSHDAJezI08yr6UjMOi6dfcXWJey11P3FtGxXFgt7wlNYzFqZC3-Rm3kZKc3P7_axA_syanFhkyEkk-_knZDjg9suK_k_y-xfY9A4zm61YrJBvEk7&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdryqUezGUCokk4YocaqsnVHyO942l2eGbh3HXltyO28AyFiKOYyh6rbnmchCMQdB1Q&ccb=13-1&oh=06_Q3_CAWVw6Z2-FiLmTXKL7shdQp5Dxn7_2-vMaSsbyBOoPNJU&oe=6A91EF1B&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/2176192912201165292?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQKl1sGYFmblreDNamK3j6O_jXXjgkt3bYLVQEEdSHDAJezI08yr6UjMOi6dfcXWJey11P3FtGxXFgt7wlNYzFqZC3-Rm3kZKc3P7_axA_syanFhkyEkk-_knZDjg9suK_k_y-xfY9A4zm61YrJBvEk7&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdpbeEOHm_IRTvG5s4WI_l_K5kKfgGSdqLOibkW_P7g-SRGIpB_NQCN4_Kv49hf-8wg&ccb=13-1&oh=06_Q3_CAd1gu10YLFVNvILQX_O5Av_CyDRxOJr2rVppUuE5W1ez&oe=6A92D01B&_nc_sid=58080a"
     },
     "120253715381770496": {
       "ad_name": "260615_AI_디렉팅_코디",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=3JPD6IxNGwMQ7kNvwHFhnXB&_nc_oc=Adoq249I7dpqpp2vr_f4t_-a1N6A9SE3ouJl9IIX753rK1H5x_5gG9scGNbMGskM6zI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI_p_n48KW5JQr7bEjwMoab2-oXtRi4dh0iZS1BGPhWjB_iFey73KQ9vJah1rulibIvnzttoSHl_A&oh=00_AQG0RhcOoPLwYA4MFet4zO-7vg_LTGeYfLjkwDZu0Xvgrg&oe=6A95DECC"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=9oYFr9VffNgQ7kNvwFVxXOO&_nc_oc=Adrtam5RNEG-iGoLrX1vvS-sY0RFgr6ab-d6_Ij21OAYnEUdWH4GfPf7nMfNTBNqEaA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKVofU30qg0ZMZmPNKsX7oUr83xVvZy-XYk8Ho5BCxNUjpOe6xOrO2IgN7Qro74che_kOU7VKdaRw&oh=00_AQHa52LaSY1Iqmt_F1rnwv-cLC43qsvxaEFroG2A3A7-Uw&oe=6A96BFCC"
     },
     "120253715381790496": {
       "ad_name": "260707_영상_소개팅0표남",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/740769659_1405060938337474_4695269018811893760_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=c_oqO5iWLb8Q7kNvwELg7FL&_nc_oc=AdobHbVkk1RiEsJcUtSTVaP88SNXRntcgfQuug-daErEEyvs9B7IPBUVCGboBdqWOI0&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJdC-W3bExQCgalB5mwwKq2mOgh0fsaCYh0kyXeB8mLOo1B4xcZcrCD_-ImOfHwHhNicTnOOIj7fQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQFG487dQeKm4ac7JNlclAzEjROukbhkBKvtv2S3IqJhGg&oe=6A95D8C1"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/740769659_1405060938337474_4695269018811893760_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=7P28Pdf9oosQ7kNvwFrZrzZ&_nc_oc=AdoLGxweq5tm94-FoN5jpUpuHlMwuXdbatzpkk4og9k0hG_V8qDcOYo1ryanOU9jHNw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI0sflH2mwPvvfUOZJS8kmpK037fTcsbgR1RxOUhCN4RBXB76_n-I4zSVggR__5WE_nv3blV9cHIQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQEt3bXmqJmyuGU-LgL5IvBeCWv45sZ3WI48CSY2idiBJg&oe=6A96B9C1"
     },
     "120253715341620496": {
       "ad_name": "260615_AI_디렉팅_코디",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=3JPD6IxNGwMQ7kNvwHFhnXB&_nc_oc=Adoq249I7dpqpp2vr_f4t_-a1N6A9SE3ouJl9IIX753rK1H5x_5gG9scGNbMGskM6zI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI_p_n48KW5JQr7bEjwMoab2-oXtRi4dh0iZS1BGPhWjB_iFey73KQ9vJah1rulibIvnzttoSHl_A&oh=00_AQG0RhcOoPLwYA4MFet4zO-7vg_LTGeYfLjkwDZu0Xvgrg&oe=6A95DECC"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=9oYFr9VffNgQ7kNvwFVxXOO&_nc_oc=Adrtam5RNEG-iGoLrX1vvS-sY0RFgr6ab-d6_Ij21OAYnEUdWH4GfPf7nMfNTBNqEaA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKVofU30qg0ZMZmPNKsX7oUr83xVvZy-XYk8Ho5BCxNUjpOe6xOrO2IgN7Qro74che_kOU7VKdaRw&oh=00_AQHa52LaSY1Iqmt_F1rnwv-cLC43qsvxaEFroG2A3A7-Uw&oe=6A96BFCC"
     },
     "120253883936180496": {
       "ad_name": "before_after_video_20260727_유민수님",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/754677183_884323074373672_1765733603105589517_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=MgOxFrYYWXsQ7kNvwEoT6f_&_nc_oc=AdrYMjB-eMBZ2318ArAwq1x2jktBh9kGAHEFbzvwNMmuSE3vQiTwcjTsF44KlTsexVw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI7dfXepV2wGg2kqM8Ukfj_zQSts29bphqQ7PCCBHN1UpIeuj3laA72Ii6kXQSkPld953gEw5TVmQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQGpVbBF1g7UDGpjzkSfHuA67IFM6KyNYexgyFqE9QjLZA&oe=6A95D41F"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/754677183_884323074373672_1765733603105589517_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=MgOxFrYYWXsQ7kNvwEoT6f_&_nc_oc=AdrYMjB-eMBZ2318ArAwq1x2jktBh9kGAHEFbzvwNMmuSE3vQiTwcjTsF44KlTsexVw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQITA-Ga7z0kTQEnkgYsAZCXXSOJiQTRsIEMhUh0DiT0FBB6uKk3YiN12oZCbqv7_wAEmsjBjLu8Hg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQEv6nUMz9qV3nM7l44W1G4htN3aeQcs1Be9g7S0Y6SY7g&oe=6A96B51F"
     },
     "120253884235040496": {
       "ad_name": "before_after_video_20260727_유민수님 - 사본",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/754677183_884323074373672_1765733603105589517_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=MgOxFrYYWXsQ7kNvwEoT6f_&_nc_oc=AdrYMjB-eMBZ2318ArAwq1x2jktBh9kGAHEFbzvwNMmuSE3vQiTwcjTsF44KlTsexVw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQL3wXNHC73VXMUpmMX7S6KVi5etL7DRt0GDzbPaWIaFBK5yFcqIqcZx-cXs6qnOmMmCui1YR3WUxg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQHckDjBYV5hp1yo-q3eadbgf6DcVOk28YlJpDBxJyRRZw&oe=6A95D41F"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/754677183_884323074373672_1765733603105589517_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=MgOxFrYYWXsQ7kNvwEoT6f_&_nc_oc=AdrYMjB-eMBZ2318ArAwq1x2jktBh9kGAHEFbzvwNMmuSE3vQiTwcjTsF44KlTsexVw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKEe9S2ZzmlRZmax2aYzBKYGYpgSzaC7EAGqEVklx3CNYRg2vpAP4FuTWP1vepE069WztyrG0ta3A&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQHFBfWrqIBYBanAF4KUB9XKnl5VFnJcQP6gZI_mij-lCA&oe=6A96B51F"
     },
     "120254136511300496": {
       "ad_name": "260805_고객후기_캐러셀_경령님",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/5206539224286903774?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJD9RrIzY4YbvJifCFYpPxkYlyTDCDyy_4X82bgMw1ET4zamrjlkqu_3rKVlB2Zc54FZ8BHJ1xoV_Gck6vFD1FwWj1rvqpBSpcAgERjZtxZe_WYh3StsgvhC39t9UYHfOc-SEhGMCxl6itT0pmP_Ptv&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdpZQaQz-meaCbuvbS3qoErq85MRWvzc5jedCCNorlFJwztehWtaMNDbt1cXyRbBx2I&ccb=13-1&oh=06_Q3_CAS_vdd4ufSg06TYpFkSgBPAkNHDQv_qYa5mg3SdeSadl&oe=6A91EF92&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/5206539224286903774?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJD9RrIzY4YbvJifCFYpPxkYlyTDCDyy_4X82bgMw1ET4zamrjlkqu_3rKVlB2Zc54FZ8BHJ1xoV_Gck6vFD1FwWj1rvqpBSpcAgERjZtxZe_WYh3StsgvhC39t9UYHfOc-SEhGMCxl6itT0pmP_Ptv&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdpZQaQz-meaCbuvbS3qoErq85MRWvzc5jedCCNorlFJwztehWtaMNDbt1cXyRbBx2I&ccb=13-1&oh=06_Q3_CARUwur5iAL7hwWhRgAHVmpcj33fvzXLY8xUmj7onEQXe&oe=6A92D092&_nc_sid=58080a"
     },
     "120254136880830496": {
       "ad_name": "260805_고객후기_캐러셀3_종민님",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/11708378373769918996?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQK6vSbaXR9jTA00q8Ibn7nM46uPAp3P9I2tMCMVteVYRdEDocET7qkcmM0PFnmX6U_MstHj1xRi5CLgUQlRz7l0MUKmi0_Sl774J567gJv6cwvhIZPzRjh-WrNY082LoCVIIgBOEOysjzow7Dt8Rna6&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdpkBMDU587ao814fVWmNkpUNXm8UkjvPpBqbExm0PrUfHCmrBzW3-0iKeW7Sk6SN-s&ccb=13-1&oh=06_Q3_CATbz2H6N9djwyDcl6hBMP6Qg8nuuOnmROlhS68cfasn4&oe=6A91DE6D&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/11708378373769918996?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQK6vSbaXR9jTA00q8Ibn7nM46uPAp3P9I2tMCMVteVYRdEDocET7qkcmM0PFnmX6U_MstHj1xRi5CLgUQlRz7l0MUKmi0_Sl774J567gJv6cwvhIZPzRjh-WrNY082LoCVIIgBOEOysjzow7Dt8Rna6&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdpkBMDU587ao814fVWmNkpUNXm8UkjvPpBqbExm0PrUfHCmrBzW3-0iKeW7Sk6SN-s&ccb=13-1&oh=06_Q3_CAaGhMapuHeYUCIbr1CoshvHw_suG4PAQEIUJHtjRLjXx&oe=6A92BF6D&_nc_sid=58080a"
     },
     "120254136975130496": {
       "ad_name": "before_after_video_202600805_이러고살거야",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/765796398_4015371475437565_3429371659247135851_n.jpg?_nc_cat=110&ccb=1-7&_nc_ohc=h51dBtJpVHsQ7kNvwEsuLTC&_nc_oc=Adp_vRoIw5XqghJdbtMwZMX4pi8bzM3kuru0k4Jnma07_7MxoHRFtVg56uaSaDijiRI&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKTpi3hgsAb55aTrQZqzcEcM08llVgy2J0UxQ74RBjfdEfOLgHEmmd9oNl6Vc6Js56uvSL2iJLG5w&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQGWikkiV6h7xl6a08H0b_P5eDngnrtt3Zl9-RHY5YNbxg&oe=6A95D412"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/765796398_4015371475437565_3429371659247135851_n.jpg?_nc_cat=110&ccb=1-7&_nc_ohc=h51dBtJpVHsQ7kNvwEsuLTC&_nc_oc=Adp_vRoIw5XqghJdbtMwZMX4pi8bzM3kuru0k4Jnma07_7MxoHRFtVg56uaSaDijiRI&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKG9EIJw8VkXBd1a_8WwdoahEcZPDl5HTph5Vs5xX1zX3u3Xs5H3tEZPz_O1Mq1Ys0tbZJMN0aP_Q&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQH_kRLe3BJJp_w2mKRWzjsW3rvWW4jCrIotO-3Gpl6VxQ&oe=6A96B512"
     },
     "120254137120990496": {
       "ad_name": "before_after_video_202600805_지환님",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/765263209_2620534881737622_8310015964091102165_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=ZVjVk43pmcAQ7kNvwGT_N2B&_nc_oc=AdrUCF8S573n0oSYu_qEnYAzh91DntlOG4ZNcw7VVV6Rl_deVqcQStF2tGOtzkI0OLI&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLwQuPfJeBdIuQAgU3AA_rt_adrfviWeYh1syStqTbuRfoXpmlWSeGe0sVQVmzdc6wfEDdRKKaiZw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQEx3pBaqdaHnWS_aWDc9N8EEG_jrZF6T3WOn1NRR5olhQ&oe=6A95E975"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/765263209_2620534881737622_8310015964091102165_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=jVCOYSwbzU8Q7kNvwEXLOJE&_nc_oc=AdrLD4nZM2hnrj9uwUH6S3bfkvMVkSmNwSKkoEYd8w2cp6HN4kP-im2XrdxYvZTz8Qw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKGtJUYLhX9ud0kW9x3-aNbKyVesBObaK9P10vwgDDHd8QF2U6gxIAkOv0PsUsTT7OUtd9BlxArgQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQGrWymioWBBtEIjxGHUcEhANOqQQimxaY_bY-tF_ySRbw&oe=6A96CA75"
     },
     "120254138777050496": {
       "ad_name": "260805_고객후기_캐러셀3_종민님 - 사본",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/4447693807731297350?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLpcCGxV2AadGF5XlGVhREGK_ltzNYzWVI0Xm4KTyk3bhnjiC8DFf_mS9HMKveot0zGuMerihpbNZvkxRX6civaEZuW40oReDD0qQU453EXPJyLKP4K6tgX6MggpIjsedkh-vhqzKD8dZPYfcqzEmb7&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdoZG0W1v98eY_4O_k91JsUEzQQqypyOZFI6xl_ORUi7_ywKLG4aIW1M_ckQQ-y79iI&ccb=13-1&oh=06_Q3_CAR0FXN3i6Tktpi2Qw2ZUg_P9urzdBB6JllWsgnJoEA-h&oe=6A920B01&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/4447693807731297350?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLpcCGxV2AadGF5XlGVhREGK_ltzNYzWVI0Xm4KTyk3bhnjiC8DFf_mS9HMKveot0zGuMerihpbNZvkxRX6civaEZuW40oReDD0qQU453EXPJyLKP4K6tgX6MggpIjsedkh-vhqzKD8dZPYfcqzEmb7&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdoZG0W1v98eY_4O_k91JsUEzQQqypyOZFI6xl_ORUi7_ywKLG4aIW1M_ckQQ-y79iI&ccb=13-1&oh=06_Q3_CASMKVTr4jsKrkbqiySmyKi20nhk9aJgZpgjA7WTgasGK&oe=6A92B3C1&_nc_sid=58080a"
     },
     "120254138777060496": {
       "ad_name": "260805_고객후기_캐러셀_경령님 - 사본",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/8821144895510233985?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIEV52--tq37M0ckbRA6n6_DAvms2g3E0iemPEfhKs_Q4iJaDSx039pkc0Q8bAa2enqg1wMAaXDYWHK6cF2B3FFY6WkL0POy4QvOQjRzCJy9MUXPJPc80p2kp13bbcCvxNQiejERaX8MgTTmVaLfEfx&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdoeAOLnXBvxFoltDNZg5uAD6QM3CsMvi3G-K8-N29g04GtShBqmjpFPpkC7qhdXhnU&ccb=13-1&oh=06_Q3_CAd2KfGcC0dzRG-0EDtu02TwPW7iH2Zr5ZDnTpJWQ2rBO&oe=6A91DF8E&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/8821144895510233985?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIEV52--tq37M0ckbRA6n6_DAvms2g3E0iemPEfhKs_Q4iJaDSx039pkc0Q8bAa2enqg1wMAaXDYWHK6cF2B3FFY6WkL0POy4QvOQjRzCJy9MUXPJPc80p2kp13bbcCvxNQiejERaX8MgTTmVaLfEfx&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=Adrr8fO85L04MLVJ84AzFR8cslc6rChnUWFEkkqYPWbmxasEn8aCrBQHJ6ISJ2YfLH4&ccb=13-1&oh=06_Q3_CAdo4mRZ37c0f7BhDk_ub_aWty3Inl3iWDMOYu51sLBcD&oe=6A92C08E&_nc_sid=58080a"
     },
     "120254138777070496": {
       "ad_name": "before_after_video_202600805_이러고살거야 - 사본",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/765796398_4015371475437565_3429371659247135851_n.jpg?_nc_cat=110&ccb=1-7&_nc_ohc=h51dBtJpVHsQ7kNvwEsuLTC&_nc_oc=Adp_vRoIw5XqghJdbtMwZMX4pi8bzM3kuru0k4Jnma07_7MxoHRFtVg56uaSaDijiRI&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJs7Ix1nFdo5LrgyeTOkDdWAIByOjOqvXzJIIyTfU2sdEkB4mwX1RUFBRWgvm-EeCy0sO5P_RL5QA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQHDbLx6yQCLtngXAKVWTlHVNdP6awYZw06Y2mDd15Er3w&oe=6A95D412"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/765796398_4015371475437565_3429371659247135851_n.jpg?_nc_cat=110&ccb=1-7&_nc_ohc=h51dBtJpVHsQ7kNvwEsuLTC&_nc_oc=Adp_vRoIw5XqghJdbtMwZMX4pi8bzM3kuru0k4Jnma07_7MxoHRFtVg56uaSaDijiRI&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLVYvwFbU0bwM4TQvSfRlso0jkz4kB2LW47ghrSkvxvBxFjm4WvDbt_KZPeLCh7tnx0iiZtso3daw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQGAdSDwPDADLZDytqiO0-Jp2RYhlRwzYe7m-qZBV_Jo6A&oe=6A96B512"
     },
     "120254138777080496": {
       "ad_name": "before_after_video_202600805_지환님 - 사본",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/765263209_2620534881737622_8310015964091102165_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=ZVjVk43pmcAQ7kNvwGT_N2B&_nc_oc=AdrUCF8S573n0oSYu_qEnYAzh91DntlOG4ZNcw7VVV6Rl_deVqcQStF2tGOtzkI0OLI&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIsLqCbXu9kNy0kYv80-5E5C7dLfmCFiNVmGSmHrtT4zCZOTqPXl2qxQXaRtKOBv_Mr1pPpAErXqQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQH_P02f1O-TLnwRCeHSnRTjQT4nJfGhv6l_Rtu0hLek4A&oe=6A95E975"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/765263209_2620534881737622_8310015964091102165_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=jVCOYSwbzU8Q7kNvwEXLOJE&_nc_oc=AdrLD4nZM2hnrj9uwUH6S3bfkvMVkSmNwSKkoEYd8w2cp6HN4kP-im2XrdxYvZTz8Qw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKpexbzvbT03_sYgrAH5mnpDuNzw-psKzcpLtuRNSJfdylGHY5BjedYHQP8M8Iszhz_9sQPXcociA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQH6VWB9ktergu4JyMZ34fdYTDOTumfNxxShl1smLZ9PqA&oe=6A96CA75"
     },
     "120254193662100496": {
       "ad_name": "260707_고객후기_캐러셀_2",
       "campaign_name": "Retarget_260807_typeform",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/364645731448438889?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQKxj8sCP1mnj7-1MQKYnAM_TtA7L9KmXUlebrb3qR0RmSeM8WUFpW1D32nVAMLvyb6HMyz_Rz1I4nYuCCszNzLKzxsGC0mAT9ZZlBquUuY9dDqwXxuItm7N0djSDYQfN8Dr4lhtFFW0ngB83dCz8AQW&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdoMzow8qtvcWhJSIdlUwEbJ3e-U0TQiqo6OdeUkCaH-GihiMEKsedD4YsgNAwaFnRc&ccb=13-1&oh=06_Q3_CAeps6aE7eq0XOAH2fjQFRIRq1uilzm0WOuCG5MIBKK1p&oe=6A91D9B0&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/364645731448438889?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQKxj8sCP1mnj7-1MQKYnAM_TtA7L9KmXUlebrb3qR0RmSeM8WUFpW1D32nVAMLvyb6HMyz_Rz1I4nYuCCszNzLKzxsGC0mAT9ZZlBquUuY9dDqwXxuItm7N0djSDYQfN8Dr4lhtFFW0ngB83dCz8AQW&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdoMzow8qtvcWhJSIdlUwEbJ3e-U0TQiqo6OdeUkCaH-GihiMEKsedD4YsgNAwaFnRc&ccb=13-1&oh=06_Q3_CAWSUHviwuuKxHAMbpDvkTwX_Knarf7k3ML6Nb84EYbxv&oe=6A92BAB0&_nc_sid=58080a"
     },
     "120254195674990496": {
       "ad_name": "find_story_260615_AI_디렉팅_코디",
       "campaign_name": "Conv_260807_findme_story",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=3JPD6IxNGwMQ7kNvwHFhnXB&_nc_oc=Adoq249I7dpqpp2vr_f4t_-a1N6A9SE3ouJl9IIX753rK1H5x_5gG9scGNbMGskM6zI&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQI_p_n48KW5JQr7bEjwMoab2-oXtRi4dh0iZS1BGPhWjB_iFey73KQ9vJah1rulibIvnzttoSHl_A&oh=00_AQG0RhcOoPLwYA4MFet4zO-7vg_LTGeYfLjkwDZu0Xvgrg&oe=6A95DECC"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=9oYFr9VffNgQ7kNvwFVxXOO&_nc_oc=Adrtam5RNEG-iGoLrX1vvS-sY0RFgr6ab-d6_Ij21OAYnEUdWH4GfPf7nMfNTBNqEaA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKVofU30qg0ZMZmPNKsX7oUr83xVvZy-XYk8Ho5BCxNUjpOe6xOrO2IgN7Qro74che_kOU7VKdaRw&oh=00_AQHa52LaSY1Iqmt_F1rnwv-cLC43qsvxaEFroG2A3A7-Uw&oe=6A96BFCC"
     },
     "120254195675010496": {
       "ad_name": "find_story_260707_고객후기_캐러셀_2",
       "campaign_name": "Conv_260807_findme_story",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/16890047177300986003?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIDUrDahGKPWOQ42ohRtYkQJHyPCTtp_-XEI1n7h-GDYWrCrfTCP6GGuSpLX4njv7VA_KH73uasUNAYu1wNvhratz-zI5VZJi0YR-dvJJSExVDctI00BIZYSoVQzaKQE7DWNNWqvNGlrMQy1yJqPr05&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=Adp01eo__yPrUw0gIPj7bIzSSGyd326T0fWUboL-XpNwAde6Vcezb0drJsFIlD9veRs&ccb=13-1&oh=06_Q3_CAXTALkA9ODXPJxTWnuxwgqkhm_VvEWPjK902tT5lr8sf&oe=6A91F0FD&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/16890047177300986003?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIDUrDahGKPWOQ42ohRtYkQJHyPCTtp_-XEI1n7h-GDYWrCrfTCP6GGuSpLX4njv7VA_KH73uasUNAYu1wNvhratz-zI5VZJi0YR-dvJJSExVDctI00BIZYSoVQzaKQE7DWNNWqvNGlrMQy1yJqPr05&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=Adp01eo__yPrUw0gIPj7bIzSSGyd326T0fWUboL-XpNwAde6Vcezb0drJsFIlD9veRs&ccb=13-1&oh=06_Q3_CASpdptUCW3kVPjDY7ZQS97lgJNLVrf38ol2gOat2Ws19&oe=6A92D1FD&_nc_sid=58080a"
     },
     "120254296362700496": {
       "ad_name": "before_after_video_20260727_유민수님 - 사본",
       "campaign_name": "Retarget_260807_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/754677183_884323074373672_1765733603105589517_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=MgOxFrYYWXsQ7kNvwEoT6f_&_nc_oc=AdrYMjB-eMBZ2318ArAwq1x2jktBh9kGAHEFbzvwNMmuSE3vQiTwcjTsF44KlTsexVw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIfwTV462oFOiDkpS4VrzgTGaVBai4AZ2_cUqlUj9i0Ylnmo8_EcnrWgrhvBgJpawDQ5tJycWP2vg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQF5JHUoVWKgbNAqJnDSBI7Tg9ReLffvpQIUKtsOPtwEoA&oe=6A95D41F"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/754677183_884323074373672_1765733603105589517_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=MgOxFrYYWXsQ7kNvwEoT6f_&_nc_oc=AdrYMjB-eMBZ2318ArAwq1x2jktBh9kGAHEFbzvwNMmuSE3vQiTwcjTsF44KlTsexVw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLFxfFLpMB_rXZyJzsAla2HZ71zuWSHXpAtgSBFyEY9M77uIt5WaD8a9Y3evm4dhDo9ohqTE5rcwg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQH0jL8w4ZppPII5AIrmPNR5_LX9VlgeYAKEkwTC-B96gQ&oe=6A96B51F"
     },
     "120254195674940496": {
       "ad_name": "find_story_before_after_video_202600805_지환님",
       "campaign_name": "Conv_260807_findme_story",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/765263209_2620534881737622_8310015964091102165_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=ZVjVk43pmcAQ7kNvwGT_N2B&_nc_oc=AdrUCF8S573n0oSYu_qEnYAzh91DntlOG4ZNcw7VVV6Rl_deVqcQStF2tGOtzkI0OLI&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQK7ipE7ejI7Ab3favsLJuNcBd-aU3HbGbnbRMN__6gBvqBW3TP8-dxEmUCKlPpDd5PnAGnZfGxZfw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQFPWyd-ooqemyiZTlAhAkk2M-sHYVaj33q13XJ0ej1I7A&oe=6A95E975"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/765263209_2620534881737622_8310015964091102165_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=jVCOYSwbzU8Q7kNvwEXLOJE&_nc_oc=AdrLD4nZM2hnrj9uwUH6S3bfkvMVkSmNwSKkoEYd8w2cp6HN4kP-im2XrdxYvZTz8Qw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLp2dlrypzCSArGLEPVuuxrEmj3jIeKgzNdKfilhmODacxjAVRk27Z0qsfEs_Vjizq5vxWSg7_Otw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQFFOBvBoV4yGaMvU7R87lCYN5aYh8qq2FojS-Svh1N__Q&oe=6A96CA75"
     },
     "120254195674950496": {
       "ad_name": "find_story_260805_고객후기_캐러셀_경령님",
       "campaign_name": "Conv_260807_findme_story",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/9873945031710524991?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQL7Ub6PKxAd6ElgkQIkBkRKYKf1KLQqkw0DABeAOBbQE_YuyXVf-I5b1V7LgY1BwfsuR2bocTxQfDhCEFLJAd9f9o8YeDbLc47yL2DOM9jKibtwr_jkJS0fNuyIJwwcApr195uUyudc1m1elZwup-wn&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=Ado45aiVFTUKjVw6J5j9wFQaP0XNCtagSyk45YOWJh__oZ88e6o3yUcyC2JRsmAlULo&ccb=13-1&oh=06_Q3_CAbk01aJJkTG7Oax0s5IZX17Sx_iTYiSxNvomVkOwldsg&oe=6A91FC18&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/9873945031710524991?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQL7Ub6PKxAd6ElgkQIkBkRKYKf1KLQqkw0DABeAOBbQE_YuyXVf-I5b1V7LgY1BwfsuR2bocTxQfDhCEFLJAd9f9o8YeDbLc47yL2DOM9jKibtwr_jkJS0fNuyIJwwcApr195uUyudc1m1elZwup-wn&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=Ado45aiVFTUKjVw6J5j9wFQaP0XNCtagSyk45YOWJh__oZ88e6o3yUcyC2JRsmAlULo&ccb=13-1&oh=06_Q3_CAVRIETBZDN70ZUMrI-JGStI9lk9qMQicfMWxviNeqF-d&oe=6A92A4D8&_nc_sid=58080a"
     },
     "120254195674980496": {
       "ad_name": "find_story_before_after_video_20260727_유민수님",
       "campaign_name": "Conv_260807_findme_story",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/754677183_884323074373672_1765733603105589517_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=MgOxFrYYWXsQ7kNvwEoT6f_&_nc_oc=AdrYMjB-eMBZ2318ArAwq1x2jktBh9kGAHEFbzvwNMmuSE3vQiTwcjTsF44KlTsexVw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIn468yB9cTHXMk2K0PUcf33mzlSgjh2LStnWH5D5lFRosX3O23L0ztUQS4-B1iXIwsrFGw7GvIig&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQFkcSSOPylACHbX2X4fbA3dT-1zf03VUMFY0tOQ2gxEYw&oe=6A95D41F"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/754677183_884323074373672_1765733603105589517_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=MgOxFrYYWXsQ7kNvwEoT6f_&_nc_oc=AdrYMjB-eMBZ2318ArAwq1x2jktBh9kGAHEFbzvwNMmuSE3vQiTwcjTsF44KlTsexVw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI5y0Ybv8k52bg-en24lEnGTwwJdtQDTCPGAPxc28Qa7l-G1CaSlS-gzonXUfXvTv59YLivH5wiXw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQF8SxaFO7t2nN4n7ELAcCBpzMwbr5_85cq_WUtxKUiuhw&oe=6A96B51F"
     },
     "120254401875070496": {
       "ad_name": "260814_BA 자신감",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773827565_122128737410735105_2852501498494386571_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=K2CoiWm-sPQQ7kNvwEq2_tw&_nc_oc=AdqkaBpeXq-zmpFrK_W88Q0DHpDXngpxBiJ33vnZ63LYVK5BCHM4LtjpVj6QGnuIhB8&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIYnlB2dsbTDhVScsrKCPJQwRk1C7dP_RSCgg_rKuN2IQW-VuHebJjEUuhjKkC-reJG-7Fp1rDEWQ&oh=00_AQHgtpJUsQEJiLLx8RfhxJEbFgZ8423UVEAzUvq6H3we5Q&oe=6A95E20A"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773827565_122128737410735105_2852501498494386571_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=K2CoiWm-sPQQ7kNvwEq2_tw&_nc_oc=AdqkaBpeXq-zmpFrK_W88Q0DHpDXngpxBiJ33vnZ63LYVK5BCHM4LtjpVj6QGnuIhB8&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKh3rbJrPbj9H-w189rdVxENpptKK_L0B_3eZ-HX1wJEJi0g6R-f5pDbXF8r3rwjh76dI-kUrm_MQ&oh=00_AQExBoSH7m20PBEgC00eogx_JFDeeHxD6mHiQydQBHNtbA&oe=6A96C30A"
     },
     "120254402142820496": {
       "ad_name": "260814_엄마디렉터",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/772656949_122128737428735105_7649518834106147525_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=su7U0_PJYiYQ7kNvwEYc5dP&_nc_oc=Ado_I3o0s_GPZsbjcEXOVO5Ea--1z-tJ_CE_99rguNe8f1U9bcOaS2P-QbcVU-VCLUg&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLOEypqbOeefSYTCWQO5ewkR1W5UMEPnyEAQTxPLX-AR78C9ddZKxmypVpSGZ2PUP7c7aoJIHEVNQ&oh=00_AQEy3TSFybJPtcLoEJGzOfESdbysS_EazPHl1dtseCPm5w&oe=6A95EEA8"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/772656949_122128737428735105_7649518834106147525_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=su7U0_PJYiYQ7kNvwEYc5dP&_nc_oc=Ado_I3o0s_GPZsbjcEXOVO5Ea--1z-tJ_CE_99rguNe8f1U9bcOaS2P-QbcVU-VCLUg&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLEqeaFmdTSyHuWG6kVtwm0utaqofKuhUBQbnfBtDj1kQ9-Bh0nq2z5Td7OYZb1nau-5jdOq7DfEQ&oh=00_AQG3VkzNCFRxJggeBsp8V4vHkqMr-FZ8J41e0N2wBJytnw&oe=6A969768"
     },
     "120254402284660496": {
       "ad_name": "260814_체형",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773014151_122128737284735105_5989752909879177522_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=fCH0b1AGgK4Q7kNvwEcRROh&_nc_oc=AdpYEzAklTqsrN-CgH32E1_Se1-PgA249zGCtn9lAn4rU386wDH5xuXdMjMyzsS34TA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQK8QLDA8zJqG8AANv5Xmkj5FM1UZdz9FBKa4ttE9q0F94lFOFx77S97evJF3osQAp2BSx0EI-sCpw&oh=00_AQFAhPT5JGlvVheHkaZLWK13XQCRvmm7GCbLxGdDSnOZ5w&oe=6A95D69F"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773014151_122128737284735105_5989752909879177522_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=fCH0b1AGgK4Q7kNvwEcRROh&_nc_oc=AdpYEzAklTqsrN-CgH32E1_Se1-PgA249zGCtn9lAn4rU386wDH5xuXdMjMyzsS34TA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQK2OaExEzWxSUdq5Z9NmjhWWWIDArke5LTuvqOhMcwCXoByR4muJQBUPcMEjFP7rNTomvJ6bt8K6w&oh=00_AQGYdpCgwJIXxa7k4CUFrIlp4erZClL3N7RzCOrn4ysGKQ&oe=6A96B79F"
     },
     "120254402423250496": {
       "ad_name": "260814_영상_여자친구",
       "campaign_name": "Lead_260812_gift_female",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/768704045_1133216272550918_1885447107912137690_n.jpg?_nc_cat=108&ccb=1-7&_nc_ohc=5A8nbcEgSZkQ7kNvwFc-iZU&_nc_oc=AdoLoMVFo2rB9R1gKIbBcHXDOpztdunDFWAYohc6cIe5P_aNb9mOF4RVZ9GZikldJgg&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJ9Y7yTmBwGj3Ic4JTgwSJdR3cfrANFzuJvcgSU5h-_kzJ4IsdOQFGiIjDYkUFzUganj61SivqAzw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQFZXAhmN91orzWinl7XcfA_2GktXlHTy_RuZE-1HJNx1Q&oe=6A95F61B"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/768704045_1133216272550918_1885447107912137690_n.jpg?_nc_cat=108&ccb=1-7&_nc_ohc=5A8nbcEgSZkQ7kNvwFc-iZU&_nc_oc=AdoLoMVFo2rB9R1gKIbBcHXDOpztdunDFWAYohc6cIe5P_aNb9mOF4RVZ9GZikldJgg&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLLaJqoTzQbOgUB2xpstLwKulNeW8Hy_GgsCDyFPIVtmHwRLIHMA8Q-t0YlTtXs01PGTAQykZFpDA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQFg4ofwKoor226eVWbTppUapHdcB1lO7RuW1t8X8M3K1A&oe=6A969EDB"
     },
     "120254402519050496": {
       "ad_name": "260814_엄마디렉터 - 사본",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/772656949_122128737428735105_7649518834106147525_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=su7U0_PJYiYQ7kNvwEYc5dP&_nc_oc=Ado_I3o0s_GPZsbjcEXOVO5Ea--1z-tJ_CE_99rguNe8f1U9bcOaS2P-QbcVU-VCLUg&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLOEypqbOeefSYTCWQO5ewkR1W5UMEPnyEAQTxPLX-AR78C9ddZKxmypVpSGZ2PUP7c7aoJIHEVNQ&oh=00_AQEy3TSFybJPtcLoEJGzOfESdbysS_EazPHl1dtseCPm5w&oe=6A95EEA8"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/772656949_122128737428735105_7649518834106147525_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=su7U0_PJYiYQ7kNvwEYc5dP&_nc_oc=Ado_I3o0s_GPZsbjcEXOVO5Ea--1z-tJ_CE_99rguNe8f1U9bcOaS2P-QbcVU-VCLUg&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLEqeaFmdTSyHuWG6kVtwm0utaqofKuhUBQbnfBtDj1kQ9-Bh0nq2z5Td7OYZb1nau-5jdOq7DfEQ&oh=00_AQG3VkzNCFRxJggeBsp8V4vHkqMr-FZ8J41e0N2wBJytnw&oe=6A969768"
     },
     "120254402519060496": {
       "ad_name": "260814_BA 자신감 - 사본",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773827565_122128737410735105_2852501498494386571_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=K2CoiWm-sPQQ7kNvwEq2_tw&_nc_oc=AdqkaBpeXq-zmpFrK_W88Q0DHpDXngpxBiJ33vnZ63LYVK5BCHM4LtjpVj6QGnuIhB8&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIYnlB2dsbTDhVScsrKCPJQwRk1C7dP_RSCgg_rKuN2IQW-VuHebJjEUuhjKkC-reJG-7Fp1rDEWQ&oh=00_AQHgtpJUsQEJiLLx8RfhxJEbFgZ8423UVEAzUvq6H3we5Q&oe=6A95E20A"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773827565_122128737410735105_2852501498494386571_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=K2CoiWm-sPQQ7kNvwEq2_tw&_nc_oc=AdqkaBpeXq-zmpFrK_W88Q0DHpDXngpxBiJ33vnZ63LYVK5BCHM4LtjpVj6QGnuIhB8&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKh3rbJrPbj9H-w189rdVxENpptKK_L0B_3eZ-HX1wJEJi0g6R-f5pDbXF8r3rwjh76dI-kUrm_MQ&oh=00_AQExBoSH7m20PBEgC00eogx_JFDeeHxD6mHiQydQBHNtbA&oe=6A96C30A"
     },
     "120254402519070496": {
       "ad_name": "260814_체형 - 사본",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773014151_122128737284735105_5989752909879177522_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=fCH0b1AGgK4Q7kNvwEcRROh&_nc_oc=AdpYEzAklTqsrN-CgH32E1_Se1-PgA249zGCtn9lAn4rU386wDH5xuXdMjMyzsS34TA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQK8QLDA8zJqG8AANv5Xmkj5FM1UZdz9FBKa4ttE9q0F94lFOFx77S97evJF3osQAp2BSx0EI-sCpw&oh=00_AQFAhPT5JGlvVheHkaZLWK13XQCRvmm7GCbLxGdDSnOZ5w&oe=6A95D69F"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773014151_122128737284735105_5989752909879177522_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=fCH0b1AGgK4Q7kNvwEcRROh&_nc_oc=AdpYEzAklTqsrN-CgH32E1_Se1-PgA249zGCtn9lAn4rU386wDH5xuXdMjMyzsS34TA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQK2OaExEzWxSUdq5Z9NmjhWWWIDArke5LTuvqOhMcwCXoByR4muJQBUPcMEjFP7rNTomvJ6bt8K6w&oh=00_AQGYdpCgwJIXxa7k4CUFrIlp4erZClL3N7RzCOrn4ysGKQ&oe=6A96B79F"
     },
     "120254402542330496": {
       "ad_name": "260814_체형 - 사본",
       "campaign_name": "Conv_260807_findme_story",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773014151_122128737284735105_5989752909879177522_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=fCH0b1AGgK4Q7kNvwEcRROh&_nc_oc=AdpYEzAklTqsrN-CgH32E1_Se1-PgA249zGCtn9lAn4rU386wDH5xuXdMjMyzsS34TA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQK8QLDA8zJqG8AANv5Xmkj5FM1UZdz9FBKa4ttE9q0F94lFOFx77S97evJF3osQAp2BSx0EI-sCpw&oh=00_AQFAhPT5JGlvVheHkaZLWK13XQCRvmm7GCbLxGdDSnOZ5w&oe=6A95D69F"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773014151_122128737284735105_5989752909879177522_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=fCH0b1AGgK4Q7kNvwEcRROh&_nc_oc=AdpYEzAklTqsrN-CgH32E1_Se1-PgA249zGCtn9lAn4rU386wDH5xuXdMjMyzsS34TA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQK2OaExEzWxSUdq5Z9NmjhWWWIDArke5LTuvqOhMcwCXoByR4muJQBUPcMEjFP7rNTomvJ6bt8K6w&oh=00_AQGYdpCgwJIXxa7k4CUFrIlp4erZClL3N7RzCOrn4ysGKQ&oe=6A96B79F"
     },
     "120254402542340496": {
       "ad_name": "260814_BA 자신감 - 사본",
       "campaign_name": "Conv_260807_findme_story",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773827565_122128737410735105_2852501498494386571_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=K2CoiWm-sPQQ7kNvwEq2_tw&_nc_oc=AdqkaBpeXq-zmpFrK_W88Q0DHpDXngpxBiJ33vnZ63LYVK5BCHM4LtjpVj6QGnuIhB8&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIYnlB2dsbTDhVScsrKCPJQwRk1C7dP_RSCgg_rKuN2IQW-VuHebJjEUuhjKkC-reJG-7Fp1rDEWQ&oh=00_AQHgtpJUsQEJiLLx8RfhxJEbFgZ8423UVEAzUvq6H3we5Q&oe=6A95E20A"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773827565_122128737410735105_2852501498494386571_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=K2CoiWm-sPQQ7kNvwEq2_tw&_nc_oc=AdqkaBpeXq-zmpFrK_W88Q0DHpDXngpxBiJ33vnZ63LYVK5BCHM4LtjpVj6QGnuIhB8&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKh3rbJrPbj9H-w189rdVxENpptKK_L0B_3eZ-HX1wJEJi0g6R-f5pDbXF8r3rwjh76dI-kUrm_MQ&oh=00_AQExBoSH7m20PBEgC00eogx_JFDeeHxD6mHiQydQBHNtbA&oe=6A96C30A"
     },
     "120254402542350496": {
       "ad_name": "260814_엄마디렉터 - 사본",
       "campaign_name": "Conv_260807_findme_story",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/772656949_122128737428735105_7649518834106147525_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=su7U0_PJYiYQ7kNvwEYc5dP&_nc_oc=Ado_I3o0s_GPZsbjcEXOVO5Ea--1z-tJ_CE_99rguNe8f1U9bcOaS2P-QbcVU-VCLUg&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLOEypqbOeefSYTCWQO5ewkR1W5UMEPnyEAQTxPLX-AR78C9ddZKxmypVpSGZ2PUP7c7aoJIHEVNQ&oh=00_AQEy3TSFybJPtcLoEJGzOfESdbysS_EazPHl1dtseCPm5w&oe=6A95EEA8"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/772656949_122128737428735105_7649518834106147525_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=su7U0_PJYiYQ7kNvwEYc5dP&_nc_oc=Ado_I3o0s_GPZsbjcEXOVO5Ea--1z-tJ_CE_99rguNe8f1U9bcOaS2P-QbcVU-VCLUg&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLEqeaFmdTSyHuWG6kVtwm0utaqofKuhUBQbnfBtDj1kQ9-Bh0nq2z5Td7OYZb1nau-5jdOq7DfEQ&oh=00_AQG3VkzNCFRxJggeBsp8V4vHkqMr-FZ8J41e0N2wBJytnw&oe=6A969768"
     },
     "120254402604510496": {
       "ad_name": "260814_캐러셀_남편",
       "campaign_name": "Lead_260812_gift_female",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/11375701666336666354?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIwYwUkcAX3b3_RJ1zvJuS8Wsbga9X3mJHvoy3TQsAVAqMCOHPKOs8weMvrMm9hb5D6PLZnAgR2wU6Bg-pckDDkbCvuEnWwFAvInX4cKTyW5zx-4lwCfWMj_QRwBTdpvF61F2G3QWypJMl4rxMHIb35&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdpHVAMSH0om3AWbAtblwpY3hz8UXtWYHliVxrwu5nevOaxDDXG5FvDi6VubrpE4To8&ccb=13-1&oh=06_Q3_CAZpP2OvV7QBFs6WuBFf5UnJeXMVrXdbOkCHWyMPIAq6B&oe=6A91DD27&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/11375701666336666354?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIwYwUkcAX3b3_RJ1zvJuS8Wsbga9X3mJHvoy3TQsAVAqMCOHPKOs8weMvrMm9hb5D6PLZnAgR2wU6Bg-pckDDkbCvuEnWwFAvInX4cKTyW5zx-4lwCfWMj_QRwBTdpvF61F2G3QWypJMl4rxMHIb35&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdpHVAMSH0om3AWbAtblwpY3hz8UXtWYHliVxrwu5nevOaxDDXG5FvDi6VubrpE4To8&ccb=13-1&oh=06_Q3_CASoIVdSoUEGoI7vxfkrbwfvAH3y8kTbk45UEc8I9VmZz&oe=6A92BE27&_nc_sid=58080a"
     },
     "120254402727800496": {
       "ad_name": "260814_기회형_실력전달",
       "campaign_name": "Conv_260812_pro_impact",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773493066_122128747742735105_2529367161479675296_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=y6zBUIBQ6iYQ7kNvwEwilzg&_nc_oc=AdoK3CAv6cjbaame3t5ffvfWylp9N2JrBcBTV-Vcgj1VKgvlJsTNv-tCqo4WBoNSyHo&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJy9SAJ1IHsP5kWGZstPYaf9OwIUD8e8cbaWiJ0AJAvFedJsSa3SCL6pBMQz03jpYgrrfJLefy6RQ&oh=00_AQGmuMAJyDnQbEPZVJW3Hw028NlhgDv4jaoIiDVJ4F5cPg&oe=6A95FFBE"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773493066_122128747742735105_2529367161479675296_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=y6zBUIBQ6iYQ7kNvwEwilzg&_nc_oc=AdoK3CAv6cjbaame3t5ffvfWylp9N2JrBcBTV-Vcgj1VKgvlJsTNv-tCqo4WBoNSyHo&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKErB2A9iKFrDGm6yzotAAADT5VD1_YXnAzbRUAzMf5m4gjfuTwTGJzpFrjXF9umqa7r14e8sWXRA&oh=00_AQF85JmBaNCXP1D1gHDt8-5SPQhLsNHoNBvWTsbnijALwQ&oe=6A96A87E"
     },
     "120254402753010496": {
       "ad_name": "260814_기회형_경쟁력",
       "campaign_name": "Conv_260812_pro_impact",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773613465_122128748504735105_375918683533787843_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=i7kuEw_BHH0Q7kNvwFwzZJh&_nc_oc=AdoS-BoTTR5SU9vudzJNqZpDtPXFjDpYwct4ZUIYzJrs2HREFchlb5ljpdAKHPw0izQ&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQKvv_GFuwPOJkAR0ie17KVpyFeNJY9wv9MqQn7XdT_ymy5cl4kjWSaQZRXK46U6_lMzLDZNqBxQ1g&oh=00_AQGHM3ytvCNFrNbrR9t3rxr3i3sm7QkY4p8oga2Eqg3YBw&oe=6A95EB3B"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773613465_122128748504735105_375918683533787843_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=i7kuEw_BHH0Q7kNvwFwzZJh&_nc_oc=AdoS-BoTTR5SU9vudzJNqZpDtPXFjDpYwct4ZUIYzJrs2HREFchlb5ljpdAKHPw0izQ&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQIIhFt9RL3ofFcZ3SWdGGZW_NUKFv1RLYMZzRIYbEb8ZoBO6QjyyzXTLmLkUUs2siBHFBGuAWsT_w&oh=00_AQH3qQB_RH4hwTY-GyiAEXk2Kr8Y2SHtilcSWqnSC9g0dA&oe=6A96CC3B"
     },
     "120254402769650496": {
       "ad_name": "260814_기회형_여의도",
       "campaign_name": "Conv_260812_pro_impact",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/774473282_122128749608735105_6706525691313887876_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=1sKI0nZtDd4Q7kNvwHRRVoL&_nc_oc=AdrTQx0uJgT25f1q4XW95xRcEN9EAESPgNRN3331zTMyQBgUVA_N_f9bATz2kFJQGJg&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJSwkaT_COD1Jq9sVHWE1bYvGq8ifOxEcCCyfm9Th3l5tcje7kMI4ssC6trvnBcBIYiIK24IMkRXA&oh=00_AQHCg3lZRu61MzKYgUU9x6Kvn8BXJTabuSU4Uh8cZrUGVw&oe=6A95D10A"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/774473282_122128749608735105_6706525691313887876_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=1sKI0nZtDd4Q7kNvwHRRVoL&_nc_oc=AdrTQx0uJgT25f1q4XW95xRcEN9EAESPgNRN3331zTMyQBgUVA_N_f9bATz2kFJQGJg&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQK1X3g5xd3AhQ-drrAFf33KB8pqA5lN3XyBbrl85vKq_DiavGjpn3cBN610dTsGg6RDY3ymuY7DOw&oh=00_AQE4fIznIosvf87UG-8_6lqlY3_F1OFmR_KXv6ZiuWaBYg&oe=6A96B20A"
     },
     "120254402877190496": {
       "ad_name": "260814_기회형_옆세무사",
       "campaign_name": "Conv_260812_pro_impact",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/774471613_122116008045364058_5867806294514469009_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=02HuvKigY0QQ7kNvwFRsWFY&_nc_oc=AdpJ7gglSxUon2xiFew4ka5VN2uLkd4n6hXN75-_m5nYhog9BtqLGYSSDA4tdMR4D6I&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQIEHbBQAE8Z9aenKG_eIcU6qFHFrn5Gw63Q59iUsxDs5beg55KwKFCr11jy-0IqbqvF18cDfhoZuw&oh=00_AQH72-l7a4dmqwCWsmOxgHsYixWW68EhoNXIg4E2VdB6Cw&oe=6A95D081"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/774471613_122116008045364058_5867806294514469009_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=02HuvKigY0QQ7kNvwFRsWFY&_nc_oc=AdpJ7gglSxUon2xiFew4ka5VN2uLkd4n6hXN75-_m5nYhog9BtqLGYSSDA4tdMR4D6I&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQK2asjC3Uhe3WWVxPUFp67BQyf-IX6GVC-OBqgKKMplboGkMlzI5jqTfjhe9a4ZA1HJmTsbrvO3nA&oh=00_AQEMuilDVtlydj_yiHLHrwEuOxEkEVl5PJQTRolkDZgtTg&oe=6A96B181"
     },
     "120254403029090496": {
       "ad_name": "260814_연애형_카톡_진국",
       "campaign_name": "Conv_260812_pro_impact",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773250888_122128760612735105_5423835980747369413_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=VlROqEuy294Q7kNvwEMnUGt&_nc_oc=Adpx-oFE19PGoyai2mCGy76GLqvEfFX3dRb4xAfMa2UADy9Tji5D5WC2rPebVUKEkr4&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJpIRnRZNfRrSNetfyDIXHOawluWeRNZNX30iScFHG-ujdD61fQzO4rQ1i8wRK0K_ZmwTuttqzqJA&oh=00_AQEiUMEn5BX-F9uvk3AJiCM2cELrIKGr-GwWXLFuppVdzg&oe=6A95E6AF"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773250888_122128760612735105_5423835980747369413_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=VlROqEuy294Q7kNvwEMnUGt&_nc_oc=Adpx-oFE19PGoyai2mCGy76GLqvEfFX3dRb4xAfMa2UADy9Tji5D5WC2rPebVUKEkr4&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJtvMnWT0JljVkvXabqBvFm4Pw2N1vN9djJAlgH25vCs-fTc1tZH922fJr89ay9yEkw77N84rl4XQ&oh=00_AQH-eQOwUxg-B_dRkfh6Ey9Y8xRNZdPMyiDiiY9xalTbKQ&oe=6A96C7AF"
     },
     "120254403177260496": {
       "ad_name": "260814_연애형_태도",
       "campaign_name": "Conv_260812_pro_impact",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773339396_122128757348735105_8030981309815702659_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=DNHh6zWI8Q4Q7kNvwFfpaG9&_nc_oc=AdrC52Vd5M3e-fGqP92LW0TbtgJOVrkr0sSQ4ZZGizZTkCfaGbp3WNNuua5-L2KOkrg&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJYr0jtJIZjMVGOr9HN4nmaWSybbQXI-yUk7Vr7yUa2DnSovDjEoXZRFRK7k6bHHUoklByJtU53cg&oh=00_AQEIxCaRqFPYyL1xSM1KogMmJXN25V-y_HZeWVGT29rdWw&oe=6A95D0F8"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773339396_122128757348735105_8030981309815702659_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=DNHh6zWI8Q4Q7kNvwFfpaG9&_nc_oc=AdrC52Vd5M3e-fGqP92LW0TbtgJOVrkr0sSQ4ZZGizZTkCfaGbp3WNNuua5-L2KOkrg&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQIbn-TF20Kl3iqp5VI_isX286-lEkcffrWQa7qE1w-Gy-dzAbMJZjirMVts1c0ySpkH6RJ8epfXHA&oh=00_AQGkI6zGP2rYZ5WqCJAZam517D7MRurVa20TsCPAV9pKag&oe=6A96B1F8"
     },
     "120254403481120496": {
       "ad_name": "260814_연애형_친구보다",
       "campaign_name": "Conv_260812_pro_impact",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/774076691_122128762868735105_1842496928672996505_n.png?stp=dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=i5y37Fvv0XMQ7kNvwGnc5kN&_nc_oc=AdoknaRS1laoxpebPhroUUCJq_bDamodNw5V70xaVn--SRPWQH5ldoZBZXtJabV7V6Y&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQK4oRf96utZhiNdGfFOZ6KW4Gta9VEX833Ar-KdpXMC7qKLNS78IwRd3inwXEmc2O1sxqcAk6yYOQ&oh=00_AQE3j6IqNCKLAosYAAlYtUqiIzbQOZVEhDJoZWVweY4FEw&oe=6A95F685"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/774076691_122128762868735105_1842496928672996505_n.png?stp=dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=i5y37Fvv0XMQ7kNvwGnc5kN&_nc_oc=AdoknaRS1laoxpebPhroUUCJq_bDamodNw5V70xaVn--SRPWQH5ldoZBZXtJabV7V6Y&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJxWdQbVO2iSAFPxni4jdeUpvnzmF6TVNHVV4akBFQFVAU9fj3_hmOUzwC9sIPbp-cAdCPXjXsezA&oh=00_AQGTeR8zhb-MInxzEfuaQRhzR3Ao3BMLRqBedQz9xK9KrQ&oe=6A969F45"
     },
     "120254403512960496": {
       "ad_name": "260814_연애형_반응",
       "campaign_name": "Conv_260812_pro_impact",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773250888_122128760612735105_5423835980747369413_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=VlROqEuy294Q7kNvwEMnUGt&_nc_oc=Adpx-oFE19PGoyai2mCGy76GLqvEfFX3dRb4xAfMa2UADy9Tji5D5WC2rPebVUKEkr4&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQJpIRnRZNfRrSNetfyDIXHOawluWeRNZNX30iScFHG-ujdD61fQzO4rQ1i8wRK0K_ZmwTuttqzqJA&oh=00_AQEiUMEn5BX-F9uvk3AJiCM2cELrIKGr-GwWXLFuppVdzg&oe=6A95E6AF"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773250888_122128760612735105_5423835980747369413_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=VlROqEuy294Q7kNvwEMnUGt&_nc_oc=Adpx-oFE19PGoyai2mCGy76GLqvEfFX3dRb4xAfMa2UADy9Tji5D5WC2rPebVUKEkr4&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJtvMnWT0JljVkvXabqBvFm4Pw2N1vN9djJAlgH25vCs-fTc1tZH922fJr89ay9yEkw77N84rl4XQ&oh=00_AQH-eQOwUxg-B_dRkfh6Ey9Y8xRNZdPMyiDiiY9xalTbKQ&oe=6A96C7AF"
     },
     "120254612999020496": {
       "ad_name": "260824_캐러셀_남편->남친_AI",
       "campaign_name": "Lead_260812_gift_female",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/784852714_122130186116735105_895041565449885621_n.png?stp=dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=iy--SlACYx0Q7kNvwFDSf2B&_nc_oc=Adq1cmc92_my5n7Eg-hSUM5V9RVd9opb1M1SnK2d2rDQnGLj_EpA20dHwyGAHhFQ-78&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQINSeRdYoM5x9jDXR0gGP3X7lJYJe1SbIqjHCyA8iTVC6d2z-wJN774dr2lfDVxnhEWTuR0SM8YTQ&oh=00_AQE_NI4QlckV647n4rxQRxLNWk3NJfmR7dw0xiXk-YWsgw&oe=6A960354"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/784852714_122130186116735105_895041565449885621_n.png?stp=dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=iy--SlACYx0Q7kNvwFDSf2B&_nc_oc=Adq1cmc92_my5n7Eg-hSUM5V9RVd9opb1M1SnK2d2rDQnGLj_EpA20dHwyGAHhFQ-78&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLtHOI5LxvYx3nw3dVHl6wwyDHVkn8ZLyJMQsOIaT54OXFA-xnTrfSJ7vz-42QBCXeGVlZaQmf14w&oh=00_AQEIer8guFHCJonshIBgBi1AiiHIQwWTOxAOTXU8p4fJsA&oe=6A96AC14"
     },
     "120254612999030496": {
       "ad_name": "260824_캐러셀_남편_남친_후기활용",
       "campaign_name": "Lead_260812_gift_female",
-      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/781486014_122130183176735105_3295404978074437666_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=g09rOSrir2cQ7kNvwHSWsi8&_nc_oc=Adq8QqDljvMowKFgGo-0p-YVMNYHzpCqgO7aWiPGuOx5iGh-vAQlAha8JyIpft6stXE&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_tpa=Q5bMBQLX9Ij6pW2YwVmqy0BFnY6znCmcgfTYrzILTWVeGnVvNg3VM0L6qydmL6QZBKMQsNtDcj2Jyob0rA&oh=00_AQGM5Si2DzBeIQ4rN369Hi9authQVhGdGP-1Sts017nSIg&oe=6A95E719"
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/781486014_122130183176735105_3295404978074437666_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=g09rOSrir2cQ7kNvwHSWsi8&_nc_oc=Adq8QqDljvMowKFgGo-0p-YVMNYHzpCqgO7aWiPGuOx5iGh-vAQlAha8JyIpft6stXE&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKYV7fdb-4wG5aRWZanAVAbf17caPZXWRmPHVvVH_zmUYCp9c6DffSRihGQ0XoivAsQTfn39ys9xg&oh=00_AQEXqw_XSCs2fXvnqdTqVxUO5O7c-NVugkkUAFCiJRwkcQ&oe=6A96C819"
     },
     "120254618476020496": {
       "ad_name": "고객후기_캐러셀_박준형",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/10596144669996298460?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIMUcCilt0e13hzpuNk7uPxfISeIcaZEgtplcv-52-TFK4zdR0Uzl888oL1xqrBmw4UGLxwfs9GnwFGD8dxBTGGYJddp6zc-zQHerdPDf-914WK4OoUe22T6hItM4XAGoj85wa5YVeUm55nQCGnl9OX&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=Ado-iKRMCycP2XZziBF5rIBLCjqbS0luDSDOqLbfGsFVcXwYXOJwDChifVAEVozEpFo&ccb=13-1&oh=06_Q3_CAVrSYuQLyi1ldza36yFpllWlaFEqv3jAFNp7NMsXgx-b&oe=6A91E216&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/10596144669996298460?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIMUcCilt0e13hzpuNk7uPxfISeIcaZEgtplcv-52-TFK4zdR0Uzl888oL1xqrBmw4UGLxwfs9GnwFGD8dxBTGGYJddp6zc-zQHerdPDf-914WK4OoUe22T6hItM4XAGoj85wa5YVeUm55nQCGnl9OX&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=Ado-iKRMCycP2XZziBF5rIBLCjqbS0luDSDOqLbfGsFVcXwYXOJwDChifVAEVozEpFo&ccb=13-1&oh=06_Q3_CAQh_2RcZjZhpfOXG_BEq6dyRyIt0BE81-7aMfS2muwWo&oe=6A92C316&_nc_sid=58080a"
     },
     "120254618476320496": {
       "ad_name": "고객후기_캐러셀_박준형",
       "campaign_name": "Lead_260623_typeform",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/4510197256893643352?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJsA41Xj_7jD0_Fm9HmbySQpCp-5cncjLbkjxULjjhyWV5aWcttUbgkSKfor2wx_Ny2klL2xKfp8Wn9qo5SxHj_7-DoJkAWHLSB6AZqFXlT_i98aR80Hrd3KtKU7wQpg_8UIVnizbQWLnsZlzQd7Yw_&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=Adp8PGtYzwGaJ81D1GfVH6PG00O05BX8oUpLVXlAvxEO_ZEw_Zyl7wfoILB554ZZKlo&ccb=13-1&oh=06_Q3_CAR9nBOwgai_ycXdPU7mSdcdH4sOXm7idtSKSbrplgIG6&oe=6A91D726&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/4510197256893643352?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJsA41Xj_7jD0_Fm9HmbySQpCp-5cncjLbkjxULjjhyWV5aWcttUbgkSKfor2wx_Ny2klL2xKfp8Wn9qo5SxHj_7-DoJkAWHLSB6AZqFXlT_i98aR80Hrd3KtKU7wQpg_8UIVnizbQWLnsZlzQd7Yw_&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=Adp8PGtYzwGaJ81D1GfVH6PG00O05BX8oUpLVXlAvxEO_ZEw_Zyl7wfoILB554ZZKlo&ccb=13-1&oh=06_Q3_CAX5SAZkaIApsMjy_UYq3Mkb1_4rsLCRTbwSW2Zy-JcLj&oe=6A92B826&_nc_sid=58080a"
     },
     "120254618477500496": {
       "ad_name": "고객후기_캐러셀_박준형",
       "campaign_name": "Conv_260807_findme_story",
-      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/1526983207873935366?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLZQSBXujPQiEIjXyynUH8crQHbB8Z4rm4vCqMyLqE9anWn8LJXrNjESTv5Lw6dmFuFLWXcj2EBSSoH1OIAjd-HhUril5U8i5xLucS6gEZqnrKwHEBOG4dpspcQXQcnWsZgIl3iVjyWTq3-wKz4sp_R&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=EYRkITaF5eTZAjBidZMSNw&_nc_oc=AdrXgqmXDHt_mfrvzt6eH0IyRtU8siWLQ0l7AEHvX_Ui_HZBMh7alvFgLJx0U_B_WKk&ccb=13-1&oh=06_Q3_CAX_MbVM7eBCNIEHJ7EEoT7XCDS8bVSI5vuQ6avv26o6w&oe=6A920896&_nc_sid=58080a"
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/1526983207873935366?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLZQSBXujPQiEIjXyynUH8crQHbB8Z4rm4vCqMyLqE9anWn8LJXrNjESTv5Lw6dmFuFLWXcj2EBSSoH1OIAjd-HhUril5U8i5xLucS6gEZqnrKwHEBOG4dpspcQXQcnWsZgIl3iVjyWTq3-wKz4sp_R&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=AdrTwOkLXOlxKK-1ifszytZ2ZjWQG-Rh6UIwyBZS7iIajCe2pvi95xLjQvx3frBqwjU&ccb=13-1&oh=06_Q3_CAScODmpY1HWAlbpQWgrRT4Y7G9lwjgDF-sn_bWdr88oB&oe=6A92B156&_nc_sid=58080a"
+    },
+    "120254682826420496": {
+      "ad_name": "260814_기회형_옆세무사 - 사본",
+      "campaign_name": "Conv_260827_premium_v2",
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/774471613_122116008045364058_5867806294514469009_n.png?stp=dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=02HuvKigY0QQ7kNvwFRsWFY&_nc_oc=AdpJ7gglSxUon2xiFew4ka5VN2uLkd4n6hXN75-_m5nYhog9BtqLGYSSDA4tdMR4D6I&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQK2asjC3Uhe3WWVxPUFp67BQyf-IX6GVC-OBqgKKMplboGkMlzI5jqTfjhe9a4ZA1HJmTsbrvO3nA&oh=00_AQEMuilDVtlydj_yiHLHrwEuOxEkEVl5PJQTRolkDZgtTg&oe=6A96B181"
+    },
+    "120254682826430496": {
+      "ad_name": "260814_연애형_반응 - 사본",
+      "campaign_name": "Conv_260827_premium_v2",
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773250888_122128760612735105_5423835980747369413_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=VlROqEuy294Q7kNvwEMnUGt&_nc_oc=Adpx-oFE19PGoyai2mCGy76GLqvEfFX3dRb4xAfMa2UADy9Tji5D5WC2rPebVUKEkr4&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJtvMnWT0JljVkvXabqBvFm4Pw2N1vN9djJAlgH25vCs-fTc1tZH922fJr89ay9yEkw77N84rl4XQ&oh=00_AQH-eQOwUxg-B_dRkfh6Ey9Y8xRNZdPMyiDiiY9xalTbKQ&oe=6A96C7AF"
+    },
+    "120254682826470496": {
+      "ad_name": "260814_기회형_실력전달 - 사본",
+      "campaign_name": "Conv_260827_premium_v2",
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773493066_122128747742735105_2529367161479675296_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=y6zBUIBQ6iYQ7kNvwEwilzg&_nc_oc=AdoK3CAv6cjbaame3t5ffvfWylp9N2JrBcBTV-Vcgj1VKgvlJsTNv-tCqo4WBoNSyHo&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKErB2A9iKFrDGm6yzotAAADT5VD1_YXnAzbRUAzMf5m4gjfuTwTGJzpFrjXF9umqa7r14e8sWXRA&oh=00_AQF85JmBaNCXP1D1gHDt8-5SPQhLsNHoNBvWTsbnijALwQ&oe=6A96A87E"
+    },
+    "120254682826480496": {
+      "ad_name": "260814_연애형_카톡_진국 - 사본",
+      "campaign_name": "Conv_260827_premium_v2",
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773250888_122128760612735105_5423835980747369413_n.png?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=VlROqEuy294Q7kNvwEMnUGt&_nc_oc=Adpx-oFE19PGoyai2mCGy76GLqvEfFX3dRb4xAfMa2UADy9Tji5D5WC2rPebVUKEkr4&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJtvMnWT0JljVkvXabqBvFm4Pw2N1vN9djJAlgH25vCs-fTc1tZH922fJr89ay9yEkw77N84rl4XQ&oh=00_AQH-eQOwUxg-B_dRkfh6Ey9Y8xRNZdPMyiDiiY9xalTbKQ&oe=6A96C7AF"
+    },
+    "120254682826490496": {
+      "ad_name": "260814_기회형_경쟁력 - 사본",
+      "campaign_name": "Conv_260827_premium_v2",
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773613465_122128748504735105_375918683533787843_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=i7kuEw_BHH0Q7kNvwFwzZJh&_nc_oc=AdoS-BoTTR5SU9vudzJNqZpDtPXFjDpYwct4ZUIYzJrs2HREFchlb5ljpdAKHPw0izQ&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQIIhFt9RL3ofFcZ3SWdGGZW_NUKFv1RLYMZzRIYbEb8ZoBO6QjyyzXTLmLkUUs2siBHFBGuAWsT_w&oh=00_AQH3qQB_RH4hwTY-GyiAEXk2Kr8Y2SHtilcSWqnSC9g0dA&oe=6A96CC3B"
+    },
+    "120254682826500496": {
+      "ad_name": "260814_연애형_태도 - 사본",
+      "campaign_name": "Conv_260827_premium_v2",
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773339396_122128757348735105_8030981309815702659_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=DNHh6zWI8Q4Q7kNvwFfpaG9&_nc_oc=AdrC52Vd5M3e-fGqP92LW0TbtgJOVrkr0sSQ4ZZGizZTkCfaGbp3WNNuua5-L2KOkrg&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQIbn-TF20Kl3iqp5VI_isX286-lEkcffrWQa7qE1w-Gy-dzAbMJZjirMVts1c0ySpkH6RJ8epfXHA&oh=00_AQGkI6zGP2rYZ5WqCJAZam517D7MRurVa20TsCPAV9pKag&oe=6A96B1F8"
+    },
+    "120254683444750496": {
+      "ad_name": "find_story_260615_AI_디렉팅_코디 - 사본",
+      "campaign_name": "Conv_260827_booking_v2",
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/723947206_122116334324735105_6972685415230559907_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=9oYFr9VffNgQ7kNvwFVxXOO&_nc_oc=Adrtam5RNEG-iGoLrX1vvS-sY0RFgr6ab-d6_Ij21OAYnEUdWH4GfPf7nMfNTBNqEaA&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKVofU30qg0ZMZmPNKsX7oUr83xVvZy-XYk8Ho5BCxNUjpOe6xOrO2IgN7Qro74che_kOU7VKdaRw&oh=00_AQHa52LaSY1Iqmt_F1rnwv-cLC43qsvxaEFroG2A3A7-Uw&oe=6A96BFCC"
+    },
+    "120254683444760496": {
+      "ad_name": "find_story_before_after_video_202600805_지환님 - 사본",
+      "campaign_name": "Conv_260827_booking_v2",
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/765263209_2620534881737622_8310015964091102165_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=jVCOYSwbzU8Q7kNvwEXLOJE&_nc_oc=AdrLD4nZM2hnrj9uwUH6S3bfkvMVkSmNwSKkoEYd8w2cp6HN4kP-im2XrdxYvZTz8Qw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQLp2dlrypzCSArGLEPVuuxrEmj3jIeKgzNdKfilhmODacxjAVRk27Z0qsfEs_Vjizq5vxWSg7_Otw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQFFOBvBoV4yGaMvU7R87lCYN5aYh8qq2FojS-Svh1N__Q&oe=6A96CA75"
+    },
+    "120254683444770496": {
+      "ad_name": "고객후기_캐러셀_박준형 - 사본",
+      "campaign_name": "Conv_260827_booking_v2",
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/11058692971334014526?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJy1vKsmQ95j8ObYCVgSC034xlsQc84gXnx3sSSA9eaO2QSsxJ36t0JOKZfyeyuPtWhpBmDCgqbsY0Z-Ux8eruT-PZaXCTbl7AxD5QGSCYr46G0e97hB2A81MrCdft--Ha0AB5tf1FEVE9OJXV9TJ8M&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=Adq9jO64hRCYB3mc7iAsZ2Z4O4Ix84o5kHjcEQtDKDRwYMx5oJCtBQ6GcQpGDL6wNcc&ccb=13-1&oh=06_Q3_CAc7o_0VZ9r0yHUnUHzTjSb7oLPHzvHPoYAgTVxWOWAm8&oe=6A92B1C3&_nc_sid=58080a"
+    },
+    "120254683444780496": {
+      "ad_name": "find_story_before_after_video_20260727_유민수님 - 사본",
+      "campaign_name": "Conv_260827_booking_v2",
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t15.5256-10/754677183_884323074373672_1765733603105589517_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=MgOxFrYYWXsQ7kNvwEoT6f_&_nc_oc=AdrYMjB-eMBZ2318ArAwq1x2jktBh9kGAHEFbzvwNMmuSE3vQiTwcjTsF44KlTsexVw&_nc_zt=23&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQI5y0Ybv8k52bg-en24lEnGTwwJdtQDTCPGAPxc28Qa7l-G1CaSlS-gzonXUfXvTv59YLivH5wiXw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQF8SxaFO7t2nN4n7ELAcCBpzMwbr5_85cq_WUtxKUiuhw&oe=6A96B51F"
+    },
+    "120254683444790496": {
+      "ad_name": "find_story_260707_고객후기_캐러셀_2 - 사본",
+      "campaign_name": "Conv_260827_booking_v2",
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/16890047177300986003?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIDUrDahGKPWOQ42ohRtYkQJHyPCTtp_-XEI1n7h-GDYWrCrfTCP6GGuSpLX4njv7VA_KH73uasUNAYu1wNvhratz-zI5VZJi0YR-dvJJSExVDctI00BIZYSoVQzaKQE7DWNNWqvNGlrMQy1yJqPr05&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=Adp01eo__yPrUw0gIPj7bIzSSGyd326T0fWUboL-XpNwAde6Vcezb0drJsFIlD9veRs&ccb=13-1&oh=06_Q3_CASpdptUCW3kVPjDY7ZQS97lgJNLVrf38ol2gOat2Ws19&oe=6A92D1FD&_nc_sid=58080a"
+    },
+    "120254683444800496": {
+      "ad_name": "260814_BA 자신감 - 사본 - 사본",
+      "campaign_name": "Conv_260827_booking_v2",
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/773827565_122128737410735105_2852501498494386571_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=K2CoiWm-sPQQ7kNvwEq2_tw&_nc_oc=AdqkaBpeXq-zmpFrK_W88Q0DHpDXngpxBiJ33vnZ63LYVK5BCHM4LtjpVj6QGnuIhB8&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQKh3rbJrPbj9H-w189rdVxENpptKK_L0B_3eZ-HX1wJEJi0g6R-f5pDbXF8r3rwjh76dI-kUrm_MQ&oh=00_AQExBoSH7m20PBEgC00eogx_JFDeeHxD6mHiQydQBHNtbA&oe=6A96C30A"
+    },
+    "120254683444810496": {
+      "ad_name": "find_story_260805_고객후기_캐러셀_경령님 - 사본",
+      "campaign_name": "Conv_260827_booking_v2",
+      "thumbnail": "https://external-icn2-1.xx.fbcdn.net/emg1/v/t13/9873945031710524991?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQL7Ub6PKxAd6ElgkQIkBkRKYKf1KLQqkw0DABeAOBbQE_YuyXVf-I5b1V7LgY1BwfsuR2bocTxQfDhCEFLJAd9f9o8YeDbLc47yL2DOM9jKibtwr_jkJS0fNuyIJwwcApr195uUyudc1m1elZwup-wn&fb_obo=1&utld=facebook.com&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_oc=Ado45aiVFTUKjVw6J5j9wFQaP0XNCtagSyk45YOWJh__oZ88e6o3yUcyC2JRsmAlULo&ccb=13-1&oh=06_Q3_CAVRIETBZDN70ZUMrI-JGStI9lk9qMQicfMWxviNeqF-d&oe=6A92A4D8&_nc_sid=58080a"
+    },
+    "120254682826450496": {
+      "ad_name": "260814_연애형_친구보다 - 사본",
+      "campaign_name": "Conv_260827_premium_v2",
+      "thumbnail": "https://scontent-icn2-1.xx.fbcdn.net/v/t45.1600-4/774076691_122128762868735105_1842496928672996505_n.png?stp=dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=i5y37Fvv0XMQ7kNvwGnc5kN&_nc_oc=AdoknaRS1laoxpebPhroUUCJq_bDamodNw5V70xaVn--SRPWQH5ldoZBZXtJabV7V6Y&_nc_zt=1&_nc_ht=scontent-icn2-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=82aiEEnNIY1wz6d63THhVA&_nc_tpa=Q5bMBQJxWdQbVO2iSAFPxni4jdeUpvnzmF6TVNHVV4akBFQFVAU9fj3_hmOUzwC9sIPbp-cAdCPXjXsezA&oh=00_AQGTeR8zhb-MInxzEfuaQRhzR3Ao3BMLRqBedQz9xK9KrQ&oe=6A969F45"
     }
   },
   "landing_buckets": [
@@ -20001,8 +20717,8 @@
     {
       "date": "2026-08-27",
       "landing_id": "discount-me",
-      "spend": 142686,
-      "visits": 111,
+      "spend": 214652,
+      "visits": 178,
       "booking": 0,
       "checkout": 0,
       "leads": 0,
@@ -20023,8 +20739,8 @@
     {
       "date": "2026-08-27",
       "landing_id": "premium",
-      "spend": 52971,
-      "visits": 24,
+      "spend": 66524,
+      "visits": 33,
       "booking": 0,
       "checkout": 0,
       "leads": 0,
@@ -20034,9 +20750,42 @@
     {
       "date": "2026-08-27",
       "landing_id": "story",
-      "spend": 24184,
-      "visits": 8,
-      "booking": 2,
+      "spend": 34467,
+      "visits": 30,
+      "booking": 5,
+      "checkout": 0,
+      "leads": 0,
+      "final_custom": 0,
+      "final_custom_estimated": false
+    },
+    {
+      "date": "2026-08-28",
+      "landing_id": "discount-me",
+      "spend": 46666,
+      "visits": 46,
+      "booking": 0,
+      "checkout": 0,
+      "leads": 0,
+      "final_custom": 0,
+      "final_custom_estimated": false
+    },
+    {
+      "date": "2026-08-28",
+      "landing_id": "premium",
+      "spend": 15332,
+      "visits": 9,
+      "booking": 0,
+      "checkout": 0,
+      "leads": 0,
+      "final_custom": 0,
+      "final_custom_estimated": false
+    },
+    {
+      "date": "2026-08-28",
+      "landing_id": "story",
+      "spend": 6882,
+      "visits": 18,
+      "booking": 4,
       "checkout": 0,
       "leads": 0,
       "final_custom": 0,
@@ -20990,17 +21739,33 @@
     {
       "date": "2026-08-27",
       "adset_name": "Lead_28-40_seoul_capital_NEW_2607",
-      "spend": 75743,
-      "visits": 59,
-      "typeform": 2,
+      "spend": 110482,
+      "visits": 96,
+      "typeform": 4,
       "leads": 0
     },
     {
       "date": "2026-08-27",
       "adset_name": "Lead_NEW_A/B_Test_얼굴",
-      "spend": 66943,
-      "visits": 52,
+      "spend": 104170,
+      "visits": 82,
       "typeform": 2,
+      "leads": 0
+    },
+    {
+      "date": "2026-08-28",
+      "adset_name": "Lead_28-40_seoul_capital_NEW_2607",
+      "spend": 24475,
+      "visits": 29,
+      "typeform": 0,
+      "leads": 0
+    },
+    {
+      "date": "2026-08-28",
+      "adset_name": "Lead_NEW_A/B_Test_얼굴",
+      "spend": 22191,
+      "visits": 17,
+      "typeform": 0,
       "leads": 0
     }
   ]
