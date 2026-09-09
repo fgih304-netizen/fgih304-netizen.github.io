@@ -1407,10 +1407,20 @@ function renderGoogleCard(){
   const ratePay = db? payments/db : null;
   const cpDb  = db? fmtWon(spend/db) : '—';
   const cpPay = payments? fmtWon(spend/payments) : '—';
+  // ⚖️ 광고·오가닉 비율 — Meta 랜딩 카드와 같은 형식(2026-09-09 사용자 "똑같이 해줘").
+  //   분모 = the-way 페이지 전체 세션(GA4 landing_page /the-way*), 광고 = 구글 캠페인 귀속 세션.
+  //   9/8 이전 구글은 impact-me 로 들어와 the-way 세션보다 광고 세션이 클 수 있어 분모는 둘 중 큰 값으로 잡는다.
+  const twTotal = (state.ga4Rows||[]).filter(r=>r.date>=since && r.date<=until && r.host==='find-me.real-me.co.kr' && String(r.landing_page||'').indexOf('/the-way')===0)
+                    .reduce((a,r)=>a+Number(r.sessions||0),0);
+  const hostTotal = Math.max(twTotal, visits);
+  const orgSess = Math.max(0, hostTotal - visits);
+  const splitBadge = hostTotal ? `⚖️ 광고 ${fmtPct(visits/hostTotal)} · 콘텐츠 0% · 오가닉 ${fmtPct(orgSess/hostTotal)} <span style="font-weight:400;color:#8a919c;">(the-way 전체 세션 ${fmtNum(hostTotal)} 기준)</span>${payments?` · 예약금 결제 광고 <b>${fmtNum(payments)}</b>·오가닉 <b>0</b>`:''}` : '';
   return `<div class="panel landing-card">
     <div class="lf-head">
-      <div class="lf-title">🔎 구글 광고 (검색 · 리마케팅 · 디맨드젠)</div>
-      <div class="cap">랜딩 the-way (9/8~) · 그 전 impact-me · <a href="https://find-me.real-me.co.kr/the-way/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">🔗 the-way 바로가기</a></div>
+      <div class="lf-title">구글 광고 (google · the-way)</div>
+      <a class="lf-link" href="https://find-me.real-me.co.kr/the-way/" target="_blank" rel="noopener">🔗 find-me.real-me.co.kr/the-way/</a>
+      ${splitBadge?`<span class="lf-sub" style="font-weight:700;">${splitBadge}</span>`:''}
+      <span class="lf-sub">${spendDetail||''}${spendDetail?' · ':''}9/8 이전은 impact-me 랜딩</span>
     </div>
     <div class="lf-stages">
       <div class="lf-stage-box lf-spend"><div class="lf-stage-label">💸 광고비</div><div class="lf-stage-value">${fmtWon(spend)}</div><div class="lf-stage-sub">${spendDetail||'GA4 연동값 · 청구는 Ads 콘솔'}</div></div>
