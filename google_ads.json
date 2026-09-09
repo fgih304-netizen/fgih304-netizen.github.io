@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-09T11:04:21",
+ "generated_at": "2026-09-09T11:15:37",
  "since": "2026-08-28",
  "until": "2026-09-09",
  "source": "GA4 Data API (Google Ads 연동) — 캠페인 단위 비용, Ads 콘솔이 청구 기준",
@@ -17,6 +17,7 @@
    "begin_checkout": 1,
    "typeform": 1,
    "cta_click": 4,
+   "hero": 35,
    "db": 1
   },
   {
@@ -31,6 +32,7 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 1,
+   "hero": 40,
    "db": 0
   },
   {
@@ -45,6 +47,7 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 0,
+   "hero": 197,
    "db": 0
   },
   {
@@ -59,6 +62,7 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 8,
+   "hero": 43,
    "db": 0
   },
   {
@@ -73,6 +77,7 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 9,
+   "hero": 134,
    "db": 0
   },
   {
@@ -87,6 +92,7 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 1,
+   "hero": 38,
    "db": 0
   },
   {
@@ -101,6 +107,7 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 1,
+   "hero": 238,
    "db": 0
   },
   {
@@ -115,6 +122,7 @@
    "begin_checkout": 1,
    "typeform": 1,
    "cta_click": 6,
+   "hero": 41,
    "db": 1
   },
   {
@@ -129,6 +137,7 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 9,
+   "hero": 404,
    "db": 0
   },
   {
@@ -143,6 +152,7 @@
    "begin_checkout": 1,
    "typeform": 1,
    "cta_click": 6,
+   "hero": 44,
    "db": 1
   },
   {
@@ -157,6 +167,7 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 31,
+   "hero": 505,
    "db": 0
   },
   {
@@ -171,6 +182,7 @@
    "begin_checkout": 1,
    "typeform": 1,
    "cta_click": 7,
+   "hero": 54,
    "db": 1
   },
   {
@@ -185,6 +197,7 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 6,
+   "hero": 80,
    "db": 0
   },
   {
@@ -199,6 +212,7 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 0,
+   "hero": 19,
    "db": 0
   },
   {
@@ -213,6 +227,7 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 3,
+   "hero": 114,
    "db": 0
   },
   {
@@ -227,6 +242,7 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 1,
+   "hero": 8,
    "db": 0
   },
   {
@@ -241,6 +257,7 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 0,
+   "hero": 4,
    "db": 0
   },
   {
@@ -255,34 +272,37 @@
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 0,
+   "hero": 10,
    "db": 0
   },
   {
    "date": "2026-09-09",
    "campaign": "SA_서비스_260828",
    "type": "SA",
-   "cost": 30302,
-   "clicks": 35,
-   "impressions": 486,
+   "cost": 32220,
+   "clicks": 37,
+   "impressions": 510,
    "sessions": 10,
    "engaged": 0,
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 1,
+   "hero": 2,
    "db": 0
   },
   {
    "date": "2026-09-09",
    "campaign": "DG_리마케팅_260907",
    "type": "RMK",
-   "cost": 12771,
-   "clicks": 55,
-   "impressions": 2431,
+   "cost": 13021,
+   "clicks": 56,
+   "impressions": 2475,
    "sessions": 16,
    "engaged": 0,
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 0,
+   "hero": 3,
    "db": 0
   },
   {
@@ -292,12 +312,14 @@
    "cost": 0,
    "clicks": 0,
    "impressions": 0,
-   "sessions": 9,
+   "sessions": 10,
    "engaged": 0,
    "begin_checkout": 0,
    "typeform": 0,
    "cta_click": 0,
+   "hero": 6,
    "db": 0
   }
- ]
+ ],
+ "payments": []
 }

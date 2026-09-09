@@ -641,8 +641,15 @@ async function loadGa4(name){
   // 구글 광고(SA·RMK·DG) — fetch_google_ads.py 산출물. 없으면 섹션만 빈 상태로 둔다(2026-09-09)
   const gads = (name==='real') ? await tryFile('google_ads.json') : null;
   const ga4GoogleRows = (gads && gads.rows) || [];
-  if (!json) return { ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4AbRows:[], ga4Attributed:[], ga4GoogleRows, ga4Source:null };
-  return { ga4Rows: json.rows||[], ga4ChannelRows: json.channel_rows||[], ga4Funnels: json.funnels||[], ga4LandingFunnels: json.landing_funnels||[], ga4AbRows: json.ab_event_rows||[], ga4Attributed: json.attributed_rows||[], ga4GoogleRows, ga4Source: usedSource };
+  // 구글 결제·매출 = regen 이 명단·원장에서 유입경로 google_* / 랜딩 the-way 를 Meta 집계에서 빼 둔 non_ad_revenue.csv(kind=google)
+  let ga4GoogleRev = [];
+  if (name==='real') {
+    const t = await fetch(bust('non_ad_revenue.csv')).then(r=>r.ok?r.text():'').catch(()=> '');
+    ga4GoogleRev = t ? parseCSV(t).filter(r=>r.kind==='google').map(r=>({date:r.date, contracts:Number(r.contracts||0), revenue:Number(r.revenue||0)})) : [];
+  }
+  const ga4GooglePayments = ga4GoogleRev;   // renderGoogleCard 가 쓰는 이름(결제·매출, kind=google)
+  if (!json) return { ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4AbRows:[], ga4Attributed:[], ga4GoogleRows, ga4GoogleRev, ga4GooglePayments, ga4Source:null };
+  return { ga4Rows: json.rows||[], ga4ChannelRows: json.channel_rows||[], ga4Funnels: json.funnels||[], ga4LandingFunnels: json.landing_funnels||[], ga4AbRows: json.ab_event_rows||[], ga4Attributed: json.attributed_rows||[], ga4GoogleRows, ga4GoogleRev, ga4GooglePayments, ga4Source: usedSource };
 }
 
 async function setSource(name, opts={}){
@@ -1231,7 +1238,7 @@ function renderLandingFunnels(){
   const chSet = {};
   (state.ga4ChannelRows||[]).forEach(r=>{ if(r.date>=state.since && r.date<=state.until) chSet[r.channel]=(chSet[r.channel]||0)+r.sessions; });
   const subCh = Object.keys(chSet).filter(ch=>!PAID_CHANNELS.includes(ch) && !CONTENT_CHANNELS.includes(ch) && ch!=='Direct' && ch!=='Unassigned').sort((a,b)=>chSet[b]-chSet[a]);
-  const opts = [['all','전체 (광고+콘텐츠+오가닉)'],['meta','메타 광고'],['ch:Organic Social','콘텐츠 (쓰레드·블로그 등)'],['organic','오가닉 (직접·미분류·외부링크)']];
+  const opts = [['all','전체 (광고+콘텐츠+오가닉)'],['meta','메타 광고'],['google','구글 광고 (검색·리마케팅)'],['ch:Organic Social','콘텐츠 (쓰레드·블로그 등)'],['organic','오가닉 (직접·미분류·외부링크)']];
   subCh.forEach(ch=> opts.push(['ch:'+ch, CHANNEL_LABELS[ch]||ch]));
   const viewSel = document.getElementById('landingViewSelect');
   if(!opts.some(([v])=>v===state.landingView)) state.landingView='all';   // 기간 변경으로 선택 채널이 사라지면 전체로
@@ -1241,6 +1248,7 @@ function renderLandingFunnels(){
   const LEGEND_BY_VIEW = {
     'all': '<b>전체</b> — 광고+콘텐츠+오가닉 합산. 사업 전체 CAC·ROI(블렌디드)는 여기서 봐요.',
     'meta': '<b>메타 광고</b> — 인스타·페북 유료 광고 유입. 광고비 대비 효율(예산 판단)은 여기서.',
+    'google': '<b>구글 광고</b> — 검색(SA)·리마케팅·디맨드젠 유입을 채널 기준 카드 1장으로. 광고비·유입·DB=GA4(구글 연동), 예약금 결제·매출=명단 시트(유입경로 google_*). 9/8부터 랜딩은 전부 the-way.',
     'ch:Organic Social': '<b>콘텐츠</b> — 쓰레드·블로그 등 우리가 직접 발행하는 채널의 성과를 랜딩 구분 없이 채널 기준으로 봐요 (유입=GA4 · DB/결제=시트 일일기록).',
     'organic': '<b>오가닉</b> — 직접 유입·미분류·외부 링크·검색 등 자연 유입. 실제 바이럴 여부는 여기서.',
   };
@@ -1252,6 +1260,13 @@ function renderLandingFunnels(){
   // 쓰레드가 어느 랜딩으로 운영되든(임팩트미→find-me 등) 카드가 깨지지 않는다 — 시대구분 불필요.
   if(state.landingView==='ch:Organic Social'){
     grid.innerHTML = renderContentCard();
+    renderDepositLive();
+    renderAbTest();
+    return;
+  }
+  // 구글 뷰(2026-09-09): 구글은 Meta 랜딩 카드(landing_metrics=Meta 광고비)와 원천이 달라 전용 카드 1장으로.
+  if(state.landingView==='google'){
+    grid.innerHTML = renderGoogleCard();
     renderDepositLive();
     renderAbTest();
     return;
@@ -1287,9 +1302,12 @@ function renderLandingFunnels(){
       ((r.db||0)+(r.bookings||0)+(r.payments||0)+(r.revenue||0) > 0)) ||
     (state.ga4Attributed||[]).some(r=> r.kind==='content' && inRange(r) && r.sessions>0));
   const visibleFunnels = state.ga4LandingFunnels.filter(lf => (metricsByLanding[lf.id]?.spend || 0) > 0);
+  // 🔎 구글 광고 카드 — 전체 뷰에서 조회기간에 구글 광고비가 있으면 1장 추가 (2026-09-09). 메타·오가닉 뷰엔 안 붙인다.
+  const googleActivity = state.landingView==='all' && (state.ga4GoogleRows||[]).some(r=> inRange(r) && Number(r.cost||0)>0);
 
-  if(visibleFunnels.length===0 && !threadActivity){ grid.innerHTML='<div class="empty">이 기간에 광고가 집행된 랜딩 퍼널이 없어요 (조회기간을 바꿔보세요)</div>'; return; }
+  if(visibleFunnels.length===0 && !threadActivity && !googleActivity){ grid.innerHTML='<div class="empty">이 기간에 광고가 집행된 랜딩 퍼널이 없어요 (조회기간을 바꿔보세요)</div>'; return; }
   grid.innerHTML = visibleFunnels.map(lf=>renderLandingCard(lf, metricsByLanding, bucketsById)).join('')
+    + (googleActivity ? renderGoogleCard() : '')
     + (threadActivity ? renderContentCard() : '');
 
   renderDepositLive();
@@ -1366,6 +1384,49 @@ function renderContentCard(){
   </div>`;
 }
 
+
+// 🔎 구글 광고 전용 카드 (2026-09-09) — 랜딩 퍼널 탭 전체 뷰 + '구글 광고' 뷰.
+// 광고비·유입·예약클릭·DB = google_ads.json(GA4 연동, fetch_google_ads.py) / 결제·매출 = non_ad_revenue.csv kind=google(regen: 명단 유입경로 google_* · 랜딩 the-way).
+// Meta 랜딩 카드와 다른 원천이라 합산하지 않고 따로 보여준다. DB 문턱이 다름(the-way 폼=이름·전화·플랜→바로 예약금 결제) — Meta 타입폼 DB와 CPA 직접 비교 금지.
+function renderGoogleCard(){
+  const since=state.since, until=state.until;
+  const rows=(state.ga4GoogleRows||[]).filter(r=>r.date>=since && r.date<=until);
+  const sum=(k)=>rows.reduce((a,r)=>a+Number(r[k]||0),0);
+  const spend=sum('cost'), visits=sum('sessions'), cta=sum('cta_click');
+  const db=rows.reduce((a,r)=>a+((r.db!=null)?Number(r.db):Math.max(Number(r.typeform||0),Number(r.begin_checkout||0))),0);
+  const TYPE_LABEL={SA:'검색',RMK:'리마케팅',DG:'디맨드젠','기타':'기타'};
+  const byType={}; rows.forEach(r=>{ byType[r.type]=(byType[r.type]||0)+Number(r.sessions||0); });
+  const typeDetail=Object.entries(byType).filter(([,s])=>s>0).sort((a,b)=>b[1]-a[1]).map(([t,s])=>`${TYPE_LABEL[t]||t} <b>${fmtNum(s)}</b>`).join(' · ');
+  const spendByType={}; rows.forEach(r=>{ spendByType[r.type]=(spendByType[r.type]||0)+Number(r.cost||0); });
+  const spendDetail=Object.entries(spendByType).filter(([,c])=>c>0).sort((a,b)=>b[1]-a[1]).map(([t,c])=>`${TYPE_LABEL[t]||t} <b>${fmtWon(c)}</b>`).join(' · ');
+  const rev=(state.ga4GoogleRev||[]).filter(r=>r.date>=since && r.date<=until);
+  const payments=rev.reduce((a,r)=>a+r.contracts,0);
+  const revenue=rev.reduce((a,r)=>a+r.revenue,0);
+  const rateCta = visits? cta/visits : null;
+  const rateDb  = visits? db/visits : null;
+  const ratePay = db? payments/db : null;
+  const cpDb  = db? fmtWon(spend/db) : '—';
+  const cpPay = payments? fmtWon(spend/payments) : '—';
+  return `<div class="panel landing-card">
+    <div class="lf-head">
+      <div class="lf-title">🔎 구글 광고 (검색 · 리마케팅 · 디맨드젠)</div>
+      <div class="cap">랜딩 the-way (9/8~) · 그 전 impact-me · <a href="https://find-me.real-me.co.kr/the-way/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">🔗 the-way 바로가기</a></div>
+    </div>
+    <div class="lf-stages">
+      <div class="lf-stage-box lf-spend"><div class="lf-stage-label">💸 광고비</div><div class="lf-stage-value">${fmtWon(spend)}</div><div class="lf-stage-sub">${spendDetail||'GA4 연동값 · 청구는 Ads 콘솔'}</div></div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s1"><div class="lf-stage-label">🌐 랜딩 유입</div><div class="lf-stage-value">${fmtNum(visits)}</div><div class="lf-stage-sub">${typeDetail||'GA4 세션 기준'}</div></div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s2"><div class="lf-stage-label">👆 예약 클릭</div><div class="lf-stage-value">${fmtNum(cta)}</div><div class="lf-stage-sub">전환율 <b>${rateCta!=null?fmtPct(rateCta):'—'}</b></div></div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s3"><div class="lf-stage-label">🎯 DB (폼 제출)</div><div class="lf-stage-value">${fmtNum(db)}</div><div class="lf-stage-sub">유입 대비 <b>${rateDb!=null?fmtPct(rateDb):'—'}</b> · DB당 <b>${cpDb}</b></div></div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s5"><div class="lf-stage-label">🏦 예약금 결제</div><div class="lf-stage-value">${fmtNum(payments)}</div><div class="lf-stage-sub">결제전환율 <b>${ratePay!=null?fmtPct(ratePay):'—'}</b> · 예약당 <b>${cpPay}</b></div></div>
+      <div class="lf-arrow">→</div>
+      <div class="lf-stage-box lf-s6"><div class="lf-stage-label">🤝 결제금액</div><div class="lf-stage-value">${fmtWon(revenue)}</div><div class="lf-stage-sub">명단 시트 기준${spend&&revenue?` · ROAS <b>${(revenue/spend*100).toFixed(0)}%</b>`:''}</div></div>
+    </div>
+  </div>`;
+}
 
 // 🏆 소재별 성과 표 (2026-07-30) — 베스트 광고 탭 상단. utm_content(={{ad.name}}) 기준 자동 집계.
 // 새 소재는 광고 이름만 지으면 자동으로 줄이 생김. '- 사본' 복제는 원소재로 합산.
