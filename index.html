@@ -280,6 +280,19 @@
     <div class="cards" id="ga4Cards"></div>
 
     <div class="section-head">
+      <h2>🔎 구글 광고</h2>
+      <span class="cap" id="gadsCap">검색(SA) · 리마케팅(RMK) · 디맨드젠(DG) — GA4 연동 광고비, 캠페인 단위</span>
+    </div>
+    <div class="cards" id="gadsCards"></div>
+    <div class="panel">
+      <table>
+        <thead><tr><th>캠페인</th><th>유형</th><th>광고비</th><th>노출</th><th>클릭</th><th>CTR</th><th>CPC</th><th>세션</th><th>참여율</th><th>DB</th><th>DB당 비용</th></tr></thead>
+        <tbody id="gadsBody"></tbody>
+      </table>
+      <div class="cap" id="gadsNote" style="margin-top:8px;line-height:1.5;"></div>
+    </div>
+
+    <div class="section-head">
       <h2>🧭 유입 채널</h2>
       <span class="cap">광고·직접·검색·외부링크 구분 (GA4 채널그룹 기준)</span>
     </div>
@@ -625,8 +638,11 @@ async function loadGa4(name){
     json = await tryFile(GA4_SOURCES.demo);
     usedSource = 'demo';
   }
-  if (!json) return { ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4AbRows:[], ga4Attributed:[], ga4Source:null };
-  return { ga4Rows: json.rows||[], ga4ChannelRows: json.channel_rows||[], ga4Funnels: json.funnels||[], ga4LandingFunnels: json.landing_funnels||[], ga4AbRows: json.ab_event_rows||[], ga4Attributed: json.attributed_rows||[], ga4Source: usedSource };
+  // 구글 광고(SA·RMK·DG) — fetch_google_ads.py 산출물. 없으면 섹션만 빈 상태로 둔다(2026-09-09)
+  const gads = (name==='real') ? await tryFile('google_ads.json') : null;
+  const ga4GoogleRows = (gads && gads.rows) || [];
+  if (!json) return { ga4Rows:[], ga4ChannelRows:[], ga4Funnels:[], ga4LandingFunnels:[], ga4AbRows:[], ga4Attributed:[], ga4GoogleRows, ga4Source:null };
+  return { ga4Rows: json.rows||[], ga4ChannelRows: json.channel_rows||[], ga4Funnels: json.funnels||[], ga4LandingFunnels: json.landing_funnels||[], ga4AbRows: json.ab_event_rows||[], ga4Attributed: json.attributed_rows||[], ga4GoogleRows, ga4Source: usedSource };
 }
 
 async function setSource(name, opts={}){
@@ -1000,6 +1016,64 @@ function renderGa4Cards(rowsInRange, funnelsInRange){
     </div>`).join('');
 }
 
+// 🔎 구글 광고 — google_ads.json(date×campaign) 을 조회기간으로 합산 (2026-09-09)
+// DB = begin_checkout(the-way 폼 제출→예약금 결제창) + TypeformSubmit(9/8 이전 impact-me 시절). 결제는 시트 기준이라 여기 없음.
+function renderGoogleAds(rows){
+  const cards = document.getElementById('gadsCards');
+  const body = document.getElementById('gadsBody');
+  const note = document.getElementById('gadsNote');
+  if(!cards || !body) return;
+  if(!rows.length){
+    cards.innerHTML = '';
+    body.innerHTML = '<tr><td colspan="11" class="cap">이 기간 구글 광고 데이터가 없어요 (구글 광고는 2026-08-31 시작).</td></tr>';
+    note.textContent = '';
+    return;
+  }
+  const TYPE_LABEL = { SA:'검색', RMK:'리마케팅', DG:'디맨드젠', '기타':'기타' };
+  const agg = {};
+  rows.forEach(r=>{
+    const a = agg[r.campaign] || (agg[r.campaign] = { campaign:r.campaign, type:r.type, cost:0, imp:0, clicks:0, sessions:0, engaged:0, db:0 });
+    a.cost += Number(r.cost||0); a.imp += Number(r.impressions||0); a.clicks += Number(r.clicks||0);
+    a.sessions += Number(r.sessions||0); a.engaged += Number(r.engaged||0);
+    // db 는 fetch_google_ads.py 가 확정(타입폼 있으면 타입폼, 없으면 begin_checkout — 이중집계 방지). 구버전 JSON 대비 폴백.
+    a.db += (r.db!=null) ? Number(r.db) : Math.max(Number(r.typeform||0), Number(r.begin_checkout||0));
+  });
+  const list = Object.values(agg).filter(a=>a.cost>0 || a.sessions>0).sort((x,y)=>y.cost-x.cost);
+  const T = list.reduce((t,a)=>({cost:t.cost+a.cost, imp:t.imp+a.imp, clicks:t.clicks+a.clicks, sessions:t.sessions+a.sessions, engaged:t.engaged+a.engaged, db:t.db+a.db}), {cost:0,imp:0,clicks:0,sessions:0,engaged:0,db:0});
+  const cpa = T.db ? fmtWon(T.cost/T.db) : '—';
+  const c = [
+    {e:'💸', label:'구글 광고비', value:fmtWon(T.cost), note:`캠페인 ${list.length}개 · GA4 연동값`},
+    {e:'🖱️', label:'클릭', value:fmtNum(T.clicks), note:`CPC ${T.clicks?fmtWon(T.cost/T.clicks):'—'} · CTR ${T.imp?(T.clicks/T.imp*100).toFixed(2):'—'}%`},
+    {e:'🌐', label:'세션', value:fmtNum(T.sessions), note:`참여율 ${T.sessions?(T.engaged/T.sessions*100).toFixed(0):'—'}%`},
+    {e:'📥', label:'DB (폼 제출)', value:fmtNum(T.db), note:`DB당 비용 ${cpa}`},
+  ];
+  cards.innerHTML = c.map(x=>`
+    <div class="metric">
+      <div class="top"><span class="emoji">${x.e}</span><span class="label">${x.label}</span></div>
+      <div class="value">${x.value}</div>
+      <div class="note">${x.note}</div>
+    </div>`).join('');
+  body.innerHTML = list.map(a=>`<tr>
+      <td>${a.campaign}</td>
+      <td>${TYPE_LABEL[a.type]||a.type}</td>
+      <td>${fmtWon(a.cost)}</td>
+      <td>${fmtNum(a.imp)}</td>
+      <td>${fmtNum(a.clicks)}</td>
+      <td>${a.imp?(a.clicks/a.imp*100).toFixed(2)+'%':'—'}</td>
+      <td>${a.clicks?fmtWon(a.cost/a.clicks):'—'}</td>
+      <td>${fmtNum(a.sessions)}</td>
+      <td>${a.sessions?(a.engaged/a.sessions*100).toFixed(0)+'%':'—'}</td>
+      <td><b>${fmtNum(a.db)}</b></td>
+      <td>${a.db?fmtWon(a.cost/a.db):'—'}</td>
+    </tr>`).join('') + `<tr style="font-weight:600;border-top:2px solid #e5e7eb;">
+      <td>합계</td><td></td><td>${fmtWon(T.cost)}</td><td>${fmtNum(T.imp)}</td><td>${fmtNum(T.clicks)}</td>
+      <td>${T.imp?(T.clicks/T.imp*100).toFixed(2)+'%':'—'}</td><td>${T.clicks?fmtWon(T.cost/T.clicks):'—'}</td>
+      <td>${fmtNum(T.sessions)}</td><td>${T.sessions?(T.engaged/T.sessions*100).toFixed(0)+'%':'—'}</td>
+      <td><b>${fmtNum(T.db)}</b></td><td>${cpa}</td></tr>`;
+  note.innerHTML = 'DB = the-way 폼 제출(begin_checkout). 9/8 이전(impact-me 시절)은 타입폼 제출. 결제는 명단 시트(유입경로 google_sa/google_rmk) 기준이라 여기 없어요. '
+    + '광고비는 GA4 연동값 — 청구 기준은 Google Ads 콘솔. 최근 48시간은 GA4 미처리라 참여율·DB가 낮게 보일 수 있어요.';
+}
+
 function renderGa4LandingPages(rowsInRange){
   const by={};
   rowsInRange.forEach(r=>{
@@ -1138,6 +1212,7 @@ function renderGa4(){
   document.getElementById('ga4RangeLabel').textContent =
     `${state.since} ~ ${state.until}` + (state.ga4Source==='demo' ? ' · 데모 데이터' : '');
   renderGa4Cards(rowsInRange, funnelsInRange);
+  renderGoogleAds((state.ga4GoogleRows||[]).filter(r=>r.date>=state.since && r.date<=state.until));
   renderGa4Channels(state.ga4ChannelRows.filter(r=>r.date>=state.since && r.date<=state.until));
   renderGa4LandingPages(rowsInRange);
   renderGa4Funnels(funnelsInRange);
