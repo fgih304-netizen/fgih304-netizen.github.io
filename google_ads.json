@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-09-21T10:15:33",
+ "generated_at": "2026-09-22T10:17:29",
  "since": "2026-08-28",
- "until": "2026-09-21",
+ "until": "2026-09-22",
  "source": "GA4 Data API (Google Ads 연동) — 캠페인 단위 비용, Ads 콘솔이 청구 기준",
  "db_definition": "db = 타입폼 제출이 있으면 타입폼(9/8 이전 impact-me), 없으면 begin_checkout(the-way 폼 제출). 같은 사람이 둘 다 쏘므로 합산 금지. 결제는 명단 시트 기준.",
  "rows": [
