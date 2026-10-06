@@ -1845,8 +1845,8 @@
       "host": "impact-me.real-me.co.kr",
       "path": "/",
       "landing_page": "https://impact-me.real-me.co.kr/",
-      "sessions": 60,
-      "users": 60
+      "sessions": 61,
+      "users": 61
     },
     {
       "date": "2026-08-19",
@@ -5087,6 +5087,14 @@
       "landing_page": "https://realmeschedule.lovable.app/booking/step-3-styling",
       "sessions": 1,
       "users": 1
+    },
+    {
+      "date": "2026-10-06",
+      "host": "realmeschedule.lovable.app",
+      "path": "/booking/step-3-styling",
+      "landing_page": "https://realmeschedule.lovable.app/booking/step-3-styling",
+      "sessions": 1,
+      "users": 1
     }
   ],
   "channel_rows": [
@@ -6183,6 +6191,13 @@
       "users": 41
     },
     {
+      "date": "2026-10-06",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Cross-network",
+      "sessions": 46,
+      "users": 46
+    },
+    {
       "date": "2026-08-20",
       "host": "premium.real-me.co.kr",
       "channel": "Paid Social",
@@ -6213,7 +6228,7 @@
     {
       "date": "2026-10-06",
       "host": "impact-me.real-me.co.kr",
-      "channel": "Cross-network",
+      "channel": "Unassigned",
       "sessions": 45,
       "users": 45
     },
@@ -6237,13 +6252,6 @@
       "channel": "Direct",
       "sessions": 44,
       "users": 33
-    },
-    {
-      "date": "2026-10-06",
-      "host": "impact-me.real-me.co.kr",
-      "channel": "Unassigned",
-      "sessions": 44,
-      "users": 44
     },
     {
       "date": "2026-08-19",
@@ -7933,6 +7941,13 @@
       "users": 7
     },
     {
+      "date": "2026-10-06",
+      "host": "find-me.real-me.co.kr",
+      "channel": "Cross-network",
+      "sessions": 8,
+      "users": 8
+    },
+    {
       "date": "2026-07-13",
       "host": "find-me.real-me.co.kr",
       "channel": "Paid Other",
@@ -8062,13 +8077,6 @@
       "date": "2026-09-29",
       "host": "find-me.real-me.co.kr",
       "channel": "Paid Social",
-      "sessions": 7,
-      "users": 7
-    },
-    {
-      "date": "2026-10-06",
-      "host": "find-me.real-me.co.kr",
-      "channel": "Cross-network",
       "sessions": 7,
       "users": 7
     },
@@ -10124,6 +10132,13 @@
       "users": 3
     },
     {
+      "date": "2026-10-06",
+      "host": "realmeschedule.lovable.app",
+      "channel": "Unassigned",
+      "sessions": 3,
+      "users": 3
+    },
+    {
       "date": "2026-07-09",
       "host": "find-me.real-me.co.kr",
       "channel": "Paid Other",
@@ -11240,13 +11255,6 @@
       "date": "2026-10-05",
       "host": "find-me.real-me.co.kr",
       "channel": "Organic Social",
-      "sessions": 2,
-      "users": 2
-    },
-    {
-      "date": "2026-10-06",
-      "host": "realmeschedule.lovable.app",
-      "channel": "Unassigned",
       "sessions": 2,
       "users": 2
     },
@@ -14033,6 +14041,13 @@
       "date": "2026-10-06",
       "host": "impact-me.real-me.co.kr",
       "channel": "Referral",
+      "sessions": 1,
+      "users": 1
+    },
+    {
+      "date": "2026-10-06",
+      "host": "realmeschedule.lovable.app",
+      "channel": "Direct",
       "sessions": 1,
       "users": 1
     }
@@ -17522,7 +17537,7 @@
       "date": "2026-10-06",
       "funnel": "discount-me",
       "kind": "organic",
-      "sessions": 91
+      "sessions": 93
     },
     {
       "date": "2026-10-06",
@@ -17540,7 +17555,7 @@
       "date": "2026-10-06",
       "funnel": "story",
       "kind": "organic",
-      "sessions": 19
+      "sessions": 20
     },
     {
       "date": "2026-10-06",
@@ -19012,13 +19027,13 @@
           "event_count": 78
         },
         {
-          "date": "2026-09-22",
-          "event_name": "cta_click",
-          "event_count": 77
-        },
-        {
           "date": "2026-10-06",
           "event_name": "page_view",
+          "event_count": 78
+        },
+        {
+          "date": "2026-09-22",
+          "event_name": "cta_click",
           "event_count": 77
         },
         {
@@ -25033,7 +25048,7 @@
         },
         {
           "date": "2026-10-06",
-          "value": 60
+          "value": 61
         },
         {
           "date": "2026-07-19",
@@ -26051,7 +26066,7 @@
         },
         {
           "date": "2026-10-06",
-          "value": 45
+          "value": 46
         }
       ],
       "stage2_organic_rows": [
