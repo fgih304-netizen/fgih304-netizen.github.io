@@ -539,6 +539,11 @@
       "value": 12
     },
     {
+      "date": "2026-10-22",
+      "path": "/",
+      "value": 12
+    },
+    {
       "date": "2026-07-31",
       "path": "/style",
       "value": 11
@@ -600,11 +605,6 @@
     },
     {
       "date": "2026-08-25",
-      "path": "/",
-      "value": 10
-    },
-    {
-      "date": "2026-10-22",
       "path": "/",
       "value": 10
     },
@@ -1997,6 +1997,14 @@
       "users": 39
     },
     {
+      "date": "2026-10-22",
+      "host": "impact-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://impact-me.real-me.co.kr/",
+      "sessions": 39,
+      "users": 39
+    },
+    {
       "date": "2026-09-03",
       "host": "impact-me.real-me.co.kr",
       "path": "/style",
@@ -2033,14 +2041,6 @@
       "host": "premium.real-me.co.kr",
       "path": "/",
       "landing_page": "https://premium.real-me.co.kr/",
-      "sessions": 38,
-      "users": 38
-    },
-    {
-      "date": "2026-10-22",
-      "host": "impact-me.real-me.co.kr",
-      "path": "/",
-      "landing_page": "https://impact-me.real-me.co.kr/",
       "sessions": 38,
       "users": 38
     },
@@ -6488,6 +6488,13 @@
       "users": 40
     },
     {
+      "date": "2026-10-22",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Paid Social",
+      "sessions": 41,
+      "users": 40
+    },
+    {
       "date": "2026-08-20",
       "host": "find-me.real-me.co.kr",
       "channel": "Paid Social",
@@ -6514,13 +6521,6 @@
       "channel": "Paid Social",
       "sessions": 40,
       "users": 40
-    },
-    {
-      "date": "2026-10-22",
-      "host": "impact-me.real-me.co.kr",
-      "channel": "Paid Social",
-      "sessions": 40,
-      "users": 39
     },
     {
       "date": "2026-08-20",
@@ -18634,7 +18634,7 @@
       "date": "2026-10-22",
       "funnel": "discount-me",
       "kind": "paid",
-      "sessions": 40
+      "sessions": 42
     },
     {
       "date": "2026-10-22",
@@ -20306,13 +20306,13 @@
           "event_count": 52
         },
         {
-          "date": "2026-10-07",
-          "event_name": "cta_click",
-          "event_count": 51
-        },
-        {
           "date": "2026-10-22",
           "event_name": "page_view",
+          "event_count": 52
+        },
+        {
+          "date": "2026-10-07",
+          "event_name": "cta_click",
           "event_count": 51
         },
         {
@@ -27022,7 +27022,7 @@
         },
         {
           "date": "2026-10-22",
-          "value": 38
+          "value": 39
         }
       ],
       "stage2_rows": [
@@ -27379,12 +27379,12 @@
           "value": 21
         },
         {
-          "date": "2026-08-28",
-          "value": 11
+          "date": "2026-10-22",
+          "value": 12
         },
         {
-          "date": "2026-10-22",
-          "value": 10
+          "date": "2026-08-28",
+          "value": 11
         }
       ],
       "stage3_rows": [
@@ -27689,6 +27689,10 @@
           "value": 7
         },
         {
+          "date": "2026-10-22",
+          "value": 6
+        },
+        {
           "date": "2026-08-10",
           "value": 5
         },
@@ -27706,10 +27710,6 @@
         },
         {
           "date": "2026-10-04",
-          "value": 5
-        },
-        {
-          "date": "2026-10-22",
           "value": 5
         },
         {
@@ -28957,12 +28957,12 @@
           "value": 21
         },
         {
-          "date": "2026-08-28",
+          "date": "2026-10-22",
           "channel": "Paid Social",
-          "value": 9
+          "value": 11
         },
         {
-          "date": "2026-10-22",
+          "date": "2026-08-28",
           "channel": "Paid Social",
           "value": 9
         },
@@ -29649,6 +29649,11 @@
           "value": 5
         },
         {
+          "date": "2026-10-22",
+          "channel": "Paid Social",
+          "value": 5
+        },
+        {
           "date": "2026-07-29",
           "channel": "Organic Social",
           "value": 4
@@ -29786,11 +29791,6 @@
         {
           "date": "2026-10-20",
           "channel": "Organic Social",
-          "value": 4
-        },
-        {
-          "date": "2026-10-22",
-          "channel": "Paid Social",
           "value": 4
         },
         {
