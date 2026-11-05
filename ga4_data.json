@@ -1527,6 +1527,14 @@
       "users": 68
     },
     {
+      "date": "2026-11-05",
+      "host": "impact-me.real-me.co.kr",
+      "path": "/",
+      "landing_page": "https://impact-me.real-me.co.kr/",
+      "sessions": 70,
+      "users": 70
+    },
+    {
       "date": "2026-08-14",
       "host": "find-me.real-me.co.kr",
       "path": "/story/",
@@ -1589,14 +1597,6 @@
       "landing_page": "https://impact-me.real-me.co.kr/style",
       "sessions": 65,
       "users": 64
-    },
-    {
-      "date": "2026-11-05",
-      "host": "impact-me.real-me.co.kr",
-      "path": "/",
-      "landing_page": "https://impact-me.real-me.co.kr/",
-      "sessions": 65,
-      "users": 65
     },
     {
       "date": "2026-08-31",
@@ -6020,6 +6020,13 @@
       "users": 67
     },
     {
+      "date": "2026-11-05",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Paid Social",
+      "sessions": 70,
+      "users": 70
+    },
+    {
       "date": "2026-10-24",
       "host": "artin1ife.pro.typeform.com",
       "channel": "Paid Social",
@@ -6039,13 +6046,6 @@
       "channel": "Paid Social",
       "sessions": 65,
       "users": 63
-    },
-    {
-      "date": "2026-11-05",
-      "host": "impact-me.real-me.co.kr",
-      "channel": "Paid Social",
-      "sessions": 65,
-      "users": 65
     },
     {
       "date": "2026-08-16",
@@ -19236,7 +19236,7 @@
       "date": "2026-11-05",
       "funnel": "discount-me",
       "kind": "paid",
-      "sessions": 68
+      "sessions": 73
     },
     {
       "date": "2026-11-05",
@@ -20843,6 +20843,11 @@
           "event_count": 81
         },
         {
+          "date": "2026-11-05",
+          "event_name": "page_view",
+          "event_count": 79
+        },
+        {
           "date": "2026-08-16",
           "event_name": "cta_click",
           "event_count": 78
@@ -20865,11 +20870,6 @@
         {
           "date": "2026-08-13",
           "event_name": "cta_click",
-          "event_count": 74
-        },
-        {
-          "date": "2026-11-05",
-          "event_name": "page_view",
           "event_count": 74
         },
         {
@@ -28663,12 +28663,12 @@
           "value": 152
         },
         {
-          "date": "2026-08-25",
-          "value": 136
+          "date": "2026-11-05",
+          "value": 71
         },
         {
-          "date": "2026-11-05",
-          "value": 66
+          "date": "2026-08-25",
+          "value": 136
         }
       ],
       "stage2_rows": [
