@@ -1212,8 +1212,8 @@
       "host": "impact-me.real-me.co.kr",
       "path": "/",
       "landing_page": "https://impact-me.real-me.co.kr/",
-      "sessions": 148,
-      "users": 148
+      "sessions": 152,
+      "users": 152
     },
     {
       "date": "2026-08-20",
@@ -5773,18 +5773,18 @@
       "users": 147
     },
     {
+      "date": "2026-11-09",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Paid Social",
+      "sessions": 151,
+      "users": 147
+    },
+    {
       "date": "2026-08-12",
       "host": "impact-me.real-me.co.kr",
       "channel": "Paid Social",
       "sessions": 149,
       "users": 146
-    },
-    {
-      "date": "2026-11-09",
-      "host": "impact-me.real-me.co.kr",
-      "channel": "Paid Social",
-      "sessions": 148,
-      "users": 144
     },
     {
       "date": "2026-08-28",
@@ -10918,6 +10918,13 @@
       "users": 3
     },
     {
+      "date": "2026-11-09",
+      "host": "impact-me.real-me.co.kr",
+      "channel": "Organic Social",
+      "sessions": 3,
+      "users": 3
+    },
+    {
       "date": "2026-08-12",
       "host": "impact-me.real-me.co.kr",
       "channel": "Unassigned",
@@ -12404,13 +12411,6 @@
     {
       "date": "2026-11-09",
       "host": "find-me.real-me.co.kr",
-      "channel": "Organic Social",
-      "sessions": 2,
-      "users": 2
-    },
-    {
-      "date": "2026-11-09",
-      "host": "impact-me.real-me.co.kr",
       "channel": "Organic Social",
       "sessions": 2,
       "users": 2
@@ -19309,13 +19309,13 @@
       "date": "2026-11-09",
       "funnel": "discount-me",
       "kind": "organic",
-      "sessions": 8
+      "sessions": 9
     },
     {
       "date": "2026-11-09",
       "funnel": "discount-me",
       "kind": "paid",
-      "sessions": 151
+      "sessions": 154
     },
     {
       "date": "2026-11-09",
@@ -20782,14 +20782,14 @@
           "event_count": 180
         },
         {
+          "date": "2026-11-09",
+          "event_name": "page_view",
+          "event_count": 180
+        },
+        {
           "date": "2026-10-31",
           "event_name": "cta_click",
           "event_count": 178
-        },
-        {
-          "date": "2026-11-09",
-          "event_name": "page_view",
-          "event_count": 176
         },
         {
           "date": "2026-08-25",
@@ -28786,7 +28786,7 @@
         },
         {
           "date": "2026-11-09",
-          "value": 148
+          "value": 152
         },
         {
           "date": "2026-08-18",
